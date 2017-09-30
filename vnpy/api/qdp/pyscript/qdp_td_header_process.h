@@ -87,4 +87,3 @@ void processRspQryTransferSerial(Task task);
 void processRspQrySGEDeferRate(Task task);
 
 void processRspQryMarketData(Task task);
-

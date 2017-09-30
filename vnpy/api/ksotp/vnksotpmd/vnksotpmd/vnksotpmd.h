@@ -1,33 +1,33 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 
-//ÏµÍ³
+//ç³»ç»Ÿ
 #include "stdafx.h"
-#include <string>
 #include <queue>
+#include <string>
 
 #include <exception>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>	//python·â×°
-#include <boost/python/def.hpp>		//python·â×°
-#include <boost/python/dict.hpp>	//python·â×°
-#include <boost/python/object.hpp>	//python·â×°
-#include <boost/python.hpp>			//python·â×°
-#include <boost/thread.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>			//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
+#include <boost/any.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>          //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>        //pythonå°è£…
+#include <boost/python/def.hpp>    //pythonå°è£…
+#include <boost/python/dict.hpp>   //pythonå°è£…
+#include <boost/python/module.hpp> //pythonå°è£…
+#include <boost/python/object.hpp> //pythonå°è£…
+#include <boost/thread.hpp>        //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
+// API
 #include "KSOTPMdApi.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 using namespace KingstarAPI;
 
-//³£Á¿
+//å¸¸é‡
 #define ONFRONTCONNECTED 1
 #define ONFRONTDISCONNECTED 2
 #define ONRSPUSERLOGIN 3
@@ -40,255 +40,248 @@ using namespace KingstarAPI;
 #define ONRTNDEPTHMARKETDATA 10
 #define ONRTNFORQUOTERSP 11
 
-
 ///-------------------------------------------------------------------------------------
-///APIÖĞµÄ²¿·Ö×é¼ş
+/// APIä¸­çš„éƒ¨åˆ†ç»„ä»¶
 ///-------------------------------------------------------------------------------------
 
-//GILÈ«¾ÖËø¼ò»¯»ñÈ¡ÓÃ£¬
-//ÓÃÓÚ°ïÖúC++Ïß³Ì»ñµÃGILËø£¬´Ó¶ø·ÀÖ¹python±ÀÀ£
-class PyLock
-{
+// GILå…¨å±€é”ç®€åŒ–è·å–ç”¨ï¼Œ
+//ç”¨äºå¸®åŠ©C++çº¿ç¨‹è·å¾—GILé”ï¼Œä»è€Œé˜²æ­¢pythonå´©æºƒ
+class PyLock {
 private:
-	PyGILState_STATE gil_state;
+  PyGILState_STATE gil_state;
 
 public:
-	//ÔÚÄ³¸öº¯Êı·½·¨ÖĞ´´½¨¸Ã¶ÔÏóÊ±£¬»ñµÃGILËø
-	PyLock()
-	{
-		gil_state = PyGILState_Ensure();
-	}
+  //åœ¨æŸä¸ªå‡½æ•°æ–¹æ³•ä¸­åˆ›å»ºè¯¥å¯¹è±¡æ—¶ï¼Œè·å¾—GILé”
+  PyLock() { gil_state = PyGILState_Ensure(); }
 
-	//ÔÚÄ³¸öº¯ÊıÍê³ÉºóÏú»Ù¸Ã¶ÔÏóÊ±£¬½â·ÅGILËø
-	~PyLock()
-	{
-		PyGILState_Release(gil_state);
-	}
+  //åœ¨æŸä¸ªå‡½æ•°å®Œæˆåé”€æ¯è¯¥å¯¹è±¡æ—¶ï¼Œè§£æ”¾GILé”
+  ~PyLock() { PyGILState_Release(gil_state); }
 };
 
-
-//ÈÎÎñ½á¹¹Ìå
-struct Task
-{
-	int task_name;		//»Øµ÷º¯ÊıÃû³Æ¶ÔÓ¦µÄ³£Á¿
-	any task_data;		//Êı¾İ½á¹¹Ìå
-	any task_error;		//´íÎó½á¹¹Ìå
-	int task_id;		//ÇëÇóid
-	bool task_last;		//ÊÇ·ñÎª×îºó·µ»Ø
+//ä»»åŠ¡ç»“æ„ä½“
+struct Task {
+  int task_name;  //å›è°ƒå‡½æ•°åç§°å¯¹åº”çš„å¸¸é‡
+  any task_data;  //æ•°æ®ç»“æ„ä½“
+  any task_error; //é”™è¯¯ç»“æ„ä½“
+  int task_id;    //è¯·æ±‚id
+  bool task_last; //æ˜¯å¦ä¸ºæœ€åè¿”å›
 };
 
+///çº¿ç¨‹å®‰å…¨çš„é˜Ÿåˆ—
+template <typename Data>
 
-///Ïß³Ì°²È«µÄ¶ÓÁĞ
-template<typename Data>
-
-class ConcurrentQueue
-{
+class ConcurrentQueue {
 private:
-	queue<Data> the_queue;								//±ê×¼¿â¶ÓÁĞ
-	mutable mutex the_mutex;							//boost»¥³âËø
-	condition_variable the_condition_variable;			//boostÌõ¼ş±äÁ¿
+  queue<Data> the_queue;                     //æ ‡å‡†åº“é˜Ÿåˆ—
+  mutable mutex the_mutex;                   // boostäº’æ–¥é”
+  condition_variable the_condition_variable; // boostæ¡ä»¶å˜é‡
 
 public:
+  //å­˜å…¥æ–°çš„ä»»åŠ¡
+  void push(Data const &data) {
+    mutex::scoped_lock lock(the_mutex);  //è·å–äº’æ–¥é”
+    the_queue.push(data);                //å‘é˜Ÿåˆ—ä¸­å­˜å…¥æ•°æ®
+    lock.unlock();                       //é‡Šæ”¾é”
+    the_condition_variable.notify_one(); //é€šçŸ¥æ­£åœ¨é˜»å¡ç­‰å¾…çš„çº¿ç¨‹
+  }
 
-	//´æÈëĞÂµÄÈÎÎñ
-	void push(Data const& data)
-	{
-		mutex::scoped_lock lock(the_mutex);				//»ñÈ¡»¥³âËø
-		the_queue.push(data);							//Ïò¶ÓÁĞÖĞ´æÈëÊı¾İ
-		lock.unlock();									//ÊÍ·ÅËø
-		the_condition_variable.notify_one();			//Í¨ÖªÕıÔÚ×èÈûµÈ´ıµÄÏß³Ì
-	}
+  //æ£€æŸ¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+  bool empty() const {
+    mutex::scoped_lock lock(the_mutex);
+    return the_queue.empty();
+  }
 
-	//¼ì²é¶ÓÁĞÊÇ·ñÎª¿Õ
-	bool empty() const
-	{
-		mutex::scoped_lock lock(the_mutex);
-		return the_queue.empty();
-	}
+  //å–å‡º
+  Data wait_and_pop() {
+    mutex::scoped_lock lock(the_mutex);
 
-	//È¡³ö
-	Data wait_and_pop()
-	{
-		mutex::scoped_lock lock(the_mutex);
+    while (the_queue.empty()) //å½“é˜Ÿåˆ—ä¸ºç©ºæ—¶
+    {
+      the_condition_variable.wait(lock); //ç­‰å¾…æ¡ä»¶å˜é‡é€šçŸ¥
+    }
 
-		while (the_queue.empty())						//µ±¶ÓÁĞÎª¿ÕÊ±
-		{
-			the_condition_variable.wait(lock);			//µÈ´ıÌõ¼ş±äÁ¿Í¨Öª
-		}
-
-		Data popped_value = the_queue.front();			//»ñÈ¡¶ÓÁĞÖĞµÄ×îºóÒ»¸öÈÎÎñ
-		the_queue.pop();								//É¾³ı¸ÃÈÎÎñ
-		return popped_value;							//·µ»Ø¸ÃÈÎÎñ
-	}
-
+    Data popped_value = the_queue.front(); //è·å–é˜Ÿåˆ—ä¸­çš„æœ€åä¸€ä¸ªä»»åŠ¡
+    the_queue.pop();                       //åˆ é™¤è¯¥ä»»åŠ¡
+    return popped_value;                   //è¿”å›è¯¥ä»»åŠ¡
+  }
 };
 
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æ•´æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getInt(dict d, string key, int *value);
 
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄÕûÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getInt(dict d, string key, int* value);
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æµ®ç‚¹æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getDouble(dict d, string key, double *value);
 
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ¸¡µãÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getDouble(dict d, string key, double* value);
-
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ×Ö·û´®£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getChar(dict d, string key, char* value);
-
-
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getChar(dict d, string key, char *value);
 
 ///-------------------------------------------------------------------------------------
-///C++ SPIµÄ»Øµ÷º¯Êı·½·¨ÊµÏÖ
+/// C++ SPIçš„å›è°ƒå‡½æ•°æ–¹æ³•å®ç°
 ///-------------------------------------------------------------------------------------
 
-//APIµÄ¼Ì³ĞÊµÏÖ
-class MdApi : public CKSOTPMdSpi
-{
+// APIçš„ç»§æ‰¿å®ç°
+class MdApi : public CKSOTPMdSpi {
 private:
-	CKSOTPMdApi* api;					//API¶ÔÏó
-	thread *task_thread;				//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	ConcurrentQueue<Task> task_queue;	//ÈÎÎñ¶ÓÁĞ
+  CKSOTPMdApi *api;    // APIå¯¹è±¡
+  thread *task_thread; //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  ConcurrentQueue<Task> task_queue; //ä»»åŠ¡é˜Ÿåˆ—
 
 public:
-	MdApi()
-	{
-		this->api = NULL;
+  MdApi() {
+    this->api = NULL;
 
-		function0<void> f = boost::bind(&MdApi::processTask, this);
-		thread t(f);
-		this->task_thread = &t;
-	};
+    function0<void> f = boost::bind(&MdApi::processTask, this);
+    thread t(f);
+    this->task_thread = &t;
+  };
 
-	~MdApi()
-	{
-	};
+  ~MdApi(){};
 
-	//-------------------------------------------------------------------------------------
-	//API»Øµ÷º¯Êı
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // APIå›è°ƒå‡½æ•°
+  //-------------------------------------------------------------------------------------
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected();
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected();
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçĞ´Ê§°Ü
-	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
-	virtual void OnFrontDisconnected(int nReason);
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param nReason é”™è¯¯åŸå› 
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
+  ///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+  virtual void OnFrontDisconnected(int nReason);
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CKSOTPRspUserLoginField *pRspUserLogin, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CKSOTPRspUserLoginField *pRspUserLogin,
+                              CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast);
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CKSOTPUserLogoutField *pUserLogout, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CKSOTPUserLogoutField *pUserLogout,
+                               CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast);
 
-	///´íÎóÓ¦´ğ
-	virtual void OnRspError(CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///é”™è¯¯åº”ç­”
+  virtual void OnRspError(CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast);
 
-	///¶©ÔÄĞĞÇéÓ¦´ğ
-	virtual void OnRspSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è®¢é˜…è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                     CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                     bool bIsLast);
 
-	///È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ
-	virtual void OnRspUnSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspUnSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                       CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast);
 
-	///¶©ÔÄÑ¯¼ÛÓ¦´ğ
-	virtual void OnRspSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è®¢é˜…è¯¢ä»·åº”ç­”
+  virtual void
+  OnRspSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                      CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                      bool bIsLast);
 
-	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
-	virtual void OnRspUnSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
+  virtual void
+  OnRspUnSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                        CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                        bool bIsLast);
 
-	///Éî¶ÈĞĞÇéÍ¨Öª
-	virtual void OnRtnDepthMarketData(CKSOTPDepthMarketDataField *pDepthMarketData);
+  ///æ·±åº¦è¡Œæƒ…é€šçŸ¥
+  virtual void
+  OnRtnDepthMarketData(CKSOTPDepthMarketDataField *pDepthMarketData);
 
-	///Ñ¯¼ÛÍ¨Öª
-	virtual void OnRtnForQuoteRsp(CKSOTPForQuoteRspField *pForQuoteRsp);
+  ///è¯¢ä»·é€šçŸ¥
+  virtual void OnRtnForQuoteRsp(CKSOTPForQuoteRspField *pForQuoteRsp);
 
-	//-------------------------------------------------------------------------------------
-	//task£ºÈÎÎñ
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // taskï¼šä»»åŠ¡
+  //-------------------------------------------------------------------------------------
 
-	void processTask();
+  void processTask();
 
-	void processFrontConnected(Task task);
+  void processFrontConnected(Task task);
 
-	void processFrontDisconnected(Task task);
+  void processFrontDisconnected(Task task);
 
-	void processRspUserLogin(Task task);
+  void processRspUserLogin(Task task);
 
-	void processRspUserLogout(Task task);
+  void processRspUserLogout(Task task);
 
-	void processRspError(Task task);
+  void processRspError(Task task);
 
-	void processRspSubMarketData(Task task);
+  void processRspSubMarketData(Task task);
 
-	void processRspUnSubMarketData(Task task);
+  void processRspUnSubMarketData(Task task);
 
-	void processRspSubForQuoteRsp(Task task);
+  void processRspSubForQuoteRsp(Task task);
 
-	void processRspUnSubForQuoteRsp(Task task);
+  void processRspUnSubForQuoteRsp(Task task);
 
-	void processRtnDepthMarketData(Task task);
+  void processRtnDepthMarketData(Task task);
 
-	void processRtnForQuoteRsp(Task task);
+  void processRtnForQuoteRsp(Task task);
 
-	//-------------------------------------------------------------------------------------
-	//data£º»Øµ÷º¯ÊıµÄÊı¾İ×Öµä
-	//error£º»Øµ÷º¯ÊıµÄ´íÎó×Öµä
-	//id£ºÇëÇóid
-	//last£ºÊÇ·ñÎª×îºó·µ»Ø
-	//i£ºÕûÊı
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // dataï¼šå›è°ƒå‡½æ•°çš„æ•°æ®å­—å…¸
+  // errorï¼šå›è°ƒå‡½æ•°çš„é”™è¯¯å­—å…¸
+  // idï¼šè¯·æ±‚id
+  // lastï¼šæ˜¯å¦ä¸ºæœ€åè¿”å›
+  // iï¼šæ•´æ•°
+  //-------------------------------------------------------------------------------------
 
-	virtual void onFrontConnected(){};
+  virtual void onFrontConnected(){};
 
-	virtual void onFrontDisconnected(int i){};
+  virtual void onFrontDisconnected(int i){};
 
-	virtual void onRspUserLogin(dict data, dict error, int id, bool last) {};
+  virtual void onRspUserLogin(dict data, dict error, int id, bool last){};
 
-	virtual void onRspUserLogout(dict data, dict error, int id, bool last) {};
+  virtual void onRspUserLogout(dict data, dict error, int id, bool last){};
 
-	virtual void onRspError(dict data, int id, bool last) {};
+  virtual void onRspError(dict data, int id, bool last){};
 
-	virtual void onRspSubMarketData(dict data, dict error, int id, bool last) {};
+  virtual void onRspSubMarketData(dict data, dict error, int id, bool last){};
 
-	virtual void onRspUnSubMarketData(dict data, dict error, int id, bool last) {};
+  virtual void onRspUnSubMarketData(dict data, dict error, int id, bool last){};
 
-	virtual void onRspSubForQuoteRsp(dict data, dict error, int id, bool last) {};
+  virtual void onRspSubForQuoteRsp(dict data, dict error, int id, bool last){};
 
-	virtual void onRspUnSubForQuoteRsp(dict data, dict error, int id, bool last) {};
+  virtual void onRspUnSubForQuoteRsp(dict data, dict error, int id,
+                                     bool last){};
 
-	virtual void onRtnDepthMarketData(dict data) {};
+  virtual void onRtnDepthMarketData(dict data){};
 
-	virtual void onRtnForQuoteRsp(dict data) {};
+  virtual void onRtnForQuoteRsp(dict data){};
 
-	//-------------------------------------------------------------------------------------
-	//req:Ö÷¶¯º¯ÊıµÄÇëÇó×Öµä
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // req:ä¸»åŠ¨å‡½æ•°çš„è¯·æ±‚å­—å…¸
+  //-------------------------------------------------------------------------------------
 
-	void createOTPMdApi(string pszFlowPath = "");
+  void createOTPMdApi(string pszFlowPath = "");
 
-	void release();
+  void release();
 
-	void init();
+  void init();
 
-	int exit();
+  int exit();
 
-	string getTradingDay();
+  string getTradingDay();
 
-	void registerFront(string pszFrontAddress);
+  void registerFront(string pszFrontAddress);
 
-	int subscribeMarketData(dict req);
+  int subscribeMarketData(dict req);
 
-	int unSubscribeMarketData(dict req);
+  int unSubscribeMarketData(dict req);
 
-	int subscribeForQuoteRsp(string instrumentID);
+  int subscribeForQuoteRsp(string instrumentID);
 
-	int unSubscribeForQuoteRsp(string instrumentID);
+  int unSubscribeForQuoteRsp(string instrumentID);
 
-	int reqUserLogin(dict req, int nRequestID);
+  int reqUserLogin(dict req, int nRequestID);
 
-	int reqUserLogout(dict req, int nRequestID);
+  int reqUserLogout(dict req, int nRequestID);
 };

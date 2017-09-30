@@ -41,4 +41,3 @@ void processRspFundInterTransfer(Task task);
 void processRtnFundInterTransferSerial(Task task);
 
 void processErrRtnFundInterTransfer(Task task);
-

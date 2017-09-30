@@ -1,965 +1,873 @@
 /**
- * °æÈ¨ËùÓĞ(C)2012-2016, ´óÁ¬·É´´ĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾
- * ÎÄ¼şÃû³Æ£ºDFITCApiDataType.h
- * ÎÄ¼şËµÃ÷£º¶¨Òå½Ó¿ÚËùĞèµÄÊı¾İÀàĞÍµÄÍ·ÎÄ¼ş
- * µ±Ç°°æ±¾£º1.0.14.91
- * ×÷Õß£ºXSpeedÏîÄ¿×é
- * ·¢²¼ÈÕÆÚ£º2015Äê5ÔÂ6ÈÕ
+ * ç‰ˆæƒæ‰€æœ‰(C)2012-2016, å¤§è¿é£åˆ›ä¿¡æ¯æŠ€æœ¯æœ‰é™å…¬å¸
+ * æ–‡ä»¶åç§°ï¼šDFITCApiDataType.h
+ * æ–‡ä»¶è¯´æ˜ï¼šå®šä¹‰æ¥å£æ‰€éœ€çš„æ•°æ®ç±»å‹çš„å¤´æ–‡ä»¶
+ * å½“å‰ç‰ˆæœ¬ï¼š1.0.14.91
+ * ä½œè€…ï¼šXSpeedé¡¹ç›®ç»„
+ * å‘å¸ƒæ—¥æœŸï¼š2015å¹´5æœˆ6æ—¥
  */
- 
+
 #ifndef DFITCAPIDATATYPE_H
 #define DFITCAPIDATATYPE_H
 
 ////////////////////////////////////////////////////////////
-///DFITCUserIDType£ºÓÃ»§IDÊı¾İÀàĞÍ
+/// DFITCUserIDTypeï¼šç”¨æˆ·IDæ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCUserIDType[41];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAccountIDType£º×Ê½ğÕË»§Êı¾İÀàĞÍ
+/// DFITCAccountIDTypeï¼šèµ„é‡‘è´¦æˆ·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCAccountIDType[13];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCExecStateType£ºÖ´ĞĞ×´Ì¬Êı¾İÀàĞÍ
+/// DFITCExecStateTypeï¼šæ‰§è¡ŒçŠ¶æ€æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCExecStateType;
-///³É¹¦
-#define DFITC_SUCCESS                   0
-///Ê§°Ü
-#define DFITC_FAIL                      1
-
+///æˆåŠŸ
+#define DFITC_SUCCESS 0
+///å¤±è´¥
+#define DFITC_FAIL 1
 
 ////////////////////////////////////////////////////////////
-///DFITCClientIDType£º½»Ò×±àÂëÊı¾İÀàĞÍ
+/// DFITCClientIDTypeï¼šäº¤æ˜“ç¼–ç æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCClientIDType[13];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCClientStatusType£º½»Ò×±àÂë×´Ì¬Êı¾İÀàĞÍ
+/// DFITCClientStatusTypeï¼šäº¤æ˜“ç¼–ç çŠ¶æ€æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCClientStatusType;
-///½ûÖ¹¿ªĞÂ²Ö
-#define DFITC_PROHIBIT_OPEN             4
-///ÔÊĞí¿ªĞÂ²Ö
-#define DFITC_ALLOW_OPEN                5
-
+///ç¦æ­¢å¼€æ–°ä»“
+#define DFITC_PROHIBIT_OPEN 4
+///å…è®¸å¼€æ–°ä»“
+#define DFITC_ALLOW_OPEN 5
 
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentIDType£ººÏÔ¼´úÂëÊı¾İÀàĞÍ
+/// DFITCInstrumentIDTypeï¼šåˆçº¦ä»£ç æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCInstrumentIDType[64];
 
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentPrefixType£ºÆ·ÖÖÃû³ÆÊı¾İÀàĞÍ
+/// DFITCInstrumentPrefixTypeï¼šå“ç§åç§°æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCInstrumentPrefixType[31];
 
 ////////////////////////////////////////////////////////////
-///DFITCVarietyNameType£ºÆ·ÖÖÃû³ÆÊı¾İÀàĞÍ
+/// DFITCVarietyNameTypeï¼šå“ç§åç§°æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCVarietyNameType[31];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentNameType£ººÏÔ¼Ãû³ÆÊı¾İÀàĞÍ
+/// DFITCInstrumentNameTypeï¼šåˆçº¦åç§°æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCInstrumentNameType[64];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCActiveContractType£ºÓĞĞ§ºÏÔ¼Êı¾İÀàĞÍ
+/// DFITCActiveContractTypeï¼šæœ‰æ•ˆåˆçº¦æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCActiveContractType[1024];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCLocalOrderIDType:±¾µØÎ¯ÍĞºÅÊı¾İÀàĞÍ
+/// DFITCLocalOrderIDType:æœ¬åœ°å§”æ‰˜å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCLocalOrderIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCPriceType:¼Û¸ñÊı¾İÀàĞÍ
+/// DFITCPriceType:ä»·æ ¼æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCPriceType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAmountType:Î¯ÍĞÊıÁ¿Êı¾İÀàĞÍ
+/// DFITCAmountType:å§”æ‰˜æ•°é‡æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCAmountType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCBuySellTypeType:ÂòÂôÊı¾İÀàĞÍ
+/// DFITCBuySellTypeType:ä¹°å–æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCBuySellTypeType;
-///Âò
-#define DFITC_SPD_BUY                   1
-///Âô
-#define DFITC_SPD_SELL                  2
-
+///ä¹°
+#define DFITC_SPD_BUY 1
+///å–
+#define DFITC_SPD_SELL 2
 
 ////////////////////////////////////////////////////////////
-///DFITCOpenCloseTypeType£º¿ªÆ½±êÖ¾Êı¾İÀàĞÍ
+/// DFITCOpenCloseTypeTypeï¼šå¼€å¹³æ ‡å¿—æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCOpenCloseTypeType;
-///¿ª²Ö
-#define DFITC_SPD_OPEN                  1
-///Æ½²Ö
-#define DFITC_SPD_CLOSE                 2
-///Æ½½ñ
-#define DFITC_SPD_CLOSETODAY            4
-///ÆÚÈ¨Ö´ĞĞ
-#define DFITC_SPD_EXECUTE               6
-///ÆÚÈ¨·ÅÆú
-#define DFITC_SPD_GIVEUP                7
-///ÆÚÈ¨ÂÄÔ¼
-#define DFITC_SPD_PERFORM               8
-///Ñ¯¼Û
-#define DFITC_SPD_OPTQRYPRICE           9
-///Ç¿Æ½
-#define DFITC_SPD_FORCECLOSE            12
-///Ç¿Æ½½ñ
-#define DFITC_SPD_FORCECLOSETODAY       14
-
+///å¼€ä»“
+#define DFITC_SPD_OPEN 1
+///å¹³ä»“
+#define DFITC_SPD_CLOSE 2
+///å¹³ä»Š
+#define DFITC_SPD_CLOSETODAY 4
+///æœŸæƒæ‰§è¡Œ
+#define DFITC_SPD_EXECUTE 6
+///æœŸæƒæ”¾å¼ƒ
+#define DFITC_SPD_GIVEUP 7
+///æœŸæƒå±¥çº¦
+#define DFITC_SPD_PERFORM 8
+///è¯¢ä»·
+#define DFITC_SPD_OPTQRYPRICE 9
+///å¼ºå¹³
+#define DFITC_SPD_FORCECLOSE 12
+///å¼ºå¹³ä»Š
+#define DFITC_SPD_FORCECLOSETODAY 14
 
 ////////////////////////////////////////////////////////////
-///DFITCSpeculationValueType:Í¶»ú±£ÖµÊı¾İÀàĞÍ
+/// DFITCSpeculationValueType:æŠ•æœºä¿å€¼æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCSpeculationValueType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCExchangeIDType:½»Ò×Ëù±àÂëÊı¾İÀàĞÍ
+/// DFITCExchangeIDType:äº¤æ˜“æ‰€ç¼–ç æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCExchangeIDType[8];
-///´óÉÌËù
-#define DFITC_EXCHANGE_DCE              "DCE"
-///Ö£ÉÌËù
-#define DFITC_EXCHANGE_CZCE             "CZCE"
-///ÉÏÆÚËù
-#define DFITC_EXCHANGE_SHFE             "SHFE"
-///ÖĞ½ğËù
-#define DFITC_EXCHANGE_CFFEX            "CFFEX"
-///ÉÏÄÜËù
-#define DFITC_EXCHANGE_INE              "INE"
-
+///å¤§å•†æ‰€
+#define DFITC_EXCHANGE_DCE "DCE"
+///éƒ‘å•†æ‰€
+#define DFITC_EXCHANGE_CZCE "CZCE"
+///ä¸ŠæœŸæ‰€
+#define DFITC_EXCHANGE_SHFE "SHFE"
+///ä¸­é‡‘æ‰€
+#define DFITC_EXCHANGE_CFFEX "CFFEX"
+///ä¸Šèƒ½æ‰€
+#define DFITC_EXCHANGE_INE "INE"
 
 ////////////////////////////////////////////////////////////
-///DFITCFrontAddrType:Ç°ÖÃ»úµØÖ·Êı¾İÀàĞÍ
+/// DFITCFrontAddrType:å‰ç½®æœºåœ°å€æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCFrontAddrType[32];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCompanyIDType:¿ª·¢ÉÌ´úÂëÊı¾İÀàĞÍ
+/// DFITCCompanyIDType:å¼€å‘å•†ä»£ç æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCCompanyIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCPasswdType:ÓÃ»§ÃÜÂëÊı¾İÀàĞÍ
-///¹ñÌ¨¶ËÃÜÂë²»ÄÜÎª¿ÕÇÒÓĞĞ§³¤¶È×î´óÎª16Î»
+/// DFITCPasswdType:ç”¨æˆ·å¯†ç æ•°æ®ç±»å‹
+///æŸœå°ç«¯å¯†ç ä¸èƒ½ä¸ºç©ºä¸”æœ‰æ•ˆé•¿åº¦æœ€å¤§ä¸º16ä½
 ////////////////////////////////////////////////////////////
 typedef char DFITCPasswdType[41];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCSPDOrderIDType:¹ñÌ¨Î¯ÍĞºÅÊı¾İÀàĞÍ
-///¹ñÌ¨Î¯ÍĞºÅºÍÌõ¼şµ¥ºÅÊ¹ÓÃÏàÍ¬×Ö¶Î±íÊ¾
-///µ±DFITCSPDOrderIDTypeµÄÈ¡ÖµÎªÕıÊı[×îĞ¡Îª1 ]£¬±íÊ¾Îª¹ñÌ¨Î¯
-///ÍĞºÅ£¬¸Ã±Ê±¨µ¥ÒÑ¾­µ½¹ñÌ¨
-///µ±DFITCSPDOrderIDTypeµÄÈ¡ÖµÎª¸ºÊı[×î´óÎª-2]£¬±êÊ¾ÎªÌõ¼şµ¥
-///ºÅ£¬¸Ã±Ê±¨µ¥ÔÚÌõ¼şµ¥Ä£¿é
+/// DFITCSPDOrderIDType:æŸœå°å§”æ‰˜å·æ•°æ®ç±»å‹
+///æŸœå°å§”æ‰˜å·å’Œæ¡ä»¶å•å·ä½¿ç”¨ç›¸åŒå­—æ®µè¡¨ç¤º
+///å½“DFITCSPDOrderIDTypeçš„å–å€¼ä¸ºæ­£æ•°[æœ€å°ä¸º1 ]ï¼Œè¡¨ç¤ºä¸ºæŸœå°å§”
+///æ‰˜å·ï¼Œè¯¥ç¬”æŠ¥å•å·²ç»åˆ°æŸœå°
+///å½“DFITCSPDOrderIDTypeçš„å–å€¼ä¸ºè´Ÿæ•°[æœ€å¤§ä¸º-2]ï¼Œæ ‡ç¤ºä¸ºæ¡ä»¶å•
+///å·ï¼Œè¯¥ç¬”æŠ¥å•åœ¨æ¡ä»¶å•æ¨¡å—
 ////////////////////////////////////////////////////////////
 typedef long DFITCSPDOrderIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCOrderSysIDType:±¨µ¥±àºÅÊı¾İÀàĞÍ
+/// DFITCOrderSysIDType:æŠ¥å•ç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCOrderSysIDType[64];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCOrderType:±¨µ¥ÀàĞÍ
+/// DFITCOrderType:æŠ¥å•ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCOrderTypeType;
-///ÏŞ¼ÛÎ¯ÍĞ
-#define DFITC_LIMITORDER                1
-///ÊĞ¼ÛÎ¯ÍĞ
-#define DFITC_MKORDER                   2
-///Ì×ÀûÎ¯ÍĞ
-#define DFITC_ARBITRAGE                 4
-///Õ¹ÆÚ»¥»»Î¯ÍĞ
-#define DFITC_EXTENSION                 8
-///ÏŞ¼ÛÖ¹Ó¯Î¯ÍĞ
-#define DFITC_PROFIT_LIMITORDER         32
-///ÊĞ¼ÛÖ¹Ó¯Î¯ÍĞ
-#define DFITC_PROFIT_MKORDER            34
-///ÏŞ¼ÛÖ¹ËğÎ¯ÍĞ
-#define DFITC_LOSS_LIMITORDER           48
-///ÊĞ¼ÛÖ¹ËğÎ¯ÍĞ
-#define DFITC_LOSS_MKORDER              50
+///é™ä»·å§”æ‰˜
+#define DFITC_LIMITORDER 1
+///å¸‚ä»·å§”æ‰˜
+#define DFITC_MKORDER 2
+///å¥—åˆ©å§”æ‰˜
+#define DFITC_ARBITRAGE 4
+///å±•æœŸäº’æ¢å§”æ‰˜
+#define DFITC_EXTENSION 8
+///é™ä»·æ­¢ç›ˆå§”æ‰˜
+#define DFITC_PROFIT_LIMITORDER 32
+///å¸‚ä»·æ­¢ç›ˆå§”æ‰˜
+#define DFITC_PROFIT_MKORDER 34
+///é™ä»·æ­¢æŸå§”æ‰˜
+#define DFITC_LOSS_LIMITORDER 48
+///å¸‚ä»·æ­¢æŸå§”æ‰˜
+#define DFITC_LOSS_MKORDER 50
 
 ////////////////////////////////////////////////////////////
-///DFITCOrderAnswerStatusType:Î¯ÍĞ»Ø±¨ÀàĞÍ
+/// DFITCOrderAnswerStatusType:å§”æ‰˜å›æŠ¥ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCOrderAnswerStatusType;
-///È«²¿³·µ¥
-#define DFITC_SPD_CANCELED              1
-///È«²¿³É½»
-#define DFITC_SPD_FILLED                2
-///Î´³É½»»¹ÔÚ¶ÓÁĞÖĞ
-#define DFITC_SPD_IN_QUEUE              3
-///²¿·Ö³É½»»¹ÔÚ¶ÓÁĞÖĞ
-#define DFITC_SPD_PARTIAL               4
-///²¿³É²¿³·
-#define DFITC_SPD_PARTIAL_CANCELED      5
-///³·µ¥ÖĞ
-#define DFITC_SPD_IN_CANCELING          6
-///´íÎó(·Ïµ¥´íÎó)
-#define DFITC_SPD_ERROR                 7
-///Î´³É½»²»ÔÚ¶ÓÁĞÖĞ
-#define DFITC_SPD_PLACED                8
-///¹ñÌ¨ÒÑ½ÓÊÕ£¬µ«ÉĞÎ´µ½½»Ò×Ëù
-#define DFITC_SPD_TRIGGERED             10
-
+///å…¨éƒ¨æ’¤å•
+#define DFITC_SPD_CANCELED 1
+///å…¨éƒ¨æˆäº¤
+#define DFITC_SPD_FILLED 2
+///æœªæˆäº¤è¿˜åœ¨é˜Ÿåˆ—ä¸­
+#define DFITC_SPD_IN_QUEUE 3
+///éƒ¨åˆ†æˆäº¤è¿˜åœ¨é˜Ÿåˆ—ä¸­
+#define DFITC_SPD_PARTIAL 4
+///éƒ¨æˆéƒ¨æ’¤
+#define DFITC_SPD_PARTIAL_CANCELED 5
+///æ’¤å•ä¸­
+#define DFITC_SPD_IN_CANCELING 6
+///é”™è¯¯(åºŸå•é”™è¯¯)
+#define DFITC_SPD_ERROR 7
+///æœªæˆäº¤ä¸åœ¨é˜Ÿåˆ—ä¸­
+#define DFITC_SPD_PLACED 8
+///æŸœå°å·²æ¥æ”¶ï¼Œä½†å°šæœªåˆ°äº¤æ˜“æ‰€
+#define DFITC_SPD_TRIGGERED 10
 
 ///////////////////////////////////////////////////////////////
-///»ùÓÚËã·¨µ¥Ä£¿éĞÂÔö
+///åŸºäºç®—æ³•å•æ¨¡å—æ–°å¢
 ///////////////////////////////////////////////////////////////
 
-///Î´´¥·¢
-#define DFITC_EXT_UNTRIGGER             13
-///²¿·Ö´¥·¢
-#define DFITC_EXT_PART_TRIGGER          14
-///È«²¿´¥·¢
-#define DFITC_EXT_ALL_TRIGGER           15
-///ÒÑ¾­³·µ¥
-#define DFITC_EXT_CANCELLED             16
-///±¨µ¥Ê§°Ü
-#define	DFITC_EXT_FAILED                17
-
+///æœªè§¦å‘
+#define DFITC_EXT_UNTRIGGER 13
+///éƒ¨åˆ†è§¦å‘
+#define DFITC_EXT_PART_TRIGGER 14
+///å…¨éƒ¨è§¦å‘
+#define DFITC_EXT_ALL_TRIGGER 15
+///å·²ç»æ’¤å•
+#define DFITC_EXT_CANCELLED 16
+///æŠ¥å•å¤±è´¥
+#define DFITC_EXT_FAILED 17
 
 ////////////////////////////////////////////////////////////
-///DFITCMatchIDType:³É½»±àºÅÊı¾İÀàĞÍ
+/// DFITCMatchIDType:æˆäº¤ç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCMatchIDType[32];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCDateType£ºÊ±¼äÊı¾İÀàĞÍ
+/// DFITCDateTypeï¼šæ—¶é—´æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCDateType[13];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCMatchType:³É½»ÀàĞÍÊı¾İÀàĞÍ
+/// DFITCMatchType:æˆäº¤ç±»å‹æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCMatchType;
-///ÆÕÍ¨³É½»
-#define DFITC_BASIC_TRADE               0
-
+///æ™®é€šæˆäº¤
+#define DFITC_BASIC_TRADE 0
 
 ////////////////////////////////////////////////////////////
-///DFITCSpeculatorType:Í¶±£ÀàĞÍ
+/// DFITCSpeculatorType:æŠ•ä¿ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCSpeculatorType;
-///Í¶»ú
-#define DFITC_SPD_SPECULATOR            0
-///Ì×±£
-#define DFITC_SPD_HEDGE                 1
-///Ì×Àû
-#define DFITC_SPD_ARBITRAGE             2
-
+///æŠ•æœº
+#define DFITC_SPD_SPECULATOR 0
+///å¥—ä¿
+#define DFITC_SPD_HEDGE 1
+///å¥—åˆ©
+#define DFITC_SPD_ARBITRAGE 2
 
 ////////////////////////////////////////////////////////////
-///DFITCFeeType:ÊÖĞø·ÑÊı¾İÀàĞÍ
+/// DFITCFeeType:æ‰‹ç»­è´¹æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCFeeType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCErrorIDType:´íÎóÊı¾İÀàĞÍ
+/// DFITCErrorIDType:é”™è¯¯æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCErrorIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCErrorMsgInfoType:´íÎóĞÅÏ¢Êı¾İÀàĞÍ
+/// DFITCErrorMsgInfoType:é”™è¯¯ä¿¡æ¯æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCErrorMsgInfoType[64];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCMsgInfoType:ÏûÏ¢ĞÅÏ¢Êı¾İÀàĞÍ
+/// DFITCMsgInfoType:æ¶ˆæ¯ä¿¡æ¯æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCMsgInfoType[1024];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCEquityType:È¨ÒæÊı¾İÀàĞÍ
+/// DFITCEquityType:æƒç›Šæ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCEquityType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCProfitLossType:Ó¯¿÷Êı¾İÀàĞÍ
+/// DFITCProfitLossType:ç›ˆäºæ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCProfitLossType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAccountLoginResultType:×Ê½ğÕË»§µÇÂ¼½á¹û
+/// DFITCAccountLoginResultType:èµ„é‡‘è´¦æˆ·ç™»å½•ç»“æœ
 ////////////////////////////////////////////////////////////
 typedef int DFITCAccountLoginResultType;
-///µÇÂ¼³É¹¦
-#define DFITC_LOGIN_SUCCESS             0
-///µÇÂ¼Ê§°Ü
-#define DFITC_LOGIN_FAILED              1
-///ÒÑÍË³ö
-#define DFITC_LOGIN_QUIT                2
-///Î´²Ù×÷
-#define DFITC_LOGIN_NOT_OPERATE         9
-
+///ç™»å½•æˆåŠŸ
+#define DFITC_LOGIN_SUCCESS 0
+///ç™»å½•å¤±è´¥
+#define DFITC_LOGIN_FAILED 1
+///å·²é€€å‡º
+#define DFITC_LOGIN_QUIT 2
+///æœªæ“ä½œ
+#define DFITC_LOGIN_NOT_OPERATE 9
 
 ////////////////////////////////////////////////////////////
-///DFITCSessionIDType:SessionIDÊı¾İÀàĞÍ
+/// DFITCSessionIDType:SessionIDæ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCSessionIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAccountLogoutResultType:×Ê½ğÕÊºÅµÇ³ö½á¹û
+/// DFITCAccountLogoutResultType:èµ„é‡‘å¸å·ç™»å‡ºç»“æœ
 ////////////////////////////////////////////////////////////
 typedef int DFITCAccountLogoutResultType;
-///µÇ³ö³É¹¦
-#define DFITC_LOGOUT_SUCCESS             0
-///µÇ³öÊ§°Ü
-#define DFITC_LOGOUT_FAILED              1
-
+///ç™»å‡ºæˆåŠŸ
+#define DFITC_LOGOUT_SUCCESS 0
+///ç™»å‡ºå¤±è´¥
+#define DFITC_LOGOUT_FAILED 1
 
 ////////////////////////////////////////////////////////////
-///DFITCUserTypeType:ÓÃ»§ÀàĞÍ
+/// DFITCUserTypeType:ç”¨æˆ·ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCUserTypeType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCounterIDType:¹ñÌ¨±àºÅÊı¾İÀàĞÍ
+/// DFITCCounterIDType:æŸœå°ç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCCounterIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCRiskDegreeType:·çÏÕ¶ÈÊı¾İÀàĞÍ
+/// DFITCRiskDegreeType:é£é™©åº¦æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCRiskDegreeType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCMilliSecType:Î¢ÃëÊı¾İÀàĞÍ
+/// DFITCMilliSecType:å¾®ç§’æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCMilliSecType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCDeltaType:ĞéÊµ¶ÈÊı¾İÀàĞÍ
+/// DFITCDeltaType:è™šå®åº¦æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCDeltaType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCVolumeType£ºÊıÁ¿Êı¾İÀàĞÍ
+/// DFITCVolumeTypeï¼šæ•°é‡æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCVolumeType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCFrontIDType:Ç°ÖÃ»ú±àºÅÊı¾İÀàĞÍ
+/// DFITCFrontIDType:å‰ç½®æœºç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCFrontIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCOfferPriceLimitType:±¨¼ÛÊı¾İÉÏÏŞÊı¾İÀàĞÍ
+/// DFITCOfferPriceLimitType:æŠ¥ä»·æ•°æ®ä¸Šé™æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCOfferPriceLimitType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCOrderNumType:Î¯ÍĞºÅÊı¾İÀàĞÍ
+/// DFITCOrderNumType:å§”æ‰˜å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCOrderNumType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCRatioType:±ÈÂÊÊı¾İÀàĞÍ
+/// DFITCRatioType:æ¯”ç‡æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCRatioType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCPremiumType:È¨Àû½ğ
+/// DFITCPremiumType:æƒåˆ©é‡‘
 ////////////////////////////////////////////////////////////
 typedef double DFITCPremiumType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCMarketValueType:ÆÚÈ¨ÊĞÖµ
+/// DFITCMarketValueType:æœŸæƒå¸‚å€¼
 ////////////////////////////////////////////////////////////
 typedef double DFITCMarketValueType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCTimeType:½»Ò×ËùÊ±¼ä
+/// DFITCTimeType:äº¤æ˜“æ‰€æ—¶é—´
 ////////////////////////////////////////////////////////////
 typedef char DFITCTimeType[256];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAbiPolicyCodeType: Ì×Àû²ßÂÔ´úÂëÊı¾İÀàĞÍ
+/// DFITCAbiPolicyCodeType: å¥—åˆ©ç­–ç•¥ä»£ç æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCAbiPolicyCodeType[8];
-///¿çÆÚÌ×Àû
-#define DFITC_SP                        "SP"
-///Á½ÍÈ¿çÆ·ÖÖÌ×Àû
-#define DFITC_SP_SPC                    "SPC"
-///Ñ¹Õ¥Ì×Àû
-#define DFITC_SP_SPX                    "SPX"
-///Call Spread
-#define DFITC_SP_CALL                   "CSPR"
-///Put Spread
-#define DFITC_SP_PUT                    "PSPR"
-///Combo
-#define DFITC_SP_COMBO                  "COMBO"
-///Straddle
-#define DFITC_SP_STRADDLE               "STD"
-///Strangle
-#define DFITC_SP_STRANGLE               "STG"
-///Guts
-#define DFITC_SP_GUTS                   "GUTS"
-///Synthetic Underlying
-#define DFITC_SP_SYNUND                 "SYN"
-
+///è·¨æœŸå¥—åˆ©
+#define DFITC_SP "SP"
+///ä¸¤è…¿è·¨å“ç§å¥—åˆ©
+#define DFITC_SP_SPC "SPC"
+///å‹æ¦¨å¥—åˆ©
+#define DFITC_SP_SPX "SPX"
+/// Call Spread
+#define DFITC_SP_CALL "CSPR"
+/// Put Spread
+#define DFITC_SP_PUT "PSPR"
+/// Combo
+#define DFITC_SP_COMBO "COMBO"
+/// Straddle
+#define DFITC_SP_STRADDLE "STD"
+/// Strangle
+#define DFITC_SP_STRANGLE "STG"
+/// Guts
+#define DFITC_SP_GUTS "GUTS"
+/// Synthetic Underlying
+#define DFITC_SP_SYNUND "SYN"
 
 ////////////////////////////////////////////////////////////
-///DFITCOrderPropertyType:¶©µ¥ÊôĞÔ
+/// DFITCOrderPropertyType:è®¢å•å±æ€§
 ////////////////////////////////////////////////////////////
 typedef char DFITCOrderPropertyType;
-///ÎŞ¶©µ¥ÊôĞÔ
-#define DFITC_SP_NON                          '0'
-///FAKÉèÖÃ
-#define DFITC_SP_FAK                          '1'
-///FOKÉèÖÃ
-#define DFITC_SP_FOK                          '2'
-///ÊĞ¼ÛÈÎÒâ¼Û
-#define DFITC_SP_ANYPRICE                     '3'
-///ÊĞ¼ÛÈÎÒâ¼Û×ªÏŞ¼Û
-#define DFITC_SP_ANYPRICE_TO_MKORDER          '4'
-///ÎåµµÊĞ¼Û
-#define DFITC_SP_FIVELEVELPRICE               '5'
-///ÎåµµÊĞ¼Û×ªÏŞ¼Û
-#define DFITC_SP_FIVELEVELPRICE_TO_LIMIT      '6'
-///×îÓÅ¼Û
-#define DFITC_SP_BESTPRICE                    '7'
-///×îÓÅ¼Û×ªÏŞ¼Û
-#define DFITC_SP_BESTPRICE_TO_LIMIT           '8'
-
-
+///æ— è®¢å•å±æ€§
+#define DFITC_SP_NON '0'
+/// FAKè®¾ç½®
+#define DFITC_SP_FAK '1'
+/// FOKè®¾ç½®
+#define DFITC_SP_FOK '2'
+///å¸‚ä»·ä»»æ„ä»·
+#define DFITC_SP_ANYPRICE '3'
+///å¸‚ä»·ä»»æ„ä»·è½¬é™ä»·
+#define DFITC_SP_ANYPRICE_TO_MKORDER '4'
+///äº”æ¡£å¸‚ä»·
+#define DFITC_SP_FIVELEVELPRICE '5'
+///äº”æ¡£å¸‚ä»·è½¬é™ä»·
+#define DFITC_SP_FIVELEVELPRICE_TO_LIMIT '6'
+///æœ€ä¼˜ä»·
+#define DFITC_SP_BESTPRICE '7'
+///æœ€ä¼˜ä»·è½¬é™ä»·
+#define DFITC_SP_BESTPRICE_TO_LIMIT '8'
 
 ////////////////////////////////////////////////////////////
-///DFITCInsertType:Î¯ÍĞÀà±ğ
+/// DFITCInsertType:å§”æ‰˜ç±»åˆ«
 ////////////////////////////////////////////////////////////
 typedef int DFITCInsertType;
-///ÆÕÍ¨Î¯ÍĞµ¥
-#define DFITC_BASIC_ORDER               0x0001
-///×Ô¶¯µ¥
-#define DFITC_AUTO_ORDER                0x0002
-
+///æ™®é€šå§”æ‰˜å•
+#define DFITC_BASIC_ORDER 0x0001
+///è‡ªåŠ¨å•
+#define DFITC_AUTO_ORDER 0x0002
 
 ////////////////////////////////////////////////////////////
-///DFITCOptionTypeType:ÆÚÈ¨Àà±ğÊı¾İÀàĞÍ
+/// DFITCOptionTypeType:æœŸæƒç±»åˆ«æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCOptionTypeType;
-///¿´ÕÇ
-#define DFITC_OPT_CALL                  1
-///¿´µø
-#define DFITC_OPT_PUT                   2
-
+///çœ‹æ¶¨
+#define DFITC_OPT_CALL 1
+///çœ‹è·Œ
+#define DFITC_OPT_PUT 2
 
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentTypeType:ºÏÔ¼ÀàĞÍÊı¾İÀàĞÍ
+/// DFITCInstrumentTypeType:åˆçº¦ç±»å‹æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCInstrumentTypeType;
-///ÆÚ»õ
-#define DFITC_COMM_TYPE                 0
-///ÆÚÈ¨
-#define DFITC_OPT_TYPE                  1
-
+///æœŸè´§
+#define DFITC_COMM_TYPE 0
+///æœŸæƒ
+#define DFITC_OPT_TYPE 1
 
 ////////////////////////////////////////////////////////////
-///DFITCCancelTypeType:³·Ïú±êÖ¾Êı¾İÀàĞÍ
+/// DFITCCancelTypeType:æ’¤é”€æ ‡å¿—æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCCancelTypeType;
-///¶©µ¥
-#define DFITC_ORDER_BOOK                'O'
-///³·Ïú
-#define DFITC_ORDER_CANCEL              'W'
-
+///è®¢å•
+#define DFITC_ORDER_BOOK 'O'
+///æ’¤é”€
+#define DFITC_ORDER_CANCEL 'W'
 
 ////////////////////////////////////////////////////////////
-///DFITCContentType:ÏûÏ¢ÕıÎÄÊı¾İÀàĞÍ
+/// DFITCContentType:æ¶ˆæ¯æ­£æ–‡æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCContentType[501];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentStatusType:ºÏÔ¼½»Ò××´Ì¬Êı¾İÀàĞÍ
+/// DFITCInstrumentStatusType:åˆçº¦äº¤æ˜“çŠ¶æ€æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCInstrumentStatusType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCInstStatusEnterReasonType:½øÈë±¾×´Ì¬Ô­ÒòÊı¾İÀàĞÍ
+/// DFITCInstStatusEnterReasonType:è¿›å…¥æœ¬çŠ¶æ€åŸå› æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCInstStatusEnterReasonType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCurrencyType:±ÒÖÖÊı¾İÀàĞÍ
+/// DFITCCurrencyType:å¸ç§æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCCurrencyType[4];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCConfirmType:È·ÈÏ±êÖ¾Êı¾İÀàĞÍ
+/// DFITCConfirmType:ç¡®è®¤æ ‡å¿—æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCConfirmMarkType;
-///È·ÈÏ
-#define DFITC_CON_CONFIRM               2
-
+///ç¡®è®¤
+#define DFITC_CON_CONFIRM 2
 
 ////////////////////////////////////////////////////////////
-///DFITCStanAddrType:±¸ÓÃµØÖ·Êı¾İÀàĞÍ
+/// DFITCStanAddrType:å¤‡ç”¨åœ°å€æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCStanAddrType[16];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCapControlModeType:×Ê½ğ¿ØÖÆ·½Ê½Êı¾İÀàĞÍ
+/// DFITCCapControlModeType:èµ„é‡‘æ§åˆ¶æ–¹å¼æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCCapControlModeType;
-///¶¢ÊĞÓ¯¿÷¿ÉÓÃ 
-#define DFITC_PPL_USABLE                2
-///Æ½²Ö×Ê½ğT+1¿ÉÓÃ 
-#define  DFITC_OF_USABLEFUND            4
-///Æ½²Ö±£Ö¤½ğ¿ÉÈ¡ 
-#define  DFITC_OF_FETCHABLEMARGIN       8
-///±¾ÈÕÓ¯¿÷¿ÉÈ¡ 
-#define  DFITC_AG_FETCHBLETODAY         16
-///È¡ºóÈ¨Òæ´óÓÚ±¾ÈÕ×ÜÈë½ğ 
-#define  DFITC_INTEREST_                32
-///Æ½²ÖÓ¯¿÷¿ÉÈ¡ 
-#define  DFITC_OF_FETCHABLE             128
-///È¨Àû½ğÊÕÈë¿ÉÈ¡ 
-#define  DFITC_PREMIUMOPTION_FETCHBLE   256
-
+///ç›¯å¸‚ç›ˆäºå¯ç”¨
+#define DFITC_PPL_USABLE 2
+///å¹³ä»“èµ„é‡‘T+1å¯ç”¨
+#define DFITC_OF_USABLEFUND 4
+///å¹³ä»“ä¿è¯é‡‘å¯å–
+#define DFITC_OF_FETCHABLEMARGIN 8
+///æœ¬æ—¥ç›ˆäºå¯å–
+#define DFITC_AG_FETCHBLETODAY 16
+///å–åæƒç›Šå¤§äºæœ¬æ—¥æ€»å…¥é‡‘
+#define DFITC_INTEREST_ 32
+///å¹³ä»“ç›ˆäºå¯å–
+#define DFITC_OF_FETCHABLE 128
+///æƒåˆ©é‡‘æ”¶å…¥å¯å–
+#define DFITC_PREMIUMOPTION_FETCHBLE 256
 
 ////////////////////////////////////////////////////////////
-///DFITCArchRatioType:×ª´æ±ÈÀıÊı¾İÀàĞÍ
+/// DFITCArchRatioType:è½¬å­˜æ¯”ä¾‹æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef double DFITCArchRatioType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCSettlementBillTradeType:»ã×Ü±êÖ¾Êı¾İÀàĞÍ
+/// DFITCSettlementBillTradeType:æ±‡æ€»æ ‡å¿—æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCSettlementBillTradeType;
-///»ã×Ü³É½»Ã÷Ï¸
-#define DFITC_MATCHDETAIL               2
-///»ã×Ü³Ö²ÖÓ¯¿÷
-#define DFITC_OPGAL                     4
-///»ã×ÜÆ½²ÖÓ¯¿÷
-#define DFITC_OFGAL                     8
-
+///æ±‡æ€»æˆäº¤æ˜ç»†
+#define DFITC_MATCHDETAIL 2
+///æ±‡æ€»æŒä»“ç›ˆäº
+#define DFITC_OPGAL 4
+///æ±‡æ€»å¹³ä»“ç›ˆäº
+#define DFITC_OFGAL 8
 
 ////////////////////////////////////////////////////////////
-///DFITCFilesFlagType:µµ°¸ÀàĞÍÊı¾İÀàĞÍ
+/// DFITCFilesFlagType:æ¡£æ¡ˆç±»å‹æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCFilesFlagType;
-///³É½»Ã÷Ï¸´òÓ¡
-#define DFITC_PRINT_MATCHDETAIL         4
-///³Ö²ÖÓ¯¿÷´òÓ¡ 
-#define DFITC_PRINT_OPGAL               8
-///Æ½²ÖÓ¯¿÷´òÓ¡ 
-#define DFITC_PRINT_OFGAL               16
-///×Ê½ğ³öÈë´òÓ¡
-#define DFITC_PRINT_ACCESSFUNDS         32
-///×·±£ÉùÃ÷´òÓ¡
-#define DFITC_PRINT_ADDMARGIN           64
-
+///æˆäº¤æ˜ç»†æ‰“å°
+#define DFITC_PRINT_MATCHDETAIL 4
+///æŒä»“ç›ˆäºæ‰“å°
+#define DFITC_PRINT_OPGAL 8
+///å¹³ä»“ç›ˆäºæ‰“å°
+#define DFITC_PRINT_OFGAL 16
+///èµ„é‡‘å‡ºå…¥æ‰“å°
+#define DFITC_PRINT_ACCESSFUNDS 32
+///è¿½ä¿å£°æ˜æ‰“å°
+#define DFITC_PRINT_ADDMARGIN 64
 
 ////////////////////////////////////////////////////////////
-///DFITCSoftwareVendorIDType:Èí¼ş¹©Ó¦ÉÌ±àºÅÊı¾İÀàĞÍ
+/// DFITCSoftwareVendorIDType:è½¯ä»¶ä¾›åº”å•†ç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCSoftwareVendorIDType[33];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCProductOnlineCountType:²úÆ·ÔÚÏßÊıÁ¿Êı¾İÀàĞÍ
+/// DFITCProductOnlineCountType:äº§å“åœ¨çº¿æ•°é‡æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCProductOnlineCountType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCBrokerInfoType:ÆÚ»õ¹«Ë¾Ãû³ÆÊı¾İÀàĞÍ
+/// DFITCBrokerInfoType:æœŸè´§å…¬å¸åç§°æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCBrokerInfoType[20];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCProductIDType:²úÆ·±àºÅÊı¾İÀàĞÍ
+/// DFITCProductIDType:äº§å“ç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCProductIDType[33];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCRequestIDType:ÇëÇóIDÊı¾İÀàĞÍ
+/// DFITCRequestIDType:è¯·æ±‚IDæ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef long DFITCRequestIDType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCustomCategoryType:×Ô¶¨ÒåÀà±ğÊı¾İÀàĞÍ
+/// DFITCCustomCategoryType:è‡ªå®šä¹‰ç±»åˆ«æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef char DFITCCustomCategoryType[32];
 
+////////////////////////////////////////////////////////////
+/// DFITCReservedType:é¢„ç•™å­—æ®µæ•°æ®ç±»å‹
+////////////////////////////////////////////////////////////
+typedef int DFITCReservedType;
 
 ////////////////////////////////////////////////////////////
-///DFITCReservedType:Ô¤Áô×Ö¶ÎÊı¾İÀàĞÍ
-////////////////////////////////////////////////////////////
-typedef int  DFITCReservedType;
-
-
-////////////////////////////////////////////////////////////
-///DFITCNoticeType:ÏûÏ¢Êı¾İÀàĞÍ
+/// DFITCNoticeType:æ¶ˆæ¯æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef short DFITCNoticeType;
-///ÏµÍ³¹ã²¥
-#define DFITC_SYS_BROADCAST_MSG         1
-///Ö¸¶¨¿Í»§
-#define DFITC_ACCOUNT_ID_MSG            2
-
+///ç³»ç»Ÿå¹¿æ’­
+#define DFITC_SYS_BROADCAST_MSG 1
+///æŒ‡å®šå®¢æˆ·
+#define DFITC_ACCOUNT_ID_MSG 2
 
 ////////////////////////////////////////////////////////////
-///DFITCTradingSegmentSNType:½»Ò×½×¶Î±àºÅÊı¾İÀàĞÍ
+/// DFITCTradingSegmentSNType:äº¤æ˜“é˜¶æ®µç¼–å·æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCTradingSegmentSNType;
 
-
 //////////////////////////////////////////////
-///DFITCExtOrderType:Ëã·¨µ¥ÀàĞÍÊı¾İÀàĞÍ
+/// DFITCExtOrderType:ç®—æ³•å•ç±»å‹æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef int DFITCExtOrderType;
 
-///Ô¤Âñµ¥
-#define DFITC_YMORDER                   1
-///Ìõ¼şµ¥
-#define DFITC_TJORDER                   2
-///¿çÆÚÌ×Àû¶©µ¥
-#define DFITC_KQTLDD                    3
-///¿çÆ·ÖÖÌ×Àû¶©µ¥
-#define DFITC_KPZTLDD                   4
-///µûÊ½Ì×Àû¶©µ¥
-#define DFITC_DSTLDD                    5
-///×Ô¶¨ÒåÌ×Àû¶©µ¥(Ôİ²»Ö§³Ö)
-#define DFITC_ZDYTLDD                   6
+///é¢„åŸ‹å•
+#define DFITC_YMORDER 1
+///æ¡ä»¶å•
+#define DFITC_TJORDER 2
+///è·¨æœŸå¥—åˆ©è®¢å•
+#define DFITC_KQTLDD 3
+///è·¨å“ç§å¥—åˆ©è®¢å•
+#define DFITC_KPZTLDD 4
+///è¶å¼å¥—åˆ©è®¢å•
+#define DFITC_DSTLDD 5
+///è‡ªå®šä¹‰å¥—åˆ©è®¢å•(æš‚ä¸æ”¯æŒ)
+#define DFITC_ZDYTLDD 6
 
 //////////////////////////////////////////////
-///DFITCTriggerTime:´¥·¢Ê±¼äÊı¾İÀàĞÍ
+/// DFITCTriggerTime:è§¦å‘æ—¶é—´æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef char DFITCTriggerTime[10];
 
-
 //////////////////////////////////////////////
-///DFITCPriceReference:¼Û¸ñ²ÎÕÕÊı¾İÀàĞÍ
+/// DFITCPriceReference:ä»·æ ¼å‚ç…§æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef int DFITCPriceReference;
 
-///²ÎÕÕ×îĞÂ¼Û
-#define DFITC_REF_LASTPRICE             0
-///²ÎÕÕÂòÒ»¼Û
-#define DFITC_REF_BIDPRICE              1
-///²ÎÕÕÂô³ö¼Û
-#define DFITC_REF_ASKPRICE              2
+///å‚ç…§æœ€æ–°ä»·
+#define DFITC_REF_LASTPRICE 0
+///å‚ç…§ä¹°ä¸€ä»·
+#define DFITC_REF_BIDPRICE 1
+///å‚ç…§å–å‡ºä»·
+#define DFITC_REF_ASKPRICE 2
 
 //////////////////////////////////////////////
-///DFITCCompareFlag:±È½Ï±êÖ¾Êı¾İÀàĞÍ
+/// DFITCCompareFlag:æ¯”è¾ƒæ ‡å¿—æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef int DFITCCompareFlag;
 
-///´óÓÚ
-#define DFITC_CF_GREATER                0
-///´óÓÚµÈÓÚ
-#define DFITC_CF_NOTLESS                1
-///Ğ¡ÓÚ
-#define DFITC_CF_LESS                   2
-///Ğ¡ÓÚµÈÓÚ
-#define DFITC_CF_NOTGREATER             3
+///å¤§äº
+#define DFITC_CF_GREATER 0
+///å¤§äºç­‰äº
+#define DFITC_CF_NOTLESS 1
+///å°äº
+#define DFITC_CF_LESS 2
+///å°äºç­‰äº
+#define DFITC_CF_NOTGREATER 3
 
 //////////////////////////////////////////////
-///DFITCOvernightFlag:¸ôÒ¹±êÖ¾Êı¾İÀàĞÍ
+/// DFITCOvernightFlag:éš”å¤œæ ‡å¿—æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef int DFITCOvernightFlag;
 
-///¸ôÒ¹
-#define DFITC_OVERNIGHT                 1
-///²»¸ôÒ¹
-#define DFITC_NOT_OVERNIGHT             2
+///éš”å¤œ
+#define DFITC_OVERNIGHT 1
+///ä¸éš”å¤œ
+#define DFITC_NOT_OVERNIGHT 2
 
 //////////////////////////////////////////////
-///DFITCArbitragePrice:Ì×Àû¼Û¸ñÊı¾İÀàĞÍ
+/// DFITCArbitragePrice:å¥—åˆ©ä»·æ ¼æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef double DFITCArbitragePrice;
 
-
 //////////////////////////////////////////////
-///DFITCExtTriggerCond:´¥·¢Ìõ¼şÊı¾İÀàĞÍ
+/// DFITCExtTriggerCond:è§¦å‘æ¡ä»¶æ•°æ®ç±»å‹
 //////////////////////////////////////////////
 typedef int DFITCExtTriggerCond;
 
-///¼Û¸ñ´¥·¢
-#define DFITC_TRIGGER_PRICE             0
-///Ê±¼ä´¥·¢
-#define DFITC_TRIGGER_TIME              1
-
+///ä»·æ ¼è§¦å‘
+#define DFITC_TRIGGER_PRICE 0
+///æ—¶é—´è§¦å‘
+#define DFITC_TRIGGER_TIME 1
 
 ////////////////////////////////////////////////////////////
-///DFITCInstrumentMaturityType:ºÏÔ¼×îºó½»Ò×ÈÕ
+/// DFITCInstrumentMaturityType:åˆçº¦æœ€åäº¤æ˜“æ—¥
 ////////////////////////////////////////////////////////////
 typedef char DFITCInstrumentMaturityType[12];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCInstrumenExpirationDateType:ºÏÔ¼µ½ÆÚÈÕ
+/// DFITCInstrumenExpirationDateType:åˆçº¦åˆ°æœŸæ—¥
 ////////////////////////////////////////////////////////////
 typedef char DFITCInstrumenExpirationDateType[12];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCAdjustmentInfoType:×éºÏ»ò¶ÔËøµÄ±£Ö¤½ğµ÷ÕûĞÅÏ¢
-///¸ñÊ½:[ºÏÔ¼´úÂë,ÂòÂô±êÖ¾,Í¶×ÊÀà±ğ,µ÷Õû½ğ¶î;]
+/// DFITCAdjustmentInfoType:ç»„åˆæˆ–å¯¹é”çš„ä¿è¯é‡‘è°ƒæ•´ä¿¡æ¯
+///æ ¼å¼:[åˆçº¦ä»£ç ,ä¹°å–æ ‡å¿—,æŠ•èµ„ç±»åˆ«,è°ƒæ•´é‡‘é¢;]
 ////////////////////////////////////////////////////////////
 typedef char DFITCAdjustmentInfoType[64];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCQuoteIDType:Ñ¯¼Û±àºÅ
+/// DFITCQuoteIDType:è¯¢ä»·ç¼–å·
 ////////////////////////////////////////////////////////////
 typedef char DFITCQuoteIDType[33];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCSourceType:À´Ô´
+/// DFITCSourceType:æ¥æº
 ////////////////////////////////////////////////////////////
 typedef short DFITCSourceType;
 
-///»áÔ±
-#define DFITC_SOURCE_MEMBER            0
-///½»Ò×Ëù
-#define DFITC_SOURCE_EXCHANGE          1
-
+///ä¼šå‘˜
+#define DFITC_SOURCE_MEMBER 0
+///äº¤æ˜“æ‰€
+#define DFITC_SOURCE_EXCHANGE 1
 
 ////////////////////////////////////////////////////////////
-///DFITCSeatCodeType:Ï¯Î»´úÂë
+/// DFITCSeatCodeType:å¸­ä½ä»£ç 
 ////////////////////////////////////////////////////////////
 typedef char DFITCSeatCodeType[33];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCCloseIDType:Æ½²ÖÖ´ĞĞµ¥ºÅ
+/// DFITCCloseIDType:å¹³ä»“æ‰§è¡Œå•å·
 ////////////////////////////////////////////////////////////
 typedef char DFITCCloseIDType[33];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCEntrusTellerType:Î¯ÍĞ¹ñÔ±
+/// DFITCEntrusTellerType:å§”æ‰˜æŸœå‘˜
 ////////////////////////////////////////////////////////////
 typedef char DFITCEntrusTellerType[41];
 
-
 ////////////////////////////////////////////////////////////
-///DFITCStayTimeType£ºÍ£ÁôÊ±¼äÊı¾İÀàĞÍ
+/// DFITCStayTimeTypeï¼šåœç•™æ—¶é—´æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCStayTimeType;
 
-
 ////////////////////////////////////////////////////////////
-///DFITCComputeModeType£º¼ÆËã·½Ê½Êı¾İÀàĞÍ
+/// DFITCComputeModeTypeï¼šè®¡ç®—æ–¹å¼æ•°æ®ç±»å‹
 ////////////////////////////////////////////////////////////
 typedef int DFITCComputeModeType;
-///¾ø¶ÔÊıÖµ¼ÆËã
-#define DFITC_ABSOLUTE_VALUE_COMPUTE        0
-///½»Ò×Ëù±£Ö¤½ğ±ê×¼»ù´¡ÉÏ¸¡¶¯
-#define DFITC_EXCHANGE_MARGIN_BASIS_FLOAT   1
-///½»Ò×Ëù±£Ö¤½ğ½á¹û»ù´¡ÉÏ¸¡¶¯
-#define DFITC_EXCHANGE_MARGIN_RESULT_FLOAT  2
-///ÆÚ»õ±£Ö¤½ğ±ê×¼»ù´¡ÉÏ¸¡¶¯
-#define DFITC_FUTURES_MARGIN_BASIS_FLOAT    3
-
+///ç»å¯¹æ•°å€¼è®¡ç®—
+#define DFITC_ABSOLUTE_VALUE_COMPUTE 0
+///äº¤æ˜“æ‰€ä¿è¯é‡‘æ ‡å‡†åŸºç¡€ä¸Šæµ®åŠ¨
+#define DFITC_EXCHANGE_MARGIN_BASIS_FLOAT 1
+///äº¤æ˜“æ‰€ä¿è¯é‡‘ç»“æœåŸºç¡€ä¸Šæµ®åŠ¨
+#define DFITC_EXCHANGE_MARGIN_RESULT_FLOAT 2
+///æœŸè´§ä¿è¯é‡‘æ ‡å‡†åŸºç¡€ä¸Šæµ®åŠ¨
+#define DFITC_FUTURES_MARGIN_BASIS_FLOAT 3
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCPriceNoteType:ÆÚÈ¨±£Ö¤½ğ¼ÆËã·½Ê½
+/// DFITCPriceNoteType:æœŸæƒä¿è¯é‡‘è®¡ç®—æ–¹å¼
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCPriceNoteType;
-///°´ÕÕ×ò½áËã¼Û¼ÆËã
-#define DFITC_CALC_BY_PRESETTLEMENT        1
-///°´ÕÕ×îĞÂ¼Û¼ÆËã
-#define DFITC_CALC_BY_LASTPRICE            2
+///æŒ‰ç…§æ˜¨ç»“ç®—ä»·è®¡ç®—
+#define DFITC_CALC_BY_PRESETTLEMENT 1
+///æŒ‰ç…§æœ€æ–°ä»·è®¡ç®—
+#define DFITC_CALC_BY_LASTPRICE 2
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCLargeMarginDirectType:´ó±ß±£Ö¤½ğ·½ÏòÊı¾İÀàĞÍ
+/// DFITCLargeMarginDirectType:å¤§è¾¹ä¿è¯é‡‘æ–¹å‘æ•°æ®ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCLargeMarginDirectType[128];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCBankIDType:ÒøĞĞ´úÂëÀàĞÍ
+/// DFITCBankIDType:é“¶è¡Œä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCBankIDType[8];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCBankNameType:ÒøĞĞÃû³ÆÀàĞÍ
+/// DFITCBankNameType:é“¶è¡Œåç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCBankNameType[101];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCBankSerialType:ÒøĞĞÁ÷Ë®ºÅÀàĞÍ
+/// DFITCBankSerialType:é“¶è¡Œæµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCBankSerialType[13];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCSerialType:Á÷Ë®ºÅÀàĞÍ
+/// DFITCSerialType:æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCSerialType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCBankAccountType:ÒøĞĞÕË»§ÀàĞÍ
+/// DFITCBankAccountType:é“¶è¡Œè´¦æˆ·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCBankAccountType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCFutureSerialType:ÆÚ»õ¹«Ë¾Á÷Ë®ºÅÀàĞÍ
+/// DFITCFutureSerialType:æœŸè´§å…¬å¸æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCFutureSerialType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCDigestType:ÕªÒªÀàĞÍ
+/// DFITCDigestType:æ‘˜è¦ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char DFITCDigestType[36];
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCBankAccTypeTypeÊÇÒ»¸öÒøĞĞÕÊºÅÀàĞÍÀàĞÍ
+/// DFITCBankAccTypeTypeæ˜¯ä¸€ä¸ªé“¶è¡Œå¸å·ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒøĞĞ´æÕÛ
-#define DFITC_BAT_BankBook   '1'
-///´¢Ğî¿¨
+///é“¶è¡Œå­˜æŠ˜
+#define DFITC_BAT_BankBook '1'
+///å‚¨è“„å¡
 #define DFITC_BAT_SavingCard '2'
-///ĞÅÓÃ¿¨
+///ä¿¡ç”¨å¡
 #define DFITC_BAT_CreditCard '3'
 typedef char DFITCBankAccTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCTransferStatusType:×ªÕË½»Ò××´Ì¬ÀàĞÍ
+/// DFITCTransferStatusType:è½¬è´¦äº¤æ˜“çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Õı³£
-#define DFITC_TRFS_Normal   '0'
-///±»³åÕı
+///æ­£å¸¸
+#define DFITC_TRFS_Normal '0'
+///è¢«å†²æ­£
 #define DFITC_TRFS_Repealed '1'
 typedef char DFITCTransferStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCTransferType:ÒøÆÚ×ªÕËÒµÎñÀàĞÍ
+/// DFITCTransferType:é“¶æœŸè½¬è´¦ä¸šåŠ¡ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCTransferType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCTransferType:ÒøÆÚ×ªÕË´¦Àí½á¹ûÀàĞÍ
+/// DFITCTransferType:é“¶æœŸè½¬è´¦å¤„ç†ç»“æœç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCProcResultType;
-///³É¹¦
-#define DFITC_PROC_SUCCESS              0
-///Ê§°Ü
-#define DFITC_PROC_FAIL                 1
-///µÈ´ı»ØÖ´
-#define DFITC_PROC_WAIT_RTN             2
-
+///æˆåŠŸ
+#define DFITC_PROC_SUCCESS 0
+///å¤±è´¥
+#define DFITC_PROC_FAIL 1
+///ç­‰å¾…å›æ‰§
+#define DFITC_PROC_WAIT_RTN 2
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCApplyNumberType:ÒøÆÚ×ªÕËÉêÇëºÅÀàĞÍ
+/// DFITCApplyNumberType:é“¶æœŸè½¬è´¦ç”³è¯·å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCApplyNumberType;
 
-
-//********************À©Õ¹ĞĞÇéÀ©³ä**********************
+//********************æ‰©å±•è¡Œæƒ…æ‰©å……**********************
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCImpliedVolatilityType:Òşº¬²¨¶¯ÂÊÀàĞÍ
+/// DFITCImpliedVolatilityType:éšå«æ³¢åŠ¨ç‡ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double DFITCImpliedVolatilityType;
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCOptionComputationType:ÆÚÈ¨¼ÆËãÊı¾İÀàĞÍ
+/// DFITCOptionComputationType:æœŸæƒè®¡ç®—æ•°æ®ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double DFITCOptionComputationType;
 
 ////////////////////////////////////////////////////////////
-///DFITCFunctionIDType:ĞĞÇéÀ©Õ¹¹¦ÄÜºÅ
+/// DFITCFunctionIDType:è¡Œæƒ…æ‰©å±•åŠŸèƒ½å·
 ////////////////////////////////////////////////////////////
 typedef char DFITCFunctionIDType[16];
 
 ////////////////////////////////////////////////////////////
-///DFITCExtMarketDataType:ĞĞÇéÀ©Õ¹¹¦ÄÜºÅ
+/// DFITCExtMarketDataType:è¡Œæƒ…æ‰©å±•åŠŸèƒ½å·
 ////////////////////////////////////////////////////////////
 typedef char DFITCExtMarketDataType[128];
 
-//********************À©Õ¹ĞĞÇéÀ©³ä**********************
-
+//********************æ‰©å±•è¡Œæƒ…æ‰©å……**********************
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCExchangeStatusType:½»Ò×Ëù×´Ì¬Êı¾İÀàĞÍ
+/// DFITCExchangeStatusType:äº¤æ˜“æ‰€çŠ¶æ€æ•°æ®ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCExchangeStatusType;
-///¿ªÅÌÇ°
-#define DFITC_IS_BEFORETRADING     0
-///·Ç½»Ò×
-#define DFITC_IS_NOTRADING         1
-///Á¬Ğø½»Ò×
-#define DFITC_IS_CONTINOUS         2
-///¼¯ºÏ¾º¼Û±¨µ¥
-#define DFITC_IS_AUCTIONORDERING   3
-///¼¯ºÏ¾º¼Û¼Û¸ñÆ½ºâ
-#define DFITC_IS_AUCTIONBALANCE    4
-///¼¯ºÏ¾º¼Û´éºÏ
-#define DFITC_IS_AUCTIONMATCH      5
-///ÊÕÅÌ
-#define DFITC_IS_CLOSED            6
-
+///å¼€ç›˜å‰
+#define DFITC_IS_BEFORETRADING 0
+///éäº¤æ˜“
+#define DFITC_IS_NOTRADING 1
+///è¿ç»­äº¤æ˜“
+#define DFITC_IS_CONTINOUS 2
+///é›†åˆç«ä»·æŠ¥å•
+#define DFITC_IS_AUCTIONORDERING 3
+///é›†åˆç«ä»·ä»·æ ¼å¹³è¡¡
+#define DFITC_IS_AUCTIONBALANCE 4
+///é›†åˆç«ä»·æ’®åˆ
+#define DFITC_IS_AUCTIONMATCH 5
+///æ”¶ç›˜
+#define DFITC_IS_CLOSED 6
 
 /////////////////////////////////////////////////////////////////////////
-///DFITCPositionDateType:³Ö²ÖÈÕÆÚÀàĞÍ
+/// DFITCPositionDateType:æŒä»“æ—¥æœŸç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int DFITCPositionDateType;
-//½ñ²Ö
-#define DFITC_PSD_TODAY            1
-//ÀúÊ·²Ö
-#define DFITC_PSD_HISTORY          2
+//ä»Šä»“
+#define DFITC_PSD_TODAY 1
+//å†å²ä»“
+#define DFITC_PSD_HISTORY 2
 
-
-#endif//DFITCAPIDATATYPE_H
+#endif // DFITCAPIDATATYPE_H

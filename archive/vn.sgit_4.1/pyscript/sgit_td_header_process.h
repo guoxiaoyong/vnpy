@@ -29,4 +29,3 @@ void processRtnInstrumentStatus(Task task);
 void processRspQryInvestorPositionDetail(Task task);
 
 void processRspQryInvestorPosition(Task task);
-

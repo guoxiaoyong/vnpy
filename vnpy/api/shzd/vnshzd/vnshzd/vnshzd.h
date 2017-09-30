@@ -1,197 +1,173 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 
-//ÏµÍ³
+//ç³»ç»Ÿ
 #ifdef WIN32
 #include "stdafx.h"
 #endif
-#include <string>
 #include <queue>
+#include <string>
 #include <vector>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>		//python·â×°
-#include <boost/python/def.hpp>			//python·â×°
-#include <boost/python/dict.hpp>		//python·â×°
-#include <boost/python/list.hpp>		//python·â×°
-#include <boost/python/object.hpp>		//python·â×°
-#include <boost/python.hpp>				//python·â×°
-#include <boost/thread.hpp>				//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>				//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>				//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
-#include <boost/algorithm/string.hpp>	//×Ö·û´®´¦Àí¹¦ÄÜ
+#include <boost/algorithm/string.hpp> //å­—ç¬¦ä¸²å¤„ç†åŠŸèƒ½
+#include <boost/any.hpp>              //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>             //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>           //pythonå°è£…
+#include <boost/python/def.hpp>       //pythonå°è£…
+#include <boost/python/dict.hpp>      //pythonå°è£…
+#include <boost/python/list.hpp>      //pythonå°è£…
+#include <boost/python/module.hpp>    //pythonå°è£…
+#include <boost/python/object.hpp>    //pythonå°è£…
+#include <boost/thread.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
+// API
 #include "ShZdTradeLib.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 
-//³£Á¿
+//å¸¸é‡
 #define ONRECEIVETRADEINFO 1
 #define ONRECEIVEMARKETINFO 2
 #define ONRECEIVEERRORINFO 3
 
-
 ///-------------------------------------------------------------------------------------
-///APIÖĞµÄ²¿·Ö×é¼ş
+/// APIä¸­çš„éƒ¨åˆ†ç»„ä»¶
 ///-------------------------------------------------------------------------------------
 
-//GILÈ«¾ÖËø¼ò»¯»ñÈ¡ÓÃ£¬
-//ÓÃÓÚ°ïÖúC++Ïß³Ì»ñµÃGILËø£¬´Ó¶ø·ÀÖ¹python±ÀÀ£
-class PyLock
-{
+// GILå…¨å±€é”ç®€åŒ–è·å–ç”¨ï¼Œ
+//ç”¨äºå¸®åŠ©C++çº¿ç¨‹è·å¾—GILé”ï¼Œä»è€Œé˜²æ­¢pythonå´©æºƒ
+class PyLock {
 private:
-	PyGILState_STATE gil_state;
+  PyGILState_STATE gil_state;
 
 public:
-	//ÔÚÄ³¸öº¯Êı·½·¨ÖĞ´´½¨¸Ã¶ÔÏóÊ±£¬»ñµÃGILËø
-	PyLock()
-	{
-		gil_state = PyGILState_Ensure();
-	}
+  //åœ¨æŸä¸ªå‡½æ•°æ–¹æ³•ä¸­åˆ›å»ºè¯¥å¯¹è±¡æ—¶ï¼Œè·å¾—GILé”
+  PyLock() { gil_state = PyGILState_Ensure(); }
 
-	//ÔÚÄ³¸öº¯ÊıÍê³ÉºóÏú»Ù¸Ã¶ÔÏóÊ±£¬½â·ÅGILËø
-	~PyLock()
-	{
-		PyGILState_Release(gil_state);
-	}
+  //åœ¨æŸä¸ªå‡½æ•°å®Œæˆåé”€æ¯è¯¥å¯¹è±¡æ—¶ï¼Œè§£æ”¾GILé”
+  ~PyLock() { PyGILState_Release(gil_state); }
 };
 
-
-//ÈÎÎñ½á¹¹Ìå
-struct Task
-{
-	int task_name;			//»Øµ÷º¯ÊıÃû³Æ¶ÔÓ¦µÄ³£Á¿
-	void* task_data;		//Êı¾İ½á¹¹Ö¸Õë
-	string task_errmsg;		//´íÎó×Ö·û´®
-	int task_errcode;		//´íÎó´úÂë
+//ä»»åŠ¡ç»“æ„ä½“
+struct Task {
+  int task_name;      //å›è°ƒå‡½æ•°åç§°å¯¹åº”çš„å¸¸é‡
+  void *task_data;    //æ•°æ®ç»“æ„æŒ‡é’ˆ
+  string task_errmsg; //é”™è¯¯å­—ç¬¦ä¸²
+  int task_errcode;   //é”™è¯¯ä»£ç 
 };
 
+///çº¿ç¨‹å®‰å…¨çš„é˜Ÿåˆ—
+template <typename Data>
 
-///Ïß³Ì°²È«µÄ¶ÓÁĞ
-template<typename Data>
-
-class ConcurrentQueue
-{
+class ConcurrentQueue {
 private:
-	queue<Data> the_queue;								//±ê×¼¿â¶ÓÁĞ
-	mutable mutex the_mutex;							//boost»¥³âËø
-	condition_variable the_condition_variable;			//boostÌõ¼ş±äÁ¿
+  queue<Data> the_queue;                     //æ ‡å‡†åº“é˜Ÿåˆ—
+  mutable mutex the_mutex;                   // boostäº’æ–¥é”
+  condition_variable the_condition_variable; // boostæ¡ä»¶å˜é‡
 
 public:
+  //å­˜å…¥æ–°çš„ä»»åŠ¡
+  void push(Data const &data) {
+    mutex::scoped_lock lock(the_mutex);  //è·å–äº’æ–¥é”
+    the_queue.push(data);                //å‘é˜Ÿåˆ—ä¸­å­˜å…¥æ•°æ®
+    lock.unlock();                       //é‡Šæ”¾é”
+    the_condition_variable.notify_one(); //é€šçŸ¥æ­£åœ¨é˜»å¡ç­‰å¾…çš„çº¿ç¨‹
+  }
 
-	//´æÈëĞÂµÄÈÎÎñ
-	void push(Data const& data)
-	{
-		mutex::scoped_lock lock(the_mutex);				//»ñÈ¡»¥³âËø
-		the_queue.push(data);							//Ïò¶ÓÁĞÖĞ´æÈëÊı¾İ
-		lock.unlock();									//ÊÍ·ÅËø
-		the_condition_variable.notify_one();			//Í¨ÖªÕıÔÚ×èÈûµÈ´ıµÄÏß³Ì
-	}
+  //æ£€æŸ¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+  bool empty() const {
+    mutex::scoped_lock lock(the_mutex);
+    return the_queue.empty();
+  }
 
-	//¼ì²é¶ÓÁĞÊÇ·ñÎª¿Õ
-	bool empty() const
-	{
-		mutex::scoped_lock lock(the_mutex);
-		return the_queue.empty();
-	}
+  //å–å‡º
+  Data wait_and_pop() {
+    mutex::scoped_lock lock(the_mutex);
 
-	//È¡³ö
-	Data wait_and_pop()
-	{
-		mutex::scoped_lock lock(the_mutex);
+    while (the_queue.empty()) //å½“é˜Ÿåˆ—ä¸ºç©ºæ—¶
+    {
+      the_condition_variable.wait(lock); //ç­‰å¾…æ¡ä»¶å˜é‡é€šçŸ¥
+    }
 
-		while (the_queue.empty())						//µ±¶ÓÁĞÎª¿ÕÊ±
-		{
-			the_condition_variable.wait(lock);			//µÈ´ıÌõ¼ş±äÁ¿Í¨Öª
-		}
-
-		Data popped_value = the_queue.front();			//»ñÈ¡¶ÓÁĞÖĞµÄ×îºóÒ»¸öÈÎÎñ
-		the_queue.pop();								//É¾³ı¸ÃÈÎÎñ
-		return popped_value;							//·µ»Ø¸ÃÈÎÎñ
-	}
-
+    Data popped_value = the_queue.front(); //è·å–é˜Ÿåˆ—ä¸­çš„æœ€åä¸€ä¸ªä»»åŠ¡
+    the_queue.pop();                       //åˆ é™¤è¯¥ä»»åŠ¡
+    return popped_value;                   //è¿”å›è¯¥ä»»åŠ¡
+  }
 };
 
-
 ///-------------------------------------------------------------------------------------
-///C++ SPIµÄ»Øµ÷º¯Êı·½·¨ÊµÏÖ
+/// C++ SPIçš„å›è°ƒå‡½æ•°æ–¹æ³•å®ç°
 ///-------------------------------------------------------------------------------------
 
-//APIµÄ¼Ì³ĞÊµÏÖ
-class ShzdApi : public IShZdTradeOutLib
-{
+// APIçš„ç»§æ‰¿å®ç°
+class ShzdApi : public IShZdTradeOutLib {
 private:
-	IShZdTradeInLib *api;				//API¶ÔÏó
-	thread *task_thread;				//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	ConcurrentQueue<Task*> task_queue;	//ÈÎÎñ¶ÓÁĞ
+  IShZdTradeInLib *api; // APIå¯¹è±¡
+  thread *task_thread;  //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  ConcurrentQueue<Task *> task_queue; //ä»»åŠ¡é˜Ÿåˆ—
 
 public:
-	ShzdApi()
-	{
-		function0<void> f = boost::bind(&ShzdApi::processTask, this);
-		thread t(f);
-		this->task_thread = &t;
-	};
+  ShzdApi() {
+    function0<void> f = boost::bind(&ShzdApi::processTask, this);
+    thread t(f);
+    this->task_thread = &t;
+  };
 
-	~ShzdApi()
-	{
-	};
+  ~ShzdApi(){};
 
-	//-------------------------------------------------------------------------------------
-	//API»Øµ÷º¯Êı
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // APIå›è°ƒå‡½æ•°
+  //-------------------------------------------------------------------------------------
 
-	virtual int OnReceiveTradeInfo(const CShZdMessage * re);
+  virtual int OnReceiveTradeInfo(const CShZdMessage *re);
 
-	virtual int OnReceiveMarketInfo(const CShZdMessage * re);
-	
-	virtual int OnReceiveErrorInfo(int errorCode, const char* re);
+  virtual int OnReceiveMarketInfo(const CShZdMessage *re);
 
-	//-------------------------------------------------------------------------------------
-	//task£ºÈÎÎñ
-	//-------------------------------------------------------------------------------------
+  virtual int OnReceiveErrorInfo(int errorCode, const char *re);
 
-	void processTask();
+  //-------------------------------------------------------------------------------------
+  // taskï¼šä»»åŠ¡
+  //-------------------------------------------------------------------------------------
 
-	void processTradeInfo(Task *task);
+  void processTask();
 
-	void processMarketInfo(Task *task);
+  void processTradeInfo(Task *task);
 
-	void processErrorInfo(Task *task);
+  void processMarketInfo(Task *task);
 
+  void processErrorInfo(Task *task);
 
-	//-------------------------------------------------------------------------------------
-	//data£º»Øµ÷º¯ÊıµÄÊı¾İ×Öµä
-	//error£º»Øµ÷º¯ÊıµÄ´íÎó×Öµä
-	//id£ºÇëÇóid
-	//last£ºÊÇ·ñÎª×îºó·µ»Ø
-	//i£ºÕûÊı
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // dataï¼šå›è°ƒå‡½æ•°çš„æ•°æ®å­—å…¸
+  // errorï¼šå›è°ƒå‡½æ•°çš„é”™è¯¯å­—å…¸
+  // idï¼šè¯·æ±‚id
+  // lastï¼šæ˜¯å¦ä¸ºæœ€åè¿”å›
+  // iï¼šæ•´æ•°
+  //-------------------------------------------------------------------------------------
 
-	virtual void onReceiveTradeInfo(dict data){};
+  virtual void onReceiveTradeInfo(dict data){};
 
-	virtual void onReceiveMarketInfo(dict data){};
+  virtual void onReceiveMarketInfo(dict data){};
 
-	virtual void onReceiveErrorInfo(int errcode, string errmsg){};
+  virtual void onReceiveErrorInfo(int errcode, string errmsg){};
 
-	//-------------------------------------------------------------------------------------
-	//req:Ö÷¶¯º¯ÊıµÄÇëÇó×Öµä
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // req:ä¸»åŠ¨å‡½æ•°çš„è¯·æ±‚å­—å…¸
+  //-------------------------------------------------------------------------------------
 
-	void release();
+  void release();
 
-	int initShZdServer();
+  int initShZdServer();
 
-	int registerFront(string address, int port);
+  int registerFront(string address, int port);
 
-	int registerMarket(string address, int port);
+  int registerMarket(string address, int port);
 
-	int shzdSendInfoToTrade(dict data);
+  int shzdSendInfoToTrade(dict data);
 
-	int shzdSendInfoToMarket(dict data);
-
+  int shzdSendInfoToMarket(dict data);
 };

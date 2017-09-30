@@ -23,4 +23,3 @@ void processCustomMarketData(Task task);
 void processRtnForQuoteRsp(Task task);
 
 void processRspTradingDay(Task task);
-

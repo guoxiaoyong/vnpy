@@ -1,243 +1,217 @@
-// vncshshlp.cpp : ¶¨Òå DLL Ó¦ÓÃ³ÌĞòµÄµ¼³öº¯Êı¡£
+// vncshshlp.cpp : å®šä¹‰ DLL åº”ç”¨ç¨‹åºçš„å¯¼å‡ºå‡½æ•°ã€‚
 //
 
-#include "stdafx.h"
 #include "vncshshlp.h"
+#include "stdafx.h"
 
 //------------------------------------------------------------------------
-//Ö÷¶¯º¯Êı²¿·Ö
+//ä¸»åŠ¨å‡½æ•°éƒ¨åˆ†
 //------------------------------------------------------------------------
 
-//¶ÁÈ¡ÅäÖÃÎÄ¼ş
-int CsHsHlp::loadConfig(string fileName)
-{
-	int i = CITICs_HsHlp_LoadConfig(&this->cfgHandle, fileName.c_str());
-	return i;
+//è¯»å–é…ç½®æ–‡ä»¶
+int CsHsHlp::loadConfig(string fileName) {
+  int i = CITICs_HsHlp_LoadConfig(&this->cfgHandle, fileName.c_str());
+  return i;
 };
 
-//³õÊ¼»¯
-int CsHsHlp::init()
-{
-	int i = CITICs_HsHlp_Init(&this->handle, this->cfgHandle);
-	return i;
+//åˆå§‹åŒ–
+int CsHsHlp::init() {
+  int i = CITICs_HsHlp_Init(&this->handle, this->cfgHandle);
+  return i;
 };
 
-//Á¬½Ó·şÎñÆ÷
-int CsHsHlp::connectServer()
-{
-	int i = CITICs_HsHlp_ConnectServer(this->handle);
+//è¿æ¥æœåŠ¡å™¨
+int CsHsHlp::connectServer() {
+  int i = CITICs_HsHlp_ConnectServer(this->handle);
 
-	if (this->active == false)
-	{
-		this->active = true;
-		function0<void> f = boost::bind(&CsHsHlp::processMsg, this);
-		thread t(f);
-		this->task_thread = &t;
-	}
+  if (this->active == false) {
+    this->active = true;
+    function0<void> f = boost::bind(&CsHsHlp::processMsg, this);
+    thread t(f);
+    this->task_thread = &t;
+  }
 
-	return i;
+  return i;
 };
 
-//»ñÈ¡´íÎóĞÅÏ¢
-string CsHsHlp::getErrorMsg()
-{
-	int i;
-	char msg[512];
-	CITICs_HsHlp_GetErrorMsg(this->handle, &i, msg);
-	string errorMsg = msg;
-	return errorMsg;
+//è·å–é”™è¯¯ä¿¡æ¯
+string CsHsHlp::getErrorMsg() {
+  int i;
+  char msg[512];
+  CITICs_HsHlp_GetErrorMsg(this->handle, &i, msg);
+  string errorMsg = msg;
+  return errorMsg;
 };
 
-//³õÊ¼»¯·¢°üÇëÇó
-int CsHsHlp::beginParam()
-{
-	int i = CITICs_HsHlp_BeginParam(this->handle);
-	return i;
+//åˆå§‹åŒ–å‘åŒ…è¯·æ±‚
+int CsHsHlp::beginParam() {
+  int i = CITICs_HsHlp_BeginParam(this->handle);
+  return i;
 };
 
-//ÉèÖÃ·¢°üµÄ²ÎÊı×Ö¶ÎÃû³ÆºÍÖµ
-int CsHsHlp::setValue(string key, string value)
-{
-	int i = CITICs_HsHlp_SetValue(this->handle, key.c_str(), value.c_str());
-	return i;
+//è®¾ç½®å‘åŒ…çš„å‚æ•°å­—æ®µåç§°å’Œå€¼
+int CsHsHlp::setValue(string key, string value) {
+  int i = CITICs_HsHlp_SetValue(this->handle, key.c_str(), value.c_str());
+  return i;
 };
 
-//Òì²½·¢°ü
-int CsHsHlp::bizCallAndCommit(int iFuncID)
-{
-	int i = CITICs_HsHlp_BizCallAndCommit(this->handle, iFuncID, NULL, BIZCALL_ASYNC, NULL);
-	return i;
+//å¼‚æ­¥å‘åŒ…
+int CsHsHlp::bizCallAndCommit(int iFuncID) {
+  int i = CITICs_HsHlp_BizCallAndCommit(this->handle, iFuncID, NULL,
+                                        BIZCALL_ASYNC, NULL);
+  return i;
 };
 
-//¶©ÔÄ
-boost::python::list CsHsHlp::subscribeData(int iFuncID)
-{
-	int i = CITICs_HsHlp_BizCallAndCommit(this->handle, iFuncID, NULL, BIZCALL_SUBSCRIBE, NULL);
-	
-	//¶©ÔÄÎªÍ¬²½µ÷ÓÃ£¬¶ÁÈ¡·µ»ØµÄ½á¹û
-	int row = CITICs_HsHlp_GetRowCount(this->handle);		//»ñÈ¡msgĞĞÊı£¨ÓĞ¶àÉÙ¸ö»ØÓ¦£©
-	int col = CITICs_HsHlp_GetColCount(this->handle);		//»ñÈ¡msgÁĞÊı£¨ÓĞÄÄĞ©×Ö¶Î£©
-	char key[64] = { 0 };
-	char value[512] = { 0 };
+//è®¢é˜…
+boost::python::list CsHsHlp::subscribeData(int iFuncID) {
+  int i = CITICs_HsHlp_BizCallAndCommit(this->handle, iFuncID, NULL,
+                                        BIZCALL_SUBSCRIBE, NULL);
 
-	boost::python::list data;
+  //è®¢é˜…ä¸ºåŒæ­¥è°ƒç”¨ï¼Œè¯»å–è¿”å›çš„ç»“æœ
+  int row =
+      CITICs_HsHlp_GetRowCount(this->handle); //è·å–msgè¡Œæ•°ï¼ˆæœ‰å¤šå°‘ä¸ªå›åº”ï¼‰
+  int col = CITICs_HsHlp_GetColCount(this->handle); //è·å–msgåˆ—æ•°ï¼ˆæœ‰å“ªäº›å­—æ®µï¼‰
+  char key[64] = {0};
+  char value[512] = {0};
 
-	for (int i = 0; i < row; i++)
-	{
-		if (0 == CITICs_HsHlp_GetNextRow(this->handle))
-		{
-			dict d;
-			for (int j = 0; j < col; j++)
-			{
-				CITICs_HsHlp_GetColName(this->handle, j, key);
-				CITICs_HsHlp_GetValueByIndex(this->handle, j, value);
+  boost::python::list data;
 
-				string str_key = key;
-				string str_value = value;
-				d[str_key] = str_value;
-			}
-			data.append(d);
-		}
-	}
+  for (int i = 0; i < row; i++) {
+    if (0 == CITICs_HsHlp_GetNextRow(this->handle)) {
+      dict d;
+      for (int j = 0; j < col; j++) {
+        CITICs_HsHlp_GetColName(this->handle, j, key);
+        CITICs_HsHlp_GetValueByIndex(this->handle, j, value);
 
-	return data;
+        string str_key = key;
+        string str_value = value;
+        d[str_key] = str_value;
+      }
+      data.append(d);
+    }
+  }
+
+  return data;
 };
 
-//¶Ï¿ª·şÎñÆ÷
-int CsHsHlp::disconnect()
-{
-	int i = CITICs_HsHlp_DisConnect(this->handle);
-	return i;
+//æ–­å¼€æœåŠ¡å™¨
+int CsHsHlp::disconnect() {
+  int i = CITICs_HsHlp_DisConnect(this->handle);
+  return i;
 };
 
-//ÍË³ö
-int CsHsHlp::exit()
-{
-	this->active = false;
-	int i = CITICs_HsHlp_Exit(this->handle);
-	return i;
+//é€€å‡º
+int CsHsHlp::exit() {
+  this->active = false;
+  int i = CITICs_HsHlp_Exit(this->handle);
+  return i;
 };
-
 
 //------------------------------------------------------------------------
-//Òì²½ÏûÏ¢´¦ÀíÏß³Ì
+//å¼‚æ­¥æ¶ˆæ¯å¤„ç†çº¿ç¨‹
 //------------------------------------------------------------------------
 
-//Á¬ĞøÔËĞĞµÄÏûÏ¢´¦Àíº¯Êı
-void CsHsHlp::processMsg()
-{
-	LPMSG_CTRL msgCtrl;			//¿ØÖÆĞÅÏ¢
-	int type = 0;				//ÏûÏ¢ÀàĞÍ
-	int reqNo = 0;				//Òì²½ÇëÇó±àºÅ
-	int errorNo = 0;			//´íÎó´úÂë
-	string errorInfo = "";		//´íÎóĞÅÏ¢
+//è¿ç»­è¿è¡Œçš„æ¶ˆæ¯å¤„ç†å‡½æ•°
+void CsHsHlp::processMsg() {
+  LPMSG_CTRL msgCtrl;    //æ§åˆ¶ä¿¡æ¯
+  int type = 0;          //æ¶ˆæ¯ç±»å‹
+  int reqNo = 0;         //å¼‚æ­¥è¯·æ±‚ç¼–å·
+  int errorNo = 0;       //é”™è¯¯ä»£ç 
+  string errorInfo = ""; //é”™è¯¯ä¿¡æ¯
 
-	int row = 0;				//ĞĞÊı
-	int col = 0;				//ÁĞÊı
-	char key[64] = {0};			//¼ü
-	char value[512] = {0};		//Öµ
+  int row = 0;           //è¡Œæ•°
+  int col = 0;           //åˆ—æ•°
+  char key[64] = {0};    //é”®
+  char value[512] = {0}; //å€¼
 
-	PyGILState_STATE gil_state;	//GILÈ«¾ÖËø
+  PyGILState_STATE gil_state; // GILå…¨å±€é”
 
-	//Á¬ĞøÔËĞĞ
-	while (this->active)
-	{
-		//³õÊ¼»¯Ö¸Õë
-		msgCtrl = new MSG_CTRL();
+  //è¿ç»­è¿è¡Œ
+  while (this->active) {
+    //åˆå§‹åŒ–æŒ‡é’ˆ
+    msgCtrl = new MSG_CTRL();
 
-		//¶ÁÈ¡ÏûÏ¢
-		int i = CITICs_HsHlp_QueueGetMsg(this->handle, msgCtrl, -1);
+    //è¯»å–æ¶ˆæ¯
+    int i = CITICs_HsHlp_QueueGetMsg(this->handle, msgCtrl, -1);
 
-		//¶ÁÈ¡ĞÅÏ¢
-		if (msgCtrl->nIssueType)
-		{
-			type = msgCtrl->nIssueType;
-		}
-		else
-		{
-			type = msgCtrl->nFuncID;
-		}
+    //è¯»å–ä¿¡æ¯
+    if (msgCtrl->nIssueType) {
+      type = msgCtrl->nIssueType;
+    } else {
+      type = msgCtrl->nFuncID;
+    }
 
-		reqNo = msgCtrl->nReqNo;
-		errorNo = msgCtrl->nErrorNo;
-		errorInfo = msgCtrl->szErrorInfo;
+    reqNo = msgCtrl->nReqNo;
+    errorNo = msgCtrl->nErrorNo;
+    errorInfo = msgCtrl->szErrorInfo;
 
-		row = CITICs_HsHlp_GetRowCount(this->handle, msgCtrl);		//»ñÈ¡msgĞĞÊı£¨ÓĞ¶àÉÙ¸ö»ØÓ¦£©
-		col = CITICs_HsHlp_GetColCount(this->handle, msgCtrl);		//»ñÈ¡msgÁĞÊı£¨ÓĞÄÄĞ©×Ö¶Î£©
+    row = CITICs_HsHlp_GetRowCount(this->handle,
+                                   msgCtrl); //è·å–msgè¡Œæ•°ï¼ˆæœ‰å¤šå°‘ä¸ªå›åº”ï¼‰
+    col = CITICs_HsHlp_GetColCount(this->handle,
+                                   msgCtrl); //è·å–msgåˆ—æ•°ï¼ˆæœ‰å“ªäº›å­—æ®µï¼‰
 
-		//Éú³É×Öµä²¢ÍÆËÍµ½PythonÖĞ
-		gil_state = PyGILState_Ensure();		//´´½¨Python¶ÔÏóÇ°ÏÈËø¶¨GIL
+    //ç”Ÿæˆå­—å…¸å¹¶æ¨é€åˆ°Pythonä¸­
+    gil_state = PyGILState_Ensure(); //åˆ›å»ºPythonå¯¹è±¡å‰å…ˆé”å®šGIL
 
-		boost::python::list data;
+    boost::python::list data;
 
-		for (int i = 0; i < row; i++)
-		{	
-			if (0 == CITICs_HsHlp_GetNextRow(this->handle, msgCtrl))
-			{
-				dict d;
-				for (int j = 0; j < col; j++)
-				{
-					CITICs_HsHlp_GetColName(this->handle, j, key, msgCtrl);
-					CITICs_HsHlp_GetValueByIndex(this->handle, j, value, msgCtrl);
+    for (int i = 0; i < row; i++) {
+      if (0 == CITICs_HsHlp_GetNextRow(this->handle, msgCtrl)) {
+        dict d;
+        for (int j = 0; j < col; j++) {
+          CITICs_HsHlp_GetColName(this->handle, j, key, msgCtrl);
+          CITICs_HsHlp_GetValueByIndex(this->handle, j, value, msgCtrl);
 
-					string str_key = key;
-					string str_value = value;					
-					d[str_key] = str_value;
-				}
-				data.append(d);
-			}
-		}
+          string str_key = key;
+          string str_value = value;
+          d[str_key] = str_value;
+        }
+        data.append(d);
+      }
+    }
 
-		this->onMsg(type, data, reqNo, errorNo, errorInfo);
+    this->onMsg(type, data, reqNo, errorNo, errorInfo);
 
-		PyGILState_Release(gil_state);			//ÍÆËÍPython¶ÔÏóÍê³ÉºóÊÍ·ÅGIL
+    PyGILState_Release(gil_state); //æ¨é€Pythonå¯¹è±¡å®Œæˆåé‡Šæ”¾GIL
 
-		//´Ó¶ÓÁĞÉ¾³ıÏûÏ¢
-		CITICs_HsHlp_QueueEraseMsg(this->handle, msgCtrl);
+    //ä»é˜Ÿåˆ—åˆ é™¤æ¶ˆæ¯
+    CITICs_HsHlp_QueueEraseMsg(this->handle, msgCtrl);
 
-		//É¾³ıÖ¸Õë
-		delete msgCtrl;
-	}
+    //åˆ é™¤æŒ‡é’ˆ
+    delete msgCtrl;
+  }
 };
-
 
 ///-------------------------------------------------------------------------------------
-///Boost.Python·â×°
+/// Boost.Pythonå°è£…
 ///-------------------------------------------------------------------------------------
 
-struct CsHsHlpWrap : CsHsHlp, wrapper < CsHsHlp >
-{
-	virtual void onMsg(int type, boost::python::list data, int reqNo, int errorNo, string errorInfo)
-	{
-		//ÒÔÏÂµÄtry...catch...¿ÉÒÔÊµÏÖ²¶×½python»·¾³ÖĞ´íÎóµÄ¹¦ÄÜ£¬·ÀÖ¹C++Ö±½Ó³öÏÖÔ­ÒòÎ´ÖªµÄ±ÀÀ£
-		try
-		{
-			this->get_override("onMsg")(type, data, reqNo, errorNo, errorInfo);
-		}
-		catch (error_already_set const &)
-		{
-			PyErr_Print();
-		}
-	};
+struct CsHsHlpWrap : CsHsHlp, wrapper<CsHsHlp> {
+  virtual void onMsg(int type, boost::python::list data, int reqNo, int errorNo,
+                     string errorInfo) {
+    //ä»¥ä¸‹çš„try...catch...å¯ä»¥å®ç°æ•æ‰pythonç¯å¢ƒä¸­é”™è¯¯çš„åŠŸèƒ½ï¼Œé˜²æ­¢C++ç›´æ¥å‡ºç°åŸå› æœªçŸ¥çš„å´©æºƒ
+    try {
+      this->get_override("onMsg")(type, data, reqNo, errorNo, errorInfo);
+    } catch (error_already_set const &) {
+      PyErr_Print();
+    }
+  };
 };
 
+BOOST_PYTHON_MODULE(vncshshlp) {
+  PyEval_InitThreads(); //å¯¼å…¥æ—¶è¿è¡Œï¼Œä¿è¯å…ˆåˆ›å»ºGIL
 
-BOOST_PYTHON_MODULE(vncshshlp)
-{
-	PyEval_InitThreads();	//µ¼ÈëÊ±ÔËĞĞ£¬±£Ö¤ÏÈ´´½¨GIL
+  class_<CsHsHlpWrap, boost::noncopyable>("CsHsHlp")
+      .def("loadConfig", &CsHsHlpWrap::loadConfig)
+      .def("init", &CsHsHlpWrap::init)
+      .def("connectServer", &CsHsHlpWrap::connectServer)
+      .def("getErrorMsg", &CsHsHlpWrap::getErrorMsg)
+      .def("beginParam", &CsHsHlpWrap::beginParam)
+      .def("setValue", &CsHsHlpWrap::setValue)
+      .def("bizCallAndCommit", &CsHsHlpWrap::bizCallAndCommit)
+      .def("disconnect", &CsHsHlpWrap::disconnect)
+      .def("exit", &CsHsHlpWrap::exit)
+      .def("subscribeData", &CsHsHlpWrap::subscribeData)
 
-	class_<CsHsHlpWrap, boost::noncopyable>("CsHsHlp")
-		.def("loadConfig", &CsHsHlpWrap::loadConfig)
-		.def("init", &CsHsHlpWrap::init)
-		.def("connectServer", &CsHsHlpWrap::connectServer)
-		.def("getErrorMsg", &CsHsHlpWrap::getErrorMsg)
-		.def("beginParam", &CsHsHlpWrap::beginParam)
-		.def("setValue", &CsHsHlpWrap::setValue)
-		.def("bizCallAndCommit", &CsHsHlpWrap::bizCallAndCommit)
-		.def("disconnect", &CsHsHlpWrap::disconnect)
-		.def("exit", &CsHsHlpWrap::exit)
-		.def("subscribeData", &CsHsHlpWrap::subscribeData)
-
-		.def("onMsg", pure_virtual(&CsHsHlpWrap::onMsg))
-		;
+      .def("onMsg", pure_virtual(&CsHsHlpWrap::onMsg));
 };

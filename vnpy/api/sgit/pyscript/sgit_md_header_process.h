@@ -23,4 +23,3 @@ void processRtnDepthMarketData(Task task);
 void processRtnForQuoteRsp(Task task);
 
 void processRtnDeferDeliveryQuot(Task task);
-

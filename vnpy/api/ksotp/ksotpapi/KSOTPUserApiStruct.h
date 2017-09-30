@@ -7,2693 +7,2600 @@
 
 #include "KSOTPUserApiDataType.h"
 
-namespace KingstarAPI
-{
-///ÏìÓ¦ĞÅÏ¢
-struct CKSOTPRspInfoField
-{
-	///´íÎó´úÂë
-	TKSOTPErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TKSOTPErrorMsgType	ErrorMsg;
-};
-
-///ÓÃ»§µÇÂ¼ÇëÇó
-struct CKSOTPReqUserLoginField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///MacµØÖ·
-	TKSOTPMacAddressType	MacAddress;
-	///ÖÕ¶ËIPµØÖ·
-	TKSOTPIPAddressType	ClientIPAddress;
-};
-
-///ÓÃ»§µÇÂ¼Ó¦´ğ
-struct CKSOTPRspUserLoginField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///µÇÂ¼³É¹¦Ê±¼ä
-	TKSOTPTimeType	LoginTime;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///½»Ò×ÏµÍ³Ãû³Æ
-	TKSOTPSystemNameType	SystemName;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///×î´ó±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	MaxOrderRef;
-	///ÉÏÖ¤ËùÊ±¼ä
-	TKSOTPTimeType	SSETime;
-};
-
-///ÓÃ»§µÇ³öÇëÇó
-struct CKSOTPUserLogoutField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-};
-
-///ÓÃ»§¿ÚÁî±ä¸ü
-struct CKSOTPUserPasswordUpdateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///Ô­À´µÄ¿ÚÁî
-	TKSOTPPasswordType	OldPassword;
-	///ĞÂµÄ¿ÚÁî
-	TKSOTPPasswordType	NewPassword;
-};
-
-///×Ê½ğÕË»§¿ÚÁî±ä¸üÓò
-struct CKSOTPTradingAccountPasswordUpdateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ô­À´µÄ¿ÚÁî
-	TKSOTPPasswordType	OldPassword;
-	///ĞÂµÄ¿ÚÁî
-	TKSOTPPasswordType	NewPassword;
-};
-
-///ÊäÈë±¨µ¥
-struct CKSOTPInputOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TKSOTPOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TKSOTPDirectionType	Direction;
-	///¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///¼Û¸ñ
-	TKSOTPPriceType	LimitPrice;
-	///ÊıÁ¿
-	TKSOTPVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TKSOTPTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TKSOTPDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TKSOTPVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TKSOTPVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TKSOTPContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TKSOTPPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TKSOTPForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TKSOTPBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TKSOTPBoolType	UserForceClose;
-	///»¥»»µ¥±êÖ¾
-	TKSOTPBoolType	IsSwapOrder;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///ÊäÈë±¨µ¥²Ù×÷
-struct CKSOTPInputOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	OrderRef;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TKSOTPOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TKSOTPActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TKSOTPPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TKSOTPVolumeType	VolumeChange;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯±¨µ¥
-struct CKSOTPQryOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TKSOTPOrderSysIDType	OrderSysID;
-};
-
-///²éÑ¯³É½»
-struct CKSOTPQryTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///¿ªÊ¼Ê±¼ä
-	TKSOTPTimeType	TradeTimeStart;
-	///½áÊøÊ±¼ä
-	TKSOTPTimeType	TradeTimeEnd;
-};
-
-///²éÑ¯Í¶×ÊÕß³Ö²Ö
-struct CKSOTPQryInvestorPositionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Í¶×ÊÕß³Ö²Ö
-struct CKSOTPInvestorPositionField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///³Ö²Ö¶à¿Õ·½Ïò
-	TKSOTPPosiDirectionType	PosiDirection;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///³Ö²ÖÈÕÆÚ
-	TKSOTPPositionDateType	PositionDate;
-	///ÉÏÈÕ³Ö²Ö
-	TKSOTPVolumeType	YdPosition;
-	///½ñÈÕ³Ö²Ö
-	TKSOTPVolumeType	Position;
-	///¶àÍ·¶³½á
-	TKSOTPVolumeType	LongFrozen;
-	///¿ÕÍ·¶³½á
-	TKSOTPVolumeType	ShortFrozen;
-	///¿ª²Ö¶³½á½ğ¶î
-	TKSOTPMoneyType	LongFrozenAmount;
-	///¿ª²Ö¶³½á½ğ¶î
-	TKSOTPMoneyType	ShortFrozenAmount;
-	///¿ª²ÖÁ¿
-	TKSOTPVolumeType	OpenVolume;
-	///¿ª²Ö½ğ¶î
-	TKSOTPMoneyType	OpenAmount;
-	///Æ½²Ö½ğ¶î
-	TKSOTPMoneyType	CloseAmount;
-	///³Ö²Ö³É±¾
-	TKSOTPMoneyType	PositionCost;
-	///Õ¼ÓÃµÄ±£Ö¤½ğ
-	TKSOTPMoneyType	UseMargin;
-	///¶³½áµÄ±£Ö¤½ğ
-	TKSOTPMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TKSOTPMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TKSOTPMoneyType	FrozenCommission;
-	///×Ê½ğ²î¶î
-	TKSOTPMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TKSOTPMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TKSOTPMoneyType	PositionProfit;
-	///ÉÏ´Î½áËã¼Û
-	TKSOTPPriceType	PreSettlementPrice;
-	///±¾´Î½áËã¼Û
-	TKSOTPPriceType	SettlementPrice;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///¿ª²Ö³É±¾
-	TKSOTPMoneyType	OpenCost;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TKSOTPMoneyType	ExchangeMargin;
-	///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfitByDate;
-	///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfitByTrade;
-	///½ñÈÕ³Ö²Ö
-	TKSOTPVolumeType	TodayPosition;
-	///±£Ö¤½ğÂÊ
-	TKSOTPRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TKSOTPRatioType	MarginRateByVolume;
-	///Ö´ĞĞ¶³½á
-	TKSOTPVolumeType	StrikeFrozen;
-	///Ö´ĞĞ¶³½á½ğ¶î
-	TKSOTPMoneyType	StrikeFrozenAmount;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///²éÑ¯×Ê½ğÕË»§
-struct CKSOTPQryTradingAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-};
-
-///×Ê½ğÕË»§
-struct CKSOTPTradingAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///ÉÏ´Î½áËã×¼±¸½ğ
-	TKSOTPMoneyType	PreBalance;
-	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
-	TKSOTPMoneyType	PreMargin;
-	///Èë½ğ½ğ¶î
-	TKSOTPMoneyType	Deposit;
-	///³ö½ğ½ğ¶î
-	TKSOTPMoneyType	Withdraw;
-	///¶³½áµÄ±£Ö¤½ğ
-	TKSOTPMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TKSOTPMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TKSOTPMoneyType	FrozenCommission;
-	///µ±Ç°±£Ö¤½ğ×Ü¶î
-	TKSOTPMoneyType	CurrMargin;
-	///×Ê½ğ²î¶î
-	TKSOTPMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TKSOTPMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TKSOTPMoneyType	PositionProfit;
-	///Ö¤È¯½áËã×¼±¸½ğ
-	TKSOTPMoneyType	Balance;
-	///¿ÉÓÃ×Ê½ğ
-	TKSOTPMoneyType	Available;
-	///¿ÉÈ¡×Ê½ğ
-	TKSOTPMoneyType	WithdrawQuota;
-	///»ù±¾×¼±¸½ğ
-	TKSOTPMoneyType	Reserve;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///ĞÅÓÃ¶î¶È
-	TKSOTPMoneyType	Credit;
-	///ÖÊÑº½ğ¶î
-	TKSOTPMoneyType	Mortgage;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TKSOTPMoneyType	ExchangeMargin;
-	///Í¶×ÊÕß½»¸î±£Ö¤½ğ
-	TKSOTPMoneyType	DeliveryMargin;
-	///½»Ò×Ëù½»¸î±£Ö¤½ğ
-	TKSOTPMoneyType	ExchangeDeliveryMargin;
-};
-
-///²éÑ¯Í¶×ÊÕß
-struct CKSOTPQryInvestorField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-};
-
-///Í¶×ÊÕß
-struct CKSOTPInvestorField
-{
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÃû³Æ
-	TKSOTPPartyNameType	InvestorName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdentifiedCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///ÊÇ·ñ»îÔ¾
-	TKSOTPBoolType	IsActive;
-	///ÁªÏµµç»°
-	TKSOTPTelephoneType	Telephone;
-	///Í¨Ñ¶µØÖ·
-	TKSOTPAddressType	Address;
-	///¿ª»§ÈÕÆÚ
-	TKSOTPDateType	OpenDate;
-	///ÊÖ»ú
-	TKSOTPMobileType	Mobile;
-};
-
-///²éÑ¯ºÏÔ¼ÕËºÅ
-struct CKSOTPQryTradingCodeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///½»Ò×±àÂë
-struct CKSOTPTradingCodeField
-{
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÕËºÅ
-	TKSOTPClientIDType	ClientID;
-	///ÊÇ·ñ»îÔ¾
-	TKSOTPBoolType	IsActive;
-	///½»Ò×±àÂëÀàĞÍ
-	TKSOTPClientIDTypeType	ClientIDType;
-};
-
-///²éÑ¯½»Ò×Ëù
-struct CKSOTPQryExchangeField
-{
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///½»Ò×Ëù
-struct CKSOTPExchangeField
-{
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///½»Ò×ËùÃû³Æ
-	TKSOTPExchangeNameType	ExchangeName;
-};
-
-///²éÑ¯ºÏÔ¼
-struct CKSOTPQryInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///ºÏÔ¼
-struct CKSOTPInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼Ãû³Æ
-	TKSOTPInstrumentNameType	InstrumentName;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///Æ·ÖÖ´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///²úÆ·ÀàĞÍ
-	TKSOTPProductClassType	ProductClass;
-	///½»¸îÄê·İ
-	TKSOTPYearType	DeliveryYear;
-	///½»¸îÔÂ
-	TKSOTPMonthType	DeliveryMonth;
-	///ÊĞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TKSOTPVolumeType	MaxMarketOrderVolume;
-	///ÊĞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TKSOTPVolumeType	MinMarketOrderVolume;
-	///ÏŞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TKSOTPVolumeType	MaxLimitOrderVolume;
-	///ÏŞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TKSOTPVolumeType	MinLimitOrderVolume;
-	///ºÏÔ¼ÊıÁ¿³ËÊı
-	TKSOTPVolumeMultipleType	VolumeMultiple;
-	///×îĞ¡±ä¶¯¼ÛÎ»
-	TKSOTPPriceType	PriceTick;
-	///´´½¨ÈÕ
-	TKSOTPDateType	CreateDate;
-	///ÉÏÊĞÈÕ
-	TKSOTPDateType	OpenDate;
-	///µ½ÆÚÈÕ
-	TKSOTPDateType	ExpireDate;
-	///¿ªÊ¼½»¸îÈÕ
-	TKSOTPDateType	StartDelivDate;
-	///½áÊø½»¸îÈÕ
-	TKSOTPDateType	EndDelivDate;
-	///ºÏÔ¼ÉúÃüÖÜÆÚ×´Ì¬
-	TKSOTPInstLifePhaseType	InstLifePhase;
-	///µ±Ç°ÊÇ·ñ½»Ò×
-	TKSOTPBoolType	IsTrading;
-	///³Ö²ÖÀàĞÍ
-	TKSOTPPositionTypeType	PositionType;
-	///³Ö²ÖÈÕÆÚÀàĞÍ
-	TKSOTPPositionDateTypeType	PositionDateType;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TKSOTPRatioType	LongMarginRatio;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TKSOTPRatioType	ShortMarginRatio;
-	///»ù´¡ÉÌÆ·´úÂë
-	TKSOTPInstrumentIDType	UnderlyingInstrID;
-	///Ö´ĞĞ¼Û
-	TKSOTPPriceType	StrikePrice;
-	///ÆÚÈ¨ÀàĞÍ
-	TKSOTPOptionsTypeType	OptionsType;
-	///ºÏÔ¼»ù´¡ÉÌÆ·³ËÊı
-	TKSOTPUnderlyingMultipleType	UnderlyingMultiple;
-	///ºÏÔ¼±êÊ¶Âë
-	TKSOTPInstrumentCodeType	InstrumentCode;
-};
-
-///²éÑ¯Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
-struct CKSOTPQryInvestorPositionDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
-struct CKSOTPInvestorPositionDetailField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÂòÂô
-	TKSOTPDirectionType	Direction;
-	///¿ª²ÖÈÕÆÚ
-	TKSOTPDateType	OpenDate;
-	///³É½»±àºÅ
-	TKSOTPTradeIDType	TradeID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///¿ª²Ö¼Û
-	TKSOTPPriceType	OpenPrice;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///³É½»ÀàĞÍ
-	TKSOTPTradeTypeType	TradeType;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfitByDate;
-	///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
-	TKSOTPMoneyType	CloseProfitByTrade;
-	///ÖğÈÕ¶¢ÊĞ³Ö²ÖÓ¯¿÷
-	TKSOTPMoneyType	PositionProfitByDate;
-	///Öğ±Ê¶Ô³å³Ö²ÖÓ¯¿÷
-	TKSOTPMoneyType	PositionProfitByTrade;
-	///Í¶×ÊÕß±£Ö¤½ğ
-	TKSOTPMoneyType	Margin;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TKSOTPMoneyType	ExchMargin;
-	///±£Ö¤½ğÂÊ
-	TKSOTPRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TKSOTPRatioType	MarginRateByVolume;
-	///×ò½áËã¼Û
-	TKSOTPPriceType	LastSettlementPrice;
-	///½áËã¼Û
-	TKSOTPPriceType	SettlementPrice;
-};
-
-///²éÑ¯½»Ò×ÊÂ¼şÍ¨Öª
-struct CKSOTPQryTradingNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-};
-
-///ÓÃ»§ÊÂ¼şÍ¨Öª
-struct CKSOTPTradingNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ĞòÁĞÏµÁĞºÅ
-	TKSOTPSequenceSeriesType	SequenceSeries;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///·¢ËÍÊ±¼ä
-	TKSOTPTimeType	SendTime;
-	///ĞòÁĞºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///ÏûÏ¢ÕıÎÄ
-	TKSOTPContentType	FieldContent;
-};
-
-///ÓÃ»§ÊÂ¼şÍ¨ÖªĞÅÏ¢
-struct CKSOTPTradingNoticeInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///·¢ËÍÊ±¼ä
-	TKSOTPTimeType	SendTime;
-	///ÏûÏ¢ÕıÎÄ
-	TKSOTPContentType	FieldContent;
-	///ĞòÁĞÏµÁĞºÅ
-	TKSOTPSequenceSeriesType	SequenceSeries;
-	///ĞòÁĞºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-};
-
-///ÊäÈëµÄÖ´ĞĞĞû¸æ
-struct CKSOTPInputExecOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Ö´ĞĞĞû¸æÒıÓÃ
-	TKSOTPOrderRefType	ExecOrderRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///Ö´ĞĞÀàĞÍ
-	TKSOTPActionTypeType	ActionType;
-	///±£ÁôÍ·´çÉêÇëµÄ³Ö²Ö·½Ïò
-	TKSOTPPosiDirectionType	PosiDirection;
-	///ÆÚÈ¨ĞĞÈ¨ºóÊÇ·ñ±£ÁôÆÚ»õÍ·´çµÄ±ê¼Ç
-	TKSOTPExecOrderPositionFlagType	ReservePositionFlag;
-	///ÆÚÈ¨ĞĞÈ¨ºóÉú³ÉµÄÍ·´çÊÇ·ñ×Ô¶¯Æ½²Ö
-	TKSOTPExecOrderCloseFlagType	CloseFlag;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///ÊäÈëÖ´ĞĞĞû¸æ²Ù×÷
-struct CKSOTPInputExecOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///Ö´ĞĞĞû¸æ²Ù×÷ÒıÓÃ
-	TKSOTPOrderActionRefType	ExecOrderActionRef;
-	///Ö´ĞĞĞû¸æÒıÓÃ
-	TKSOTPOrderRefType	ExecOrderRef;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///Ö´ĞĞĞû¸æ²Ù×÷±àºÅ
-	TKSOTPExecOrderSysIDType	ExecOrderSysID;
-	///²Ù×÷±êÖ¾
-	TKSOTPActionFlagType	ActionFlag;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-};
-
-///Â¼ÈëËø¶¨
-struct CKSOTPInputLockField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Ëø¶¨ÒıÓÃ
-	TKSOTPOrderRefType	LockRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///Ëø¶¨ÀàĞÍ
-	TKSOTPLockTypeType	LockType;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Ëø¶¨
-struct CKSOTPLockField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Ëø¶¨ÒıÓÃ
-	TKSOTPOrderRefType	LockRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///Ëø¶¨ÀàĞÍ
-	TKSOTPLockTypeType	LockType;
-	///±¾µØËø¶¨±àºÅ
-	TKSOTPOrderLocalIDType	LockLocalID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TKSOTPParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TKSOTPClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TKSOTPTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///Ö´ĞĞĞû¸æÌá½»×´Ì¬
-	TKSOTPOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TKSOTPSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///Ëø¶¨±àºÅ
-	TKSOTPOrderSysIDType	LockSysID;
-	///±¨µ¥ÈÕÆÚ
-	TKSOTPDateType	InsertDate;
-	///²åÈëÊ±¼ä
-	TKSOTPTimeType	InsertTime;
-	///³·ÏúÊ±¼ä
-	TKSOTPTimeType	CancelTime;
-	///Ëø¶¨×´Ì¬
-	TKSOTPOrderActionStatusType	LockStatus;
-	///½áËã»áÔ±±àºÅ
-	TKSOTPParticipantIDType	ClearingPartID;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TKSOTPErrorMsgType	StatusMsg;
-	///²Ù×÷ÓÃ»§´úÂë
-	TKSOTPUserIDType	ActiveUserID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TKSOTPSequenceNoType	BrokerLockSeq;
-	///ÓªÒµ²¿±àºÅ
-	TKSOTPBranchIDType	BranchID;
-};
-
-///²éÑ¯Ëø¶¨
-struct CKSOTPQryLockField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///Ëø¶¨±àºÅ
-	TKSOTPOrderSysIDType	LockSysID;
-};
-
-///Ö´ĞĞĞû¸æ²éÑ¯
-struct CKSOTPQryExecOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///Ö´ĞĞĞû¸æ±àºÅ
-	TKSOTPExecOrderSysIDType	ExecOrderSysID;
-};
-
-///ÊäÈë²éÑ¯Ğû¸æÊıÁ¿
-struct CKSOTPQryExecOrderVolumeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÂòÂô±êÖ¾
-	TKSOTPDirectionType	Direction;
-};
-
-///Êä³ö²éÑ¯Ğû¸æÊıÁ¿
-struct CKSOTPExecOrderVolumeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///¿ÉÉêÇëÖ´ĞĞÁ¿
-	TKSOTPVolumeType	ExecVolume;
-	///¿ÉÉêÇë·ÅÆúÁ¿
-	TKSOTPVolumeType	ActionVolume;
-	///ÒÑÉêÇëÖ´ĞĞÁ¿
-	TKSOTPVolumeType	ExecedVolume;
-	///ÒÑÉêÇë·ÅÆúÁ¿ 
-	TKSOTPVolumeType	ActionedVolume;
-	///ÂòÂô±êÖ¾
-	TKSOTPDirectionType	Direction;
-};
-
-///²éÑ¯Ëø¶¨Ö¤È¯²ÖÎ»
-struct CKSOTPQryLockPositionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Ëø¶¨Ö¤È¯²ÖÎ»
-struct CKSOTPLockPositionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///ÒÑËø¶¨ÊıÁ¿
-	TKSOTPVolumeType	FrozenVolume;
-};
-
-///ÊäÈë²éÑ¯±êµÄÈ¯ĞÅÏ¢ÇëÇó
-struct CKSOTPQryUnderlyingStockInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///Æ·ÖÖ´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-};
-
-///Êä³ö²éÑ¯±êµÄÈ¯ĞÅÏ¢ÇëÇó
-struct CKSOTPUnderlyingStockInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///Æ·ÖÖ´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///×òÊÕÅÌ
-	TKSOTPPriceType	PreClosePrice;
-	///°²È«ÏµÊı
-	TKSOTPRatioType	GuarantRatio;
-};
-
-///ÊäÈë²éÑ¯¸ö¹ÉÆÚÈ¨ÊÖĞø·ÑÂÊÇëÇó
-struct CKSOTPQryOTPInsCommRateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Êä³ö²éÑ¯¸ö¹ÉÆÚÈ¨ºÏÔ¼ÊÖĞø·ÑÂÊ
-struct CKSOTPOTPInsCommRateField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TKSOTPInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///¿ª²ÖÊÖĞø·ÑÂÊ
-	TKSOTPRatioType	OpenRatioByMoney;
-	///¿ª²ÖÊÖĞø·Ñ
-	TKSOTPRatioType	OpenRatioByVolume;
-	///Æ½²ÖÊÖĞø·ÑÂÊ
-	TKSOTPRatioType	CloseRatioByMoney;
-	///Æ½²ÖÊÖĞø·Ñ
-	TKSOTPRatioType	CloseRatioByVolume;
-	///Æ½½ñÊÖĞø·ÑÂÊ
-	TKSOTPRatioType	CloseTodayRatioByMoney;
-	///Æ½½ñÊÖĞø·Ñ
-	TKSOTPRatioType	CloseTodayRatioByVolume;
-	///Ö´ĞĞÊÖĞø·ÑÂÊ
-	TKSOTPRatioType	StrikeRatioByMoney;
-	///Ö´ĞĞÊÖĞø·Ñ
-	TKSOTPRatioType	StrikeRatioByVolume;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///ÊäÈë²éÑ¯¸ö¹ÉÆÚÈ¨ºÏÔ¼±£Ö¤½ğÂÊÇëÇó
-struct CKSOTPQryInstrumentMarginRateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Êä³ö²éÑ¯¸ö¹ÉÆÚÈ¨ºÏÔ¼±£Ö¤½ğÂÊ
-struct CKSOTPInstrumentMarginRateField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TKSOTPInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TKSOTPRatioType	LongMarginRatioByMoney;
-	///¶àÍ·±£Ö¤½ğ·Ñ
-	TKSOTPMoneyType	LongMarginRatioByVolume;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TKSOTPRatioType	ShortMarginRatioByMoney;
-	///¿ÕÍ·±£Ö¤½ğ·Ñ
-	TKSOTPMoneyType	ShortMarginRatioByVolume;
-	///ÊÇ·ñÏà¶Ô½»Ò×ËùÊÕÈ¡
-	TKSOTPBoolType	IsRelative;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///ÊäÈë¸ö¹ÉĞĞÈ¨Ö¸ÅÉĞÅÏ¢
-struct CKSOTPQryOTPAssignmentField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///ÂòÂô
-	TKSOTPDirectionType	Direction;
-};
-
-///Êä³ö¸ö¹ÉĞĞÈ¨Ö¸ÅÉĞÅÏ¢
-struct CKSOTPOTPAssignmentField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///ÂòÂô
-	TKSOTPDirectionType	Direction;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼Ãû³Æ
-	TKSOTPInstrumentNameType	InstrumentName;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÉÏÈÕ³Ö²Ö
-	TKSOTPVolumeType	YdPosition;
-	///ĞĞÈ¨Ö¸ÅÉºÏÔ¼ÊıÁ¿
-	TKSOTPVolumeType AssInsVo;
-	///ĞĞÈ¨±êµÄÖ¤È¯ÊıÁ¿
-	TKSOTPVolumeType AssProVol;
-	///ĞĞÈ¨Ö¸ÅÉÓ¦¸¶½ğ¶î
-	TKSOTPMoneyType  FeePay;
-	///ÆÚÈ¨C/P±êÖ¾
-	TKSOTPOptionsTypeType OptionsType;
-	///ĞĞÈ¨½»ÊÕÈÕ
-	TKSOTPDateType DeliveryDay;
-	///¸ö¹ÉºÏÔ¼±êÊ¶Âë
-	TKSOTPInstrumentIDType StockID;
-};
-
-///²éÑ¯ĞĞÇé
-struct CKSOTPQryDepthMarketDataField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///Éî¶ÈĞĞÇé
-struct CKSOTPDepthMarketDataField
-{
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///×îĞÂ¼Û
-	TKSOTPPriceType	LastPrice;
-	///ÉÏ´Î½áËã¼Û
-	TKSOTPPriceType	PreSettlementPrice;
-	///×òÊÕÅÌ
-	TKSOTPPriceType	PreClosePrice;
-	///×ò³Ö²ÖÁ¿
-	TKSOTPLargeVolumeType	PreOpenInterest;
-	///½ñ¿ªÅÌ
-	TKSOTPPriceType	OpenPrice;
-	///×î¸ß¼Û
-	TKSOTPPriceType	HighestPrice;
-	///×îµÍ¼Û
-	TKSOTPPriceType	LowestPrice;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///³É½»½ğ¶î
-	TKSOTPMoneyType	Turnover;
-	///³Ö²ÖÁ¿
-	TKSOTPLargeVolumeType	OpenInterest;
-	///½ñÊÕÅÌ
-	TKSOTPPriceType	ClosePrice;
-	///±¾´Î½áËã¼Û
-	TKSOTPPriceType	SettlementPrice;
-	///ÕÇÍ£°å¼Û
-	TKSOTPPriceType	UpperLimitPrice;
-	///µøÍ£°å¼Û
-	TKSOTPPriceType	LowerLimitPrice;
-	///×òĞéÊµ¶È
-	TKSOTPRatioType	PreDelta;
-	///½ñĞéÊµ¶È
-	TKSOTPRatioType	CurrDelta;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TKSOTPTimeType	UpdateTime;
-	///×îºóĞŞ¸ÄºÁÃë
-	TKSOTPMillisecType	UpdateMillisec;
-	///ÉêÂò¼ÛÒ»
-	TKSOTPPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TKSOTPVolumeType	BidVolume1;
-	///ÉêÂô¼ÛÒ»
-	TKSOTPPriceType	AskPrice1;
-	///ÉêÂôÁ¿Ò»
-	TKSOTPVolumeType	AskVolume1;
-	///ÉêÂò¼Û¶ş
-	TKSOTPPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TKSOTPVolumeType	BidVolume2;
-	///ÉêÂô¼Û¶ş
-	TKSOTPPriceType	AskPrice2;
-	///ÉêÂôÁ¿¶ş
-	TKSOTPVolumeType	AskVolume2;
-	///ÉêÂò¼ÛÈı
-	TKSOTPPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TKSOTPVolumeType	BidVolume3;
-	///ÉêÂô¼ÛÈı
-	TKSOTPPriceType	AskPrice3;
-	///ÉêÂôÁ¿Èı
-	TKSOTPVolumeType	AskVolume3;
-	///ÉêÂò¼ÛËÄ
-	TKSOTPPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TKSOTPVolumeType	BidVolume4;
-	///ÉêÂô¼ÛËÄ
-	TKSOTPPriceType	AskPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TKSOTPVolumeType	AskVolume4;
-	///ÉêÂò¼ÛÎå
-	TKSOTPPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TKSOTPVolumeType	BidVolume5;
-	///ÉêÂô¼ÛÎå
-	TKSOTPPriceType	AskPrice5;
-	///ÉêÂôÁ¿Îå
-	TKSOTPVolumeType	AskVolume5;
-	///µ±ÈÕ¾ù¼Û
-	TKSOTPPriceType	AveragePrice;
-	///ÒµÎñÈÕÆÚ
-	TKSOTPDateType	ActionDay;
-};
-
-///·¢¸ø×öÊĞÉÌµÄÑ¯¼ÛÇëÇó
-struct CKSOTPForQuoteRspField
-{
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Ñ¯¼Û±àºÅ
-	TKSOTPOrderSysIDType	ForQuoteSysID;
-	///Ñ¯¼ÛÊ±¼ä
-	TKSOTPTimeType	ForQuoteTime;
-	///ÒµÎñÈÕÆÚ
-	TKSOTPDateType	ActionDay;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-};
-
-///±¨µ¥
-struct CKSOTPOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TKSOTPOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TKSOTPDirectionType	Direction;
-	///¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///¼Û¸ñ
-	TKSOTPPriceType	LimitPrice;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÊıÁ¿
-	TKSOTPVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TKSOTPTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TKSOTPDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TKSOTPVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TKSOTPVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TKSOTPContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TKSOTPPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TKSOTPForceCloseReasonType	ForceCloseReason;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///±¾µØ±¨µ¥±àºÅ
-	TKSOTPOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TKSOTPParticipantIDType	ParticipantID;
-	///ºÏÔ¼ÕËºÅ
-	TKSOTPClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TKSOTPTraderIDType	TraderID;
-	///±¨µ¥Ìá½»×´Ì¬
-	TKSOTPOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TKSOTPSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///±¨µ¥±àºÅ
-	TKSOTPOrderSysIDType	OrderSysID;
-	///±¨µ¥À´Ô´
-	TKSOTPOrderSourceType	OrderSource;
-	///±¨µ¥×´Ì¬
-	TKSOTPOrderStatusType	OrderStatus;
-	///±¨µ¥ÀàĞÍ
-	TKSOTPOrderTypeType	OrderType;
-	///½ñ³É½»ÊıÁ¿
-	TKSOTPVolumeType	VolumeTraded;
-	///Ê£ÓàÊıÁ¿
-	TKSOTPVolumeType	VolumeTotal;
-	///±¨µ¥ÈÕÆÚ
-	TKSOTPDateType	InsertDate;
-	///Î¯ÍĞÊ±¼ä
-	TKSOTPTimeType	InsertTime;
-	///¼¤»îÊ±¼ä
-	TKSOTPTimeType	ActiveTime;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TKSOTPTimeType	UpdateTime;
-	///³·ÏúÊ±¼ä
-	TKSOTPTimeType	CancelTime;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TKSOTPErrorMsgType	StatusMsg;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TKSOTPBoolType	UserForceClose;
-	///²Ù×÷ÓÃ»§´úÂë
-	TKSOTPUserIDType	ActiveUserID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TKSOTPSequenceNoType	BrokerOrderSeq;
-};
-
-///³É½»
-struct CKSOTPTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///³É½»±àºÅ
-	TKSOTPTradeIDType	TradeID;
-	///ÂòÂô·½Ïò
-	TKSOTPDirectionType	Direction;
-	///±¨µ¥±àºÅ
-	TKSOTPOrderSysIDType	OrderSysID;
-	///»áÔ±´úÂë
-	TKSOTPParticipantIDType	ParticipantID;
-	///ºÏÔ¼ÕËºÅ
-	TKSOTPClientIDType	ClientID;
-	///½»Ò×½ÇÉ«
-	TKSOTPTradingRoleType	TradingRole;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///¼Û¸ñ
-	TKSOTPPriceType	Price;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///³É½»Ê±ÆÚ
-	TKSOTPDateType	TradeDate;
-	///³É½»Ê±¼ä
-	TKSOTPTimeType	TradeTime;
-	///³É½»ÀàĞÍ
-	TKSOTPTradeTypeType	TradeType;
-	///³É½»¼ÛÀ´Ô´
-	TKSOTPPriceSourceType	PriceSource;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TKSOTPTraderIDType	TraderID;
-	///±¾µØ±¨µ¥±àºÅ
-	TKSOTPOrderLocalIDType	OrderLocalID;
-	///½áËã»áÔ±±àºÅ
-	TKSOTPParticipantIDType	ClearingPartID;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TKSOTPSequenceNoType	BrokerOrderSeq;
-	///³É½»À´Ô´
-	TKSOTPTradeSourceType	TradeSource;
-};
-
-///Ö´ĞĞĞû¸æ
-struct CKSOTPExecOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Ö´ĞĞĞû¸æÒıÓÃ
-	TKSOTPOrderRefType	ExecOrderRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///Ö´ĞĞÀàĞÍ
-	TKSOTPActionTypeType	ActionType;
-	///±£ÁôÍ·´çÉêÇëµÄ³Ö²Ö·½Ïò
-	TKSOTPPosiDirectionType	PosiDirection;
-	///ÆÚÈ¨ĞĞÈ¨ºóÊÇ·ñ±£ÁôÆÚ»õÍ·´çµÄ±ê¼Ç
-	TKSOTPExecOrderPositionFlagType	ReservePositionFlag;
-	///ÆÚÈ¨ĞĞÈ¨ºóÉú³ÉµÄÍ·´çÊÇ·ñ×Ô¶¯Æ½²Ö
-	TKSOTPExecOrderCloseFlagType	CloseFlag;
-	///±¾µØÖ´ĞĞĞû¸æ±àºÅ
-	TKSOTPOrderLocalIDType	ExecOrderLocalID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TKSOTPParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TKSOTPClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TKSOTPTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///Ö´ĞĞĞû¸æÌá½»×´Ì¬
-	TKSOTPOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TKSOTPSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///Ö´ĞĞĞû¸æ±àºÅ
-	TKSOTPExecOrderSysIDType	ExecOrderSysID;
-	///±¨µ¥ÈÕÆÚ
-	TKSOTPDateType	InsertDate;
-	///²åÈëÊ±¼ä
-	TKSOTPTimeType	InsertTime;
-	///³·ÏúÊ±¼ä
-	TKSOTPTimeType	CancelTime;
-	///Ö´ĞĞ½á¹û
-	TKSOTPExecResultType	ExecResult;
-	///½áËã»áÔ±±àºÅ
-	TKSOTPParticipantIDType	ClearingPartID;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TKSOTPErrorMsgType	StatusMsg;
-	///²Ù×÷ÓÃ»§´úÂë
-	TKSOTPUserIDType	ActiveUserID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TKSOTPSequenceNoType	BrokerExecOrderSeq;
-	///ÓªÒµ²¿±àºÅ
-	TKSOTPBranchIDType	BranchID;
-};
-
-///ºÏÔ¼×´Ì¬
-struct CKSOTPInstrumentStatusField
-{
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///ºÏÔ¼½»Ò××´Ì¬
-	TKSOTPInstrumentStatusType	InstrumentStatus;
-	///½»Ò×½×¶Î±àºÅ
-	TKSOTPTradingSegmentSNType	TradingSegmentSN;
-	///½øÈë±¾×´Ì¬Ê±¼ä
-	TKSOTPTimeType	EnterTime;
-	///½øÈë±¾×´Ì¬Ô­Òò
-	TKSOTPInstStatusEnterReasonType	EnterReason;
-};
-
-///×ªÕËÇëÇó
-struct CKSOTPReqTransferField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TKSOTPTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TKSOTPSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TKSOTPLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TKSOTPSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TKSOTPCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TKSOTPPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ö¤È¯ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TKSOTPUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TKSOTPYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TKSOTPTradeAmountType	TradeAmount;
-	///Ö¤È¯¿ÉÈ¡½ğ¶î
-	TKSOTPTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TKSOTPFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TKSOTPCustFeeType	CustFee;
-	///Ó¦ÊÕÖ¤È¯¹«Ë¾·ÑÓÃ
-	TKSOTPFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TKSOTPAddInfoType	Message;
-	///ÕªÒª
-	TKSOTPDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TKSOTPDeviceIDType	DeviceID;
-	///Ö¤È¯µ¥Î»ÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankSecuAccType;
-	///Ö¤È¯¹«Ë¾ÒøĞĞ±àÂë
-	TKSOTPBankCodingForFutureType	BrokerIDByBank;
-	///Ö¤È¯µ¥Î»ÕÊºÅ
-	TKSOTPBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TKSOTPPwdFlagType	BankPwdFlag;
-	///Ö¤È¯×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TKSOTPPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TKSOTPOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///½»Ò×ID
-	TKSOTPTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TKSOTPTransferStatusType	TransferStatus;
-};
-
-///ÒøĞĞ×Ê½ğ×ªÖ¤È¯ÏìÓ¦
-struct CKSOTPRspTransferField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TKSOTPTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TKSOTPSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TKSOTPLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TKSOTPSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TKSOTPCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TKSOTPPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ö¤È¯ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TKSOTPUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TKSOTPYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TKSOTPTradeAmountType	TradeAmount;
-	///Ö¤È¯¿ÉÈ¡½ğ¶î
-	TKSOTPTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TKSOTPFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TKSOTPCustFeeType	CustFee;
-	///Ó¦ÊÕÖ¤È¯¹«Ë¾·ÑÓÃ
-	TKSOTPFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TKSOTPAddInfoType	Message;
-	///ÕªÒª
-	TKSOTPDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TKSOTPDeviceIDType	DeviceID;
-	///Ö¤È¯µ¥Î»ÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankSecuAccType;
-	///Ö¤È¯¹«Ë¾ÒøĞĞ±àÂë
-	TKSOTPBankCodingForFutureType	BrokerIDByBank;
-	///Ö¤È¯µ¥Î»ÕÊºÅ
-	TKSOTPBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TKSOTPPwdFlagType	BankPwdFlag;
-	///Ö¤È¯×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TKSOTPPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TKSOTPOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///½»Ò×ID
-	TKSOTPTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TKSOTPTransferStatusType	TransferStatus;
-	///´íÎó´úÂë
-	TKSOTPErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TKSOTPErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯Ç©Ô¼ÒøĞĞÇëÇó
-struct CKSOTPQryContractBankField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TKSOTPBankBrchIDType	BankBrchID;
-};
-
-///²éÑ¯Ç©Ô¼ÒøĞĞÏìÓ¦
-struct CKSOTPContractBankField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TKSOTPBankBrchIDType	BankBrchID;
-	///ÒøĞĞÃû³Æ
-	TKSOTPBankNameType	BankName;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢ÇëÇó
-struct CKSOTPReqQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TKSOTPTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TKSOTPSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TKSOTPLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TKSOTPSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TKSOTPCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TKSOTPPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ö¤È¯ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TKSOTPUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TKSOTPYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TKSOTPDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TKSOTPDeviceIDType	DeviceID;
-	///Ö¤È¯µ¥Î»ÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankSecuAccType;
-	///Ö¤È¯¹«Ë¾ÒøĞĞ±àÂë
-	TKSOTPBankCodingForFutureType	BrokerIDByBank;
-	///Ö¤È¯µ¥Î»ÕÊºÅ
-	TKSOTPBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TKSOTPPwdFlagType	BankPwdFlag;
-	///Ö¤È¯×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TKSOTPPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TKSOTPOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///½»Ò×ID
-	TKSOTPTIDType	TID;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢ÏìÓ¦
-struct CKSOTPRspQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TKSOTPTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TKSOTPSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TKSOTPLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TKSOTPSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TKSOTPCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TKSOTPPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ö¤È¯ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TKSOTPUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TKSOTPYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TKSOTPDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TKSOTPDeviceIDType	DeviceID;
-	///Ö¤È¯µ¥Î»ÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankSecuAccType;
-	///Ö¤È¯¹«Ë¾ÒøĞĞ±àÂë
-	TKSOTPBankCodingForFutureType	BrokerIDByBank;
-	///Ö¤È¯µ¥Î»ÕÊºÅ
-	TKSOTPBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TKSOTPPwdFlagType	BankPwdFlag;
-	///Ö¤È¯×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TKSOTPPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TKSOTPOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///½»Ò×ID
-	TKSOTPTIDType	TID;
-	///ÒøĞĞ¿ÉÓÃ½ğ¶î
-	TKSOTPTradeAmountType	BankUseAmount;
-	///ÒøĞĞ¿ÉÈ¡½ğ¶î
-	TKSOTPTradeAmountType	BankFetchAmount;
-};
-
-///ÇëÇó²éÑ¯×ªÕÊÁ÷Ë®
-struct CKSOTPQryTransferSerialField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///ÒøĞĞ±àÂë
-	TKSOTPBankIDType	BankID;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢Í¨Öª
-struct CKSOTPNotifyQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TKSOTPTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TKSOTPSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TKSOTPLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TKSOTPSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TKSOTPCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TKSOTPPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Ö¤È¯ÃÜÂë
-	TKSOTPPasswordType	Password;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TKSOTPUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TKSOTPYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TKSOTPDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TKSOTPDeviceIDType	DeviceID;
-	///Ö¤È¯µ¥Î»ÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankSecuAccType;
-	///Ö¤È¯¹«Ë¾ÒøĞĞ±àÂë
-	TKSOTPBankCodingForFutureType	BrokerIDByBank;
-	///Ö¤È¯µ¥Î»ÕÊºÅ
-	TKSOTPBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TKSOTPPwdFlagType	BankPwdFlag;
-	///Ö¤È¯×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TKSOTPPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TKSOTPOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///½»Ò×ID
-	TKSOTPTIDType	TID;
-	///ÒøĞĞ¿ÉÓÃ½ğ¶î
-	TKSOTPTradeAmountType	BankUseAmount;
-	///ÒøĞĞ¿ÉÈ¡½ğ¶î
-	TKSOTPTradeAmountType	BankFetchAmount;
-	///´íÎó´úÂë
-	TKSOTPErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TKSOTPErrorMsgType	ErrorMsg;
-};
-
-///ÒøÆÚ×ªÕË½»Ò×Á÷Ë®±í
-struct CKSOTPTransferSerialField
-{
-	///Æ½Ì¨Á÷Ë®ºÅ
-	TKSOTPPlateSerialType	PlateSerial;
-	///½»Ò×·¢Æğ·½ÈÕÆÚ
-	TKSOTPTradeDateType	TradeDate;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPDateType	TradingDay;
-	///½»Ò×Ê±¼ä
-	TKSOTPTradeTimeType	TradeTime;
-	///½»Ò×´úÂë
-	TKSOTPTradeCodeType	TradeCode;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///ÒøĞĞ±àÂë
-	TKSOTPBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹±àÂë
-	TKSOTPBankBrchIDType	BankBranchID;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TKSOTPBankAccTypeType	BankAccType;
-	///ÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankAccount;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TKSOTPBankSerialType	BankSerial;
-	///Ö¤È¯¹«Ë¾±àÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TKSOTPFutureBranchIDType	BrokerBranchID;
-	///Ö¤È¯¹«Ë¾ÕÊºÅÀàĞÍ
-	TKSOTPFutureAccTypeType	FutureAccType;
-	///Í¶×ÊÕßÕÊºÅ
-	TKSOTPAccountIDType	AccountID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///Ö¤È¯¹«Ë¾Á÷Ë®ºÅ
-	TKSOTPFutureSerialType	FutureSerial;
-	///Ö¤¼şÀàĞÍ
-	TKSOTPIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TKSOTPIdentifiedCardNoType	IdentifiedCardNo;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///½»Ò×½ğ¶î
-	TKSOTPTradeAmountType	TradeAmount;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TKSOTPCustFeeType	CustFee;
-	///Ó¦ÊÕÖ¤È¯¹«Ë¾·ÑÓÃ
-	TKSOTPFutureFeeType	BrokerFee;
-	///ÓĞĞ§±êÖ¾
-	TKSOTPAvailabilityFlagType	AvailabilityFlag;
-	///²Ù×÷Ô±
-	TKSOTPOperatorCodeType	OperatorCode;
-	///ĞÂÒøĞĞÕÊºÅ
-	TKSOTPBankAccountType	BankNewAccount;
-	///´íÎó´úÂë
-	TKSOTPErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TKSOTPErrorMsgType	ErrorMsg;
-};
-
-///Ö¸¶¨µÄºÏÔ¼
-struct CKSOTPSpecificInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-};
-
-///²éÑ¯¿Í»§½»Ò×¼¶±ğ
-struct CKSOTPQryInvestorTradeLevelField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType ProductID;
-};
-
-///¿Í»§½»Ò×¼¶±ğ
-struct CKSOTPInvestorTradeLevelField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType ProductID;
-	///½»Ò×¼¶±ğ
-	TKSOTPTradeLevelType TradeLevel;
-};
-
-///²éÑ¯¸ö¹ÉÏŞ¹º¶î¶È
-struct CKSOTPQryPurchaseLimitAmtField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-};
-
-///¸ö¹ÉÏŞ¹º¶î¶È
-struct CKSOTPPurchaseLimitAmtField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-	///ÏŞ¹º¶î¶È
-	TKSOTPMoneyType	PurLimitAmt;
-};
-
-///²éÑ¯¸ö¹ÉÏŞ²Ö¶î¶È
-struct CKSOTPQryPositionLimitVolField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType ProductID;
-	///±£»¤ĞÔ±êÖ¾
-	TKSOTPProtectFlagType ProtectFlag;
-	///ÆÚÈ¨C/P±êÖ¾
-	TKSOTPOptionsTypeType OptionsType;
-	///¿ØÖÆ·¶Î§
-	TKSOTPControlRangeType ControlRange;
-};
-
-///²éÑ¯¸ö¹ÉÏŞ²Ö¶î¶È
-struct CKSOTPPositionLimitVolField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType ProductID;
-	///±£»¤ĞÔ±êÖ¾
-	TKSOTPProtectFlagType ProtectFlag;
-	///ÆÚÈ¨C/P±êÖ¾
-	TKSOTPOptionsTypeType OptionsType;
-	///¿ØÖÆ·¶Î§
-	TKSOTPControlRangeType ControlRange;
-	///ÏŞ²Ö¶î¶È
-	TKSOTPVolumeType	PosiLimitVol;
-};
-
-///²éÑ¯Í¶×ÊÕß½áËã½á¹û
-struct CKSOTPQrySettlementInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-};
-
-///²éÑ¯½áËãĞÅÏ¢È·ÈÏÓò
-struct CKSOTPQrySettlementInfoConfirmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-};
-
-///Í¶×ÊÕß½áËã½á¹ûÈ·ÈÏĞÅÏ¢
-struct CKSOTPSettlementInfoConfirmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///È·ÈÏÈÕÆÚ
-	TKSOTPDateType	ConfirmDate;
-	///È·ÈÏÊ±¼ä
-	TKSOTPTimeType	ConfirmTime;
-};
-
-///Í¶×ÊÕß½áËã½á¹û
-struct CKSOTPSettlementInfoField
-{
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///ÏûÏ¢ÕıÎÄ
-	TKSOTPContentType	Content;
-};
-
-///²éÑ¯ÀúÊ·±¨µ¥
-struct CKSOTPQryHistoryOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///±¾µØ±¨µ¥±àºÅ
-	TKSOTPOrderLocalIDType	OrderLocalID;
-	///Æ·ÖÖ´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///¿ªÊ¼ÈÕÆÚ
-	TKSOTPDateType	OrderDataStart;
-	///½áÊøÈÕÆÚ
-	TKSOTPDateType	OrderDataEnd;
-};
-
-///²éÑ¯ÀúÊ·³É½»
-struct CKSOTPQryHistoryTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///Æ·ÖÖ´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///¿ªÊ¼ÈÕÆÚ
-	TKSOTPDateType	TradeDataStart;
-	///½áÊøÈÕÆÚ
-	TKSOTPDateType	TradeDataEnd;
-};
-
-///²éÑ¯ÀúÊ·ĞĞÈ¨Ö¸ÅÉÃ÷Ï¸
-struct CKSOTPQryHistoryAssignmentField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///Í¶±£±ê¼Ç
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÆÚÈ¨ÀàĞÍ
-	TKSOTPOptionsTypeType	OptionsType;
-	///½»¸îÔÂ
-	TKSOTPDateType	DeliveryMonth;
-	///³Ö²Ö·½Ïò
-	TKSOTPPosiDirectionType PosiDirection;
-};
-
-///²éÑ¯ĞĞÈ¨½»¸îÃ÷Ï¸
-struct CKSOTPQryDelivDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///½»¸îÔÂ
-	TKSOTPDateType	DeliveryMonth;
-	///¸ö¹É½»ÊÕ²éÑ¯ÀàĞÍ
-	TKSOTPDelivModeType	DelivMode;
-};
-
-///×Ô¶¯ĞĞÈ¨Ö´ĞĞ²Ù×÷
-struct CKSOTPAutoExecOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///×Ô¶¯ĞĞÈ¨ãĞÖµ(0-²»×Ô¶¯ĞĞÈ¨,·Ç0-´ú±í³¬¹ı·§Öµ»á×Ô¶¯ĞĞÈ¨(20´ú±í20%))
-	TKSOTPVolumeType RangeVol;
-};
-
-///ÀúÊ·ĞĞÈ¨Ö¸ÅÉÃ÷Ï¸
-struct CKSOTPHistoryAssignmentField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×ÈÕÆÚ
-	TKSOTPTradeDateType	TradingDay;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///¿Í»§´úÂë
-	TKSOTPClientIDType	ClientID;
-	///±êµÄÖ¤È¯´úÂë
-	TKSOTPInstrumentIDType	StockInstr;
-	///Í¶±£±ê¼Ç
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÆÚÈ¨ÀàĞÍ
-	TKSOTPOptionsTypeType	OptionsType;
-	///³Ö²Ö·½Ïò
-	TKSOTPPosiDirectionType PosiDirection;
-	///Ö´ĞĞ¼Û
-	TKSOTPPriceType	StrikePrice;
-	///ĞĞÈ¨Ö¸ÅÉÊıÁ¿
-	TKSOTPVolumeType ExecVol;
-	///±êµÄÖ¤È¯Ó¦ÊÕ¸¶ÊıÁ¿
-	TKSOTPVolumeType IOVol;
-	///Ó¦ÊÕ¸¶½ğ¶î
-	TKSOTPMoneyType	IOAmt;
-	///ĞĞÈ¨½»ÊÕÈÕ
-	TKSOTPDateType	DelivDate;
-};
-
-///ĞĞÈ¨½»¸îÃ÷Ï¸
-struct CKSOTPDelivDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///±êµÄÖ¤È¯´úÂë
-	TKSOTPInstrumentIDType	StockInstr;
-	///Ó¦ÊÕ/Ó¦¸¶/¿ÛÈ¯Ö¤È¯ÊıÁ¿
-	TKSOTPVolumeType IOVol;
-	///ÊµÊÕ¸¶ÊıÁ¿
-	TKSOTPVolumeType IOVolInFact;
-	///½áËã¼Û
-	TKSOTPPriceType	SettlementPrice;
-	///¿ÛÈ¯ÃæÖµ/½áËã½ğ¶î
-	TKSOTPMoneyType	SettlementAmt;
-	///ĞĞÈ¨½»ÊÕÈÕ
-	TKSOTPDateType	DelivDate;
-	///ÒµÎñÀàĞÍÃû³Æ
-	TKSOTPFunctionNameType	FunctionName;
-};
-
-///ÀúÊ·±¨µ¥
-struct CKSOTPHistoryOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///ºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///±¾µØ±¨µ¥±àºÅ
-	TKSOTPOrderLocalIDType	OrderLocalID;
-	///Éê±¨Ê±¼ä
-	TKSOTPTimeType	InsertTime;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///³É½»¼Û¸ñ
-	TKSOTPPriceType	TradePrice;
-	///³É½»½ğ¶î
-	TKSOTPMoneyType	TradeAmount;
-	///³É½»ÊıÁ¿
-	TKSOTPVolumeType	VolumeTraded;
-	///¶³½á½â¶³½ğ¶î
-	TKSOTPMoneyType	FrozenAmount;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///ÂòÂô·½Ïò
-	TKSOTPDirectionType	Direction;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///ÇëÇó±àºÅ
-	TKSOTPRequestIDType	RequestID;
-	///±¨µ¥ÒıÓÃ
-	TKSOTPOrderRefType	OrderRef;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///Î¯ÍĞ¼Û¸ñ
-	TKSOTPPriceType	OrderPrice;
-	///Î¯ÍĞÀ´Ô´
-	TKSOTPOrderSourceType	OrderSource;
-	///Î¯ÍĞÈÕÆÚ
-	TKSOTPDateType	InsertDate;
-	///Î¯ÍĞÊ±¼ä
-	TKSOTPTimeType	OrderTime;
-	///Î¯ÍĞÊıÁ¿
-	TKSOTPVolumeType	VolumeTotalOriginal;
-	///Î¯ÍĞ×´Ì¬
-	TKSOTPOrderStatusType	OrderStatus;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///²úÆ·Ãû³Æ
-	TKSOTPProductNameType	ProductName;
-	///²úÆ·ÀàĞÍ
-	TKSOTPProductClassType	ProductClass;
-	///Í¶±£ÂòÂô¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///ÒµÎñÀàĞÍÃû³Æ
-	TKSOTPFunctionNameType	FunctionName;
-};
-
-///ÀúÊ·³É½»
-struct CKSOTPHistoryTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///¿Í»§ĞÕÃû
-	TKSOTPIndividualNameType	CustomerName;
-	///±¾µØ±¨µ¥±àºÅ
-	TKSOTPOrderLocalIDType	OrderLocalID;
-	///±ÒÖÖ´úÂë
-	TKSOTPCurrencyIDType	CurrencyID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///²úÆ·Ãû³Æ
-	TKSOTPProductNameType	ProductName;
-	///³É½»ÊıÁ¿
-	TKSOTPVolumeType	VolumeTraded;
-	///³É½»½ğ¶î
-	TKSOTPMoneyType	TradeAmount;
-	///³É½»ÈÕÆÚ
-	TKSOTPDateType	TradeDate;
-	///³É½»Ê±¼ä
-	TKSOTPTimeType	TradeTime;
-	///Í¶±£ÂòÂô¿ªÆ½±êÖ¾
-	TKSOTPOffsetFlagType	OffsetFlag;
-	///ÒµÎñµ¥Ôª
-	TKSOTPBusinessUnitType	BusinessUnit;
-	///ÊÖĞø·Ñ
-	TKSOTPMoneyType	Commission;
-	///±¸×¢
-	TKSOTPMemoType	Memo;
-	///±¨ÅÌÊ±¼ä
-	TKSOTPTimeType	TraderOfferTime;
-	///³É½»¼Û¸ñ
-	TKSOTPPriceType	TradePrice;	
-	///ÆÚÈ¨½»Ò×±àÂë
-	TKSOTPClientIDType	ClientID;
-	///ÆÚÈ¨ÀàĞÍ
-	TKSOTPOptionsTypeType	OptionsType;
-	///±¸¶Ò±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///È¨Àû²ÖÊıÁ¿
-	TKSOTPVolumeType RoyaltyVolume;
-	///ÒåÎñ²ÖÊıÁ¿
-	TKSOTPVolumeType ObligationVolume;
-	///È¨Àû²Ö½ğ¶î
-	TKSOTPMoneyType	RoyaltyAmount;
-	///ÒåÎñ²Ö½ğ¶î
-	TKSOTPMoneyType	ObligationAmount;
-	///³É½»±àºÅ
-	TKSOTPTradeIDType	TradeID;
-	///ÒµÎñÀàĞÍÃû³Æ
-	TKSOTPFunctionNameType	FunctionName;
-};
-
-///¸ö¹É×éºÏ²ğ·ÖÎ¯ÍĞ
-struct CKSOTPInputCombActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///²ßÂÔ´úÂë
-	TKSOTPCombStrategyIDType	StrategyID;
-	///ºÏÔ¼´úÂë1
-	TKSOTPInstrumentIDType	InstrumentID1;
-	///ºÏÔ¼´úÂë2
-	TKSOTPInstrumentIDType	InstrumentID2;
-	///ºÏÔ¼´úÂë3
-	TKSOTPInstrumentIDType	InstrumentID3;
-	///ºÏÔ¼´úÂë4
-	TKSOTPInstrumentIDType	InstrumentID4;
-	///×éºÏÒıÓÃ
-	TKSOTPOrderRefType	CombActionRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÂòÂô·½Ïò1
-	TKSOTPDirectionType	Direction1;
-	///ÂòÂô·½Ïò2
-	TKSOTPDirectionType	Direction2;
-	///ÂòÂô·½Ïò3
-	TKSOTPDirectionType	Direction3;
-	///ÂòÂô·½Ïò4
-	TKSOTPDirectionType	Direction4;
-	///Ç¿²ğ±ê¼Ç
-	TKSOTPCombActionType  CombActionFlag;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///×éºÏ²ğ·Ö±ê¼Ç
-	TKSOTPCombDirectionType	CombDirection;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///½»Ò×Ëù×éºÏ±àºÅ
-	TKSOTPTradeIDType	ComTradeID;
-};
-
-///¸ö¹É×éºÏ²ğ·Ö
-struct CKSOTPCombActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///ÍêÕûºÏÔ¼´úÂë
-	TKSOTPInstrumentIDType	InstrumentID;
-	///²ßÂÔ´úÂë
-	TKSOTPCombStrategyIDType	StrategyID;
-	///ºÏÔ¼´úÂë1
-	TKSOTPInstrumentIDType	InstrumentID1;
-	///ºÏÔ¼´úÂë2
-	TKSOTPInstrumentIDType	InstrumentID2;
-	///ºÏÔ¼´úÂë3
-	TKSOTPInstrumentIDType	InstrumentID3;
-	///ºÏÔ¼´úÂë4
-	TKSOTPInstrumentIDType	InstrumentID4;
-	///×éºÏÒıÓÃ
-	TKSOTPOrderRefType	CombActionRef;
-	///ÓÃ»§´úÂë
-	TKSOTPUserIDType	UserID;
-	///ÂòÂô·½Ïò1
-	TKSOTPDirectionType	Direction1;
-	///ÂòÂô·½Ïò2
-	TKSOTPDirectionType	Direction2;
-	///ÂòÂô·½Ïò3
-	TKSOTPDirectionType	Direction3;
-	///ÂòÂô·½Ïò4
-	TKSOTPDirectionType	Direction4;
-	///Ç¿²ğ±ê¼Ç
-	TKSOTPCombActionType  CombActionFlag;
-	///ÊıÁ¿
-	TKSOTPVolumeType	Volume;
-	///×éºÏ²ğ·Ö±ê¼Ç
-	TKSOTPCombDirectionType	CombDirection;
-	///Í¶»úÌ×±£±êÖ¾
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///±¾µØÉêÇë×éºÏ±àºÅ
-	TKSOTPOrderLocalIDType	ActionLocalID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TKSOTPParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TKSOTPClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TKSOTPExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TKSOTPTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TKSOTPInstallIDType	InstallID;
-	///×éºÏ×´Ì¬
-	TKSOTPOrderActionStatusType	ActionStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TKSOTPSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TKSOTPDateType	TradingDay;
-	///½áËã±àºÅ
-	TKSOTPSettlementIDType	SettlementID;
-	///ĞòºÅ
-	TKSOTPSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TKSOTPFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TKSOTPSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TKSOTPProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TKSOTPErrorMsgType	StatusMsg;
-	///½»Ò×Ëù×éºÏ±àºÅ
-	TKSOTPTradeIDType	ComTradeID;
-	///±¨µ¥À´Ô´
-	TKSOTPOrderSourceType	OrderSource;
-};
-
-///²éÑ¯¸ö¹É×éºÏ³Ö²ÖÃ÷Ï¸
-struct CKSOTPQryInvestorPositionCombineDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///²úÆ·´úÂë
-	TKSOTPInstrumentIDType	ProductID;
-	///½»Ò×Ëù×éºÏ±àºÅ
-	TKSOTPTradeIDType	ComTradeID;
-};
-
-///¸ö¹É×éºÏ³Ö²ÖÃ÷Ï¸
-struct CKSOTPInvestorPositionCombineDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///½»Ò×±àÂë
-	TKSOTPClientIDType	ClientID;
-	///×éºÏ±àºÅ
-	TKSOTPTradeIDType	ComTradeID;
-	///²ßÂÔ´úÂë
-	TKSOTPCombStrategyIDType	StrategyID;
-	///ºÏÔ¼´úÂë1
-	TKSOTPInstrumentIDType	InstrumentID1;
-	///ºÏÔ¼´úÂë2
-	TKSOTPInstrumentIDType	InstrumentID2;
-	///ºÏÔ¼´úÂë3
-	TKSOTPInstrumentIDType	InstrumentID3;
-	///ºÏÔ¼´úÂë4
-	TKSOTPInstrumentIDType	InstrumentID4;
-	///±£Ö¤½ğ
-	TKSOTPMoneyType	Margin;
-	///¾àÀë×Ô¶¯²ğ·ÖÈÕÌìÊı
-	TKSOTPVolumeType	CombActionVolume;
-	///Í¶±£±ê¼Ç
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///³Ö²ÖÁ¿
-	TKSOTPVolumeType	TotalAmt;
-	///ÂòÂô·½Ïò1
-	TKSOTPDirectionType	Direction1;
-	///ÂòÂô·½Ïò2
-	TKSOTPDirectionType	Direction2;
-	///ÂòÂô·½Ïò3
-	TKSOTPDirectionType	Direction3;
-	///ÂòÂô·½Ïò4
-	TKSOTPDirectionType	Direction4;
-	///×éºÏÂòÂô·½Ïò
-	TKSOTPDirectionType	CombDirection;
-};
-
-///¸ö¹É¿É×éºÏ¿É²ğ·ÖÊÖÊı²éÑ¯ÇëÇó
-struct CKSOTPQryCombActionVolumeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TKSOTPExchangeIDType	ExchangeID;
-	///²ßÂÔ´úÂë
-	TKSOTPCombStrategyIDType	StrategyID;
-	///ºÏÔ¼´úÂë1
-	TKSOTPInstrumentIDType	InstrumentID1;
-	///ºÏÔ¼´úÂë2
-	TKSOTPInstrumentIDType	InstrumentID2;
-	///ºÏÔ¼´úÂë3
-	TKSOTPInstrumentIDType	InstrumentID3;
-	///ºÏÔ¼´úÂë4
-	TKSOTPInstrumentIDType	InstrumentID4;
-	///Í¶±£±ê¼Ç
-	TKSOTPHedgeFlagType	HedgeFlag;
-	///ÂòÂô·½Ïò1
-	TKSOTPDirectionType	Direction1;
-	///ÂòÂô·½Ïò2
-	TKSOTPDirectionType	Direction2;
-	///ÂòÂô·½Ïò3
-	TKSOTPDirectionType	Direction3;
-	///ÂòÂô·½Ïò4
-	TKSOTPDirectionType	Direction4;
-	///Ç¿²ğ±ê¼Ç
-	TKSOTPCombActionType  CombActionFlag;
-	//×éºÏ²ğ·Ö±ê¼Ç
-	TKSOTPCombDirectionType	CombDirection;
-	///×éºÏ±àºÅ
-	TKSOTPTradeIDType	ComTradeID;
-};
-
-///¸ö¹É¿É×éºÏ¿É²ğ·ÖÊÖÊı
-struct CKSOTPCombActionVolumeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///×î´ó¿É×éºÏÊıÁ¿
-	TKSOTPVolumeType	MaxCombVolume;
-	///×î´ó¿É²ğ·ÖÊıÁ¿
-	TKSOTPVolumeType	MaxActionVolume;
-};
-
-///¿Í»§Ã¿ÈÕ³ö½ğ¶î¶ÈÉêÇëÇëÇó
-struct CKSOTPInputFundOutCreditApplyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///µ±ÈÕ³ö½ğ¶î¶È
-	TKSOTPMoneyType	FundOutCredit;
-	///µ±ÈÕ³ö½ğ¶î¶È²Ù×÷ÀàĞÍ
-	TKSOTPFOCreditApplyType CreditApplyFlag;
-	///Á÷Ë®ºÅ
-	TKSOTPTradeSerialNoType	CreditSerial;
-};
-
-///¿Í»§Ã¿ÈÕ³ö½ğ¶î¶È²éÑ¯ÇëÇó
-struct CKSOTPQryFundOutCreditField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-};
-
-///¿Í»§Ã¿ÈÕ³ö½ğ¶î¶È²éÑ¯
-struct CKSOTPRspQryFundOutCreditField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///µ±ÈÕ³ö½ğ¶î¶È
-	TKSOTPMoneyType	FundOutCredit;
-	///µ±ÈÕÒÑ³ö½ğ¶î¶È
-	TKSOTPMoneyType	FundOutedCredit;
-	///×îºó¸üĞÂÈÕÆÚ
-	TKSOTPDateType	UpdateDate;
-	///ÉèÖÃÈÕÆÚ
-	TKSOTPDateType	SetDate;
-	///ÉèÖÃÊ±¼ä
-	TKSOTPTimeType	SetTime;
-};
-
-///¿Í»§Ã¿ÈÕ³ö½ğ¶î¶ÈÉêÇë²éÑ¯ÇëÇó
-struct CKSOTPQryFundOutCreditApplyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///²éÑ¯¿ªÊ¼ÈÕÆÚ
-	TKSOTPDateType	QryCreditStart;
-	///²éÑ¯½áÊøÈÕÆÚ
-	TKSOTPDateType	QryCreditEnd;
-	///µ±ÈÕ³ö½ğ¶î¶È´¦Àí×´Ì¬
-	TKSOTPFOCreditStatusType	DealStatus;
-};
-
-///¿Í»§Ã¿ÈÕ³ö½ğ¶î¶ÈÉêÇë²éÑ¯
-struct CKSOTPRspQryFundOutCreditApplyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TKSOTPBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TKSOTPInvestorIDType	InvestorID;
-	///Á÷Ë®ºÅ
-	TKSOTPTradeSerialNoType	CreditSerial;
-	///ÉêÇë³ö½ğ¶î¶È
-	TKSOTPMoneyType	FundOutCredit;
-	///µ±ÈÕ³ö½ğ¶î¶È´¦Àí×´Ì¬
-	TKSOTPFOCreditStatusType	DealStatus;
-	///ÉêÇëÈÕÆÚ
-	TKSOTPDateType	ApplyDate;
-	///ÉêÇëÊ±¼ä
-	TKSOTPTimeType	ApplyTime;
-	///ÉóºËÈÕÆÚ
-	TKSOTPDateType	ConfirmDate;
-	///ÉóºËÊ±¼ä
-	TKSOTPTimeType	ConfirmTime;
-};
-}	// end of namespace KingstarAPI
+namespace KingstarAPI {
+///å“åº”ä¿¡æ¯
+struct CKSOTPRspInfoField {
+  ///é”™è¯¯ä»£ç 
+  TKSOTPErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TKSOTPErrorMsgType ErrorMsg;
+};
+
+///ç”¨æˆ·ç™»å½•è¯·æ±‚
+struct CKSOTPReqUserLoginField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///å¯†ç 
+  TKSOTPPasswordType Password;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  /// Macåœ°å€
+  TKSOTPMacAddressType MacAddress;
+  ///ç»ˆç«¯IPåœ°å€
+  TKSOTPIPAddressType ClientIPAddress;
+};
+
+///ç”¨æˆ·ç™»å½•åº”ç­”
+struct CKSOTPRspUserLoginField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç™»å½•æˆåŠŸæ—¶é—´
+  TKSOTPTimeType LoginTime;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///äº¤æ˜“ç³»ç»Ÿåç§°
+  TKSOTPSystemNameType SystemName;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///æœ€å¤§æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType MaxOrderRef;
+  ///ä¸Šè¯æ‰€æ—¶é—´
+  TKSOTPTimeType SSETime;
+};
+
+///ç”¨æˆ·ç™»å‡ºè¯·æ±‚
+struct CKSOTPUserLogoutField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+};
+
+///ç”¨æˆ·å£ä»¤å˜æ›´
+struct CKSOTPUserPasswordUpdateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///åŸæ¥çš„å£ä»¤
+  TKSOTPPasswordType OldPassword;
+  ///æ–°çš„å£ä»¤
+  TKSOTPPasswordType NewPassword;
+};
+
+///èµ„é‡‘è´¦æˆ·å£ä»¤å˜æ›´åŸŸ
+struct CKSOTPTradingAccountPasswordUpdateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///åŸæ¥çš„å£ä»¤
+  TKSOTPPasswordType OldPassword;
+  ///æ–°çš„å£ä»¤
+  TKSOTPPasswordType NewPassword;
+};
+
+///è¾“å…¥æŠ¥å•
+struct CKSOTPInputOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TKSOTPOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TKSOTPDirectionType Direction;
+  ///å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä»·æ ¼
+  TKSOTPPriceType LimitPrice;
+  ///æ•°é‡
+  TKSOTPVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TKSOTPTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TKSOTPDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TKSOTPVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TKSOTPVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TKSOTPContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TKSOTPPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TKSOTPForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TKSOTPBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TKSOTPBoolType UserForceClose;
+  ///äº’æ¢å•æ ‡å¿—
+  TKSOTPBoolType IsSwapOrder;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å…¥æŠ¥å•æ“ä½œ
+struct CKSOTPInputOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType OrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TKSOTPOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TKSOTPActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TKSOTPPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TKSOTPVolumeType VolumeChange;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢æŠ¥å•
+struct CKSOTPQryOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TKSOTPOrderSysIDType OrderSysID;
+};
+
+///æŸ¥è¯¢æˆäº¤
+struct CKSOTPQryTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///å¼€å§‹æ—¶é—´
+  TKSOTPTimeType TradeTimeStart;
+  ///ç»“æŸæ—¶é—´
+  TKSOTPTimeType TradeTimeEnd;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“
+struct CKSOTPQryInvestorPositionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æŠ•èµ„è€…æŒä»“
+struct CKSOTPInvestorPositionField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æŒä»“å¤šç©ºæ–¹å‘
+  TKSOTPPosiDirectionType PosiDirection;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æŒä»“æ—¥æœŸ
+  TKSOTPPositionDateType PositionDate;
+  ///ä¸Šæ—¥æŒä»“
+  TKSOTPVolumeType YdPosition;
+  ///ä»Šæ—¥æŒä»“
+  TKSOTPVolumeType Position;
+  ///å¤šå¤´å†»ç»“
+  TKSOTPVolumeType LongFrozen;
+  ///ç©ºå¤´å†»ç»“
+  TKSOTPVolumeType ShortFrozen;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TKSOTPMoneyType LongFrozenAmount;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TKSOTPMoneyType ShortFrozenAmount;
+  ///å¼€ä»“é‡
+  TKSOTPVolumeType OpenVolume;
+  ///å¼€ä»“é‡‘é¢
+  TKSOTPMoneyType OpenAmount;
+  ///å¹³ä»“é‡‘é¢
+  TKSOTPMoneyType CloseAmount;
+  ///æŒä»“æˆæœ¬
+  TKSOTPMoneyType PositionCost;
+  ///å ç”¨çš„ä¿è¯é‡‘
+  TKSOTPMoneyType UseMargin;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TKSOTPMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TKSOTPMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TKSOTPMoneyType FrozenCommission;
+  ///èµ„é‡‘å·®é¢
+  TKSOTPMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TKSOTPMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TKSOTPMoneyType PositionProfit;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TKSOTPPriceType PreSettlementPrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TKSOTPPriceType SettlementPrice;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///å¼€ä»“æˆæœ¬
+  TKSOTPMoneyType OpenCost;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TKSOTPMoneyType ExchangeMargin;
+  ///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfitByDate;
+  ///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfitByTrade;
+  ///ä»Šæ—¥æŒä»“
+  TKSOTPVolumeType TodayPosition;
+  ///ä¿è¯é‡‘ç‡
+  TKSOTPRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TKSOTPRatioType MarginRateByVolume;
+  ///æ‰§è¡Œå†»ç»“
+  TKSOTPVolumeType StrikeFrozen;
+  ///æ‰§è¡Œå†»ç»“é‡‘é¢
+  TKSOTPMoneyType StrikeFrozenAmount;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æŸ¥è¯¢èµ„é‡‘è´¦æˆ·
+struct CKSOTPQryTradingAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+};
+
+///èµ„é‡‘è´¦æˆ·
+struct CKSOTPTradingAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘
+  TKSOTPMoneyType PreBalance;
+  ///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+  TKSOTPMoneyType PreMargin;
+  ///å…¥é‡‘é‡‘é¢
+  TKSOTPMoneyType Deposit;
+  ///å‡ºé‡‘é‡‘é¢
+  TKSOTPMoneyType Withdraw;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TKSOTPMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TKSOTPMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TKSOTPMoneyType FrozenCommission;
+  ///å½“å‰ä¿è¯é‡‘æ€»é¢
+  TKSOTPMoneyType CurrMargin;
+  ///èµ„é‡‘å·®é¢
+  TKSOTPMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TKSOTPMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TKSOTPMoneyType PositionProfit;
+  ///è¯åˆ¸ç»“ç®—å‡†å¤‡é‡‘
+  TKSOTPMoneyType Balance;
+  ///å¯ç”¨èµ„é‡‘
+  TKSOTPMoneyType Available;
+  ///å¯å–èµ„é‡‘
+  TKSOTPMoneyType WithdrawQuota;
+  ///åŸºæœ¬å‡†å¤‡é‡‘
+  TKSOTPMoneyType Reserve;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///ä¿¡ç”¨é¢åº¦
+  TKSOTPMoneyType Credit;
+  ///è´¨æŠ¼é‡‘é¢
+  TKSOTPMoneyType Mortgage;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TKSOTPMoneyType ExchangeMargin;
+  ///æŠ•èµ„è€…äº¤å‰²ä¿è¯é‡‘
+  TKSOTPMoneyType DeliveryMargin;
+  ///äº¤æ˜“æ‰€äº¤å‰²ä¿è¯é‡‘
+  TKSOTPMoneyType ExchangeDeliveryMargin;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…
+struct CKSOTPQryInvestorField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+};
+
+///æŠ•èµ„è€…
+struct CKSOTPInvestorField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…åç§°
+  TKSOTPPartyNameType InvestorName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdentifiedCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///æ˜¯å¦æ´»è·ƒ
+  TKSOTPBoolType IsActive;
+  ///è”ç³»ç”µè¯
+  TKSOTPTelephoneType Telephone;
+  ///é€šè®¯åœ°å€
+  TKSOTPAddressType Address;
+  ///å¼€æˆ·æ—¥æœŸ
+  TKSOTPDateType OpenDate;
+  ///æ‰‹æœº
+  TKSOTPMobileType Mobile;
+};
+
+///æŸ¥è¯¢åˆçº¦è´¦å·
+struct CKSOTPQryTradingCodeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///äº¤æ˜“ç¼–ç 
+struct CKSOTPTradingCodeField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦è´¦å·
+  TKSOTPClientIDType ClientID;
+  ///æ˜¯å¦æ´»è·ƒ
+  TKSOTPBoolType IsActive;
+  ///äº¤æ˜“ç¼–ç ç±»å‹
+  TKSOTPClientIDTypeType ClientIDType;
+};
+
+///æŸ¥è¯¢äº¤æ˜“æ‰€
+struct CKSOTPQryExchangeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///äº¤æ˜“æ‰€
+struct CKSOTPExchangeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€åç§°
+  TKSOTPExchangeNameType ExchangeName;
+};
+
+///æŸ¥è¯¢åˆçº¦
+struct CKSOTPQryInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///åˆçº¦
+struct CKSOTPInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦åç§°
+  TKSOTPInstrumentNameType InstrumentName;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///å“ç§ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº§å“ç±»å‹
+  TKSOTPProductClassType ProductClass;
+  ///äº¤å‰²å¹´ä»½
+  TKSOTPYearType DeliveryYear;
+  ///äº¤å‰²æœˆ
+  TKSOTPMonthType DeliveryMonth;
+  ///å¸‚ä»·å•æœ€å¤§ä¸‹å•é‡
+  TKSOTPVolumeType MaxMarketOrderVolume;
+  ///å¸‚ä»·å•æœ€å°ä¸‹å•é‡
+  TKSOTPVolumeType MinMarketOrderVolume;
+  ///é™ä»·å•æœ€å¤§ä¸‹å•é‡
+  TKSOTPVolumeType MaxLimitOrderVolume;
+  ///é™ä»·å•æœ€å°ä¸‹å•é‡
+  TKSOTPVolumeType MinLimitOrderVolume;
+  ///åˆçº¦æ•°é‡ä¹˜æ•°
+  TKSOTPVolumeMultipleType VolumeMultiple;
+  ///æœ€å°å˜åŠ¨ä»·ä½
+  TKSOTPPriceType PriceTick;
+  ///åˆ›å»ºæ—¥
+  TKSOTPDateType CreateDate;
+  ///ä¸Šå¸‚æ—¥
+  TKSOTPDateType OpenDate;
+  ///åˆ°æœŸæ—¥
+  TKSOTPDateType ExpireDate;
+  ///å¼€å§‹äº¤å‰²æ—¥
+  TKSOTPDateType StartDelivDate;
+  ///ç»“æŸäº¤å‰²æ—¥
+  TKSOTPDateType EndDelivDate;
+  ///åˆçº¦ç”Ÿå‘½å‘¨æœŸçŠ¶æ€
+  TKSOTPInstLifePhaseType InstLifePhase;
+  ///å½“å‰æ˜¯å¦äº¤æ˜“
+  TKSOTPBoolType IsTrading;
+  ///æŒä»“ç±»å‹
+  TKSOTPPositionTypeType PositionType;
+  ///æŒä»“æ—¥æœŸç±»å‹
+  TKSOTPPositionDateTypeType PositionDateType;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TKSOTPRatioType LongMarginRatio;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TKSOTPRatioType ShortMarginRatio;
+  ///åŸºç¡€å•†å“ä»£ç 
+  TKSOTPInstrumentIDType UnderlyingInstrID;
+  ///æ‰§è¡Œä»·
+  TKSOTPPriceType StrikePrice;
+  ///æœŸæƒç±»å‹
+  TKSOTPOptionsTypeType OptionsType;
+  ///åˆçº¦åŸºç¡€å•†å“ä¹˜æ•°
+  TKSOTPUnderlyingMultipleType UnderlyingMultiple;
+  ///åˆçº¦æ ‡è¯†ç 
+  TKSOTPInstrumentCodeType InstrumentCode;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“æ˜ç»†
+struct CKSOTPQryInvestorPositionDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æŠ•èµ„è€…æŒä»“æ˜ç»†
+struct CKSOTPInvestorPositionDetailField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä¹°å–
+  TKSOTPDirectionType Direction;
+  ///å¼€ä»“æ—¥æœŸ
+  TKSOTPDateType OpenDate;
+  ///æˆäº¤ç¼–å·
+  TKSOTPTradeIDType TradeID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///å¼€ä»“ä»·
+  TKSOTPPriceType OpenPrice;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///æˆäº¤ç±»å‹
+  TKSOTPTradeTypeType TradeType;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfitByDate;
+  ///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
+  TKSOTPMoneyType CloseProfitByTrade;
+  ///é€æ—¥ç›¯å¸‚æŒä»“ç›ˆäº
+  TKSOTPMoneyType PositionProfitByDate;
+  ///é€ç¬”å¯¹å†²æŒä»“ç›ˆäº
+  TKSOTPMoneyType PositionProfitByTrade;
+  ///æŠ•èµ„è€…ä¿è¯é‡‘
+  TKSOTPMoneyType Margin;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TKSOTPMoneyType ExchMargin;
+  ///ä¿è¯é‡‘ç‡
+  TKSOTPRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TKSOTPRatioType MarginRateByVolume;
+  ///æ˜¨ç»“ç®—ä»·
+  TKSOTPPriceType LastSettlementPrice;
+  ///ç»“ç®—ä»·
+  TKSOTPPriceType SettlementPrice;
+};
+
+///æŸ¥è¯¢äº¤æ˜“äº‹ä»¶é€šçŸ¥
+struct CKSOTPQryTradingNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+};
+
+///ç”¨æˆ·äº‹ä»¶é€šçŸ¥
+struct CKSOTPTradingNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åºåˆ—ç³»åˆ—å·
+  TKSOTPSequenceSeriesType SequenceSeries;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///å‘é€æ—¶é—´
+  TKSOTPTimeType SendTime;
+  ///åºåˆ—å·
+  TKSOTPSequenceNoType SequenceNo;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TKSOTPContentType FieldContent;
+};
+
+///ç”¨æˆ·äº‹ä»¶é€šçŸ¥ä¿¡æ¯
+struct CKSOTPTradingNoticeInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å‘é€æ—¶é—´
+  TKSOTPTimeType SendTime;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TKSOTPContentType FieldContent;
+  ///åºåˆ—ç³»åˆ—å·
+  TKSOTPSequenceSeriesType SequenceSeries;
+  ///åºåˆ—å·
+  TKSOTPSequenceNoType SequenceNo;
+};
+
+///è¾“å…¥çš„æ‰§è¡Œå®£å‘Š
+struct CKSOTPInputExecOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æ‰§è¡Œå®£å‘Šå¼•ç”¨
+  TKSOTPOrderRefType ExecOrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æ‰§è¡Œç±»å‹
+  TKSOTPActionTypeType ActionType;
+  ///ä¿ç•™å¤´å¯¸ç”³è¯·çš„æŒä»“æ–¹å‘
+  TKSOTPPosiDirectionType PosiDirection;
+  ///æœŸæƒè¡Œæƒåæ˜¯å¦ä¿ç•™æœŸè´§å¤´å¯¸çš„æ ‡è®°
+  TKSOTPExecOrderPositionFlagType ReservePositionFlag;
+  ///æœŸæƒè¡Œæƒåç”Ÿæˆçš„å¤´å¯¸æ˜¯å¦è‡ªåŠ¨å¹³ä»“
+  TKSOTPExecOrderCloseFlagType CloseFlag;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å…¥æ‰§è¡Œå®£å‘Šæ“ä½œ
+struct CKSOTPInputExecOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æ‰§è¡Œå®£å‘Šæ“ä½œå¼•ç”¨
+  TKSOTPOrderActionRefType ExecOrderActionRef;
+  ///æ‰§è¡Œå®£å‘Šå¼•ç”¨
+  TKSOTPOrderRefType ExecOrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æ‰§è¡Œå®£å‘Šæ“ä½œç¼–å·
+  TKSOTPExecOrderSysIDType ExecOrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TKSOTPActionFlagType ActionFlag;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+};
+
+///å½•å…¥é”å®š
+struct CKSOTPInputLockField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///é”å®šå¼•ç”¨
+  TKSOTPOrderRefType LockRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///é”å®šç±»å‹
+  TKSOTPLockTypeType LockType;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///é”å®š
+struct CKSOTPLockField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///é”å®šå¼•ç”¨
+  TKSOTPOrderRefType LockRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///é”å®šç±»å‹
+  TKSOTPLockTypeType LockType;
+  ///æœ¬åœ°é”å®šç¼–å·
+  TKSOTPOrderLocalIDType LockLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TKSOTPParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TKSOTPClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TKSOTPTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///æ‰§è¡Œå®£å‘Šæäº¤çŠ¶æ€
+  TKSOTPOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TKSOTPSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///é”å®šç¼–å·
+  TKSOTPOrderSysIDType LockSysID;
+  ///æŠ¥å•æ—¥æœŸ
+  TKSOTPDateType InsertDate;
+  ///æ’å…¥æ—¶é—´
+  TKSOTPTimeType InsertTime;
+  ///æ’¤é”€æ—¶é—´
+  TKSOTPTimeType CancelTime;
+  ///é”å®šçŠ¶æ€
+  TKSOTPOrderActionStatusType LockStatus;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TKSOTPParticipantIDType ClearingPartID;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TKSOTPErrorMsgType StatusMsg;
+  ///æ“ä½œç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType ActiveUserID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TKSOTPSequenceNoType BrokerLockSeq;
+  ///è¥ä¸šéƒ¨ç¼–å·
+  TKSOTPBranchIDType BranchID;
+};
+
+///æŸ¥è¯¢é”å®š
+struct CKSOTPQryLockField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///é”å®šç¼–å·
+  TKSOTPOrderSysIDType LockSysID;
+};
+
+///æ‰§è¡Œå®£å‘ŠæŸ¥è¯¢
+struct CKSOTPQryExecOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æ‰§è¡Œå®£å‘Šç¼–å·
+  TKSOTPExecOrderSysIDType ExecOrderSysID;
+};
+
+///è¾“å…¥æŸ¥è¯¢å®£å‘Šæ•°é‡
+struct CKSOTPQryExecOrderVolumeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä¹°å–æ ‡å¿—
+  TKSOTPDirectionType Direction;
+};
+
+///è¾“å‡ºæŸ¥è¯¢å®£å‘Šæ•°é‡
+struct CKSOTPExecOrderVolumeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///å¯ç”³è¯·æ‰§è¡Œé‡
+  TKSOTPVolumeType ExecVolume;
+  ///å¯ç”³è¯·æ”¾å¼ƒé‡
+  TKSOTPVolumeType ActionVolume;
+  ///å·²ç”³è¯·æ‰§è¡Œé‡
+  TKSOTPVolumeType ExecedVolume;
+  ///å·²ç”³è¯·æ”¾å¼ƒé‡
+  TKSOTPVolumeType ActionedVolume;
+  ///ä¹°å–æ ‡å¿—
+  TKSOTPDirectionType Direction;
+};
+
+///æŸ¥è¯¢é”å®šè¯åˆ¸ä»“ä½
+struct CKSOTPQryLockPositionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///é”å®šè¯åˆ¸ä»“ä½
+struct CKSOTPLockPositionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///å·²é”å®šæ•°é‡
+  TKSOTPVolumeType FrozenVolume;
+};
+
+///è¾“å…¥æŸ¥è¯¢æ ‡çš„åˆ¸ä¿¡æ¯è¯·æ±‚
+struct CKSOTPQryUnderlyingStockInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///å“ç§ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+};
+
+///è¾“å‡ºæŸ¥è¯¢æ ‡çš„åˆ¸ä¿¡æ¯è¯·æ±‚
+struct CKSOTPUnderlyingStockInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///å“ç§ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///æ˜¨æ”¶ç›˜
+  TKSOTPPriceType PreClosePrice;
+  ///å®‰å…¨ç³»æ•°
+  TKSOTPRatioType GuarantRatio;
+};
+
+///è¾“å…¥æŸ¥è¯¢ä¸ªè‚¡æœŸæƒæ‰‹ç»­è´¹ç‡è¯·æ±‚
+struct CKSOTPQryOTPInsCommRateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å‡ºæŸ¥è¯¢ä¸ªè‚¡æœŸæƒåˆçº¦æ‰‹ç»­è´¹ç‡
+struct CKSOTPOTPInsCommRateField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TKSOTPInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å¼€ä»“æ‰‹ç»­è´¹ç‡
+  TKSOTPRatioType OpenRatioByMoney;
+  ///å¼€ä»“æ‰‹ç»­è´¹
+  TKSOTPRatioType OpenRatioByVolume;
+  ///å¹³ä»“æ‰‹ç»­è´¹ç‡
+  TKSOTPRatioType CloseRatioByMoney;
+  ///å¹³ä»“æ‰‹ç»­è´¹
+  TKSOTPRatioType CloseRatioByVolume;
+  ///å¹³ä»Šæ‰‹ç»­è´¹ç‡
+  TKSOTPRatioType CloseTodayRatioByMoney;
+  ///å¹³ä»Šæ‰‹ç»­è´¹
+  TKSOTPRatioType CloseTodayRatioByVolume;
+  ///æ‰§è¡Œæ‰‹ç»­è´¹ç‡
+  TKSOTPRatioType StrikeRatioByMoney;
+  ///æ‰§è¡Œæ‰‹ç»­è´¹
+  TKSOTPRatioType StrikeRatioByVolume;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å…¥æŸ¥è¯¢ä¸ªè‚¡æœŸæƒåˆçº¦ä¿è¯é‡‘ç‡è¯·æ±‚
+struct CKSOTPQryInstrumentMarginRateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å‡ºæŸ¥è¯¢ä¸ªè‚¡æœŸæƒåˆçº¦ä¿è¯é‡‘ç‡
+struct CKSOTPInstrumentMarginRateField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TKSOTPInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TKSOTPRatioType LongMarginRatioByMoney;
+  ///å¤šå¤´ä¿è¯é‡‘è´¹
+  TKSOTPMoneyType LongMarginRatioByVolume;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TKSOTPRatioType ShortMarginRatioByMoney;
+  ///ç©ºå¤´ä¿è¯é‡‘è´¹
+  TKSOTPMoneyType ShortMarginRatioByVolume;
+  ///æ˜¯å¦ç›¸å¯¹äº¤æ˜“æ‰€æ”¶å–
+  TKSOTPBoolType IsRelative;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///è¾“å…¥ä¸ªè‚¡è¡ŒæƒæŒ‡æ´¾ä¿¡æ¯
+struct CKSOTPQryOTPAssignmentField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///ä¹°å–
+  TKSOTPDirectionType Direction;
+};
+
+///è¾“å‡ºä¸ªè‚¡è¡ŒæƒæŒ‡æ´¾ä¿¡æ¯
+struct CKSOTPOTPAssignmentField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///ä¹°å–
+  TKSOTPDirectionType Direction;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦åç§°
+  TKSOTPInstrumentNameType InstrumentName;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä¸Šæ—¥æŒä»“
+  TKSOTPVolumeType YdPosition;
+  ///è¡ŒæƒæŒ‡æ´¾åˆçº¦æ•°é‡
+  TKSOTPVolumeType AssInsVo;
+  ///è¡Œæƒæ ‡çš„è¯åˆ¸æ•°é‡
+  TKSOTPVolumeType AssProVol;
+  ///è¡ŒæƒæŒ‡æ´¾åº”ä»˜é‡‘é¢
+  TKSOTPMoneyType FeePay;
+  ///æœŸæƒC/Pæ ‡å¿—
+  TKSOTPOptionsTypeType OptionsType;
+  ///è¡Œæƒäº¤æ”¶æ—¥
+  TKSOTPDateType DeliveryDay;
+  ///ä¸ªè‚¡åˆçº¦æ ‡è¯†ç 
+  TKSOTPInstrumentIDType StockID;
+};
+
+///æŸ¥è¯¢è¡Œæƒ…
+struct CKSOTPQryDepthMarketDataField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æ·±åº¦è¡Œæƒ…
+struct CKSOTPDepthMarketDataField {
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///æœ€æ–°ä»·
+  TKSOTPPriceType LastPrice;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TKSOTPPriceType PreSettlementPrice;
+  ///æ˜¨æ”¶ç›˜
+  TKSOTPPriceType PreClosePrice;
+  ///æ˜¨æŒä»“é‡
+  TKSOTPLargeVolumeType PreOpenInterest;
+  ///ä»Šå¼€ç›˜
+  TKSOTPPriceType OpenPrice;
+  ///æœ€é«˜ä»·
+  TKSOTPPriceType HighestPrice;
+  ///æœ€ä½ä»·
+  TKSOTPPriceType LowestPrice;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///æˆäº¤é‡‘é¢
+  TKSOTPMoneyType Turnover;
+  ///æŒä»“é‡
+  TKSOTPLargeVolumeType OpenInterest;
+  ///ä»Šæ”¶ç›˜
+  TKSOTPPriceType ClosePrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TKSOTPPriceType SettlementPrice;
+  ///æ¶¨åœæ¿ä»·
+  TKSOTPPriceType UpperLimitPrice;
+  ///è·Œåœæ¿ä»·
+  TKSOTPPriceType LowerLimitPrice;
+  ///æ˜¨è™šå®åº¦
+  TKSOTPRatioType PreDelta;
+  ///ä»Šè™šå®åº¦
+  TKSOTPRatioType CurrDelta;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TKSOTPTimeType UpdateTime;
+  ///æœ€åä¿®æ”¹æ¯«ç§’
+  TKSOTPMillisecType UpdateMillisec;
+  ///ç”³ä¹°ä»·ä¸€
+  TKSOTPPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TKSOTPVolumeType BidVolume1;
+  ///ç”³å–ä»·ä¸€
+  TKSOTPPriceType AskPrice1;
+  ///ç”³å–é‡ä¸€
+  TKSOTPVolumeType AskVolume1;
+  ///ç”³ä¹°ä»·äºŒ
+  TKSOTPPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TKSOTPVolumeType BidVolume2;
+  ///ç”³å–ä»·äºŒ
+  TKSOTPPriceType AskPrice2;
+  ///ç”³å–é‡äºŒ
+  TKSOTPVolumeType AskVolume2;
+  ///ç”³ä¹°ä»·ä¸‰
+  TKSOTPPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TKSOTPVolumeType BidVolume3;
+  ///ç”³å–ä»·ä¸‰
+  TKSOTPPriceType AskPrice3;
+  ///ç”³å–é‡ä¸‰
+  TKSOTPVolumeType AskVolume3;
+  ///ç”³ä¹°ä»·å››
+  TKSOTPPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TKSOTPVolumeType BidVolume4;
+  ///ç”³å–ä»·å››
+  TKSOTPPriceType AskPrice4;
+  ///ç”³å–é‡å››
+  TKSOTPVolumeType AskVolume4;
+  ///ç”³ä¹°ä»·äº”
+  TKSOTPPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TKSOTPVolumeType BidVolume5;
+  ///ç”³å–ä»·äº”
+  TKSOTPPriceType AskPrice5;
+  ///ç”³å–é‡äº”
+  TKSOTPVolumeType AskVolume5;
+  ///å½“æ—¥å‡ä»·
+  TKSOTPPriceType AveragePrice;
+  ///ä¸šåŠ¡æ—¥æœŸ
+  TKSOTPDateType ActionDay;
+};
+
+///å‘ç»™åšå¸‚å•†çš„è¯¢ä»·è¯·æ±‚
+struct CKSOTPForQuoteRspField {
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///è¯¢ä»·ç¼–å·
+  TKSOTPOrderSysIDType ForQuoteSysID;
+  ///è¯¢ä»·æ—¶é—´
+  TKSOTPTimeType ForQuoteTime;
+  ///ä¸šåŠ¡æ—¥æœŸ
+  TKSOTPDateType ActionDay;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æŠ¥å•
+struct CKSOTPOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TKSOTPOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TKSOTPDirectionType Direction;
+  ///å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///ä»·æ ¼
+  TKSOTPPriceType LimitPrice;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æ•°é‡
+  TKSOTPVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TKSOTPTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TKSOTPDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TKSOTPVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TKSOTPVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TKSOTPContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TKSOTPPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TKSOTPForceCloseReasonType ForceCloseReason;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TKSOTPOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TKSOTPParticipantIDType ParticipantID;
+  ///åˆçº¦è´¦å·
+  TKSOTPClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TKSOTPTraderIDType TraderID;
+  ///æŠ¥å•æäº¤çŠ¶æ€
+  TKSOTPOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TKSOTPSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///æŠ¥å•ç¼–å·
+  TKSOTPOrderSysIDType OrderSysID;
+  ///æŠ¥å•æ¥æº
+  TKSOTPOrderSourceType OrderSource;
+  ///æŠ¥å•çŠ¶æ€
+  TKSOTPOrderStatusType OrderStatus;
+  ///æŠ¥å•ç±»å‹
+  TKSOTPOrderTypeType OrderType;
+  ///ä»Šæˆäº¤æ•°é‡
+  TKSOTPVolumeType VolumeTraded;
+  ///å‰©ä½™æ•°é‡
+  TKSOTPVolumeType VolumeTotal;
+  ///æŠ¥å•æ—¥æœŸ
+  TKSOTPDateType InsertDate;
+  ///å§”æ‰˜æ—¶é—´
+  TKSOTPTimeType InsertTime;
+  ///æ¿€æ´»æ—¶é—´
+  TKSOTPTimeType ActiveTime;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TKSOTPTimeType UpdateTime;
+  ///æ’¤é”€æ—¶é—´
+  TKSOTPTimeType CancelTime;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TKSOTPErrorMsgType StatusMsg;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TKSOTPBoolType UserForceClose;
+  ///æ“ä½œç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType ActiveUserID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TKSOTPSequenceNoType BrokerOrderSeq;
+};
+
+///æˆäº¤
+struct CKSOTPTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æˆäº¤ç¼–å·
+  TKSOTPTradeIDType TradeID;
+  ///ä¹°å–æ–¹å‘
+  TKSOTPDirectionType Direction;
+  ///æŠ¥å•ç¼–å·
+  TKSOTPOrderSysIDType OrderSysID;
+  ///ä¼šå‘˜ä»£ç 
+  TKSOTPParticipantIDType ParticipantID;
+  ///åˆçº¦è´¦å·
+  TKSOTPClientIDType ClientID;
+  ///äº¤æ˜“è§’è‰²
+  TKSOTPTradingRoleType TradingRole;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä»·æ ¼
+  TKSOTPPriceType Price;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///æˆäº¤æ—¶æœŸ
+  TKSOTPDateType TradeDate;
+  ///æˆäº¤æ—¶é—´
+  TKSOTPTimeType TradeTime;
+  ///æˆäº¤ç±»å‹
+  TKSOTPTradeTypeType TradeType;
+  ///æˆäº¤ä»·æ¥æº
+  TKSOTPPriceSourceType PriceSource;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TKSOTPTraderIDType TraderID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TKSOTPOrderLocalIDType OrderLocalID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TKSOTPParticipantIDType ClearingPartID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TKSOTPSequenceNoType BrokerOrderSeq;
+  ///æˆäº¤æ¥æº
+  TKSOTPTradeSourceType TradeSource;
+};
+
+///æ‰§è¡Œå®£å‘Š
+struct CKSOTPExecOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æ‰§è¡Œå®£å‘Šå¼•ç”¨
+  TKSOTPOrderRefType ExecOrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æ‰§è¡Œç±»å‹
+  TKSOTPActionTypeType ActionType;
+  ///ä¿ç•™å¤´å¯¸ç”³è¯·çš„æŒä»“æ–¹å‘
+  TKSOTPPosiDirectionType PosiDirection;
+  ///æœŸæƒè¡Œæƒåæ˜¯å¦ä¿ç•™æœŸè´§å¤´å¯¸çš„æ ‡è®°
+  TKSOTPExecOrderPositionFlagType ReservePositionFlag;
+  ///æœŸæƒè¡Œæƒåç”Ÿæˆçš„å¤´å¯¸æ˜¯å¦è‡ªåŠ¨å¹³ä»“
+  TKSOTPExecOrderCloseFlagType CloseFlag;
+  ///æœ¬åœ°æ‰§è¡Œå®£å‘Šç¼–å·
+  TKSOTPOrderLocalIDType ExecOrderLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TKSOTPParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TKSOTPClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TKSOTPTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///æ‰§è¡Œå®£å‘Šæäº¤çŠ¶æ€
+  TKSOTPOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TKSOTPSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///æ‰§è¡Œå®£å‘Šç¼–å·
+  TKSOTPExecOrderSysIDType ExecOrderSysID;
+  ///æŠ¥å•æ—¥æœŸ
+  TKSOTPDateType InsertDate;
+  ///æ’å…¥æ—¶é—´
+  TKSOTPTimeType InsertTime;
+  ///æ’¤é”€æ—¶é—´
+  TKSOTPTimeType CancelTime;
+  ///æ‰§è¡Œç»“æœ
+  TKSOTPExecResultType ExecResult;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TKSOTPParticipantIDType ClearingPartID;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TKSOTPErrorMsgType StatusMsg;
+  ///æ“ä½œç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType ActiveUserID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TKSOTPSequenceNoType BrokerExecOrderSeq;
+  ///è¥ä¸šéƒ¨ç¼–å·
+  TKSOTPBranchIDType BranchID;
+};
+
+///åˆçº¦çŠ¶æ€
+struct CKSOTPInstrumentStatusField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///åˆçº¦äº¤æ˜“çŠ¶æ€
+  TKSOTPInstrumentStatusType InstrumentStatus;
+  ///äº¤æ˜“é˜¶æ®µç¼–å·
+  TKSOTPTradingSegmentSNType TradingSegmentSN;
+  ///è¿›å…¥æœ¬çŠ¶æ€æ—¶é—´
+  TKSOTPTimeType EnterTime;
+  ///è¿›å…¥æœ¬çŠ¶æ€åŸå› 
+  TKSOTPInstStatusEnterReasonType EnterReason;
+};
+
+///è½¬è´¦è¯·æ±‚
+struct CKSOTPReqTransferField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TKSOTPSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TKSOTPLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TKSOTPSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TKSOTPCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TKSOTPPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///è¯åˆ¸å¯†ç 
+  TKSOTPPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TKSOTPUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TKSOTPYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TKSOTPTradeAmountType TradeAmount;
+  ///è¯åˆ¸å¯å–é‡‘é¢
+  TKSOTPTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TKSOTPFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TKSOTPCustFeeType CustFee;
+  ///åº”æ”¶è¯åˆ¸å…¬å¸è´¹ç”¨
+  TKSOTPFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TKSOTPAddInfoType Message;
+  ///æ‘˜è¦
+  TKSOTPDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TKSOTPDeviceIDType DeviceID;
+  ///è¯åˆ¸å•ä½å¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankSecuAccType;
+  ///è¯åˆ¸å…¬å¸é“¶è¡Œç¼–ç 
+  TKSOTPBankCodingForFutureType BrokerIDByBank;
+  ///è¯åˆ¸å•ä½å¸å·
+  TKSOTPBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TKSOTPPwdFlagType BankPwdFlag;
+  ///è¯åˆ¸èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TKSOTPPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TKSOTPOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TKSOTPTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TKSOTPTransferStatusType TransferStatus;
+};
+
+///é“¶è¡Œèµ„é‡‘è½¬è¯åˆ¸å“åº”
+struct CKSOTPRspTransferField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TKSOTPSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TKSOTPLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TKSOTPSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TKSOTPCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TKSOTPPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///è¯åˆ¸å¯†ç 
+  TKSOTPPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TKSOTPUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TKSOTPYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TKSOTPTradeAmountType TradeAmount;
+  ///è¯åˆ¸å¯å–é‡‘é¢
+  TKSOTPTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TKSOTPFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TKSOTPCustFeeType CustFee;
+  ///åº”æ”¶è¯åˆ¸å…¬å¸è´¹ç”¨
+  TKSOTPFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TKSOTPAddInfoType Message;
+  ///æ‘˜è¦
+  TKSOTPDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TKSOTPDeviceIDType DeviceID;
+  ///è¯åˆ¸å•ä½å¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankSecuAccType;
+  ///è¯åˆ¸å…¬å¸é“¶è¡Œç¼–ç 
+  TKSOTPBankCodingForFutureType BrokerIDByBank;
+  ///è¯åˆ¸å•ä½å¸å·
+  TKSOTPBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TKSOTPPwdFlagType BankPwdFlag;
+  ///è¯åˆ¸èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TKSOTPPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TKSOTPOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TKSOTPTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TKSOTPTransferStatusType TransferStatus;
+  ///é”™è¯¯ä»£ç 
+  TKSOTPErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TKSOTPErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢ç­¾çº¦é“¶è¡Œè¯·æ±‚
+struct CKSOTPQryContractBankField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TKSOTPBankBrchIDType BankBrchID;
+};
+
+///æŸ¥è¯¢ç­¾çº¦é“¶è¡Œå“åº”
+struct CKSOTPContractBankField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TKSOTPBankBrchIDType BankBrchID;
+  ///é“¶è¡Œåç§°
+  TKSOTPBankNameType BankName;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯è¯·æ±‚
+struct CKSOTPReqQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TKSOTPSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TKSOTPLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TKSOTPSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TKSOTPCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TKSOTPPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///è¯åˆ¸å¯†ç 
+  TKSOTPPasswordType Password;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TKSOTPUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TKSOTPYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TKSOTPDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TKSOTPDeviceIDType DeviceID;
+  ///è¯åˆ¸å•ä½å¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankSecuAccType;
+  ///è¯åˆ¸å…¬å¸é“¶è¡Œç¼–ç 
+  TKSOTPBankCodingForFutureType BrokerIDByBank;
+  ///è¯åˆ¸å•ä½å¸å·
+  TKSOTPBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TKSOTPPwdFlagType BankPwdFlag;
+  ///è¯åˆ¸èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TKSOTPPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TKSOTPOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TKSOTPTIDType TID;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯å“åº”
+struct CKSOTPRspQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TKSOTPSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TKSOTPLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TKSOTPSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TKSOTPCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TKSOTPPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///è¯åˆ¸å¯†ç 
+  TKSOTPPasswordType Password;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TKSOTPUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TKSOTPYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TKSOTPDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TKSOTPDeviceIDType DeviceID;
+  ///è¯åˆ¸å•ä½å¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankSecuAccType;
+  ///è¯åˆ¸å…¬å¸é“¶è¡Œç¼–ç 
+  TKSOTPBankCodingForFutureType BrokerIDByBank;
+  ///è¯åˆ¸å•ä½å¸å·
+  TKSOTPBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TKSOTPPwdFlagType BankPwdFlag;
+  ///è¯åˆ¸èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TKSOTPPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TKSOTPOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TKSOTPTIDType TID;
+  ///é“¶è¡Œå¯ç”¨é‡‘é¢
+  TKSOTPTradeAmountType BankUseAmount;
+  ///é“¶è¡Œå¯å–é‡‘é¢
+  TKSOTPTradeAmountType BankFetchAmount;
+};
+
+///è¯·æ±‚æŸ¥è¯¢è½¬å¸æµæ°´
+struct CKSOTPQryTransferSerialField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///é“¶è¡Œç¼–ç 
+  TKSOTPBankIDType BankID;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯é€šçŸ¥
+struct CKSOTPNotifyQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TKSOTPSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TKSOTPLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TKSOTPSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TKSOTPCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TKSOTPPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///è¯åˆ¸å¯†ç 
+  TKSOTPPasswordType Password;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TKSOTPUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TKSOTPYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TKSOTPDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TKSOTPDeviceIDType DeviceID;
+  ///è¯åˆ¸å•ä½å¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankSecuAccType;
+  ///è¯åˆ¸å…¬å¸é“¶è¡Œç¼–ç 
+  TKSOTPBankCodingForFutureType BrokerIDByBank;
+  ///è¯åˆ¸å•ä½å¸å·
+  TKSOTPBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TKSOTPPwdFlagType BankPwdFlag;
+  ///è¯åˆ¸èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TKSOTPPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TKSOTPOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TKSOTPTIDType TID;
+  ///é“¶è¡Œå¯ç”¨é‡‘é¢
+  TKSOTPTradeAmountType BankUseAmount;
+  ///é“¶è¡Œå¯å–é‡‘é¢
+  TKSOTPTradeAmountType BankFetchAmount;
+  ///é”™è¯¯ä»£ç 
+  TKSOTPErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TKSOTPErrorMsgType ErrorMsg;
+};
+
+///é“¶æœŸè½¬è´¦äº¤æ˜“æµæ°´è¡¨
+struct CKSOTPTransferSerialField {
+  ///å¹³å°æµæ°´å·
+  TKSOTPPlateSerialType PlateSerial;
+  ///äº¤æ˜“å‘èµ·æ–¹æ—¥æœŸ
+  TKSOTPTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPDateType TradingDay;
+  ///äº¤æ˜“æ—¶é—´
+  TKSOTPTradeTimeType TradeTime;
+  ///äº¤æ˜“ä»£ç 
+  TKSOTPTradeCodeType TradeCode;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///é“¶è¡Œç¼–ç 
+  TKSOTPBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ç¼–ç 
+  TKSOTPBankBrchIDType BankBranchID;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TKSOTPBankAccTypeType BankAccType;
+  ///é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankAccount;
+  ///é“¶è¡Œæµæ°´å·
+  TKSOTPBankSerialType BankSerial;
+  ///è¯åˆ¸å…¬å¸ç¼–ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TKSOTPFutureBranchIDType BrokerBranchID;
+  ///è¯åˆ¸å…¬å¸å¸å·ç±»å‹
+  TKSOTPFutureAccTypeType FutureAccType;
+  ///æŠ•èµ„è€…å¸å·
+  TKSOTPAccountIDType AccountID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///è¯åˆ¸å…¬å¸æµæ°´å·
+  TKSOTPFutureSerialType FutureSerial;
+  ///è¯ä»¶ç±»å‹
+  TKSOTPIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TKSOTPIdentifiedCardNoType IdentifiedCardNo;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///äº¤æ˜“é‡‘é¢
+  TKSOTPTradeAmountType TradeAmount;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TKSOTPCustFeeType CustFee;
+  ///åº”æ”¶è¯åˆ¸å…¬å¸è´¹ç”¨
+  TKSOTPFutureFeeType BrokerFee;
+  ///æœ‰æ•ˆæ ‡å¿—
+  TKSOTPAvailabilityFlagType AvailabilityFlag;
+  ///æ“ä½œå‘˜
+  TKSOTPOperatorCodeType OperatorCode;
+  ///æ–°é“¶è¡Œå¸å·
+  TKSOTPBankAccountType BankNewAccount;
+  ///é”™è¯¯ä»£ç 
+  TKSOTPErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TKSOTPErrorMsgType ErrorMsg;
+};
+
+///æŒ‡å®šçš„åˆçº¦
+struct CKSOTPSpecificInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///æŸ¥è¯¢å®¢æˆ·äº¤æ˜“çº§åˆ«
+struct CKSOTPQryInvestorTradeLevelField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+};
+
+///å®¢æˆ·äº¤æ˜“çº§åˆ«
+struct CKSOTPInvestorTradeLevelField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº¤æ˜“çº§åˆ«
+  TKSOTPTradeLevelType TradeLevel;
+};
+
+///æŸ¥è¯¢ä¸ªè‚¡é™è´­é¢åº¦
+struct CKSOTPQryPurchaseLimitAmtField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+};
+
+///ä¸ªè‚¡é™è´­é¢åº¦
+struct CKSOTPPurchaseLimitAmtField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///é™è´­é¢åº¦
+  TKSOTPMoneyType PurLimitAmt;
+};
+
+///æŸ¥è¯¢ä¸ªè‚¡é™ä»“é¢åº¦
+struct CKSOTPQryPositionLimitVolField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///ä¿æŠ¤æ€§æ ‡å¿—
+  TKSOTPProtectFlagType ProtectFlag;
+  ///æœŸæƒC/Pæ ‡å¿—
+  TKSOTPOptionsTypeType OptionsType;
+  ///æ§åˆ¶èŒƒå›´
+  TKSOTPControlRangeType ControlRange;
+};
+
+///æŸ¥è¯¢ä¸ªè‚¡é™ä»“é¢åº¦
+struct CKSOTPPositionLimitVolField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///ä¿æŠ¤æ€§æ ‡å¿—
+  TKSOTPProtectFlagType ProtectFlag;
+  ///æœŸæƒC/Pæ ‡å¿—
+  TKSOTPOptionsTypeType OptionsType;
+  ///æ§åˆ¶èŒƒå›´
+  TKSOTPControlRangeType ControlRange;
+  ///é™ä»“é¢åº¦
+  TKSOTPVolumeType PosiLimitVol;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…ç»“ç®—ç»“æœ
+struct CKSOTPQrySettlementInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+};
+
+///æŸ¥è¯¢ç»“ç®—ä¿¡æ¯ç¡®è®¤åŸŸ
+struct CKSOTPQrySettlementInfoConfirmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+};
+
+///æŠ•èµ„è€…ç»“ç®—ç»“æœç¡®è®¤ä¿¡æ¯
+struct CKSOTPSettlementInfoConfirmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///ç¡®è®¤æ—¥æœŸ
+  TKSOTPDateType ConfirmDate;
+  ///ç¡®è®¤æ—¶é—´
+  TKSOTPTimeType ConfirmTime;
+};
+
+///æŠ•èµ„è€…ç»“ç®—ç»“æœ
+struct CKSOTPSettlementInfoField {
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TKSOTPContentType Content;
+};
+
+///æŸ¥è¯¢å†å²æŠ¥å•
+struct CKSOTPQryHistoryOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TKSOTPOrderLocalIDType OrderLocalID;
+  ///å“ç§ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///å¼€å§‹æ—¥æœŸ
+  TKSOTPDateType OrderDataStart;
+  ///ç»“æŸæ—¥æœŸ
+  TKSOTPDateType OrderDataEnd;
+};
+
+///æŸ¥è¯¢å†å²æˆäº¤
+struct CKSOTPQryHistoryTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å“ç§ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///å¼€å§‹æ—¥æœŸ
+  TKSOTPDateType TradeDataStart;
+  ///ç»“æŸæ—¥æœŸ
+  TKSOTPDateType TradeDataEnd;
+};
+
+///æŸ¥è¯¢å†å²è¡ŒæƒæŒ‡æ´¾æ˜ç»†
+struct CKSOTPQryHistoryAssignmentField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æŠ•ä¿æ ‡è®°
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æœŸæƒç±»å‹
+  TKSOTPOptionsTypeType OptionsType;
+  ///äº¤å‰²æœˆ
+  TKSOTPDateType DeliveryMonth;
+  ///æŒä»“æ–¹å‘
+  TKSOTPPosiDirectionType PosiDirection;
+};
+
+///æŸ¥è¯¢è¡Œæƒäº¤å‰²æ˜ç»†
+struct CKSOTPQryDelivDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº¤å‰²æœˆ
+  TKSOTPDateType DeliveryMonth;
+  ///ä¸ªè‚¡äº¤æ”¶æŸ¥è¯¢ç±»å‹
+  TKSOTPDelivModeType DelivMode;
+};
+
+///è‡ªåŠ¨è¡Œæƒæ‰§è¡Œæ“ä½œ
+struct CKSOTPAutoExecOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///è‡ªåŠ¨è¡Œæƒé˜ˆå€¼(0-ä¸è‡ªåŠ¨è¡Œæƒ,é0-ä»£è¡¨è¶…è¿‡é˜€å€¼ä¼šè‡ªåŠ¨è¡Œæƒ(20ä»£è¡¨20%))
+  TKSOTPVolumeType RangeVol;
+};
+
+///å†å²è¡ŒæƒæŒ‡æ´¾æ˜ç»†
+struct CKSOTPHistoryAssignmentField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TKSOTPTradeDateType TradingDay;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///å®¢æˆ·ä»£ç 
+  TKSOTPClientIDType ClientID;
+  ///æ ‡çš„è¯åˆ¸ä»£ç 
+  TKSOTPInstrumentIDType StockInstr;
+  ///æŠ•ä¿æ ‡è®°
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æœŸæƒç±»å‹
+  TKSOTPOptionsTypeType OptionsType;
+  ///æŒä»“æ–¹å‘
+  TKSOTPPosiDirectionType PosiDirection;
+  ///æ‰§è¡Œä»·
+  TKSOTPPriceType StrikePrice;
+  ///è¡ŒæƒæŒ‡æ´¾æ•°é‡
+  TKSOTPVolumeType ExecVol;
+  ///æ ‡çš„è¯åˆ¸åº”æ”¶ä»˜æ•°é‡
+  TKSOTPVolumeType IOVol;
+  ///åº”æ”¶ä»˜é‡‘é¢
+  TKSOTPMoneyType IOAmt;
+  ///è¡Œæƒäº¤æ”¶æ—¥
+  TKSOTPDateType DelivDate;
+};
+
+///è¡Œæƒäº¤å‰²æ˜ç»†
+struct CKSOTPDelivDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///æ ‡çš„è¯åˆ¸ä»£ç 
+  TKSOTPInstrumentIDType StockInstr;
+  ///åº”æ”¶/åº”ä»˜/æ‰£åˆ¸è¯åˆ¸æ•°é‡
+  TKSOTPVolumeType IOVol;
+  ///å®æ”¶ä»˜æ•°é‡
+  TKSOTPVolumeType IOVolInFact;
+  ///ç»“ç®—ä»·
+  TKSOTPPriceType SettlementPrice;
+  ///æ‰£åˆ¸é¢å€¼/ç»“ç®—é‡‘é¢
+  TKSOTPMoneyType SettlementAmt;
+  ///è¡Œæƒäº¤æ”¶æ—¥
+  TKSOTPDateType DelivDate;
+  ///ä¸šåŠ¡ç±»å‹åç§°
+  TKSOTPFunctionNameType FunctionName;
+};
+
+///å†å²æŠ¥å•
+struct CKSOTPHistoryOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TKSOTPOrderLocalIDType OrderLocalID;
+  ///ç”³æŠ¥æ—¶é—´
+  TKSOTPTimeType InsertTime;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///æˆäº¤ä»·æ ¼
+  TKSOTPPriceType TradePrice;
+  ///æˆäº¤é‡‘é¢
+  TKSOTPMoneyType TradeAmount;
+  ///æˆäº¤æ•°é‡
+  TKSOTPVolumeType VolumeTraded;
+  ///å†»ç»“è§£å†»é‡‘é¢
+  TKSOTPMoneyType FrozenAmount;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///ä¹°å–æ–¹å‘
+  TKSOTPDirectionType Direction;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  ///è¯·æ±‚ç¼–å·
+  TKSOTPRequestIDType RequestID;
+  ///æŠ¥å•å¼•ç”¨
+  TKSOTPOrderRefType OrderRef;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///å§”æ‰˜ä»·æ ¼
+  TKSOTPPriceType OrderPrice;
+  ///å§”æ‰˜æ¥æº
+  TKSOTPOrderSourceType OrderSource;
+  ///å§”æ‰˜æ—¥æœŸ
+  TKSOTPDateType InsertDate;
+  ///å§”æ‰˜æ—¶é—´
+  TKSOTPTimeType OrderTime;
+  ///å§”æ‰˜æ•°é‡
+  TKSOTPVolumeType VolumeTotalOriginal;
+  ///å§”æ‰˜çŠ¶æ€
+  TKSOTPOrderStatusType OrderStatus;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº§å“åç§°
+  TKSOTPProductNameType ProductName;
+  ///äº§å“ç±»å‹
+  TKSOTPProductClassType ProductClass;
+  ///æŠ•ä¿ä¹°å–å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///ä¸šåŠ¡ç±»å‹åç§°
+  TKSOTPFunctionNameType FunctionName;
+};
+
+///å†å²æˆäº¤
+struct CKSOTPHistoryTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å®¢æˆ·å§“å
+  TKSOTPIndividualNameType CustomerName;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TKSOTPOrderLocalIDType OrderLocalID;
+  ///å¸ç§ä»£ç 
+  TKSOTPCurrencyIDType CurrencyID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº§å“åç§°
+  TKSOTPProductNameType ProductName;
+  ///æˆäº¤æ•°é‡
+  TKSOTPVolumeType VolumeTraded;
+  ///æˆäº¤é‡‘é¢
+  TKSOTPMoneyType TradeAmount;
+  ///æˆäº¤æ—¥æœŸ
+  TKSOTPDateType TradeDate;
+  ///æˆäº¤æ—¶é—´
+  TKSOTPTimeType TradeTime;
+  ///æŠ•ä¿ä¹°å–å¼€å¹³æ ‡å¿—
+  TKSOTPOffsetFlagType OffsetFlag;
+  ///ä¸šåŠ¡å•å…ƒ
+  TKSOTPBusinessUnitType BusinessUnit;
+  ///æ‰‹ç»­è´¹
+  TKSOTPMoneyType Commission;
+  ///å¤‡æ³¨
+  TKSOTPMemoType Memo;
+  ///æŠ¥ç›˜æ—¶é—´
+  TKSOTPTimeType TraderOfferTime;
+  ///æˆäº¤ä»·æ ¼
+  TKSOTPPriceType TradePrice;
+  ///æœŸæƒäº¤æ˜“ç¼–ç 
+  TKSOTPClientIDType ClientID;
+  ///æœŸæƒç±»å‹
+  TKSOTPOptionsTypeType OptionsType;
+  ///å¤‡å…‘æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æƒåˆ©ä»“æ•°é‡
+  TKSOTPVolumeType RoyaltyVolume;
+  ///ä¹‰åŠ¡ä»“æ•°é‡
+  TKSOTPVolumeType ObligationVolume;
+  ///æƒåˆ©ä»“é‡‘é¢
+  TKSOTPMoneyType RoyaltyAmount;
+  ///ä¹‰åŠ¡ä»“é‡‘é¢
+  TKSOTPMoneyType ObligationAmount;
+  ///æˆäº¤ç¼–å·
+  TKSOTPTradeIDType TradeID;
+  ///ä¸šåŠ¡ç±»å‹åç§°
+  TKSOTPFunctionNameType FunctionName;
+};
+
+///ä¸ªè‚¡ç»„åˆæ‹†åˆ†å§”æ‰˜
+struct CKSOTPInputCombActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///ç­–ç•¥ä»£ç 
+  TKSOTPCombStrategyIDType StrategyID;
+  ///åˆçº¦ä»£ç 1
+  TKSOTPInstrumentIDType InstrumentID1;
+  ///åˆçº¦ä»£ç 2
+  TKSOTPInstrumentIDType InstrumentID2;
+  ///åˆçº¦ä»£ç 3
+  TKSOTPInstrumentIDType InstrumentID3;
+  ///åˆçº¦ä»£ç 4
+  TKSOTPInstrumentIDType InstrumentID4;
+  ///ç»„åˆå¼•ç”¨
+  TKSOTPOrderRefType CombActionRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///ä¹°å–æ–¹å‘1
+  TKSOTPDirectionType Direction1;
+  ///ä¹°å–æ–¹å‘2
+  TKSOTPDirectionType Direction2;
+  ///ä¹°å–æ–¹å‘3
+  TKSOTPDirectionType Direction3;
+  ///ä¹°å–æ–¹å‘4
+  TKSOTPDirectionType Direction4;
+  ///å¼ºæ‹†æ ‡è®°
+  TKSOTPCombActionType CombActionFlag;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///ç»„åˆæ‹†åˆ†æ ‡è®°
+  TKSOTPCombDirectionType CombDirection;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€ç»„åˆç¼–å·
+  TKSOTPTradeIDType ComTradeID;
+};
+
+///ä¸ªè‚¡ç»„åˆæ‹†åˆ†
+struct CKSOTPCombActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å®Œæ•´åˆçº¦ä»£ç 
+  TKSOTPInstrumentIDType InstrumentID;
+  ///ç­–ç•¥ä»£ç 
+  TKSOTPCombStrategyIDType StrategyID;
+  ///åˆçº¦ä»£ç 1
+  TKSOTPInstrumentIDType InstrumentID1;
+  ///åˆçº¦ä»£ç 2
+  TKSOTPInstrumentIDType InstrumentID2;
+  ///åˆçº¦ä»£ç 3
+  TKSOTPInstrumentIDType InstrumentID3;
+  ///åˆçº¦ä»£ç 4
+  TKSOTPInstrumentIDType InstrumentID4;
+  ///ç»„åˆå¼•ç”¨
+  TKSOTPOrderRefType CombActionRef;
+  ///ç”¨æˆ·ä»£ç 
+  TKSOTPUserIDType UserID;
+  ///ä¹°å–æ–¹å‘1
+  TKSOTPDirectionType Direction1;
+  ///ä¹°å–æ–¹å‘2
+  TKSOTPDirectionType Direction2;
+  ///ä¹°å–æ–¹å‘3
+  TKSOTPDirectionType Direction3;
+  ///ä¹°å–æ–¹å‘4
+  TKSOTPDirectionType Direction4;
+  ///å¼ºæ‹†æ ‡è®°
+  TKSOTPCombActionType CombActionFlag;
+  ///æ•°é‡
+  TKSOTPVolumeType Volume;
+  ///ç»„åˆæ‹†åˆ†æ ‡è®°
+  TKSOTPCombDirectionType CombDirection;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æœ¬åœ°ç”³è¯·ç»„åˆç¼–å·
+  TKSOTPOrderLocalIDType ActionLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TKSOTPParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TKSOTPClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TKSOTPExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TKSOTPTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TKSOTPInstallIDType InstallID;
+  ///ç»„åˆçŠ¶æ€
+  TKSOTPOrderActionStatusType ActionStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TKSOTPSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TKSOTPDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TKSOTPSettlementIDType SettlementID;
+  ///åºå·
+  TKSOTPSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TKSOTPFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TKSOTPSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TKSOTPProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TKSOTPErrorMsgType StatusMsg;
+  ///äº¤æ˜“æ‰€ç»„åˆç¼–å·
+  TKSOTPTradeIDType ComTradeID;
+  ///æŠ¥å•æ¥æº
+  TKSOTPOrderSourceType OrderSource;
+};
+
+///æŸ¥è¯¢ä¸ªè‚¡ç»„åˆæŒä»“æ˜ç»†
+struct CKSOTPQryInvestorPositionCombineDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº§å“ä»£ç 
+  TKSOTPInstrumentIDType ProductID;
+  ///äº¤æ˜“æ‰€ç»„åˆç¼–å·
+  TKSOTPTradeIDType ComTradeID;
+};
+
+///ä¸ªè‚¡ç»„åˆæŒä»“æ˜ç»†
+struct CKSOTPInvestorPositionCombineDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///äº¤æ˜“ç¼–ç 
+  TKSOTPClientIDType ClientID;
+  ///ç»„åˆç¼–å·
+  TKSOTPTradeIDType ComTradeID;
+  ///ç­–ç•¥ä»£ç 
+  TKSOTPCombStrategyIDType StrategyID;
+  ///åˆçº¦ä»£ç 1
+  TKSOTPInstrumentIDType InstrumentID1;
+  ///åˆçº¦ä»£ç 2
+  TKSOTPInstrumentIDType InstrumentID2;
+  ///åˆçº¦ä»£ç 3
+  TKSOTPInstrumentIDType InstrumentID3;
+  ///åˆçº¦ä»£ç 4
+  TKSOTPInstrumentIDType InstrumentID4;
+  ///ä¿è¯é‡‘
+  TKSOTPMoneyType Margin;
+  ///è·ç¦»è‡ªåŠ¨æ‹†åˆ†æ—¥å¤©æ•°
+  TKSOTPVolumeType CombActionVolume;
+  ///æŠ•ä¿æ ‡è®°
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///æŒä»“é‡
+  TKSOTPVolumeType TotalAmt;
+  ///ä¹°å–æ–¹å‘1
+  TKSOTPDirectionType Direction1;
+  ///ä¹°å–æ–¹å‘2
+  TKSOTPDirectionType Direction2;
+  ///ä¹°å–æ–¹å‘3
+  TKSOTPDirectionType Direction3;
+  ///ä¹°å–æ–¹å‘4
+  TKSOTPDirectionType Direction4;
+  ///ç»„åˆä¹°å–æ–¹å‘
+  TKSOTPDirectionType CombDirection;
+};
+
+///ä¸ªè‚¡å¯ç»„åˆå¯æ‹†åˆ†æ‰‹æ•°æŸ¥è¯¢è¯·æ±‚
+struct CKSOTPQryCombActionVolumeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TKSOTPExchangeIDType ExchangeID;
+  ///ç­–ç•¥ä»£ç 
+  TKSOTPCombStrategyIDType StrategyID;
+  ///åˆçº¦ä»£ç 1
+  TKSOTPInstrumentIDType InstrumentID1;
+  ///åˆçº¦ä»£ç 2
+  TKSOTPInstrumentIDType InstrumentID2;
+  ///åˆçº¦ä»£ç 3
+  TKSOTPInstrumentIDType InstrumentID3;
+  ///åˆçº¦ä»£ç 4
+  TKSOTPInstrumentIDType InstrumentID4;
+  ///æŠ•ä¿æ ‡è®°
+  TKSOTPHedgeFlagType HedgeFlag;
+  ///ä¹°å–æ–¹å‘1
+  TKSOTPDirectionType Direction1;
+  ///ä¹°å–æ–¹å‘2
+  TKSOTPDirectionType Direction2;
+  ///ä¹°å–æ–¹å‘3
+  TKSOTPDirectionType Direction3;
+  ///ä¹°å–æ–¹å‘4
+  TKSOTPDirectionType Direction4;
+  ///å¼ºæ‹†æ ‡è®°
+  TKSOTPCombActionType CombActionFlag;
+  //ç»„åˆæ‹†åˆ†æ ‡è®°
+  TKSOTPCombDirectionType CombDirection;
+  ///ç»„åˆç¼–å·
+  TKSOTPTradeIDType ComTradeID;
+};
+
+///ä¸ªè‚¡å¯ç»„åˆå¯æ‹†åˆ†æ‰‹æ•°
+struct CKSOTPCombActionVolumeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æœ€å¤§å¯ç»„åˆæ•°é‡
+  TKSOTPVolumeType MaxCombVolume;
+  ///æœ€å¤§å¯æ‹†åˆ†æ•°é‡
+  TKSOTPVolumeType MaxActionVolume;
+};
+
+///å®¢æˆ·æ¯æ—¥å‡ºé‡‘é¢åº¦ç”³è¯·è¯·æ±‚
+struct CKSOTPInputFundOutCreditApplyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å½“æ—¥å‡ºé‡‘é¢åº¦
+  TKSOTPMoneyType FundOutCredit;
+  ///å½“æ—¥å‡ºé‡‘é¢åº¦æ“ä½œç±»å‹
+  TKSOTPFOCreditApplyType CreditApplyFlag;
+  ///æµæ°´å·
+  TKSOTPTradeSerialNoType CreditSerial;
+};
+
+///å®¢æˆ·æ¯æ—¥å‡ºé‡‘é¢åº¦æŸ¥è¯¢è¯·æ±‚
+struct CKSOTPQryFundOutCreditField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+};
+
+///å®¢æˆ·æ¯æ—¥å‡ºé‡‘é¢åº¦æŸ¥è¯¢
+struct CKSOTPRspQryFundOutCreditField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///å½“æ—¥å‡ºé‡‘é¢åº¦
+  TKSOTPMoneyType FundOutCredit;
+  ///å½“æ—¥å·²å‡ºé‡‘é¢åº¦
+  TKSOTPMoneyType FundOutedCredit;
+  ///æœ€åæ›´æ–°æ—¥æœŸ
+  TKSOTPDateType UpdateDate;
+  ///è®¾ç½®æ—¥æœŸ
+  TKSOTPDateType SetDate;
+  ///è®¾ç½®æ—¶é—´
+  TKSOTPTimeType SetTime;
+};
+
+///å®¢æˆ·æ¯æ—¥å‡ºé‡‘é¢åº¦ç”³è¯·æŸ¥è¯¢è¯·æ±‚
+struct CKSOTPQryFundOutCreditApplyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æŸ¥è¯¢å¼€å§‹æ—¥æœŸ
+  TKSOTPDateType QryCreditStart;
+  ///æŸ¥è¯¢ç»“æŸæ—¥æœŸ
+  TKSOTPDateType QryCreditEnd;
+  ///å½“æ—¥å‡ºé‡‘é¢åº¦å¤„ç†çŠ¶æ€
+  TKSOTPFOCreditStatusType DealStatus;
+};
+
+///å®¢æˆ·æ¯æ—¥å‡ºé‡‘é¢åº¦ç”³è¯·æŸ¥è¯¢
+struct CKSOTPRspQryFundOutCreditApplyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TKSOTPBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TKSOTPInvestorIDType InvestorID;
+  ///æµæ°´å·
+  TKSOTPTradeSerialNoType CreditSerial;
+  ///ç”³è¯·å‡ºé‡‘é¢åº¦
+  TKSOTPMoneyType FundOutCredit;
+  ///å½“æ—¥å‡ºé‡‘é¢åº¦å¤„ç†çŠ¶æ€
+  TKSOTPFOCreditStatusType DealStatus;
+  ///ç”³è¯·æ—¥æœŸ
+  TKSOTPDateType ApplyDate;
+  ///ç”³è¯·æ—¶é—´
+  TKSOTPTimeType ApplyTime;
+  ///å®¡æ ¸æ—¥æœŸ
+  TKSOTPDateType ConfirmDate;
+  ///å®¡æ ¸æ—¶é—´
+  TKSOTPTimeType ConfirmTime;
+};
+} // end of namespace KingstarAPI
 
 #endif

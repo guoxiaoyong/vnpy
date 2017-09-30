@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 ///@company shanghai liber information Technology Co.,Ltd
 ///@file SecurityFtdcL2MDUserApiStruct.h
-///@brief ¶¨ÒåÒµÎñÊı¾İ½á¹¹
+///@brief å®šä¹‰ä¸šåŠ¡æ•°æ®ç»“æ„
 /////////////////////////////////////////////////////////////////////////
 
 #if !defined(SECURITY_L2MD_FTDCSTRUCT_H)
@@ -15,771 +15,729 @@
 
 _LTS_NS_BEGIN_
 
-///ÏìÓ¦ĞÅÏ¢
-struct CSecurityFtdcRspInfoField
-{
-	///´íÎó´úÂë
-	TSecurityFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSecurityFtdcErrorMsgType	ErrorMsg;
+///å“åº”ä¿¡æ¯
+struct CSecurityFtdcRspInfoField {
+  ///é”™è¯¯ä»£ç 
+  TSecurityFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSecurityFtdcErrorMsgType ErrorMsg;
 };
 
-///ÓÃ»§µÇÂ¼ĞÅÏ¢
-struct CSecurityFtdcUserLoginField
-{
-	///½»Ò×ÈÕ
-	TSecurityFtdcDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSecurityFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSecurityFtdcUserIDType	UserID;
-	///ÃÜÂë
-	TSecurityFtdcPasswordType	Password;
-	///ĞĞÇéÊı¾İµÈ¼¶
-	TSecurityFtdcDataLevelType	DataLevel;
+///ç”¨æˆ·ç™»å½•ä¿¡æ¯
+struct CSecurityFtdcUserLoginField {
+  ///äº¤æ˜“æ—¥
+  TSecurityFtdcDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSecurityFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSecurityFtdcUserIDType UserID;
+  ///å¯†ç 
+  TSecurityFtdcPasswordType Password;
+  ///è¡Œæƒ…æ•°æ®ç­‰çº§
+  TSecurityFtdcDataLevelType DataLevel;
 };
 
-///ÓÃ»§µÇ³öĞÅÏ¢
-struct CSecurityFtdcUserLogoutField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSecurityFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSecurityFtdcUserIDType	UserID;
+///ç”¨æˆ·ç™»å‡ºä¿¡æ¯
+struct CSecurityFtdcUserLogoutField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSecurityFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSecurityFtdcUserIDType UserID;
 };
 
-///Ö¸¶¨µÄºÏÔ¼
-struct CSecurityFtdcSpecificInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
+///æŒ‡å®šçš„åˆçº¦
+struct CSecurityFtdcSpecificInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
 };
 
-///Level2ĞĞÇé
-struct CSecurityFtdcL2MarketDataField
-{
-	///½»Ò×ÈÕ
-	TSecurityFtdcDateType	TradingDay;
-	///Ê±¼ä´Á
-	TSecurityFtdcTimeType	TimeStamp;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///×òÊÕÅÌ¼Û
-	TSecurityFtdcPriceType	PreClosePrice;
-	///½ñ¿ªÅÌ¼Û
-	TSecurityFtdcPriceType	OpenPrice;
-	///ÊÕÅÌ¼Û
-	TSecurityFtdcPriceType	ClosePrice;
-	///¾»Öµ¹ÀÖµ
-	TSecurityFtdcPriceType	IOPV;
-	///µ½ÆÚÊÕÒæÂÊ
-	TSecurityFtdcRatioType	YieldToMaturity;
-	///×î¸ß¼Û
-	TSecurityFtdcPriceType	HighPrice;
-	///×îµÍ¼Û
-	TSecurityFtdcPriceType	LowPrice;
-	///×îĞÂ¼Û
-	TSecurityFtdcPriceType	LastPrice;
-	///³É½»±ÊÊı
-	TSecurityFtdcVolumeType	TradeCount;
-	///³É½»×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalTradeVolume;
-	///³É½»×Ü½ğ¶î
-	TSecurityFtdcMoneyType	TotalTradeValue;
-	///Î¯ÍĞÂòÈë×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalBidVolume;
-	///¼ÓÈ¨Æ½¾ùÎ¯Âò¼Û
-	TSecurityFtdcPriceType	WeightedAvgBidPrice;
-	///Õ®È¯¼ÓÈ¨Æ½¾ùÎ¯Âò¼Û
-	TSecurityFtdcPriceType	AltWeightedAvgBidPrice;
-	///Î¯ÍĞÂô³ö×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalOfferVolume;
-	///¼ÓÈ¨Æ½¾ùÎ¯Âô¼Û
-	TSecurityFtdcPriceType	WeightedAvgOfferPrice;
-	///Õ®È¯¼ÓÈ¨Æ½¾ùÎ¯Âô¼Û¸ñ
-	TSecurityFtdcPriceType	AltWeightedAvgOfferPrice;
-	///Âò¼ÛÉî¶È
-	TSecurityFtdcPriceLevelType	BidPriceLevel;
-	///Âô¼ÛÉî¶È
-	TSecurityFtdcPriceLevelType	OfferPriceLevel;
-	///ÉêÂò¼ÛÒ»
-	TSecurityFtdcPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TSecurityFtdcVolumeType	BidVolume1;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	BidCount1;
-	///ÉêÂò¼Û¶ş
-	TSecurityFtdcPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TSecurityFtdcVolumeType	BidVolume2;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	BidCount2;
-	///ÉêÂò¼ÛÈı
-	TSecurityFtdcPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TSecurityFtdcVolumeType	BidVolume3;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	BidCount3;
-	///ÉêÂò¼ÛËÄ
-	TSecurityFtdcPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TSecurityFtdcVolumeType	BidVolume4;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	BidCount4;
-	///ÉêÂò¼ÛÎå
-	TSecurityFtdcPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TSecurityFtdcVolumeType	BidVolume5;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	BidCount5;
-	///ÉêÂò¼ÛÁù
-	TSecurityFtdcPriceType	BidPrice6;
-	///ÉêÂòÁ¿Áù
-	TSecurityFtdcVolumeType	BidVolume6;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	BidCount6;
-	///ÉêÂò¼ÛÆß
-	TSecurityFtdcPriceType	BidPrice7;
-	///ÉêÂòÁ¿Æß
-	TSecurityFtdcVolumeType	BidVolume7;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	BidCount7;
-	///ÉêÂò¼Û°Ë
-	TSecurityFtdcPriceType	BidPrice8;
-	///ÉêÂòÁ¿°Ë
-	TSecurityFtdcVolumeType	BidVolume8;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	BidCount8;
-	///ÉêÂò¼Û¾Å
-	TSecurityFtdcPriceType	BidPrice9;
-	///ÉêÂòÁ¿¾Å
-	TSecurityFtdcVolumeType	BidVolume9;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	BidCount9;
-	///ÉêÂò¼ÛÊ®
-	TSecurityFtdcPriceType	BidPriceA;
-	///ÉêÂòÁ¿Ê®
-	TSecurityFtdcVolumeType	BidVolumeA;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	BidCountA;
-	///ÉêÂô¼ÛÒ»
-	TSecurityFtdcPriceType	OfferPrice1;
-	///ÉêÂôÁ¿Ò»
-	TSecurityFtdcVolumeType	OfferVolume1;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	OfferCount1;
-	///ÉêÂô¼Û¶ş
-	TSecurityFtdcPriceType	OfferPrice2;
-	///ÉêÂôÁ¿¶ş
-	TSecurityFtdcVolumeType	OfferVolume2;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	OfferCount2;
-	///ÉêÂô¼ÛÈı
-	TSecurityFtdcPriceType	OfferPrice3;
-	///ÉêÂôÁ¿Èı
-	TSecurityFtdcVolumeType	OfferVolume3;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	OfferCount3;
-	///ÉêÂô¼ÛËÄ
-	TSecurityFtdcPriceType	OfferPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TSecurityFtdcVolumeType	OfferVolume4;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	OfferCount4;
-	///ÉêÂô¼ÛÎå
-	TSecurityFtdcPriceType	OfferPrice5;
-	///ÉêÂôÁ¿Îå
-	TSecurityFtdcVolumeType	OfferVolume5;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	OfferCount5;
-	///ÉêÂô¼ÛÁù
-	TSecurityFtdcPriceType	OfferPrice6;
-	///ÉêÂôÁ¿Áù
-	TSecurityFtdcVolumeType	OfferVolume6;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	OfferCount6;
-	///ÉêÂô¼ÛÆß
-	TSecurityFtdcPriceType	OfferPrice7;
-	///ÉêÂôÁ¿Æß
-	TSecurityFtdcVolumeType	OfferVolume7;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	OfferCount7;
-	///ÉêÂô¼Û°Ë
-	TSecurityFtdcPriceType	OfferPrice8;
-	///ÉêÂôÁ¿°Ë
-	TSecurityFtdcVolumeType	OfferVolume8;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	OfferCount8;
-	///ÉêÂô¼Û¾Å
-	TSecurityFtdcPriceType	OfferPrice9;
-	///ÉêÂôÁ¿¾Å
-	TSecurityFtdcVolumeType	OfferVolume9;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	OfferCount9;
-	///ÉêÂô¼ÛÊ®
-	TSecurityFtdcPriceType	OfferPriceA;
-	///ÉêÂôÁ¿Ê®
-	TSecurityFtdcVolumeType	OfferVolumeA;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	OfferCountA;
+/// Level2è¡Œæƒ…
+struct CSecurityFtdcL2MarketDataField {
+  ///äº¤æ˜“æ—¥
+  TSecurityFtdcDateType TradingDay;
+  ///æ—¶é—´æˆ³
+  TSecurityFtdcTimeType TimeStamp;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
+  ///æ˜¨æ”¶ç›˜ä»·
+  TSecurityFtdcPriceType PreClosePrice;
+  ///ä»Šå¼€ç›˜ä»·
+  TSecurityFtdcPriceType OpenPrice;
+  ///æ”¶ç›˜ä»·
+  TSecurityFtdcPriceType ClosePrice;
+  ///å‡€å€¼ä¼°å€¼
+  TSecurityFtdcPriceType IOPV;
+  ///åˆ°æœŸæ”¶ç›Šç‡
+  TSecurityFtdcRatioType YieldToMaturity;
+  ///æœ€é«˜ä»·
+  TSecurityFtdcPriceType HighPrice;
+  ///æœ€ä½ä»·
+  TSecurityFtdcPriceType LowPrice;
+  ///æœ€æ–°ä»·
+  TSecurityFtdcPriceType LastPrice;
+  ///æˆäº¤ç¬”æ•°
+  TSecurityFtdcVolumeType TradeCount;
+  ///æˆäº¤æ€»é‡
+  TSecurityFtdcLargeVolumeType TotalTradeVolume;
+  ///æˆäº¤æ€»é‡‘é¢
+  TSecurityFtdcMoneyType TotalTradeValue;
+  ///å§”æ‰˜ä¹°å…¥æ€»é‡
+  TSecurityFtdcLargeVolumeType TotalBidVolume;
+  ///åŠ æƒå¹³å‡å§”ä¹°ä»·
+  TSecurityFtdcPriceType WeightedAvgBidPrice;
+  ///å€ºåˆ¸åŠ æƒå¹³å‡å§”ä¹°ä»·
+  TSecurityFtdcPriceType AltWeightedAvgBidPrice;
+  ///å§”æ‰˜å–å‡ºæ€»é‡
+  TSecurityFtdcLargeVolumeType TotalOfferVolume;
+  ///åŠ æƒå¹³å‡å§”å–ä»·
+  TSecurityFtdcPriceType WeightedAvgOfferPrice;
+  ///å€ºåˆ¸åŠ æƒå¹³å‡å§”å–ä»·æ ¼
+  TSecurityFtdcPriceType AltWeightedAvgOfferPrice;
+  ///ä¹°ä»·æ·±åº¦
+  TSecurityFtdcPriceLevelType BidPriceLevel;
+  ///å–ä»·æ·±åº¦
+  TSecurityFtdcPriceLevelType OfferPriceLevel;
+  ///ç”³ä¹°ä»·ä¸€
+  TSecurityFtdcPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TSecurityFtdcVolumeType BidVolume1;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType BidCount1;
+  ///ç”³ä¹°ä»·äºŒ
+  TSecurityFtdcPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TSecurityFtdcVolumeType BidVolume2;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType BidCount2;
+  ///ç”³ä¹°ä»·ä¸‰
+  TSecurityFtdcPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TSecurityFtdcVolumeType BidVolume3;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType BidCount3;
+  ///ç”³ä¹°ä»·å››
+  TSecurityFtdcPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TSecurityFtdcVolumeType BidVolume4;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType BidCount4;
+  ///ç”³ä¹°ä»·äº”
+  TSecurityFtdcPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TSecurityFtdcVolumeType BidVolume5;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType BidCount5;
+  ///ç”³ä¹°ä»·å…­
+  TSecurityFtdcPriceType BidPrice6;
+  ///ç”³ä¹°é‡å…­
+  TSecurityFtdcVolumeType BidVolume6;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType BidCount6;
+  ///ç”³ä¹°ä»·ä¸ƒ
+  TSecurityFtdcPriceType BidPrice7;
+  ///ç”³ä¹°é‡ä¸ƒ
+  TSecurityFtdcVolumeType BidVolume7;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType BidCount7;
+  ///ç”³ä¹°ä»·å…«
+  TSecurityFtdcPriceType BidPrice8;
+  ///ç”³ä¹°é‡å…«
+  TSecurityFtdcVolumeType BidVolume8;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType BidCount8;
+  ///ç”³ä¹°ä»·ä¹
+  TSecurityFtdcPriceType BidPrice9;
+  ///ç”³ä¹°é‡ä¹
+  TSecurityFtdcVolumeType BidVolume9;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType BidCount9;
+  ///ç”³ä¹°ä»·å
+  TSecurityFtdcPriceType BidPriceA;
+  ///ç”³ä¹°é‡å
+  TSecurityFtdcVolumeType BidVolumeA;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType BidCountA;
+  ///ç”³å–ä»·ä¸€
+  TSecurityFtdcPriceType OfferPrice1;
+  ///ç”³å–é‡ä¸€
+  TSecurityFtdcVolumeType OfferVolume1;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType OfferCount1;
+  ///ç”³å–ä»·äºŒ
+  TSecurityFtdcPriceType OfferPrice2;
+  ///ç”³å–é‡äºŒ
+  TSecurityFtdcVolumeType OfferVolume2;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType OfferCount2;
+  ///ç”³å–ä»·ä¸‰
+  TSecurityFtdcPriceType OfferPrice3;
+  ///ç”³å–é‡ä¸‰
+  TSecurityFtdcVolumeType OfferVolume3;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType OfferCount3;
+  ///ç”³å–ä»·å››
+  TSecurityFtdcPriceType OfferPrice4;
+  ///ç”³å–é‡å››
+  TSecurityFtdcVolumeType OfferVolume4;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType OfferCount4;
+  ///ç”³å–ä»·äº”
+  TSecurityFtdcPriceType OfferPrice5;
+  ///ç”³å–é‡äº”
+  TSecurityFtdcVolumeType OfferVolume5;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType OfferCount5;
+  ///ç”³å–ä»·å…­
+  TSecurityFtdcPriceType OfferPrice6;
+  ///ç”³å–é‡å…­
+  TSecurityFtdcVolumeType OfferVolume6;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType OfferCount6;
+  ///ç”³å–ä»·ä¸ƒ
+  TSecurityFtdcPriceType OfferPrice7;
+  ///ç”³å–é‡ä¸ƒ
+  TSecurityFtdcVolumeType OfferVolume7;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType OfferCount7;
+  ///ç”³å–ä»·å…«
+  TSecurityFtdcPriceType OfferPrice8;
+  ///ç”³å–é‡å…«
+  TSecurityFtdcVolumeType OfferVolume8;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType OfferCount8;
+  ///ç”³å–ä»·ä¹
+  TSecurityFtdcPriceType OfferPrice9;
+  ///ç”³å–é‡ä¹
+  TSecurityFtdcVolumeType OfferVolume9;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType OfferCount9;
+  ///ç”³å–ä»·å
+  TSecurityFtdcPriceType OfferPriceA;
+  ///ç”³å–é‡å
+  TSecurityFtdcVolumeType OfferVolumeA;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType OfferCountA;
 };
 
-///Level2ĞĞÇé¸üĞÂÊ±¼äÊôĞÔ
-struct CSecurityFtdcL2UpdateTimeField
-{
-	///½»Ò×ÈÕ
-	TSecurityFtdcDateType	TradingDay;
-	///Ê±¼ä´Á
-	TSecurityFtdcTimeType	TimeStamp;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
+/// Level2è¡Œæƒ…æ›´æ–°æ—¶é—´å±æ€§
+struct CSecurityFtdcL2UpdateTimeField {
+  ///äº¤æ˜“æ—¥
+  TSecurityFtdcDateType TradingDay;
+  ///æ—¶é—´æˆ³
+  TSecurityFtdcTimeType TimeStamp;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
 };
 
-///Level2ĞĞÇé¾²Ì¬ÊôĞÔ
-struct CSecurityFtdcL2StaticField
-{
-	///×òÊÕÅÌ¼Û
-	TSecurityFtdcPriceType	PreClosePrice;
-	///½ñ¿ªÅÌ¼Û
-	TSecurityFtdcPriceType	OpenPrice;
-	///ÊÕÅÌ¼Û
-	TSecurityFtdcPriceType	ClosePrice;
-	///¾»Öµ¹ÀÖµ
-	TSecurityFtdcPriceType	IOPV;
-	///µ½ÆÚÊÕÒæÂÊ
-	TSecurityFtdcRatioType	YieldToMaturity;
+/// Level2è¡Œæƒ…é™æ€å±æ€§
+struct CSecurityFtdcL2StaticField {
+  ///æ˜¨æ”¶ç›˜ä»·
+  TSecurityFtdcPriceType PreClosePrice;
+  ///ä»Šå¼€ç›˜ä»·
+  TSecurityFtdcPriceType OpenPrice;
+  ///æ”¶ç›˜ä»·
+  TSecurityFtdcPriceType ClosePrice;
+  ///å‡€å€¼ä¼°å€¼
+  TSecurityFtdcPriceType IOPV;
+  ///åˆ°æœŸæ”¶ç›Šç‡
+  TSecurityFtdcRatioType YieldToMaturity;
 };
 
-///Level2ĞĞÇé¼Û¸ñÇø¼äÊôĞÔ
-struct CSecurityFtdcL2PriceIntervalField
-{
-	///×î¸ß¼Û
-	TSecurityFtdcPriceType	HighPrice;
-	///×îµÍ¼Û
-	TSecurityFtdcPriceType	LowPrice;
+/// Level2è¡Œæƒ…ä»·æ ¼åŒºé—´å±æ€§
+struct CSecurityFtdcL2PriceIntervalField {
+  ///æœ€é«˜ä»·
+  TSecurityFtdcPriceType HighPrice;
+  ///æœ€ä½ä»·
+  TSecurityFtdcPriceType LowPrice;
 };
 
-///Level2ĞĞÇé»ù±¾ĞÅÏ¢
-struct CSecurityFtdcL2BaseField
-{
-	///×îĞÂ¼Û
-	TSecurityFtdcPriceType	LastPrice;
+/// Level2è¡Œæƒ…åŸºæœ¬ä¿¡æ¯
+struct CSecurityFtdcL2BaseField {
+  ///æœ€æ–°ä»·
+  TSecurityFtdcPriceType LastPrice;
 };
 
-///Level2³É½»ĞÅÏ¢
-struct CSecurityFtdcL2TradedField
-{
-	///³É½»±ÊÊı
-	TSecurityFtdcVolumeType	TradeCount;
-	///³É½»×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalTradeVolume;
-	///³É½»×Ü½ğ¶î
-	TSecurityFtdcMoneyType	TotalTradeValue;
+/// Level2æˆäº¤ä¿¡æ¯
+struct CSecurityFtdcL2TradedField {
+  ///æˆäº¤ç¬”æ•°
+  TSecurityFtdcVolumeType TradeCount;
+  ///æˆäº¤æ€»é‡
+  TSecurityFtdcLargeVolumeType TotalTradeVolume;
+  ///æˆäº¤æ€»é‡‘é¢
+  TSecurityFtdcMoneyType TotalTradeValue;
 };
 
-///Level2ĞĞÇéÊı¾İÊôĞÔ
-struct CSecurityFtdcL2DataLevelField
-{
-	///¼Û¸ñ
-	TSecurityFtdcPriceType	Price;
-	///ÊıÁ¿
-	TSecurityFtdcVolumeType	Volume;
-	///Êµ¼Ê×ÜÎ¯ÍĞ±ÊÊı
-	TSecurityFtdcVolumeType	Count;
+/// Level2è¡Œæƒ…æ•°æ®å±æ€§
+struct CSecurityFtdcL2DataLevelField {
+  ///ä»·æ ¼
+  TSecurityFtdcPriceType Price;
+  ///æ•°é‡
+  TSecurityFtdcVolumeType Volume;
+  ///å®é™…æ€»å§”æ‰˜ç¬”æ•°
+  TSecurityFtdcVolumeType Count;
 };
 
-///Level2Î¯ÂòĞÅÏ¢
-struct CSecurityFtdcL2BidOrderField
-{
-	///Î¯ÍĞÂòÈë×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalBidVolume;
-	///¼ÓÈ¨Æ½¾ùÎ¯Âò¼Û
-	TSecurityFtdcPriceType	WeightedAvgBidPrice;
-	///Õ®È¯¼ÓÈ¨Æ½¾ùÎ¯Âò¼Û
-	TSecurityFtdcPriceType	AltWeightedAvgBidPrice;
+/// Level2å§”ä¹°ä¿¡æ¯
+struct CSecurityFtdcL2BidOrderField {
+  ///å§”æ‰˜ä¹°å…¥æ€»é‡
+  TSecurityFtdcLargeVolumeType TotalBidVolume;
+  ///åŠ æƒå¹³å‡å§”ä¹°ä»·
+  TSecurityFtdcPriceType WeightedAvgBidPrice;
+  ///å€ºåˆ¸åŠ æƒå¹³å‡å§”ä¹°ä»·
+  TSecurityFtdcPriceType AltWeightedAvgBidPrice;
 };
 
-///Level2Î¯ÂôĞÅÏ¢
-struct CSecurityFtdcL2OfferOrderField
-{
-	///Î¯ÍĞÂô³ö×ÜÁ¿
-	TSecurityFtdcLargeVolumeType	TotalOfferVolume;
-	///¼ÓÈ¨Æ½¾ùÎ¯Âô¼Û
-	TSecurityFtdcPriceType	WeightedAvgOfferPrice;
-	///Õ®È¯¼ÓÈ¨Æ½¾ùÎ¯Âô¼Û¸ñ
-	TSecurityFtdcPriceType	AltWeightedAvgOfferPrice;
+/// Level2å§”å–ä¿¡æ¯
+struct CSecurityFtdcL2OfferOrderField {
+  ///å§”æ‰˜å–å‡ºæ€»é‡
+  TSecurityFtdcLargeVolumeType TotalOfferVolume;
+  ///åŠ æƒå¹³å‡å§”å–ä»·
+  TSecurityFtdcPriceType WeightedAvgOfferPrice;
+  ///å€ºåˆ¸åŠ æƒå¹³å‡å§”å–ä»·æ ¼
+  TSecurityFtdcPriceType AltWeightedAvgOfferPrice;
 };
 
-///Level2¼Û¸ñÉî¶ÈÊôĞÔ
-struct CSecurityFtdcL2PriceLevelField
-{
-	///Âò¼ÛÉî¶È
-	TSecurityFtdcPriceLevelType	BidPriceLevel;
-	///Âô¼ÛÉî¶È
-	TSecurityFtdcPriceLevelType	OfferPriceLevel;
+/// Level2ä»·æ ¼æ·±åº¦å±æ€§
+struct CSecurityFtdcL2PriceLevelField {
+  ///ä¹°ä»·æ·±åº¦
+  TSecurityFtdcPriceLevelType BidPriceLevel;
+  ///å–ä»·æ·±åº¦
+  TSecurityFtdcPriceLevelType OfferPriceLevel;
 };
 
-///Level2ĞĞÇéÉêÂòÒ»ÊôĞÔ
-struct CSecurityFtdcL2Bid1Field
-{
-	///ÉêÂò¼ÛÒ»
-	TSecurityFtdcPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TSecurityFtdcVolumeType	BidVolume1;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	BidCount1;
+/// Level2è¡Œæƒ…ç”³ä¹°ä¸€å±æ€§
+struct CSecurityFtdcL2Bid1Field {
+  ///ç”³ä¹°ä»·ä¸€
+  TSecurityFtdcPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TSecurityFtdcVolumeType BidVolume1;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType BidCount1;
 };
 
-///Level2ĞĞÇéÉêÂôÒ»ÊôĞÔ
-struct CSecurityFtdcL2Offer1Field
-{
-	///ÉêÂô¼ÛÒ»
-	TSecurityFtdcPriceType	OfferPrice1;
-	///ÉêÂôÁ¿Ò»
-	TSecurityFtdcVolumeType	OfferVolume1;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	OfferCount1;
+/// Level2è¡Œæƒ…ç”³å–ä¸€å±æ€§
+struct CSecurityFtdcL2Offer1Field {
+  ///ç”³å–ä»·ä¸€
+  TSecurityFtdcPriceType OfferPrice1;
+  ///ç”³å–é‡ä¸€
+  TSecurityFtdcVolumeType OfferVolume1;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType OfferCount1;
 };
 
-///Level2ĞĞÇéÉêÂò¶şÊôĞÔ
-struct CSecurityFtdcL2Bid2Field
-{
-	///ÉêÂò¼Û¶ş
-	TSecurityFtdcPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TSecurityFtdcVolumeType	BidVolume2;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	BidCount2;
+/// Level2è¡Œæƒ…ç”³ä¹°äºŒå±æ€§
+struct CSecurityFtdcL2Bid2Field {
+  ///ç”³ä¹°ä»·äºŒ
+  TSecurityFtdcPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TSecurityFtdcVolumeType BidVolume2;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType BidCount2;
 };
 
-///Level2ĞĞÇéÉêÂô¶şÊôĞÔ
-struct CSecurityFtdcL2Offer2Field
-{
-	///ÉêÂô¼Û¶ş
-	TSecurityFtdcPriceType	OfferPrice2;
-	///ÉêÂôÁ¿¶ş
-	TSecurityFtdcVolumeType	OfferVolume2;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	OfferCount2;
+/// Level2è¡Œæƒ…ç”³å–äºŒå±æ€§
+struct CSecurityFtdcL2Offer2Field {
+  ///ç”³å–ä»·äºŒ
+  TSecurityFtdcPriceType OfferPrice2;
+  ///ç”³å–é‡äºŒ
+  TSecurityFtdcVolumeType OfferVolume2;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType OfferCount2;
 };
 
-///Level2ĞĞÇéÉêÂòÈıÊôĞÔ
-struct CSecurityFtdcL2Bid3Field
-{
-	///ÉêÂò¼ÛÈı
-	TSecurityFtdcPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TSecurityFtdcVolumeType	BidVolume3;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	BidCount3;
+/// Level2è¡Œæƒ…ç”³ä¹°ä¸‰å±æ€§
+struct CSecurityFtdcL2Bid3Field {
+  ///ç”³ä¹°ä»·ä¸‰
+  TSecurityFtdcPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TSecurityFtdcVolumeType BidVolume3;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType BidCount3;
 };
 
-///Level2ĞĞÇéÉêÂôÈıÊôĞÔ
-struct CSecurityFtdcL2Offer3Field
-{
-	///ÉêÂô¼ÛÈı
-	TSecurityFtdcPriceType	OfferPrice3;
-	///ÉêÂôÁ¿Èı
-	TSecurityFtdcVolumeType	OfferVolume3;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	OfferCount3;
+/// Level2è¡Œæƒ…ç”³å–ä¸‰å±æ€§
+struct CSecurityFtdcL2Offer3Field {
+  ///ç”³å–ä»·ä¸‰
+  TSecurityFtdcPriceType OfferPrice3;
+  ///ç”³å–é‡ä¸‰
+  TSecurityFtdcVolumeType OfferVolume3;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType OfferCount3;
 };
 
-///Level2ĞĞÇéÉêÂòËÄÊôĞÔ
-struct CSecurityFtdcL2Bid4Field
-{
-	///ÉêÂò¼ÛËÄ
-	TSecurityFtdcPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TSecurityFtdcVolumeType	BidVolume4;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	BidCount4;
+/// Level2è¡Œæƒ…ç”³ä¹°å››å±æ€§
+struct CSecurityFtdcL2Bid4Field {
+  ///ç”³ä¹°ä»·å››
+  TSecurityFtdcPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TSecurityFtdcVolumeType BidVolume4;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType BidCount4;
 };
 
-///Level2ĞĞÇéÉêÂôËÄÊôĞÔ
-struct CSecurityFtdcL2Offer4Field
-{
-	///ÉêÂô¼ÛËÄ
-	TSecurityFtdcPriceType	OfferPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TSecurityFtdcVolumeType	OfferVolume4;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	OfferCount4;
+/// Level2è¡Œæƒ…ç”³å–å››å±æ€§
+struct CSecurityFtdcL2Offer4Field {
+  ///ç”³å–ä»·å››
+  TSecurityFtdcPriceType OfferPrice4;
+  ///ç”³å–é‡å››
+  TSecurityFtdcVolumeType OfferVolume4;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType OfferCount4;
 };
 
-///Level2ĞĞÇéÉêÂòÎåÊôĞÔ
-struct CSecurityFtdcL2Bid5Field
-{
-	///ÉêÂò¼ÛÎå
-	TSecurityFtdcPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TSecurityFtdcVolumeType	BidVolume5;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	BidCount5;
+/// Level2è¡Œæƒ…ç”³ä¹°äº”å±æ€§
+struct CSecurityFtdcL2Bid5Field {
+  ///ç”³ä¹°ä»·äº”
+  TSecurityFtdcPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TSecurityFtdcVolumeType BidVolume5;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType BidCount5;
 };
 
-///Level2ĞĞÇéÉêÂôÎåÊôĞÔ
-struct CSecurityFtdcL2Offer5Field
-{
-	///ÉêÂô¼ÛÎå
-	TSecurityFtdcPriceType	OfferPrice5;
-	///ÉêÂôÁ¿Îå
-	TSecurityFtdcVolumeType	OfferVolume5;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	OfferCount5;
+/// Level2è¡Œæƒ…ç”³å–äº”å±æ€§
+struct CSecurityFtdcL2Offer5Field {
+  ///ç”³å–ä»·äº”
+  TSecurityFtdcPriceType OfferPrice5;
+  ///ç”³å–é‡äº”
+  TSecurityFtdcVolumeType OfferVolume5;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType OfferCount5;
 };
 
-///Level2ĞĞÇéÉêÂòÁùÊôĞÔ
-struct CSecurityFtdcL2Bid6Field
-{
-	///ÉêÂò¼ÛÁù
-	TSecurityFtdcPriceType	BidPrice6;
-	///ÉêÂòÁ¿Áù
-	TSecurityFtdcVolumeType	BidVolume6;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	BidCount6;
+/// Level2è¡Œæƒ…ç”³ä¹°å…­å±æ€§
+struct CSecurityFtdcL2Bid6Field {
+  ///ç”³ä¹°ä»·å…­
+  TSecurityFtdcPriceType BidPrice6;
+  ///ç”³ä¹°é‡å…­
+  TSecurityFtdcVolumeType BidVolume6;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType BidCount6;
 };
 
-///Level2ĞĞÇéÉêÂôÁùÊôĞÔ
-struct CSecurityFtdcL2Offer6Field
-{
-	///ÉêÂô¼ÛÁù
-	TSecurityFtdcPriceType	OfferPrice6;
-	///ÉêÂôÁ¿Áù
-	TSecurityFtdcVolumeType	OfferVolume6;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	OfferCount6;
+/// Level2è¡Œæƒ…ç”³å–å…­å±æ€§
+struct CSecurityFtdcL2Offer6Field {
+  ///ç”³å–ä»·å…­
+  TSecurityFtdcPriceType OfferPrice6;
+  ///ç”³å–é‡å…­
+  TSecurityFtdcVolumeType OfferVolume6;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType OfferCount6;
 };
 
-///Level2ĞĞÇéÉêÂòÆßÊôĞÔ
-struct CSecurityFtdcL2Bid7Field
-{
-	///ÉêÂò¼ÛÆß
-	TSecurityFtdcPriceType	BidPrice7;
-	///ÉêÂòÁ¿Æß
-	TSecurityFtdcVolumeType	BidVolume7;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	BidCount7;
+/// Level2è¡Œæƒ…ç”³ä¹°ä¸ƒå±æ€§
+struct CSecurityFtdcL2Bid7Field {
+  ///ç”³ä¹°ä»·ä¸ƒ
+  TSecurityFtdcPriceType BidPrice7;
+  ///ç”³ä¹°é‡ä¸ƒ
+  TSecurityFtdcVolumeType BidVolume7;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType BidCount7;
 };
 
-///Level2ĞĞÇéÉêÂôÆßÊôĞÔ
-struct CSecurityFtdcL2Offer7Field
-{
-	///ÉêÂô¼ÛÆß
-	TSecurityFtdcPriceType	OfferPrice7;
-	///ÉêÂôÁ¿Æß
-	TSecurityFtdcVolumeType	OfferVolume7;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	OfferCount7;
+/// Level2è¡Œæƒ…ç”³å–ä¸ƒå±æ€§
+struct CSecurityFtdcL2Offer7Field {
+  ///ç”³å–ä»·ä¸ƒ
+  TSecurityFtdcPriceType OfferPrice7;
+  ///ç”³å–é‡ä¸ƒ
+  TSecurityFtdcVolumeType OfferVolume7;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType OfferCount7;
 };
 
-///Level2ĞĞÇéÉêÂò°ËÊôĞÔ
-struct CSecurityFtdcL2Bid8Field
-{
-	///ÉêÂò¼Û°Ë
-	TSecurityFtdcPriceType	BidPrice8;
-	///ÉêÂòÁ¿°Ë
-	TSecurityFtdcVolumeType	BidVolume8;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	BidCount8;
+/// Level2è¡Œæƒ…ç”³ä¹°å…«å±æ€§
+struct CSecurityFtdcL2Bid8Field {
+  ///ç”³ä¹°ä»·å…«
+  TSecurityFtdcPriceType BidPrice8;
+  ///ç”³ä¹°é‡å…«
+  TSecurityFtdcVolumeType BidVolume8;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType BidCount8;
 };
 
-///Level2ĞĞÇéÉêÂô°ËÊôĞÔ
-struct CSecurityFtdcL2Offer8Field
-{
-	///ÉêÂô¼Û°Ë
-	TSecurityFtdcPriceType	OfferPrice8;
-	///ÉêÂôÁ¿°Ë
-	TSecurityFtdcVolumeType	OfferVolume8;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	OfferCount8;
+/// Level2è¡Œæƒ…ç”³å–å…«å±æ€§
+struct CSecurityFtdcL2Offer8Field {
+  ///ç”³å–ä»·å…«
+  TSecurityFtdcPriceType OfferPrice8;
+  ///ç”³å–é‡å…«
+  TSecurityFtdcVolumeType OfferVolume8;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType OfferCount8;
 };
 
-///Level2ĞĞÇéÉêÂò¾ÅÊôĞÔ
-struct CSecurityFtdcL2Bid9Field
-{
-	///ÉêÂò¼Û¾Å
-	TSecurityFtdcPriceType	BidPrice9;
-	///ÉêÂòÁ¿¾Å
-	TSecurityFtdcVolumeType	BidVolume9;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	BidCount9;
+/// Level2è¡Œæƒ…ç”³ä¹°ä¹å±æ€§
+struct CSecurityFtdcL2Bid9Field {
+  ///ç”³ä¹°ä»·ä¹
+  TSecurityFtdcPriceType BidPrice9;
+  ///ç”³ä¹°é‡ä¹
+  TSecurityFtdcVolumeType BidVolume9;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType BidCount9;
 };
 
-///Level2ĞĞÇéÉêÂô¾ÅÊôĞÔ
-struct CSecurityFtdcL2Offer9Field
-{
-	///ÉêÂô¼Û¾Å
-	TSecurityFtdcPriceType	OfferPrice9;
-	///ÉêÂôÁ¿¾Å
-	TSecurityFtdcVolumeType	OfferVolume9;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	OfferCount9;
+/// Level2è¡Œæƒ…ç”³å–ä¹å±æ€§
+struct CSecurityFtdcL2Offer9Field {
+  ///ç”³å–ä»·ä¹
+  TSecurityFtdcPriceType OfferPrice9;
+  ///ç”³å–é‡ä¹
+  TSecurityFtdcVolumeType OfferVolume9;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType OfferCount9;
 };
 
-///Level2ĞĞÇéÉêÂòÊ®ÊôĞÔ
-struct CSecurityFtdcL2BidAField
-{
-	///ÉêÂò¼ÛÊ®
-	TSecurityFtdcPriceType	BidPriceA;
-	///ÉêÂòÁ¿Ê®
-	TSecurityFtdcVolumeType	BidVolumeA;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	BidCountA;
+/// Level2è¡Œæƒ…ç”³ä¹°åå±æ€§
+struct CSecurityFtdcL2BidAField {
+  ///ç”³ä¹°ä»·å
+  TSecurityFtdcPriceType BidPriceA;
+  ///ç”³ä¹°é‡å
+  TSecurityFtdcVolumeType BidVolumeA;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType BidCountA;
 };
 
-///Level2ĞĞÇéÉêÂôÊ®ÊôĞÔ
-struct CSecurityFtdcL2OfferAField
-{
-	///ÉêÂô¼ÛÊ®
-	TSecurityFtdcPriceType	OfferPriceA;
-	///ÉêÂôÁ¿Ê®
-	TSecurityFtdcVolumeType	OfferVolumeA;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	OfferCountA;
+/// Level2è¡Œæƒ…ç”³å–åå±æ€§
+struct CSecurityFtdcL2OfferAField {
+  ///ç”³å–ä»·å
+  TSecurityFtdcPriceType OfferPriceA;
+  ///ç”³å–é‡å
+  TSecurityFtdcVolumeType OfferVolumeA;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType OfferCountA;
 };
 
-///Level2ĞĞÇéÉêÂòÊôĞÔ
-struct CSecurityFtdcL2BidField
-{
-	///ÉêÂò¼ÛÒ»
-	TSecurityFtdcPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TSecurityFtdcVolumeType	BidVolume1;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	BidCount1;
-	///ÉêÂò¼Û¶ş
-	TSecurityFtdcPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TSecurityFtdcVolumeType	BidVolume2;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	BidCount2;
-	///ÉêÂò¼ÛÈı
-	TSecurityFtdcPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TSecurityFtdcVolumeType	BidVolume3;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	BidCount3;
-	///ÉêÂò¼ÛËÄ
-	TSecurityFtdcPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TSecurityFtdcVolumeType	BidVolume4;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	BidCount4;
-	///ÉêÂò¼ÛÎå
-	TSecurityFtdcPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TSecurityFtdcVolumeType	BidVolume5;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	BidCount5;
-	///ÉêÂò¼ÛÁù
-	TSecurityFtdcPriceType	BidPrice6;
-	///ÉêÂòÁ¿Áù
-	TSecurityFtdcVolumeType	BidVolume6;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	BidCount6;
-	///ÉêÂò¼ÛÆß
-	TSecurityFtdcPriceType	BidPrice7;
-	///ÉêÂòÁ¿Æß
-	TSecurityFtdcVolumeType	BidVolume7;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	BidCount7;
-	///ÉêÂò¼Û°Ë
-	TSecurityFtdcPriceType	BidPrice8;
-	///ÉêÂòÁ¿°Ë
-	TSecurityFtdcVolumeType	BidVolume8;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	BidCount8;
-	///ÉêÂò¼Û¾Å
-	TSecurityFtdcPriceType	BidPrice9;
-	///ÉêÂòÁ¿¾Å
-	TSecurityFtdcVolumeType	BidVolume9;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	BidCount9;
-	///ÉêÂò¼ÛÊ®
-	TSecurityFtdcPriceType	BidPriceA;
-	///ÉêÂòÁ¿Ê®
-	TSecurityFtdcVolumeType	BidVolumeA;
-	///Êµ¼ÊÂò×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	BidCountA;
+/// Level2è¡Œæƒ…ç”³ä¹°å±æ€§
+struct CSecurityFtdcL2BidField {
+  ///ç”³ä¹°ä»·ä¸€
+  TSecurityFtdcPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TSecurityFtdcVolumeType BidVolume1;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType BidCount1;
+  ///ç”³ä¹°ä»·äºŒ
+  TSecurityFtdcPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TSecurityFtdcVolumeType BidVolume2;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType BidCount2;
+  ///ç”³ä¹°ä»·ä¸‰
+  TSecurityFtdcPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TSecurityFtdcVolumeType BidVolume3;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType BidCount3;
+  ///ç”³ä¹°ä»·å››
+  TSecurityFtdcPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TSecurityFtdcVolumeType BidVolume4;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType BidCount4;
+  ///ç”³ä¹°ä»·äº”
+  TSecurityFtdcPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TSecurityFtdcVolumeType BidVolume5;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType BidCount5;
+  ///ç”³ä¹°ä»·å…­
+  TSecurityFtdcPriceType BidPrice6;
+  ///ç”³ä¹°é‡å…­
+  TSecurityFtdcVolumeType BidVolume6;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType BidCount6;
+  ///ç”³ä¹°ä»·ä¸ƒ
+  TSecurityFtdcPriceType BidPrice7;
+  ///ç”³ä¹°é‡ä¸ƒ
+  TSecurityFtdcVolumeType BidVolume7;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType BidCount7;
+  ///ç”³ä¹°ä»·å…«
+  TSecurityFtdcPriceType BidPrice8;
+  ///ç”³ä¹°é‡å…«
+  TSecurityFtdcVolumeType BidVolume8;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType BidCount8;
+  ///ç”³ä¹°ä»·ä¹
+  TSecurityFtdcPriceType BidPrice9;
+  ///ç”³ä¹°é‡ä¹
+  TSecurityFtdcVolumeType BidVolume9;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType BidCount9;
+  ///ç”³ä¹°ä»·å
+  TSecurityFtdcPriceType BidPriceA;
+  ///ç”³ä¹°é‡å
+  TSecurityFtdcVolumeType BidVolumeA;
+  ///å®é™…ä¹°æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType BidCountA;
 };
 
-///Level2ĞĞÇéÉêÂôÊôĞÔ
-struct CSecurityFtdcL2OfferField
-{
-	///ÉêÂô¼ÛÒ»
-	TSecurityFtdcPriceType	OfferPrice1;
-	///ÉêÂôÁ¿Ò»
-	TSecurityFtdcVolumeType	OfferVolume1;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÒ»
-	TSecurityFtdcVolumeType	OfferCount1;
-	///ÉêÂô¼Û¶ş
-	TSecurityFtdcPriceType	OfferPrice2;
-	///ÉêÂôÁ¿¶ş
-	TSecurityFtdcVolumeType	OfferVolume2;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¶ş
-	TSecurityFtdcVolumeType	OfferCount2;
-	///ÉêÂô¼ÛÈı
-	TSecurityFtdcPriceType	OfferPrice3;
-	///ÉêÂôÁ¿Èı
-	TSecurityFtdcVolumeType	OfferVolume3;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÈı
-	TSecurityFtdcVolumeType	OfferCount3;
-	///ÉêÂô¼ÛËÄ
-	TSecurityFtdcPriceType	OfferPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TSecurityFtdcVolumeType	OfferVolume4;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıËÄ
-	TSecurityFtdcVolumeType	OfferCount4;
-	///ÉêÂô¼ÛÎå
-	TSecurityFtdcPriceType	OfferPrice5;
-	///ÉêÂôÁ¿Îå
-	TSecurityFtdcVolumeType	OfferVolume5;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÎå
-	TSecurityFtdcVolumeType	OfferCount5;
-	///ÉêÂô¼ÛÁù
-	TSecurityFtdcPriceType	OfferPrice6;
-	///ÉêÂôÁ¿Áù
-	TSecurityFtdcVolumeType	OfferVolume6;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÁù
-	TSecurityFtdcVolumeType	OfferCount6;
-	///ÉêÂô¼ÛÆß
-	TSecurityFtdcPriceType	OfferPrice7;
-	///ÉêÂôÁ¿Æß
-	TSecurityFtdcVolumeType	OfferVolume7;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÆß
-	TSecurityFtdcVolumeType	OfferCount7;
-	///ÉêÂô¼Û°Ë
-	TSecurityFtdcPriceType	OfferPrice8;
-	///ÉêÂôÁ¿°Ë
-	TSecurityFtdcVolumeType	OfferVolume8;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı°Ë
-	TSecurityFtdcVolumeType	OfferCount8;
-	///ÉêÂô¼Û¾Å
-	TSecurityFtdcPriceType	OfferPrice9;
-	///ÉêÂôÁ¿¾Å
-	TSecurityFtdcVolumeType	OfferVolume9;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊı¾Å
-	TSecurityFtdcVolumeType	OfferCount9;
-	///ÉêÂô¼ÛÊ®
-	TSecurityFtdcPriceType	OfferPriceA;
-	///ÉêÂôÁ¿Ê®
-	TSecurityFtdcVolumeType	OfferVolumeA;
-	///Êµ¼ÊÂô×ÜÎ¯ÍĞ±ÊÊıÊ®
-	TSecurityFtdcVolumeType	OfferCountA;
+/// Level2è¡Œæƒ…ç”³å–å±æ€§
+struct CSecurityFtdcL2OfferField {
+  ///ç”³å–ä»·ä¸€
+  TSecurityFtdcPriceType OfferPrice1;
+  ///ç”³å–é‡ä¸€
+  TSecurityFtdcVolumeType OfferVolume1;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸€
+  TSecurityFtdcVolumeType OfferCount1;
+  ///ç”³å–ä»·äºŒ
+  TSecurityFtdcPriceType OfferPrice2;
+  ///ç”³å–é‡äºŒ
+  TSecurityFtdcVolumeType OfferVolume2;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äºŒ
+  TSecurityFtdcVolumeType OfferCount2;
+  ///ç”³å–ä»·ä¸‰
+  TSecurityFtdcPriceType OfferPrice3;
+  ///ç”³å–é‡ä¸‰
+  TSecurityFtdcVolumeType OfferVolume3;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸‰
+  TSecurityFtdcVolumeType OfferCount3;
+  ///ç”³å–ä»·å››
+  TSecurityFtdcPriceType OfferPrice4;
+  ///ç”³å–é‡å››
+  TSecurityFtdcVolumeType OfferVolume4;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å››
+  TSecurityFtdcVolumeType OfferCount4;
+  ///ç”³å–ä»·äº”
+  TSecurityFtdcPriceType OfferPrice5;
+  ///ç”³å–é‡äº”
+  TSecurityFtdcVolumeType OfferVolume5;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°äº”
+  TSecurityFtdcVolumeType OfferCount5;
+  ///ç”³å–ä»·å…­
+  TSecurityFtdcPriceType OfferPrice6;
+  ///ç”³å–é‡å…­
+  TSecurityFtdcVolumeType OfferVolume6;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…­
+  TSecurityFtdcVolumeType OfferCount6;
+  ///ç”³å–ä»·ä¸ƒ
+  TSecurityFtdcPriceType OfferPrice7;
+  ///ç”³å–é‡ä¸ƒ
+  TSecurityFtdcVolumeType OfferVolume7;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¸ƒ
+  TSecurityFtdcVolumeType OfferCount7;
+  ///ç”³å–ä»·å…«
+  TSecurityFtdcPriceType OfferPrice8;
+  ///ç”³å–é‡å…«
+  TSecurityFtdcVolumeType OfferVolume8;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å…«
+  TSecurityFtdcVolumeType OfferCount8;
+  ///ç”³å–ä»·ä¹
+  TSecurityFtdcPriceType OfferPrice9;
+  ///ç”³å–é‡ä¹
+  TSecurityFtdcVolumeType OfferVolume9;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°ä¹
+  TSecurityFtdcVolumeType OfferCount9;
+  ///ç”³å–ä»·å
+  TSecurityFtdcPriceType OfferPriceA;
+  ///ç”³å–é‡å
+  TSecurityFtdcVolumeType OfferVolumeA;
+  ///å®é™…å–æ€»å§”æ‰˜ç¬”æ•°å
+  TSecurityFtdcVolumeType OfferCountA;
 };
 
-///Level2Ö¸ÊıĞĞÇé
-struct CSecurityFtdcL2IndexField
-{
-	///½»Ò×ÈÕ
-	TSecurityFtdcDateType	TradingDay;
-	///ĞĞÇéÊ±¼ä£¨Ãë£©
-	TSecurityFtdcTimeType	TimeStamp;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
-	///Ö¸Êı´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///Ç°ÊÕÅÌÖ¸Êı
-	TSecurityFtdcIndexType	PreCloseIndex;
-	///½ñ¿ªÅÌÖ¸Êı
-	TSecurityFtdcIndexType	OpenIndex;
-	///½ñÈÕÊÕÅÌÖ¸Êı
-	TSecurityFtdcIndexType	CloseIndex;
-	///×î¸ßÖ¸Êı
-	TSecurityFtdcIndexType	HighIndex;
-	///×îµÍÖ¸Êı
-	TSecurityFtdcIndexType	LowIndex;
-	///×îĞÂÖ¸Êı
-	TSecurityFtdcIndexType	LastIndex;
-	///²ÎÓë¼ÆËãÏàÓ¦Ö¸ÊıµÄ³É½»½ğ¶î£¨Ôª£©
-	TSecurityFtdcMoneyType	TurnOver;
-	///²ÎÓë¼ÆËãÏàÓ¦Ö¸ÊıµÄ½»Ò×ÊıÁ¿£¨ÊÖ£©
-	TSecurityFtdcLargeVolumeType	TotalVolume;
+/// Level2æŒ‡æ•°è¡Œæƒ…
+struct CSecurityFtdcL2IndexField {
+  ///äº¤æ˜“æ—¥
+  TSecurityFtdcDateType TradingDay;
+  ///è¡Œæƒ…æ—¶é—´ï¼ˆç§’ï¼‰
+  TSecurityFtdcTimeType TimeStamp;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
+  ///æŒ‡æ•°ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
+  ///å‰æ”¶ç›˜æŒ‡æ•°
+  TSecurityFtdcIndexType PreCloseIndex;
+  ///ä»Šå¼€ç›˜æŒ‡æ•°
+  TSecurityFtdcIndexType OpenIndex;
+  ///ä»Šæ—¥æ”¶ç›˜æŒ‡æ•°
+  TSecurityFtdcIndexType CloseIndex;
+  ///æœ€é«˜æŒ‡æ•°
+  TSecurityFtdcIndexType HighIndex;
+  ///æœ€ä½æŒ‡æ•°
+  TSecurityFtdcIndexType LowIndex;
+  ///æœ€æ–°æŒ‡æ•°
+  TSecurityFtdcIndexType LastIndex;
+  ///å‚ä¸è®¡ç®—ç›¸åº”æŒ‡æ•°çš„æˆäº¤é‡‘é¢ï¼ˆå…ƒï¼‰
+  TSecurityFtdcMoneyType TurnOver;
+  ///å‚ä¸è®¡ç®—ç›¸åº”æŒ‡æ•°çš„äº¤æ˜“æ•°é‡ï¼ˆæ‰‹ï¼‰
+  TSecurityFtdcLargeVolumeType TotalVolume;
 };
 
-///Level2ĞĞÇéÓÃ»§ĞÅÏ¢
-struct CSecurityFtdcL2UserInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSecurityFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSecurityFtdcUserIDType	UserID;
-	///ÓÃ»§Ãû³Æ
-	TSecurityFtdcUserNameType	UserName;
-	///ÃÜÂë
-	TSecurityFtdcPasswordType	Password;
-	///ĞĞÇéÊı¾İµÈ¼¶
-	TSecurityFtdcDataLevelType	DataLevel;
+/// Level2è¡Œæƒ…ç”¨æˆ·ä¿¡æ¯
+struct CSecurityFtdcL2UserInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSecurityFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSecurityFtdcUserIDType UserID;
+  ///ç”¨æˆ·åç§°
+  TSecurityFtdcUserNameType UserName;
+  ///å¯†ç 
+  TSecurityFtdcPasswordType Password;
+  ///è¡Œæƒ…æ•°æ®ç­‰çº§
+  TSecurityFtdcDataLevelType DataLevel;
 };
 
-///UDP×é²¥×éĞÅÏ¢
-struct CSecurityFtdcMulticastGroupInfoField
-{
-	///×é²¥×éIPµØÖ·
-	TSecurityFtdcIPAddressType	GroupIP;
-	///×é²¥×éIP¶Ë¿Ú
-	TSecurityFtdcIPPortType	GroupPort;
-	///Ô´µØÖ·
-	TSecurityFtdcIPAddressType	SourceIP;
+/// UDPç»„æ’­ç»„ä¿¡æ¯
+struct CSecurityFtdcMulticastGroupInfoField {
+  ///ç»„æ’­ç»„IPåœ°å€
+  TSecurityFtdcIPAddressType GroupIP;
+  ///ç»„æ’­ç»„IPç«¯å£
+  TSecurityFtdcIPPortType GroupPort;
+  ///æºåœ°å€
+  TSecurityFtdcIPAddressType SourceIP;
 };
 
-///Level2Öğ±ÊÎ¯ÍĞ
-struct CSecurityFtdcL2OrderField
-{
-	///Î¯ÍĞ×é
-	TSecurityFtdcGroupIDType	OrderGroupID;
-	///Î¯ÍĞĞòºÅ
-	TSecurityFtdcGroupNoType	OrderIndex;
-	///Î¯ÍĞÊ±¼ä£¨Ãë£©
-	TSecurityFtdcTimeType	OrderTime;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///Î¯ÍĞ¼Û¸ñ
-	TSecurityFtdcPriceType	Price;
-	///Î¯ÍĞÊıÁ¿
-	TSecurityFtdcVolumeType	Volume;
-	///±¨µ¥ÀàĞÍ
-	TSecurityFtdcOrderKindType	OrderKind;
-	///¹¦ÄÜÂë
-	TSecurityFtdcFunctionCodeType	FunctionCode;
+/// Level2é€ç¬”å§”æ‰˜
+struct CSecurityFtdcL2OrderField {
+  ///å§”æ‰˜ç»„
+  TSecurityFtdcGroupIDType OrderGroupID;
+  ///å§”æ‰˜åºå·
+  TSecurityFtdcGroupNoType OrderIndex;
+  ///å§”æ‰˜æ—¶é—´ï¼ˆç§’ï¼‰
+  TSecurityFtdcTimeType OrderTime;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
+  ///å§”æ‰˜ä»·æ ¼
+  TSecurityFtdcPriceType Price;
+  ///å§”æ‰˜æ•°é‡
+  TSecurityFtdcVolumeType Volume;
+  ///æŠ¥å•ç±»å‹
+  TSecurityFtdcOrderKindType OrderKind;
+  ///åŠŸèƒ½ç 
+  TSecurityFtdcFunctionCodeType FunctionCode;
 };
 
-///Level2Öğ±Ê³É½»
-struct CSecurityFtdcL2TradeField
-{
-	///³É½»×é
-	TSecurityFtdcGroupIDType	TradeGroupID;
-	///³É½»ĞòºÅ
-	TSecurityFtdcGroupNoType	TradeIndex;
-	///Âò·½Î¯ÍĞĞòºÅ
-	TSecurityFtdcGroupNoType	BuyIndex;
-	///Âô·½Î¯ÍĞĞòºÅ
-	TSecurityFtdcGroupNoType	SellIndex;
-	///³É½»Ê±¼ä£¨Ãë£©
-	TSecurityFtdcTimeType	TradeTime;
-	///½»Ò×Ëù´úÂë
-	TSecurityFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSecurityFtdcInstrumentIDType	InstrumentID;
-	///³É½»¼Û¸ñ
-	TSecurityFtdcPriceType	Price;
-	///³É½»ÊıÁ¿
-	TSecurityFtdcVolumeType	Volume;
-	///±¨µ¥ÀàĞÍ
-	TSecurityFtdcOrderKindType	OrderKind;
-	///¹¦ÄÜÂë
-	TSecurityFtdcFunctionCodeType	FunctionCode;
+/// Level2é€ç¬”æˆäº¤
+struct CSecurityFtdcL2TradeField {
+  ///æˆäº¤ç»„
+  TSecurityFtdcGroupIDType TradeGroupID;
+  ///æˆäº¤åºå·
+  TSecurityFtdcGroupNoType TradeIndex;
+  ///ä¹°æ–¹å§”æ‰˜åºå·
+  TSecurityFtdcGroupNoType BuyIndex;
+  ///å–æ–¹å§”æ‰˜åºå·
+  TSecurityFtdcGroupNoType SellIndex;
+  ///æˆäº¤æ—¶é—´ï¼ˆç§’ï¼‰
+  TSecurityFtdcTimeType TradeTime;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSecurityFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSecurityFtdcInstrumentIDType InstrumentID;
+  ///æˆäº¤ä»·æ ¼
+  TSecurityFtdcPriceType Price;
+  ///æˆäº¤æ•°é‡
+  TSecurityFtdcVolumeType Volume;
+  ///æŠ¥å•ç±»å‹
+  TSecurityFtdcOrderKindType OrderKind;
+  ///åŠŸèƒ½ç 
+  TSecurityFtdcFunctionCodeType FunctionCode;
 };
-
 
 _LTS_NS_END_
 

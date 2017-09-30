@@ -18,162 +18,206 @@
 #define TRADER_API_EXPORT __declspec(dllimport)
 #endif
 #else
-#define TRADER_API_EXPORT 
+#define TRADER_API_EXPORT
 #endif
 
-class CSgitFtdcTraderSpi
-{
+class CSgitFtdcTraderSpi {
 public:
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected(){};
-	
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param pErrMsg ´íÎóÔ­Òò
-	virtual void OnFrontDisconnected(char *pErrMsg){};
-		
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CSgitFtdcRspUserLoginField *pRspUserLogin, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected(){};
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CSgitFtdcUserLogoutField *pUserLogout, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param pErrMsg é”™è¯¯åŸå› 
+  virtual void OnFrontDisconnected(char *pErrMsg){};
 
-	///ÓÃ»§¿ÚÁî¸üĞÂÇëÇóÏìÓ¦
-	virtual void OnRspUserPasswordUpdate(CSgitFtdcUserPasswordUpdateField *pUserPasswordUpdate, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CSgitFtdcRspUserLoginField *pRspUserLogin,
+                              CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast){};
 
-	///±¨µ¥Â¼ÈëÇëÇóÏìÓ¦
-	virtual void OnRspOrderInsert(CSgitFtdcInputOrderField *pInputOrder, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CSgitFtdcUserLogoutField *pUserLogout,
+                               CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast){};
 
-	///±¨µ¥²Ù×÷ÇëÇóÏìÓ¦
-	virtual void OnRspOrderAction(CSgitFtdcInputOrderActionField *pInputOrderAction, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
+  virtual void
+  OnRspUserPasswordUpdate(CSgitFtdcUserPasswordUpdateField *pUserPasswordUpdate,
+                          CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast){};
 
-	///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
-	virtual void OnRspQryOrder(CSgitFtdcOrderField *pOrder, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æŠ¥å•å½•å…¥è¯·æ±‚å“åº”
+  virtual void OnRspOrderInsert(CSgitFtdcInputOrderField *pInputOrder,
+                                CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                                bool bIsLast){};
 
-	///ÇëÇó²éÑ¯×Ê½ğÕË»§ÏìÓ¦
-	virtual void OnRspQryTradingAccount(CSgitFtdcTradingAccountField *pTradingAccount, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æŠ¥å•æ“ä½œè¯·æ±‚å“åº”
+  virtual void
+  OnRspOrderAction(CSgitFtdcInputOrderActionField *pInputOrderAction,
+                   CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                   bool bIsLast){};
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕßÏìÓ¦
-	virtual void OnRspQryInvestor(CSgitFtdcInvestorField *pInvestor, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
+  virtual void OnRspQryOrder(CSgitFtdcOrderField *pOrder,
+                             CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                             bool bIsLast){};
 
-	///ÇëÇó²éÑ¯ºÏÔ¼ÏìÓ¦
-	virtual void OnRspQryInstrument(CSgitFtdcInstrumentField *pInstrument, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·å“åº”
+  virtual void
+  OnRspQryTradingAccount(CSgitFtdcTradingAccountField *pTradingAccount,
+                         CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast){};
 
-	///±¨µ¥Í¨Öª
-	virtual void OnRtnOrder(CSgitFtdcOrderField *pOrder,CSgitFtdcRspInfoField *pRspInfo) {};
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…å“åº”
+  virtual void OnRspQryInvestor(CSgitFtdcInvestorField *pInvestor,
+                                CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                                bool bIsLast){};
 
-	///³É½»Í¨Öª
-	virtual void OnRtnTrade(CSgitFtdcTradeField *pTrade) {};
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦å“åº”
+  virtual void OnRspQryInstrument(CSgitFtdcInstrumentField *pInstrument,
+                                  CSgitFtdcRspInfoField *pRspInfo,
+                                  int nRequestID, bool bIsLast){};
 
-	///ºÏÔ¼½»Ò××´Ì¬Í¨Öª
-	virtual void OnRtnInstrumentStatus(CSgitFtdcInstrumentStatusField *pInstrumentStatus) {};
+  ///æŠ¥å•é€šçŸ¥
+  virtual void OnRtnOrder(CSgitFtdcOrderField *pOrder,
+                          CSgitFtdcRspInfoField *pRspInfo){};
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÃ÷Ï¸ÏìÓ¦
-	virtual void OnRspQryInvestorPositionDetail(CSgitFtdcInvestorPositionDetailField *pInvestorPositionDetail, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æˆäº¤é€šçŸ¥
+  virtual void OnRtnTrade(CSgitFtdcTradeField *pTrade){};
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÏìÓ¦
-	virtual void OnRspQryInvestorPosition(CSgitFtdcInvestorPositionField *pInvestorPosition, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};		
+  ///åˆçº¦äº¤æ˜“çŠ¶æ€é€šçŸ¥
+  virtual void
+  OnRtnInstrumentStatus(CSgitFtdcInstrumentStatusField *pInstrumentStatus){};
 
-	/// µ±ÊÕµ½ºÏÔ¼¼ÛÎ»²éÑ¯Ó¦´ğÊ±»Øµ÷¸Ãº¯Êı
-	virtual void onRspMBLQuot(CSgitMBLQuotData *pMBLQuotData,CSgitFtdcRspInfoField *pRspMsg,int nRequestID,bool bIsLast){};
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“æ˜ç»†å“åº”
+  virtual void OnRspQryInvestorPositionDetail(
+      CSgitFtdcInvestorPositionDetailField *pInvestorPositionDetail,
+      CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
 
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“å“åº”
+  virtual void
+  OnRspQryInvestorPosition(CSgitFtdcInvestorPositionField *pInvestorPosition,
+                           CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                           bool bIsLast){};
+
+  /// å½“æ”¶åˆ°åˆçº¦ä»·ä½æŸ¥è¯¢åº”ç­”æ—¶å›è°ƒè¯¥å‡½æ•°
+  virtual void onRspMBLQuot(CSgitMBLQuotData *pMBLQuotData,
+                            CSgitFtdcRspInfoField *pRspMsg, int nRequestID,
+                            bool bIsLast){};
 };
 
-class TRADER_API_EXPORT CSgitFtdcTraderApi
-{
+class TRADER_API_EXPORT CSgitFtdcTraderApi {
 public:
-	///´´½¨TraderApi
-	///@param pszFlowPath ´æÖü¶©ÔÄĞÅÏ¢ÎÄ¼şµÄÄ¿Â¼£¬Ä¬ÈÏÎªµ±Ç°Ä¿Â¼
-	///@return ´´½¨³öµÄUserApi
-	static CSgitFtdcTraderApi *CreateFtdcTraderApi(const char *pszFlowPath = "");
-	
-	///É¾³ı½Ó¿Ú¶ÔÏó±¾Éí
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊıÉ¾³ı½Ó¿Ú¶ÔÏó
-	virtual void Release() = 0;
-	
-	///³õÊ¼»¯
-	///@remark ³õÊ¼»¯ÔËĞĞ»·¾³,Ö»ÓĞµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
-	///isLogged ¿ª·¢µ÷ÊÔÊ±Ê¹ÓÃtrue£¬¿ÉÒÔ´òÓ¡³öÊÕµ½µÄÏûÏ¢°üÄÚÈİ
-	virtual void Init(bool isLogged) = 0;
-	
-	///µÈ´ı½Ó¿ÚÏß³Ì½áÊøÔËĞĞ
-	///@return Ïß³ÌÍË³ö´úÂë
-	virtual int Join() = 0;
-	
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
-	///@retrun »ñÈ¡µ½µÄ½»Ò×ÈÕ
-	///@remark Ö»ÓĞµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕıÈ·µÄ½»Ò×ÈÕ
-	virtual const char *GetTradingDay() = 0;
-	
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
-	///@remark ¡°tcp¡±´ú±í´«ÊäĞ­Òé£¬¡°127.0.0.1¡±´ú±í·şÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·şÎñÆ÷¶Ë¿ÚºÅ¡£
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
-	
-	///×¢²á»Øµ÷½Ó¿Ú
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀı
-	virtual void RegisterSpi(CSgitFtdcTraderSpi *pSpi) = 0;
-	
-	///¶©ÔÄË½ÓĞÁ÷¡£
-	///@param nResumeType Ë½ÓĞÁ÷ÖØ´«·½Ê½  
-	///        Sgit_TERT_RESTART:´Ó±¾½»Ò×ÈÕ¿ªÊ¼ÖØ´«
-	///        Sgit_TERT_RESUME:´ÓÉÏ´ÎÊÕµ½µÄĞø´«
-	///        Sgit_TERT_QUICK:Ö»´«ËÍµÇÂ¼ºóË½ÓĞÁ÷µÄÄÚÈİ
-	///@remark ¸Ã·½·¨ÒªÔÚInit·½·¨Ç°µ÷ÓÃ¡£Èô²»µ÷ÓÃÔò²»»áÊÕµ½Ë½ÓĞÁ÷µÄÊı¾İ¡£
-	virtual void SubscribePrivateTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
-	
-	///¶©ÔÄ¹«¹²Á÷¡£
-	///@param nResumeType ¹«¹²Á÷ÖØ´«·½Ê½  
-	///        Sgit_TERT_RESTART:´Ó±¾½»Ò×ÈÕ¿ªÊ¼ÖØ´«
-	///        Sgit_TERT_RESUME:´ÓÉÏ´ÎÊÕµ½µÄĞø´«
-	///        Sgit_TERT_QUICK:Ö»´«ËÍµÇÂ¼ºó¹«¹²Á÷µÄÄÚÈİ
-	///@remark ¸Ã·½·¨ÒªÔÚInit·½·¨Ç°µ÷ÓÃ¡£Èô²»µ÷ÓÃÔò²»»áÊÕµ½¹«¹²Á÷µÄÊı¾İ¡£
-	virtual void SubscribePublicTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
+  ///åˆ›å»ºTraderApi
+  ///@param pszFlowPath å­˜è´®è®¢é˜…ä¿¡æ¯æ–‡ä»¶çš„ç›®å½•ï¼Œé»˜è®¤ä¸ºå½“å‰ç›®å½•
+  ///@return åˆ›å»ºå‡ºçš„UserApi
+  static CSgitFtdcTraderApi *CreateFtdcTraderApi(const char *pszFlowPath = "");
 
-	///·¢ËÍ¾ÍĞ÷Ö¸Áîµ½Ç°ÖÃ,Í¨ÖªÇ°ÖÃ¿ÉÒÔ¸ø×Ô¼º·¢ËÍË½ÓĞÁ÷Óë¹«¹²Á÷
-	/// @return 0±íÊ¾³É¹¦
-	/// @return ÆäËü²Î¼û´íÎóÂë
-	///
-	virtual int Ready() = 0;
+  ///åˆ é™¤æ¥å£å¯¹è±¡æœ¬èº«
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æ¥å£å¯¹è±¡
+  virtual void Release() = 0;
 
-	///ÓÃ»§µÇÂ¼ÇëÇó
-	virtual int ReqUserLogin(CSgitFtdcReqUserLoginField *pReqUserLoginField, int nRequestID) = 0;
+  ///åˆå§‹åŒ–
+  ///@remark åˆå§‹åŒ–è¿è¡Œç¯å¢ƒ,åªæœ‰è°ƒç”¨å,æ¥å£æ‰å¼€å§‹å·¥ä½œ
+  /// isLogged å¼€å‘è°ƒè¯•æ—¶ä½¿ç”¨trueï¼Œå¯ä»¥æ‰“å°å‡ºæ”¶åˆ°çš„æ¶ˆæ¯åŒ…å†…å®¹
+  virtual void Init(bool isLogged) = 0;
 
-	///µÇ³öÇëÇó
-	virtual int ReqUserLogout(CSgitFtdcUserLogoutField *pUserLogout, int nRequestID) = 0;
+  ///ç­‰å¾…æ¥å£çº¿ç¨‹ç»“æŸè¿è¡Œ
+  ///@return çº¿ç¨‹é€€å‡ºä»£ç 
+  virtual int Join() = 0;
 
-	///ÓÃ»§¿ÚÁî¸üĞÂÇëÇó
-	virtual int ReqUserPasswordUpdate(CSgitFtdcUserPasswordUpdateField *pUserPasswordUpdate, int nRequestID) = 0;
+  ///è·å–å½“å‰äº¤æ˜“æ—¥
+  ///@retrun è·å–åˆ°çš„äº¤æ˜“æ—¥
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸå,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
+  virtual const char *GetTradingDay() = 0;
 
-	///±¨µ¥Â¼ÈëÇëÇó
-	virtual int ReqOrderInsert(CSgitFtdcInputOrderField *pInputOrder, int nRequestID) = 0;
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
 
-	///±¨µ¥²Ù×÷ÇëÇó
-	virtual int ReqOrderAction(CSgitFtdcInputOrderActionField *pInputOrderAction, int nRequestID) = 0;
+  ///æ³¨å†Œå›è°ƒæ¥å£
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›è°ƒæ¥å£ç±»çš„å®ä¾‹
+  virtual void RegisterSpi(CSgitFtdcTraderSpi *pSpi) = 0;
 
-	///ÇëÇó²éÑ¯±¨µ¥
-	virtual int ReqQryOrder(CSgitFtdcQryOrderField *pQryOrder, int nRequestID) = 0;
+  ///è®¢é˜…ç§æœ‰æµã€‚
+  ///@param nResumeType ç§æœ‰æµé‡ä¼ æ–¹å¼
+  ///        Sgit_TERT_RESTART:ä»æœ¬äº¤æ˜“æ—¥å¼€å§‹é‡ä¼ 
+  ///        Sgit_TERT_RESUME:ä»ä¸Šæ¬¡æ”¶åˆ°çš„ç»­ä¼ 
+  ///        Sgit_TERT_QUICK:åªä¼ é€ç™»å½•åç§æœ‰æµçš„å†…å®¹
+  ///@remark è¯¥æ–¹æ³•è¦åœ¨Initæ–¹æ³•å‰è°ƒç”¨ã€‚è‹¥ä¸è°ƒç”¨åˆ™ä¸ä¼šæ”¶åˆ°ç§æœ‰æµçš„æ•°æ®ã€‚
+  virtual void SubscribePrivateTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
 
-	///ÇëÇó²éÑ¯×Ê½ğÕË»§
-	virtual int ReqQryTradingAccount(CSgitFtdcQryTradingAccountField *pQryTradingAccount, int nRequestID) = 0;
+  ///è®¢é˜…å…¬å…±æµã€‚
+  ///@param nResumeType å…¬å…±æµé‡ä¼ æ–¹å¼
+  ///        Sgit_TERT_RESTART:ä»æœ¬äº¤æ˜“æ—¥å¼€å§‹é‡ä¼ 
+  ///        Sgit_TERT_RESUME:ä»ä¸Šæ¬¡æ”¶åˆ°çš„ç»­ä¼ 
+  ///        Sgit_TERT_QUICK:åªä¼ é€ç™»å½•åå…¬å…±æµçš„å†…å®¹
+  ///@remark è¯¥æ–¹æ³•è¦åœ¨Initæ–¹æ³•å‰è°ƒç”¨ã€‚è‹¥ä¸è°ƒç”¨åˆ™ä¸ä¼šæ”¶åˆ°å…¬å…±æµçš„æ•°æ®ã€‚
+  virtual void SubscribePublicTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß
-	virtual int ReqQryInvestor(CSgitFtdcQryInvestorField *pQryInvestor, int nRequestID) = 0;
+  ///å‘é€å°±ç»ªæŒ‡ä»¤åˆ°å‰ç½®,é€šçŸ¥å‰ç½®å¯ä»¥ç»™è‡ªå·±å‘é€ç§æœ‰æµä¸å…¬å…±æµ
+  /// @return 0è¡¨ç¤ºæˆåŠŸ
+  /// @return å…¶å®ƒå‚è§é”™è¯¯ç 
+  ///
+  virtual int Ready() = 0;
 
-	///ÇëÇó²éÑ¯ºÏÔ¼
-	virtual int ReqQryInstrument(CSgitFtdcQryInstrumentField *pQryInstrument, int nRequestID) = 0;
+  ///ç”¨æˆ·ç™»å½•è¯·æ±‚
+  virtual int ReqUserLogin(CSgitFtdcReqUserLoginField *pReqUserLoginField,
+                           int nRequestID) = 0;
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
-	virtual int ReqQryInvestorPositionDetail(CSgitFtdcQryInvestorPositionDetailField *pQryInvestorPositionDetail, int nRequestID) = 0;
-	
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²Ö
-	virtual int ReqQryInvestorPosition(CSgitFtdcQryInvestorPositionField *pQryInvestorPosition, int nRequestID) = 0;
+  ///ç™»å‡ºè¯·æ±‚
+  virtual int ReqUserLogout(CSgitFtdcUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
 
-	/// ·¢ËÍºÏÔ¼¼ÛÎ»²éÑ¯ÇëÇó
-	virtual int ReqMBLQuot(int iRequestID,CSgitMBLQuotReq *pMBLQuotReq) = 0;
+  ///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚
+  virtual int
+  ReqUserPasswordUpdate(CSgitFtdcUserPasswordUpdateField *pUserPasswordUpdate,
+                        int nRequestID) = 0;
+
+  ///æŠ¥å•å½•å…¥è¯·æ±‚
+  virtual int ReqOrderInsert(CSgitFtdcInputOrderField *pInputOrder,
+                             int nRequestID) = 0;
+
+  ///æŠ¥å•æ“ä½œè¯·æ±‚
+  virtual int ReqOrderAction(CSgitFtdcInputOrderActionField *pInputOrderAction,
+                             int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢æŠ¥å•
+  virtual int ReqQryOrder(CSgitFtdcQryOrderField *pQryOrder,
+                          int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·
+  virtual int
+  ReqQryTradingAccount(CSgitFtdcQryTradingAccountField *pQryTradingAccount,
+                       int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…
+  virtual int ReqQryInvestor(CSgitFtdcQryInvestorField *pQryInvestor,
+                             int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦
+  virtual int ReqQryInstrument(CSgitFtdcQryInstrumentField *pQryInstrument,
+                               int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“æ˜ç»†
+  virtual int ReqQryInvestorPositionDetail(
+      CSgitFtdcQryInvestorPositionDetailField *pQryInvestorPositionDetail,
+      int nRequestID) = 0;
+
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“
+  virtual int ReqQryInvestorPosition(
+      CSgitFtdcQryInvestorPositionField *pQryInvestorPosition,
+      int nRequestID) = 0;
+
+  /// å‘é€åˆçº¦ä»·ä½æŸ¥è¯¢è¯·æ±‚
+  virtual int ReqMBLQuot(int iRequestID, CSgitMBLQuotReq *pMBLQuotReq) = 0;
 
 protected:
-	~CSgitFtdcTraderApi(){};
+  ~CSgitFtdcTraderApi(){};
 };
 
 #endif

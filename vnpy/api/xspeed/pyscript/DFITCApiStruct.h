@@ -1,11 +1,11 @@
 /**
-* °æÈ¨ËùÓĞ(C)2012-2016, ´óÁ¬·É´´ĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾
-* ÎÄ¼şÃû³Æ£ºDFITCApiStruct.h
-* ÎÄ¼şËµÃ÷£º¶¨Òå½Ó¿ÚËùĞèµÄÊı¾İ½Ó¿Ú
-* µ±Ç°°æ±¾£º1.0.14.91
-* ×÷Õß£ºXSpeedÏîÄ¿×é
-* ·¢²¼ÈÕÆÚ£º2015Äê5ÔÂ6ÈÕ
-*/
+ * ç‰ˆæƒæ‰€æœ‰(C)2012-2016, å¤§è¿é£åˆ›ä¿¡æ¯æŠ€æœ¯æœ‰é™å…¬å¸
+ * æ–‡ä»¶åç§°ï¼šDFITCApiStruct.h
+ * æ–‡ä»¶è¯´æ˜ï¼šå®šä¹‰æ¥å£æ‰€éœ€çš„æ•°æ®æ¥å£
+ * å½“å‰ç‰ˆæœ¬ï¼š1.0.14.91
+ * ä½œè€…ï¼šXSpeedé¡¹ç›®ç»„
+ * å‘å¸ƒæ—¥æœŸï¼š2015å¹´5æœˆ6æ—¥
+ */
 
 #ifndef DFITCAPISTRUCT_H_
 #define DFITCAPISTRUCT_H_
@@ -14,1213 +14,1085 @@
 
 #define APISTRUCT
 
-///ĞÄÌø°ü
-struct APISTRUCT DFITCTimeOutField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
+///å¿ƒè·³åŒ…
+struct APISTRUCT DFITCTimeOutField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
 };
 
-
-///ÇëÇó±¨µ¥Êı¾İÀàĞÍ(»ù±¾±¨µ¥)
-struct APISTRUCT DFITCInsertOrderField
-{
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ, ÓÉAPIÊ¹ÓÃÕßÎ¬»¤£¬ÔÚÍ¬Ò»¸ö»á»°ÖĞ²»ÄÜÖØ¸´
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë, Ö§³ÖÄ¿Ç°¹úÄÚ4¸öÆÚ»õ½»Ò×ËùµÄËùÓĞºÏÔ¼£¬°üÀ¨´óÉÌËù/Ö£ÉÌËùµÄÌ×ÀûºÏÔ¼
-    DFITCPriceType                      insertPrice;                  //±¨µ¥¼Û¸ñ, µ±±¨µ¥ÀàĞÍÎªÊĞ¼ÛÊ±£¬¸Ã×Ö¶Î²»Æğ×÷ÓÃ
-    DFITCAmountType                     orderAmount;                  //±¨µ¥ÊıÁ¿
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô±êÖ¾
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½±êÖ¾
-    DFITCSpeculatorType                 speculator;                   //Í¶±£ÀàĞÍ, Ö§³ÖÍ¶»ú¡¢Ì×Àû¡¢Ì×±£
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ(Ä¬ÈÏÎªÆÕÍ¨¶©µ¥)
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ, Ö§³ÖÏŞ¼Û ¡¢ÊĞ¼Û£»ÉÏÆÚËùºÏÔ¼²»Ö§³ÖÊĞ¼Û£¬¾ù°´ÏŞ¼Û½øĞĞ´¦Àí
-    DFITCOrderPropertyType              orderProperty;                //±¨µ¥¸½¼ÓÊôĞÔ, Ö§³ÖNone¡¢FAK¡¢FOK
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ, ¿ÉÑ¡Öµ£ºÆÚ»õ¡¢ÆÚÈ¨
-    DFITCAmountType                     minMatchAmount;               //×îĞ¡³É½»Á¿
-    DFITCReservedType                   reservedType2;                //Ô¤Áô×Ö¶Î2
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCPriceType                      profitLossPrice;              //Ö¹Ó¯Ö¹Ëğ¼Û¸ñ        
+///è¯·æ±‚æŠ¥å•æ•°æ®ç±»å‹(åŸºæœ¬æŠ¥å•)
+struct APISTRUCT DFITCInsertOrderField {
+  DFITCAccountIDType accountID; //èµ„é‡‘è´¦æˆ·
+  DFITCLocalOrderIDType
+      localOrderID; //æœ¬åœ°å§”æ‰˜å·, ç”±APIä½¿ç”¨è€…ç»´æŠ¤ï¼Œåœ¨åŒä¸€ä¸ªä¼šè¯ä¸­ä¸èƒ½é‡å¤
+  DFITCInstrumentIDType
+      instrumentID; //åˆçº¦ä»£ç ,
+                    //æ”¯æŒç›®å‰å›½å†…4ä¸ªæœŸè´§äº¤æ˜“æ‰€çš„æ‰€æœ‰åˆçº¦ï¼ŒåŒ…æ‹¬å¤§å•†æ‰€/éƒ‘å•†æ‰€çš„å¥—åˆ©åˆçº¦
+  DFITCPriceType insertPrice; //æŠ¥å•ä»·æ ¼, å½“æŠ¥å•ç±»å‹ä¸ºå¸‚ä»·æ—¶ï¼Œè¯¥å­—æ®µä¸èµ·ä½œç”¨
+  DFITCAmountType orderAmount;          //æŠ¥å•æ•°é‡
+  DFITCBuySellTypeType buySellType;     //ä¹°å–æ ‡å¿—
+  DFITCOpenCloseTypeType openCloseType; //å¼€å¹³æ ‡å¿—
+  DFITCSpeculatorType speculator; //æŠ•ä¿ç±»å‹, æ”¯æŒæŠ•æœºã€å¥—åˆ©ã€å¥—ä¿
+  DFITCInsertType insertType;     //è‡ªåŠ¨å•ç±»åˆ«(é»˜è®¤ä¸ºæ™®é€šè®¢å•)
+  DFITCOrderTypeType orderType;   //æŠ¥å•ç±»å‹, æ”¯æŒé™ä»·
+                                //ã€å¸‚ä»·ï¼›ä¸ŠæœŸæ‰€åˆçº¦ä¸æ”¯æŒå¸‚ä»·ï¼Œå‡æŒ‰é™ä»·è¿›è¡Œå¤„ç†
+  DFITCOrderPropertyType orderProperty; //æŠ¥å•é™„åŠ å±æ€§, æ”¯æŒNoneã€FAKã€FOK
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹, å¯é€‰å€¼ï¼šæœŸè´§ã€æœŸæƒ
+  DFITCAmountType minMatchAmount;         //æœ€å°æˆäº¤é‡
+  DFITCReservedType reservedType2;        //é¢„ç•™å­—æ®µ2
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCPriceType profitLossPrice;         //æ­¢ç›ˆæ­¢æŸä»·æ ¼
 };
 
-
-///³·µ¥Êı¾İÀàĞÍ
-struct APISTRUCT DFITCCancelOrderField
-{
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
+///æ’¤å•æ•°æ®ç±»å‹
+struct APISTRUCT DFITCCancelOrderField {
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦æˆ·ID
+  DFITCSPDOrderIDType spdOrderID;     //æŸœå°å§”æ‰˜å·
+  DFITCLocalOrderIDType localOrderID; //æœ¬åœ°å§”æ‰˜å·
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
 };
 
-
-///Î¯ÍĞÏìÓ¦ÀàĞÍ
-struct APISTRUCT DFITCOrderRspDataRtnField
-{
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ,¸Ã×Ö¶Î½ö¹©ÏÂµ¥Ê±Ê¹ÓÃ
-    DFITCPriceType                      margin;                       //¶³½á±£Ö¤½ğ,¸Ã×Ö¶Î½ö¹©ÏÂµ¥Ê±Ê¹ÓÃ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë 
-    DFITCSessionIDType                  sessionID;                    //»á»°ID  
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù  
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô    
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSpeculatorType                 speculator;                   //Í¶×ÊÀà±ğ
-    DFITCPriceType                      insertPrice;                  //Î¯ÍĞ¼Û
-    DFITCPriceType                      profitLossPrice;              //Ö¹Ó¯Ö¹Ëğ¼Û¸ñ
-    DFITCAmountType                     minMatchAmount;               //×îĞ¡³É½»Á¿
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCOrderTypeType                  orderType;                    //¶©µ¥ÀàĞÍ	
-    DFITCOrderPropertyType              orderProperty;                //¶©µ¥ÊôĞÔ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
+///å§”æ‰˜å“åº”ç±»å‹
+struct APISTRUCT DFITCOrderRspDataRtnField {
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCPriceType fee;    //æ‰‹ç»­è´¹,è¯¥å­—æ®µä»…ä¾›ä¸‹å•æ—¶ä½¿ç”¨
+  DFITCPriceType margin; //å†»ç»“ä¿è¯é‡‘,è¯¥å­—æ®µä»…ä¾›ä¸‹å•æ—¶ä½¿ç”¨
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCBuySellTypeType buySellType;       //ä¹°å–
+  DFITCOpenCloseTypeType openCloseType;   //å¼€å¹³
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCSpeculatorType speculator;         //æŠ•èµ„ç±»åˆ«
+  DFITCPriceType insertPrice;             //å§”æ‰˜ä»·
+  DFITCPriceType profitLossPrice;         //æ­¢ç›ˆæ­¢æŸä»·æ ¼
+  DFITCAmountType minMatchAmount;         //æœ€å°æˆäº¤é‡
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCOrderTypeType orderType;           //è®¢å•ç±»å‹
+  DFITCOrderPropertyType orderProperty;   //è®¢å•å±æ€§
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
 };
 
-
-
-///²éÑ¯×Ê½ğÊı¾İÀàĞÍ
-struct APISTRUCT DFITCCapitalField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
+///æŸ¥è¯¢èµ„é‡‘æ•°æ®ç±»å‹
+struct APISTRUCT DFITCCapitalField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·ID
 };
 
-
-///²éÑ¯³Ö²ÖÊı¾İÀàĞÍ
-struct APISTRUCT DFITCPositionField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
+///æŸ¥è¯¢æŒä»“æ•°æ®ç±»å‹
+struct APISTRUCT DFITCPositionField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
 };
 
-
-///½»Ò×ËùºÏÔ¼
-struct APISTRUCT DFITCExchangeInstrumentField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù±àÂë
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
+///äº¤æ˜“æ‰€åˆçº¦
+struct APISTRUCT DFITCExchangeInstrumentField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ç¼–ç 
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
 };
 
-
-///ÓÃ»§µÇÂ¼Êı¾İÀàĞÍ
-struct APISTRUCT DFITCUserLoginField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCPasswdType                     passwd;                       //ÃÜÂë
-    DFITCCompanyIDType                  companyID;                    //³§ÉÌID
+///ç”¨æˆ·ç™»å½•æ•°æ®ç±»å‹
+struct APISTRUCT DFITCUserLoginField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·ID
+  DFITCPasswdType passwd;        //å¯†ç 
+  DFITCCompanyIDType companyID;  //å‚å•†ID
 };
 
-
-///ÓÃ»§ÍË³öÀàĞÍ
-struct APISTRUCT DFITCUserLogoutField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCSessionIDType                  sessionID;                    //»á»°ID
+///ç”¨æˆ·é€€å‡ºç±»å‹
+struct APISTRUCT DFITCUserLogoutField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘å¸å·ID
+  DFITCSessionIDType sessionID;  //ä¼šè¯ID
 };
 
-
-///Î¯ÍĞ»Ø±¨
-struct APISTRUCT DFITCOrderRtnField
-{
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCSessionIDType                  sessionID;                    //»á»°ID
-    DFITCDateType                       SuspendTime;                  //¹ÒÆğÊ±¼ä
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù 
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSpeculatorType                 speculator;                   //Í¶×ÊÀà±ğ
-    DFITCPriceType                      insertPrice;                  //Î¯ÍĞ¼Û
-    DFITCPriceType                      profitLossPrice;              //Ö¹Ó¯Ö¹Ëğ¼Û¸ñ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCAmountType                     cancelAmount;                 //³·µ¥ÊıÁ¿
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ
-    DFITCSPDOrderIDType                 extSpdOrderID;                //Ëã·¨µ¥±àºÅ
-    DFITCReservedType                   reservedType2;                //Ô¤Áô×Ö¶Î2	
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCOrderPropertyType              orderProperty;                //¶©µ¥ÊôĞÔ	
-    DFITCAmountType                     minMatchAmount;               //×îĞ¡³É½»Á¿
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCErrorMsgInfoType               statusMsg;                    //×´Ì¬ĞÅÏ¢
+///å§”æ‰˜å›æŠ¥
+struct APISTRUCT DFITCOrderRtnField {
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCDateType SuspendTime;              //æŒ‚èµ·æ—¶é—´
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCBuySellTypeType buySellType;       //ä¹°å–
+  DFITCOpenCloseTypeType openCloseType;   //å¼€å¹³
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCSpeculatorType speculator;         //æŠ•èµ„ç±»åˆ«
+  DFITCPriceType insertPrice;             //å§”æ‰˜ä»·
+  DFITCPriceType profitLossPrice;         //æ­¢ç›ˆæ­¢æŸä»·æ ¼
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCAmountType cancelAmount;           //æ’¤å•æ•°é‡
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»å‹
+  DFITCSPDOrderIDType extSpdOrderID;      //ç®—æ³•å•ç¼–å·
+  DFITCReservedType reservedType2;        //é¢„ç•™å­—æ®µ2
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCOrderPropertyType orderProperty;   //è®¢å•å±æ€§
+  DFITCAmountType minMatchAmount;         //æœ€å°æˆäº¤é‡
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCErrorMsgInfoType statusMsg;        //çŠ¶æ€ä¿¡æ¯
 };
 
-
-///³É½»»Ø±¨
-struct APISTRUCT DFITCMatchRtnField
-{
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ(½»Ò×Ëù±¨µ¥±àºÅ)
-    DFITCMatchIDType                    matchID;                      //³É½»±àºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½±êÖ¾
-    DFITCPriceType                      matchedPrice;                 //³É½»¼Û¸ñ
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿
-    DFITCAmountType                     matchedAmount;                //³É½»ÊıÁ¿
-    DFITCDateType                       matchedTime;                  //³É½»Ê±¼ä
-    DFITCPriceType                      insertPrice;                  //±¨¼Û
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCMatchType                      matchType;                    //³É½»ÀàĞÍ
-    DFITCSpeculatorType                 speculator;                   //Í¶±£
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCFeeType                        fee;                          //ÊÖĞø·Ñ
-    DFITCSessionIDType                  sessionID;                    //»á»°±êÊ¶
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Éê±¨½á¹û
-    DFITCPriceType                      margin;                       //¿ª²ÖÎª±£Ö¤½ğ,Æ½²ÖÎª½â¶³±£Ö¤½ğ
-    DFITCPriceType                      frozenCapita;                 //³É½»½â¶³Î¯ÍĞ¶³½áµÄ×Ê½ğ
-    DFITCAdjustmentInfoType             adjustmentInfo;               //×éºÏ»ò¶ÔËøµÄ±£Ö¤½ğµ÷ÕûĞÅÏ¢,¸ñÊ½:[ºÏÔ¼´úÂë,ÂòÂô±êÖ¾,Í¶×ÊÀà±ğ,µ÷Õû½ğ¶î;] 
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCPriceType                      turnover;                     //³É½»½ğ¶î
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
+///æˆäº¤å›æŠ¥
+struct APISTRUCT DFITCMatchRtnField {
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·(äº¤æ˜“æ‰€æŠ¥å•ç¼–å·)
+  DFITCMatchIDType matchID;               //æˆäº¤ç¼–å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCBuySellTypeType buySellType;       //ä¹°å–
+  DFITCOpenCloseTypeType openCloseType;   //å¼€å¹³æ ‡å¿—
+  DFITCPriceType matchedPrice;            //æˆäº¤ä»·æ ¼
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCAmountType matchedAmount;          //æˆäº¤æ•°é‡
+  DFITCDateType matchedTime;              //æˆäº¤æ—¶é—´
+  DFITCPriceType insertPrice;             //æŠ¥ä»·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCMatchType matchType;               //æˆäº¤ç±»å‹
+  DFITCSpeculatorType speculator;         //æŠ•ä¿
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCFeeType fee;                       //æ‰‹ç»­è´¹
+  DFITCSessionIDType sessionID;           //ä¼šè¯æ ‡è¯†
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCOrderAnswerStatusType orderStatus; //ç”³æŠ¥ç»“æœ
+  DFITCPriceType margin;       //å¼€ä»“ä¸ºä¿è¯é‡‘,å¹³ä»“ä¸ºè§£å†»ä¿è¯é‡‘
+  DFITCPriceType frozenCapita; //æˆäº¤è§£å†»å§”æ‰˜å†»ç»“çš„èµ„é‡‘
+  DFITCAdjustmentInfoType
+      adjustmentInfo; //ç»„åˆæˆ–å¯¹é”çš„ä¿è¯é‡‘è°ƒæ•´ä¿¡æ¯,æ ¼å¼:[åˆçº¦ä»£ç ,ä¹°å–æ ‡å¿—,æŠ•èµ„ç±»åˆ«,è°ƒæ•´é‡‘é¢;]
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCPriceType turnover;                //æˆäº¤é‡‘é¢
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»å‹
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
 };
 
-
-///³·µ¥»Ø±¨
-struct APISTRUCT DFITCOrderCanceledRtnField
-{
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ  
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë     
-    DFITCPriceType                      insertPrice;                  //±¨µ¥¼Û¸ñ  
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂôÀàĞÍ
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½±êÖ¾
-    DFITCAmountType                     cancelAmount;                 //³·µ¥ÊıÁ¿
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCSpeculatorType                 speculator;                   //Í¶±£
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCDateType                       canceledTime;                 //³·µ¥Ê±¼ä
-    DFITCSessionIDType                  sessionID;                    //»á»°±êÊ¶
-    DFITCOrderAnswerStatusType          orderStatus;                  //Éê±¨½á¹û
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿   
-    DFITCPriceType                      margin;                       //±£Ö¤½ğ
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCPriceType                      profitLossPrice;              //Ö¹Ó¯Ö¹Ëğ¼Û¸ñ
-    DFITCAmountType                     minMatchAmount;               //×îĞ¡³É½»Á¿
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCErrorMsgInfoType               statusMsg;                    //×´Ì¬ĞÅÏ¢
-    DFITCOrderPropertyType              orderProperty;                //±¨µ¥¸½¼ÓÊôĞÔ
+///æ’¤å•å›æŠ¥
+struct APISTRUCT DFITCOrderCanceledRtnField {
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCPriceType insertPrice;             //æŠ¥å•ä»·æ ¼
+  DFITCBuySellTypeType buySellType;       //ä¹°å–ç±»å‹
+  DFITCOpenCloseTypeType openCloseType;   //å¼€å¹³æ ‡å¿—
+  DFITCAmountType cancelAmount;           //æ’¤å•æ•°é‡
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCSpeculatorType speculator;         //æŠ•ä¿
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCDateType canceledTime;             //æ’¤å•æ—¶é—´
+  DFITCSessionIDType sessionID;           //ä¼šè¯æ ‡è¯†
+  DFITCOrderAnswerStatusType orderStatus; //ç”³æŠ¥ç»“æœ
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCPriceType margin;                  //ä¿è¯é‡‘
+  DFITCPriceType fee;                     //æ‰‹ç»­è´¹
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCPriceType profitLossPrice;         //æ­¢ç›ˆæ­¢æŸä»·æ ¼
+  DFITCAmountType minMatchAmount;         //æœ€å°æˆäº¤é‡
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCErrorMsgInfoType statusMsg;        //çŠ¶æ€ä¿¡æ¯
+  DFITCOrderPropertyType orderProperty;   //æŠ¥å•é™„åŠ å±æ€§
 };
 
-
-///´íÎóĞÅÏ¢
-struct APISTRUCT DFITCErrorRtnField
-{
-    DFITCRequestIDType                  requestID;                    //ÇëÇóID
-    DFITCSessionIDType                  sessionID;                    //»á»°±êÊ¶
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCErrorIDType                    nErrorID;                     //´íÎóID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCErrorMsgInfoType               errorMsg;                     //´íÎóĞÅÏ¢
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
+///é”™è¯¯ä¿¡æ¯
+struct APISTRUCT DFITCErrorRtnField {
+  DFITCRequestIDType requestID;       //è¯·æ±‚ID
+  DFITCSessionIDType sessionID;       //ä¼šè¯æ ‡è¯†
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦å·
+  DFITCErrorIDType nErrorID;          //é”™è¯¯ID
+  DFITCSPDOrderIDType spdOrderID;     //æŸœå°å§”æ‰˜å·
+  DFITCLocalOrderIDType localOrderID; //æœ¬åœ°å§”æ‰˜å·
+  DFITCErrorMsgInfoType errorMsg;     //é”™è¯¯ä¿¡æ¯
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
 };
 
-
-///·µ»Ø×Ê½ğĞÅÏ¢
-struct APISTRUCT DFITCCapitalInfoRtnField
-{
-    DFITCRequestIDType                  requestID;                    //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅ
-    DFITCEquityType                     preEquity;                    //ÉÏÈÕÈ¨Òæ
-    DFITCEquityType                     todayEquity;                  //µ±ÈÕ¿Í»§È¨Òæ
-    DFITCProfitLossType                 closeProfitLoss;              //Æ½²ÖÓ¯¿÷
-    DFITCProfitLossType                 positionProfitLoss;           //³Ö²ÖÓ¯¿÷
-    DFITCProfitLossType                 frozenMargin;                 //¶³½á×Ê½ğ
-    DFITCProfitLossType                 margin;                       //³Ö²Ö±£Ö¤½ğ
-    DFITCProfitLossType                 fee;                          //µ±ÈÕÊÖĞø·Ñ
-    DFITCProfitLossType                 available;                    //¿ÉÓÃ×Ê½ğ
-    DFITCProfitLossType                 withdraw;                     //¿ÉÈ¡×Ê½ğ
-    DFITCRiskDegreeType                 riskDegree;                   //·çÏÕ¶È
-    DFITCPremiumType                    todayPremiumIncome;           //±¾ÈÕÈ¨Àû½ğÊÕÈë
-    DFITCPremiumType                    todayPremiumPay;              //±¾ÈÕÈ¨Àû½ğ¸¶³ö
-    DFITCPremiumType                    yesterdayPremium;             //×òÈ¨Àû½ğÊÕ¸¶
-    DFITCMarketValueType                optMarketValue;               //ÆÚÈ¨ÊĞÖµ
-    DFITCProfitLossType                 floatProfitLoss;              //¸¡¶¯Ó¯¿÷
-    DFITCProfitLossType                 totFundOut;                   //×Ü³ö½ğ
-    DFITCProfitLossType                 totFundIn;                    //×ÜÈë½ğ
+///è¿”å›èµ„é‡‘ä¿¡æ¯
+struct APISTRUCT DFITCCapitalInfoRtnField {
+  DFITCRequestIDType requestID;           //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘å¸å·
+  DFITCEquityType preEquity;              //ä¸Šæ—¥æƒç›Š
+  DFITCEquityType todayEquity;            //å½“æ—¥å®¢æˆ·æƒç›Š
+  DFITCProfitLossType closeProfitLoss;    //å¹³ä»“ç›ˆäº
+  DFITCProfitLossType positionProfitLoss; //æŒä»“ç›ˆäº
+  DFITCProfitLossType frozenMargin;       //å†»ç»“èµ„é‡‘
+  DFITCProfitLossType margin;             //æŒä»“ä¿è¯é‡‘
+  DFITCProfitLossType fee;                //å½“æ—¥æ‰‹ç»­è´¹
+  DFITCProfitLossType available;          //å¯ç”¨èµ„é‡‘
+  DFITCProfitLossType withdraw;           //å¯å–èµ„é‡‘
+  DFITCRiskDegreeType riskDegree;         //é£é™©åº¦
+  DFITCPremiumType todayPremiumIncome;    //æœ¬æ—¥æƒåˆ©é‡‘æ”¶å…¥
+  DFITCPremiumType todayPremiumPay;       //æœ¬æ—¥æƒåˆ©é‡‘ä»˜å‡º
+  DFITCPremiumType yesterdayPremium;      //æ˜¨æƒåˆ©é‡‘æ”¶ä»˜
+  DFITCMarketValueType optMarketValue;    //æœŸæƒå¸‚å€¼
+  DFITCProfitLossType floatProfitLoss;    //æµ®åŠ¨ç›ˆäº
+  DFITCProfitLossType totFundOut;         //æ€»å‡ºé‡‘
+  DFITCProfitLossType totFundIn;          //æ€»å…¥é‡‘
 };
 
-
-///·µ»Ø³Ö²ÖĞÅÏ¢
-struct APISTRUCT DFITCPositionInfoRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù´úÂë
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼ºÅ
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCPriceType                      openAvgPrice;                 //¿ª²Ö¾ù¼Û
-    DFITCPriceType                      positionAvgPrice;             //³Ö²Ö¾ù¼Û
-    DFITCAmountType                     positionAmount;               //³Ö²ÖÁ¿
-    DFITCAmountType                     totalAvaiAmount;              //×Ü¿ÉÓÃ
-    DFITCAmountType                     todayAvaiAmount;              //½ñ¿ÉÓÃ
-    DFITCAmountType                     lastAvaiAmount;               //×ò¿ÉÓÃ
-    DFITCAmountType                     todayAmount;                  //½ñ²Ö
-    DFITCAmountType                     lastAmount;                   //×ò²Ö
-    DFITCAmountType                     tradingAmount;                //Æ½½ñ¹Òµ¥Á¿
-    DFITCProfitLossType                 datePositionProfitLoss;       //¶¢ÊĞ³Ö²ÖÓ¯¿÷
-    DFITCProfitLossType                 dateCloseProfitLoss;          //¶¢ÊĞÆ½²ÖÓ¯¿÷
-    DFITCProfitLossType                 dPremium;                     //È¨Àû½ğ
-    DFITCProfitLossType                 floatProfitLoss;              //¸¡¶¯Ó¯¿÷
-    DFITCProfitLossType                 dMargin;                      //Õ¼ÓÃ±£Ö¤½ğ
-    DFITCSpeculatorType                 speculator;                   //Í¶±£Àà±ğ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCPriceType                      preSettlementPrice;           //×ò½áËã¼Û
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCAmountType                     yesterdayTradingAmount;       //Æ½×ò¹Òµ¥Á¿
+///è¿”å›æŒä»“ä¿¡æ¯
+struct APISTRUCT DFITCPositionInfoRtnField {
+  DFITCRequestIDType lRequestID;              //è¯·æ±‚ID
+  DFITCAccountIDType accountID;               //èµ„é‡‘å¸å·ID
+  DFITCExchangeIDType exchangeID;             //äº¤æ˜“æ‰€ä»£ç 
+  DFITCInstrumentIDType instrumentID;         //åˆçº¦å·
+  DFITCBuySellTypeType buySellType;           //ä¹°å–
+  DFITCPriceType openAvgPrice;                //å¼€ä»“å‡ä»·
+  DFITCPriceType positionAvgPrice;            //æŒä»“å‡ä»·
+  DFITCAmountType positionAmount;             //æŒä»“é‡
+  DFITCAmountType totalAvaiAmount;            //æ€»å¯ç”¨
+  DFITCAmountType todayAvaiAmount;            //ä»Šå¯ç”¨
+  DFITCAmountType lastAvaiAmount;             //æ˜¨å¯ç”¨
+  DFITCAmountType todayAmount;                //ä»Šä»“
+  DFITCAmountType lastAmount;                 //æ˜¨ä»“
+  DFITCAmountType tradingAmount;              //å¹³ä»ŠæŒ‚å•é‡
+  DFITCProfitLossType datePositionProfitLoss; //ç›¯å¸‚æŒä»“ç›ˆäº
+  DFITCProfitLossType dateCloseProfitLoss;    //ç›¯å¸‚å¹³ä»“ç›ˆäº
+  DFITCProfitLossType dPremium;               //æƒåˆ©é‡‘
+  DFITCProfitLossType floatProfitLoss;        //æµ®åŠ¨ç›ˆäº
+  DFITCProfitLossType dMargin;                //å ç”¨ä¿è¯é‡‘
+  DFITCSpeculatorType speculator;             //æŠ•ä¿ç±»åˆ«
+  DFITCClientIDType clientID;                 //äº¤æ˜“ç¼–ç 
+  DFITCPriceType preSettlementPrice;          //æ˜¨ç»“ç®—ä»·
+  DFITCInstrumentTypeType instrumentType;     //åˆçº¦ç±»å‹
+  DFITCAmountType yesterdayTradingAmount;     //å¹³æ˜¨æŒ‚å•é‡
 };
 
-
-///ÓÃ»§µÇÂ¼·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCUserLoginInfoRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCAccountLoginResultType         loginResult;                  //µÇÂ¼½á¹û
-    DFITCLocalOrderIDType               initLocalOrderID;             //³õÊ¼±¾µØÎ¯ÍĞºÅ
-    DFITCSessionIDType                  sessionID;                    //sessionID(»á»°ID)
-    DFITCErrorIDType                    nErrorID;                     //´íÎóID
-    DFITCErrorMsgInfoType               errorMsg;                     //´íÎóĞÅÏ¢
-    DFITCTimeType                       DCEtime;                      //´óÉÌËùÊ±¼ä
-    DFITCTimeType                       SHFETime;                     //ÉÏÆÚËùÊ±¼ä
-    DFITCTimeType                       CFFEXTime;                    //ÖĞ½ğËùÊ±¼ä
-    DFITCTimeType                       CZCETime;                     //Ö£ÉÌËùÊ±¼ä
-    DFITCTimeType                       INETime;                      //ÉÏÄÜËùÊ±¼ä
+///ç”¨æˆ·ç™»å½•è¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCUserLoginInfoRtnField {
+  DFITCRequestIDType lRequestID;           //è¯·æ±‚ID
+  DFITCAccountIDType accountID;            //èµ„é‡‘å¸å·ID
+  DFITCAccountLoginResultType loginResult; //ç™»å½•ç»“æœ
+  DFITCLocalOrderIDType initLocalOrderID;  //åˆå§‹æœ¬åœ°å§”æ‰˜å·
+  DFITCSessionIDType sessionID;            // sessionID(ä¼šè¯ID)
+  DFITCErrorIDType nErrorID;               //é”™è¯¯ID
+  DFITCErrorMsgInfoType errorMsg;          //é”™è¯¯ä¿¡æ¯
+  DFITCTimeType DCEtime;                   //å¤§å•†æ‰€æ—¶é—´
+  DFITCTimeType SHFETime;                  //ä¸ŠæœŸæ‰€æ—¶é—´
+  DFITCTimeType CFFEXTime;                 //ä¸­é‡‘æ‰€æ—¶é—´
+  DFITCTimeType CZCETime;                  //éƒ‘å•†æ‰€æ—¶é—´
+  DFITCTimeType INETime;                   //ä¸Šèƒ½æ‰€æ—¶é—´
 };
 
-
-///ÓÃ»§ÍË³ö·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCUserLogoutInfoRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCAccountLogoutResultType        logoutResult;                 //ÍË³ö½á¹û
-    DFITCErrorIDType                    nErrorID;                     //´íÎóID
-    DFITCErrorMsgInfoType               errorMsg;                     //´íÎóĞÅÏ¢
+///ç”¨æˆ·é€€å‡ºè¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCUserLogoutInfoRtnField {
+  DFITCRequestIDType lRequestID;             //è¯·æ±‚ID
+  DFITCAccountIDType accountID;              //èµ„é‡‘è´¦æˆ·ID
+  DFITCAccountLogoutResultType logoutResult; //é€€å‡ºç»“æœ
+  DFITCErrorIDType nErrorID;                 //é”™è¯¯ID
+  DFITCErrorMsgInfoType errorMsg;            //é”™è¯¯ä¿¡æ¯
 };
 
-
-///Ì×ÀûºÏÔ¼²éÑ¯
-struct  APISTRUCT DFITCAbiInstrumentField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù´úÂë
+///å¥—åˆ©åˆçº¦æŸ¥è¯¢
+struct APISTRUCT DFITCAbiInstrumentField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCAccountIDType accountID;   //èµ„é‡‘è´¦æˆ·ID
+  DFITCExchangeIDType exchangeID; //äº¤æ˜“æ‰€ä»£ç 
 };
 
-
-///Ì×ÀûºÏÔ¼·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCAbiInstrumentRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù±àÂë
-    DFITCInstrumentIDType               InstrumentID;                 //ºÏÔ¼´úÂë
-    DFITCInstrumentNameType             instrumentName;               //ºÏÔ¼Ãû³Æ
+///å¥—åˆ©åˆçº¦è¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCAbiInstrumentRtnField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ç¼–ç 
+  DFITCInstrumentIDType InstrumentID;     //åˆçº¦ä»£ç 
+  DFITCInstrumentNameType instrumentName; //åˆçº¦åç§°
 };
 
-
-///Ö¸¶¨µÄºÏÔ¼
-struct APISTRUCT DFITCSpecificInstrumentField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               InstrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
+///æŒ‡å®šçš„åˆçº¦
+struct APISTRUCT DFITCSpecificInstrumentField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType InstrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
 };
 
-
-//****************ÆÚÈ¨À©Õ¹ĞĞÇéºÏÔ¼»Ø±¨¶¨Òå*************************
-///Ö¸¶¨µÄºÏÔ¼ĞÅÏ¢
-struct APISTRUCT DFITCSpecificInstrumentFieldEX
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCFunctionIDType                 FunctionID;                   //¹¦ÄÜID
-    DFITCInstrumentIDType               InstrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
+//****************æœŸæƒæ‰©å±•è¡Œæƒ…åˆçº¦å›æŠ¥å®šä¹‰*************************
+///æŒ‡å®šçš„åˆçº¦ä¿¡æ¯
+struct APISTRUCT DFITCSpecificInstrumentFieldEX {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCFunctionIDType FunctionID;         //åŠŸèƒ½ID
+  DFITCInstrumentIDType InstrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
 };
 //*****************************************
 
-///ĞĞÇé¶©ÔÄ·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCActiveContractField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCActiveContractType             activeContract;               //ÓĞĞ§ºÏÔ¼
+///è¡Œæƒ…è®¢é˜…è¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCActiveContractField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCActiveContractType activeContract; //æœ‰æ•ˆåˆçº¦
 };
 
-
-///½»Ò×ËùºÏÔ¼·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCExchangeInstrumentRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù±àÂë
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCVarietyNameType                VarietyName;                  //Æ·ÖÖÃû³Æ
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCAmountType                     orderTopLimit;                //ÏŞ¼ÛÎ¯ÍĞÉÏÏŞ
-    DFITCAmountType                     mktOrderTopLimit;             //ÊĞ¼ÛÎ¯ÍĞÉÏÏŞ
-    DFITCPriceType                      contractMultiplier;           //ºÏÔ¼³ËÊı
-    DFITCPriceType                      minPriceFluctuation;          //×îĞ¡±ä¶¯¼ÛÎ»
-    DFITCInstrumentMaturityType         instrumentMaturity;           //ºÏÔ¼×îºó½»Ò×ÈÕ
-    DFITCPriceType                      upperLimitPrice;              //ÕÇÍ£°å¼Û
-    DFITCPriceType                      lowerLimitPrice;              //µøÍ£°å¼Û
-    DFITCPriceType                      preClosePrice;                //×òÊÕÅÌ
-    DFITCPriceType                      preSettlementPrice;           //×ò½áËã¼Û
-    DFITCPriceType                      settlementPrice;              //½áËã¼Û
-    DFITCAmountType                     preOpenInterest;              //×ò³Ö²ÖÁ¿
-    DFITCInstrumentPrefixType           instrumentPrefix;             //ºÏÔ¼Ç°×º
-    DFITCInstrumenExpirationDateType    instrumentExpiration;         //ºÏÔ¼µ½ÆÚÈÕ
-    DFITCInstrumentIDType               underlying;                   //ÆÚÈ¨¶ÔÓ¦µÄ±êµÄºÏÔ¼´úÂë
-    DFITCOptionTypeType                 optionType;                   //ÆÚÈ¨ÀàĞÍ
-    DFITCPriceType                      strikePrice;                  //Ö´ĞĞ¼Û¸ñ
-    DFITCRiskDegreeType                 exchangeRiskDegree;           //½»Ò×ËùÆÚÈ¨×îµÍ±£ÕÏ·çÏÕÏµÊı
-    DFITCPriceType                      minMargin;                    //µ¥Î»£¨ÊÖ£©ÆÚÈ¨ºÏÔ¼×îĞ¡±£Ö¤½ğ
-    DFITCAmountType                     tradeSize;                    //ÆÚÈ¨¿ª²Öµ¥Î»
+///äº¤æ˜“æ‰€åˆçº¦è¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCExchangeInstrumentRtnField {
+  DFITCRequestIDType lRequestID;                         //è¯·æ±‚ID
+  DFITCExchangeIDType exchangeID;                        //äº¤æ˜“æ‰€ç¼–ç 
+  DFITCInstrumentIDType instrumentID;                    //åˆçº¦ä»£ç 
+  DFITCVarietyNameType VarietyName;                      //å“ç§åç§°
+  DFITCInstrumentTypeType instrumentType;                //åˆçº¦ç±»å‹
+  DFITCAmountType orderTopLimit;                         //é™ä»·å§”æ‰˜ä¸Šé™
+  DFITCAmountType mktOrderTopLimit;                      //å¸‚ä»·å§”æ‰˜ä¸Šé™
+  DFITCPriceType contractMultiplier;                     //åˆçº¦ä¹˜æ•°
+  DFITCPriceType minPriceFluctuation;                    //æœ€å°å˜åŠ¨ä»·ä½
+  DFITCInstrumentMaturityType instrumentMaturity;        //åˆçº¦æœ€åäº¤æ˜“æ—¥
+  DFITCPriceType upperLimitPrice;                        //æ¶¨åœæ¿ä»·
+  DFITCPriceType lowerLimitPrice;                        //è·Œåœæ¿ä»·
+  DFITCPriceType preClosePrice;                          //æ˜¨æ”¶ç›˜
+  DFITCPriceType preSettlementPrice;                     //æ˜¨ç»“ç®—ä»·
+  DFITCPriceType settlementPrice;                        //ç»“ç®—ä»·
+  DFITCAmountType preOpenInterest;                       //æ˜¨æŒä»“é‡
+  DFITCInstrumentPrefixType instrumentPrefix;            //åˆçº¦å‰ç¼€
+  DFITCInstrumenExpirationDateType instrumentExpiration; //åˆçº¦åˆ°æœŸæ—¥
+  DFITCInstrumentIDType underlying;       //æœŸæƒå¯¹åº”çš„æ ‡çš„åˆçº¦ä»£ç 
+  DFITCOptionTypeType optionType;         //æœŸæƒç±»å‹
+  DFITCPriceType strikePrice;             //æ‰§è¡Œä»·æ ¼
+  DFITCRiskDegreeType exchangeRiskDegree; //äº¤æ˜“æ‰€æœŸæƒæœ€ä½ä¿éšœé£é™©ç³»æ•°
+  DFITCPriceType minMargin;  //å•ä½ï¼ˆæ‰‹ï¼‰æœŸæƒåˆçº¦æœ€å°ä¿è¯é‡‘
+  DFITCAmountType tradeSize; //æœŸæƒå¼€ä»“å•ä½
 };
 
-
-///Î¯ÍĞ²éÑ¯Êı¾İ½á¹¹
-struct APISTRUCT DFITCOrderField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
+///å§”æ‰˜æŸ¥è¯¢æ•°æ®ç»“æ„
+struct APISTRUCT DFITCOrderField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»å‹
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
 };
 
-
-///³É½»²éÑ¯Êı¾İ½á¹¹
-struct APISTRUCT DFITCMatchField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
+///æˆäº¤æŸ¥è¯¢æ•°æ®ç»“æ„
+struct APISTRUCT DFITCMatchField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»å‹
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
 };
 
-
-///Î¯ÍĞ²éÑ¯ÏìÓ¦Êı¾İ½á¹¹
-struct APISTRUCT DFITCOrderCommRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCOpenCloseTypeType              openClose;                    //¿ªÆ½±êÖ¾
-    DFITCPriceType                      insertPrice;                  //Î¯ÍĞ¼Û
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿
-    DFITCPriceType                      matchedPrice;                 //³É½»¼Û¸ñ
-    DFITCAmountType                     matchedAmount;                //³É½»ÊıÁ¿
-    DFITCAmountType                     cancelAmount;                 //³·µ¥ÊıÁ¿
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCSpeculatorType                 speculator;                   //Í¶±£
-    DFITCDateType                       commTime;                     //Î¯ÍĞÊ±¼ä
-    DFITCDateType                       submitTime;                   //Éê±¨Ê±¼ä
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCFrontAddrType                  operStation;                  //Î¯ÍĞµØÖ·
-    DFITCAccountIDType                  accountID;                    //¿Í»§ºÅ
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSessionIDType                  sessionId;                    //»á»°ID
-    DFITCReservedType                   reservedType2;                //Ô¤Áô×Ö¶Î2
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCPriceType                      margin;                       //±£Ö¤½ğ
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCPriceType                      profitLossPrice;              //Ö¹ËğÖ¹Ó¯¼Û
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥Àà±ğ
-    DFITCOrderPropertyType              orderProperty;                //¶©µ¥ÊôĞÔ
+///å§”æ‰˜æŸ¥è¯¢å“åº”æ•°æ®ç»“æ„
+struct APISTRUCT DFITCOrderCommRtnField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCBuySellTypeType buySellType;       //ä¹°å–
+  DFITCOpenCloseTypeType openClose;       //å¼€å¹³æ ‡å¿—
+  DFITCPriceType insertPrice;             //å§”æ‰˜ä»·
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCPriceType matchedPrice;            //æˆäº¤ä»·æ ¼
+  DFITCAmountType matchedAmount;          //æˆäº¤æ•°é‡
+  DFITCAmountType cancelAmount;           //æ’¤å•æ•°é‡
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCSpeculatorType speculator;         //æŠ•ä¿
+  DFITCDateType commTime;                 //å§”æ‰˜æ—¶é—´
+  DFITCDateType submitTime;               //ç”³æŠ¥æ—¶é—´
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCFrontAddrType operStation;         //å§”æ‰˜åœ°å€
+  DFITCAccountIDType accountID;           //å®¢æˆ·å·
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCSessionIDType sessionId;           //ä¼šè¯ID
+  DFITCReservedType reservedType2;        //é¢„ç•™å­—æ®µ2
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCPriceType margin;                  //ä¿è¯é‡‘
+  DFITCPriceType fee;                     //æ‰‹ç»­è´¹
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCPriceType profitLossPrice;         //æ­¢æŸæ­¢ç›ˆä»·
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»åˆ«
+  DFITCOrderPropertyType orderProperty;   //è®¢å•å±æ€§
 };
 
-
-///³É½»²éÑ¯Êı¾İÏìÓ¦
-struct APISTRUCT DFITCMatchedRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCOpenCloseTypeType              openClose;                    //¿ªÆ½
-    DFITCPriceType                      matchedPrice;                 //³É½»¼Û¸ñ
-    DFITCAmountType                     matchedAmount;                //³É½»ÊıÁ¿
-    DFITCPriceType                      matchedMort;                  //³É½»½ğ¶î
-    DFITCSpeculatorType                 speculator;                   //Í¶±£Àà±ğ
-    DFITCDateType                       matchedTime;                  //³É½»Ê±¼ä
-    DFITCMatchIDType                    matchedID;                    //³É½»±àºÅ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCMatchType                      matchType;                    //³É½»ÀàĞÍ
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSessionIDType                  sessionId;                    //»á»°ID
-    DFITCReservedType                   reservedType2;                //Ô¤Áô×Ö¶Î2
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ
-    DFITCOrderTypeType                  orderType;                    //±¨µ¥ÀàĞÍ
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ
+///æˆäº¤æŸ¥è¯¢æ•°æ®å“åº”
+struct APISTRUCT DFITCMatchedRtnField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCBuySellTypeType buySellType;       //ä¹°å–
+  DFITCOpenCloseTypeType openClose;       //å¼€å¹³
+  DFITCPriceType matchedPrice;            //æˆäº¤ä»·æ ¼
+  DFITCAmountType matchedAmount;          //æˆäº¤æ•°é‡
+  DFITCPriceType matchedMort;             //æˆäº¤é‡‘é¢
+  DFITCSpeculatorType speculator;         //æŠ•ä¿ç±»åˆ«
+  DFITCDateType matchedTime;              //æˆäº¤æ—¶é—´
+  DFITCMatchIDType matchedID;             //æˆäº¤ç¼–å·
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCMatchType matchType;               //æˆäº¤ç±»å‹
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCSessionIDType sessionId;           //ä¼šè¯ID
+  DFITCReservedType reservedType2;        //é¢„ç•™å­—æ®µ2
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCPriceType fee;                     //æ‰‹ç»­è´¹
+  DFITCOrderTypeType orderType;           //æŠ¥å•ç±»å‹
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·
 };
 
-
-///·µ»ØºÏÔ¼ĞÅÏ¢Êı¾İ½á¹¹
-struct APISTRUCT DFITCInstrumentRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇó±àºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCRatioType                      longMarginRatio;              //¶àÍ·±£Ö¤½ğÂÊ
-    DFITCRatioType                      shortMarginRatio;             //¿ÕÍ·±£Ö¤½ğÂÊ
-    DFITCPriceType                      longMarginRatioByVolume;      //¶àÍ·±£Ö¤½ğ·Ñ(¶¨¶î)
-    DFITCPriceType                      shortMarginRatioByVolume;     //¿ÕÍ·±£Ö¤½ğ·Ñ(¶¨¶î)
-    DFITCRatioType                      openFeeVolRatio;              //¿ª²ÖÊÖĞø·Ñ °´ÊÖÊı¼ÆËã
-    DFITCRatioType                      closeFeeVolRatio;             //Æ½²ÖÊÖĞø·Ñ °´ÊÖÊı¼ÆËã
-    DFITCRatioType                      closeTodayFeeVolRatio;        //Æ½½ñÊÖĞø·Ñ °´ÊÖÊı¼ÆËã
-    DFITCRatioType                      openFeeAmtRatio;              //¿ª²ÖÊÖĞø·ÑÂÊ °´½ğ¶î¼ÆËã
-    DFITCRatioType                      closeFeeAmtRatio;             //Æ½²ÖÊÖĞø·ÑÂÊ °´½ğ¶î¼ÆËã
-    DFITCRatioType                      closeTodayFeeAmtRatio;        //Æ½½ñÊÖĞø·ÑÂÊ °´½ğ¶î¼ÆËã
-    DFITCAmountType                     orderTopLimit;                //ÏŞ¼ÛÎ¯ÍĞÉÏÏŞ
-    DFITCPriceType                      contractMultiplier;           //ºÏÔ¼³ËÊı
-    DFITCPriceType                      minimumPriceChange;           //×îĞ¡±ä¶¯¼ÛÎ»
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCInstrumentMaturityType         instrumentMaturity;           //ºÏÔ¼×îºó½»Ò×ÈÕ
-    DFITCComputeModeType                computeMode;                  //¼ÆËã·½Ê½             
-    DFITCPriceType                      atMoneyNorm;                  //Æ½Öµ°´¶¨¶î
-    DFITCPriceType                      upperLimitPrice;              //ÕÇÍ£°å¼Û
-    DFITCPriceType                      lowerLimitPrice;              //µøÍ£°å¼Û
-    DFITCPriceType                      preClosePrice;                //×òÊÕÅÌ
-    DFITCPriceType                      preSettlementPrice;           //×ò½áËã¼Û
-    DFITCPriceType                      settlementPrice;              //½áËã¼Û
-    DFITCAmountType                     preOpenInterest;              //×ò³Ö²ÖÁ¿
-    DFITCRatioType                      optExecRatio;                 //ÆÚÈ¨£ºĞĞÈ¨°´±ÈÀı ÆÚ»õ£º½»¸î°´±ÈÀı
-    DFITCRatioType                      optExecRatioPerVol;           //ÆÚÈ¨£ºĞĞÈ¨°´¶¨¶î ÆÚ»õ£º½»¸î°´¶¨¶î
+///è¿”å›åˆçº¦ä¿¡æ¯æ•°æ®ç»“æ„
+struct APISTRUCT DFITCInstrumentRtnField {
+  DFITCRequestIDType lRequestID;           //è¯·æ±‚ç¼–å·
+  DFITCInstrumentIDType instrumentID;      //åˆçº¦ä»£ç 
+  DFITCRatioType longMarginRatio;          //å¤šå¤´ä¿è¯é‡‘ç‡
+  DFITCRatioType shortMarginRatio;         //ç©ºå¤´ä¿è¯é‡‘ç‡
+  DFITCPriceType longMarginRatioByVolume;  //å¤šå¤´ä¿è¯é‡‘è´¹(å®šé¢)
+  DFITCPriceType shortMarginRatioByVolume; //ç©ºå¤´ä¿è¯é‡‘è´¹(å®šé¢)
+  DFITCRatioType openFeeVolRatio;          //å¼€ä»“æ‰‹ç»­è´¹ æŒ‰æ‰‹æ•°è®¡ç®—
+  DFITCRatioType closeFeeVolRatio;         //å¹³ä»“æ‰‹ç»­è´¹ æŒ‰æ‰‹æ•°è®¡ç®—
+  DFITCRatioType closeTodayFeeVolRatio;    //å¹³ä»Šæ‰‹ç»­è´¹ æŒ‰æ‰‹æ•°è®¡ç®—
+  DFITCRatioType openFeeAmtRatio;          //å¼€ä»“æ‰‹ç»­è´¹ç‡ æŒ‰é‡‘é¢è®¡ç®—
+  DFITCRatioType closeFeeAmtRatio;         //å¹³ä»“æ‰‹ç»­è´¹ç‡ æŒ‰é‡‘é¢è®¡ç®—
+  DFITCRatioType closeTodayFeeAmtRatio;    //å¹³ä»Šæ‰‹ç»­è´¹ç‡ æŒ‰é‡‘é¢è®¡ç®—
+  DFITCAmountType orderTopLimit;           //é™ä»·å§”æ‰˜ä¸Šé™
+  DFITCPriceType contractMultiplier;       //åˆçº¦ä¹˜æ•°
+  DFITCPriceType minimumPriceChange;       //æœ€å°å˜åŠ¨ä»·ä½
+  DFITCInstrumentTypeType instrumentType;  //åˆçº¦ç±»å‹
+  DFITCInstrumentMaturityType instrumentMaturity; //åˆçº¦æœ€åäº¤æ˜“æ—¥
+  DFITCComputeModeType computeMode;               //è®¡ç®—æ–¹å¼
+  DFITCPriceType atMoneyNorm;                     //å¹³å€¼æŒ‰å®šé¢
+  DFITCPriceType upperLimitPrice;                 //æ¶¨åœæ¿ä»·
+  DFITCPriceType lowerLimitPrice;                 //è·Œåœæ¿ä»·
+  DFITCPriceType preClosePrice;                   //æ˜¨æ”¶ç›˜
+  DFITCPriceType preSettlementPrice;              //æ˜¨ç»“ç®—ä»·
+  DFITCPriceType settlementPrice;                 //ç»“ç®—ä»·
+  DFITCAmountType preOpenInterest;                //æ˜¨æŒä»“é‡
+  DFITCRatioType optExecRatio; //æœŸæƒï¼šè¡ŒæƒæŒ‰æ¯”ä¾‹ æœŸè´§ï¼šäº¤å‰²æŒ‰æ¯”ä¾‹
+  DFITCRatioType optExecRatioPerVol; //æœŸæƒï¼šè¡ŒæƒæŒ‰å®šé¢ æœŸè´§ï¼šäº¤å‰²æŒ‰å®šé¢
 };
 
-
-///Éî¶ÈĞĞÇé
-struct APISTRUCT DFITCDepthMarketDataField
-{
-    DFITCDateType                       tradingDay;                   //½»Ò×ÈÕ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù´úÂë
-    DFITCInstrumentIDType               exchangeInstID;               //ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-    DFITCPriceType                      lastPrice;                    //×îĞÂ¼Û
-    DFITCPriceType                      preSettlementPrice;           //ÉÏ´Î½áËã¼Û
-    DFITCPriceType                      preClosePrice;                //×òÊÕÅÌ
-    DFITCAmountType                     preOpenInterest;              //×ò³Ö²ÖÁ¿
-    DFITCPriceType                      openPrice;                    //½ñ¿ªÅÌ
-    DFITCPriceType                      highestPrice;                 //×î¸ß¼Û
-    DFITCPriceType                      lowestPrice;                  //×îµÍ¼Û
-    DFITCAmountType                     Volume;                       //³É½»ÊıÁ¿
-    DFITCPriceType                      turnover;                     //³É½»½ğ¶î
-    DFITCAmountType                     openInterest;                 //³Ö²ÖÁ¿
-    DFITCPriceType                      closePrice;                   //½ñÊÕÅÌ
-    DFITCPriceType                      settlementPrice;              //±¾´Î½áËã¼Û
-    DFITCPriceType                      upperLimitPrice;              //ÕÇÍ£°å¼Û
-    DFITCPriceType                      lowerLimitPrice;              //µøÍ£°å¼Û
-    DFITCDeltaType                      preDelta;                     //×òĞéÊµ¶È
-    DFITCDeltaType                      currDelta;                    //½ñĞéÊµ¶È
-    DFITCDateType                       UpdateTime;                   //×îºóĞŞ¸ÄÊ±¼ä
-    DFITCMilliSecType                   UpdateMillisec;               //×îºóĞŞ¸ÄºÁÃë
-    DFITCPriceType                      BidPrice1;                    //ÉêÂò¼ÛÒ»
-    DFITCVolumeType                     BidVolume1;                   //ÉêÂòÁ¿Ò»
-    DFITCPriceType                      AskPrice1;                    //ÉêÂô¼ÛÒ»
-    DFITCVolumeType                     AskVolume1;                   //ÉêÂôÁ¿Ò»
-    DFITCPriceType                      BidPrice2;                    //ÉêÂò¼Û¶ş
-    DFITCVolumeType                     BidVolume2;                   //ÉêÂòÁ¿¶ş
-    DFITCPriceType                      AskPrice2;                    //ÉêÂô¼Û¶ş
-    DFITCVolumeType                     AskVolume2;                   //ÉêÂôÁ¿¶ş
-    DFITCPriceType                      BidPrice3;                    //ÉêÂò¼ÛÈı
-    DFITCVolumeType                     BidVolume3;                   //ÉêÂòÁ¿Èı
-    DFITCPriceType                      AskPrice3;                    //ÉêÂô¼ÛÈı
-    DFITCVolumeType                     AskVolume3;                   //ÉêÂôÁ¿Èı
-    DFITCPriceType                      BidPrice4;                    //ÉêÂò¼ÛËÄ
-    DFITCVolumeType                     BidVolume4;                   //ÉêÂòÁ¿ËÄ
-    DFITCPriceType                      AskPrice4;                    //ÉêÂô¼ÛËÄ
-    DFITCVolumeType                     AskVolume4;                   //ÉêÂôÁ¿ËÄ
-    DFITCPriceType                      BidPrice5;                    //ÉêÂò¼ÛÎå
-    DFITCVolumeType                     BidVolume5;                   //ÉêÂòÁ¿Îå
-    DFITCPriceType                      AskPrice5;                    //ÉêÂô¼ÛÎå
-    DFITCVolumeType                     AskVolume5;                   //ÉêÂôÁ¿Îå
-    DFITCPriceType                      AveragePrice;                 //µ±ÈÕ¾ù¼Û
-    DFITCDateType                       XSpeedTime;                   //¹ñÌ¨ÏµÍ³Ê±¼ä
+///æ·±åº¦è¡Œæƒ…
+struct APISTRUCT DFITCDepthMarketDataField {
+  DFITCDateType tradingDay;             //äº¤æ˜“æ—¥
+  DFITCInstrumentIDType instrumentID;   //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;       //äº¤æ˜“æ‰€ä»£ç 
+  DFITCInstrumentIDType exchangeInstID; //åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  DFITCPriceType lastPrice;             //æœ€æ–°ä»·
+  DFITCPriceType preSettlementPrice;    //ä¸Šæ¬¡ç»“ç®—ä»·
+  DFITCPriceType preClosePrice;         //æ˜¨æ”¶ç›˜
+  DFITCAmountType preOpenInterest;      //æ˜¨æŒä»“é‡
+  DFITCPriceType openPrice;             //ä»Šå¼€ç›˜
+  DFITCPriceType highestPrice;          //æœ€é«˜ä»·
+  DFITCPriceType lowestPrice;           //æœ€ä½ä»·
+  DFITCAmountType Volume;               //æˆäº¤æ•°é‡
+  DFITCPriceType turnover;              //æˆäº¤é‡‘é¢
+  DFITCAmountType openInterest;         //æŒä»“é‡
+  DFITCPriceType closePrice;            //ä»Šæ”¶ç›˜
+  DFITCPriceType settlementPrice;       //æœ¬æ¬¡ç»“ç®—ä»·
+  DFITCPriceType upperLimitPrice;       //æ¶¨åœæ¿ä»·
+  DFITCPriceType lowerLimitPrice;       //è·Œåœæ¿ä»·
+  DFITCDeltaType preDelta;              //æ˜¨è™šå®åº¦
+  DFITCDeltaType currDelta;             //ä»Šè™šå®åº¦
+  DFITCDateType UpdateTime;             //æœ€åä¿®æ”¹æ—¶é—´
+  DFITCMilliSecType UpdateMillisec;     //æœ€åä¿®æ”¹æ¯«ç§’
+  DFITCPriceType BidPrice1;             //ç”³ä¹°ä»·ä¸€
+  DFITCVolumeType BidVolume1;           //ç”³ä¹°é‡ä¸€
+  DFITCPriceType AskPrice1;             //ç”³å–ä»·ä¸€
+  DFITCVolumeType AskVolume1;           //ç”³å–é‡ä¸€
+  DFITCPriceType BidPrice2;             //ç”³ä¹°ä»·äºŒ
+  DFITCVolumeType BidVolume2;           //ç”³ä¹°é‡äºŒ
+  DFITCPriceType AskPrice2;             //ç”³å–ä»·äºŒ
+  DFITCVolumeType AskVolume2;           //ç”³å–é‡äºŒ
+  DFITCPriceType BidPrice3;             //ç”³ä¹°ä»·ä¸‰
+  DFITCVolumeType BidVolume3;           //ç”³ä¹°é‡ä¸‰
+  DFITCPriceType AskPrice3;             //ç”³å–ä»·ä¸‰
+  DFITCVolumeType AskVolume3;           //ç”³å–é‡ä¸‰
+  DFITCPriceType BidPrice4;             //ç”³ä¹°ä»·å››
+  DFITCVolumeType BidVolume4;           //ç”³ä¹°é‡å››
+  DFITCPriceType AskPrice4;             //ç”³å–ä»·å››
+  DFITCVolumeType AskVolume4;           //ç”³å–é‡å››
+  DFITCPriceType BidPrice5;             //ç”³ä¹°ä»·äº”
+  DFITCVolumeType BidVolume5;           //ç”³ä¹°é‡äº”
+  DFITCPriceType AskPrice5;             //ç”³å–ä»·äº”
+  DFITCVolumeType AskVolume5;           //ç”³å–é‡äº”
+  DFITCPriceType AveragePrice;          //å½“æ—¥å‡ä»·
+  DFITCDateType XSpeedTime;             //æŸœå°ç³»ç»Ÿæ—¶é—´
 };
 
-///********************************ÆÚÈ¨À©Õ¹ĞĞÇé************************************
+///********************************æœŸæƒæ‰©å±•è¡Œæƒ…************************************
 
-
-struct APISTRUCT DFITCMarketDataFieldEx
-{    
-    DFITCFunctionIDType                FunctionID;                    //¹¦ÄÜºÅ   
-    DFITCDateType                      tradingDay;                    //ÈÕÆÚ 2014-04-01   
-    DFITCDateType                      UpdateTime;                    //Ê±¼ä 11:01:29
-    DFITCMilliSecType                  UpdateMillisec;                //ºÁÃë 000 
-    DFITCInstrumentIDType              instrumentID;                  //ÆÚÈ¨ºÏÔ¼±àºÅ
-    DFITCExtMarketDataType             ExtMarketData;                 //À©Õ¹ĞĞÇéÊı¾İ	
+struct APISTRUCT DFITCMarketDataFieldEx {
+  DFITCFunctionIDType FunctionID;       //åŠŸèƒ½å·
+  DFITCDateType tradingDay;             //æ—¥æœŸ 2014-04-01
+  DFITCDateType UpdateTime;             //æ—¶é—´ 11:01:29
+  DFITCMilliSecType UpdateMillisec;     //æ¯«ç§’ 000
+  DFITCInstrumentIDType instrumentID;   //æœŸæƒåˆçº¦ç¼–å·
+  DFITCExtMarketDataType ExtMarketData; //æ‰©å±•è¡Œæƒ…æ•°æ®
 };
 ///********************************************************************************
 
-
-//×Ô¶¨Òå×éºÏĞĞÇé
-struct APISTRUCT DFITCCustomMarketDataField
-{
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCVolumeType                     bidVolume1;                   //ÂòÒ»Á¿
-    DFITCPriceType                      bidPrice1;                    //ÂòÒ»¼Û(¹Ò¼Û¼Û²î)
-    DFITCVolumeType                     askVolume1;                   //ÂôÒ»Á¿
-    DFITCPriceType                      askPrice1;                    //ÂôÒ»¼Û(¶Ô¼Û¼Û²î)
-    DFITCPriceType                      lastPrice;                    //×îĞÂ¼Û¼Û²î
+//è‡ªå®šä¹‰ç»„åˆè¡Œæƒ…
+struct APISTRUCT DFITCCustomMarketDataField {
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
+  DFITCVolumeType bidVolume1;         //ä¹°ä¸€é‡
+  DFITCPriceType bidPrice1;           //ä¹°ä¸€ä»·(æŒ‚ä»·ä»·å·®)
+  DFITCVolumeType askVolume1;         //å–ä¸€é‡
+  DFITCPriceType askPrice1;           //å–ä¸€ä»·(å¯¹ä»·ä»·å·®)
+  DFITCPriceType lastPrice;           //æœ€æ–°ä»·ä»·å·®
 };
 
-///²éÑ¯³Ö²ÖÃ÷Ï¸
-struct APISTRUCT DFITCPositionDetailField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
+///æŸ¥è¯¢æŒä»“æ˜ç»†
+struct APISTRUCT DFITCPositionDetailField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
 };
 
-
-///²éÑ¯³Ö²ÖÃ÷Ï¸ÏìÓ¦
-struct APISTRUCT DFITCPositionDetailRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù´úÂë
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼ºÅ
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCPriceType                      openPrice;                    //¿ª²Ö¼Û
-    DFITCAmountType                     volume;                       //ÊÖÊı
-    DFITCMatchIDType                    matchID;                      //³É½»±àºÅ
-    DFITCDateType                       matchedDate;                  //³É½»ÈÕÆÚ
-    DFITCProfitLossType                 datePositionProfitLoss;       //¶¢ÊĞ³Ö²ÖÓ¯¿÷
-    DFITCProfitLossType                 dateCloseProfitLoss;          //¶¢ÊĞÆ½²ÖÓ¯¿÷
-    DFITCProfitLossType                 floatProfitLoss;              //¸¡¶¯Ó¯¿÷
-    DFITCProfitLossType                 dMargin;                      //Õ¼ÓÃ±£Ö¤½ğ
-    DFITCSpeculatorType                 speculator;                   //Í¶±£Àà±ğ
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCPriceType                      preSettlementPrice;           //×ò½áËã¼Û
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCAmountType                     closeOrderVol;                //Æ½²ÖÎ¯ÍĞÊıÁ¿
-    DFITCAmountType                     closeMatchVol;                //Æ½²Ö³É½»ÊıÁ¿
-    DFITCPositionDateType               positionDateType;             //³Ö²ÖÈÕÆÚÀàĞÍ
+///æŸ¥è¯¢æŒä»“æ˜ç»†å“åº”
+struct APISTRUCT DFITCPositionDetailRtnField {
+  DFITCRequestIDType lRequestID;              //è¯·æ±‚ID
+  DFITCAccountIDType accountID;               //èµ„é‡‘å¸å·ID
+  DFITCExchangeIDType exchangeID;             //äº¤æ˜“æ‰€ä»£ç 
+  DFITCInstrumentIDType instrumentID;         //åˆçº¦å·
+  DFITCBuySellTypeType buySellType;           //ä¹°å–
+  DFITCPriceType openPrice;                   //å¼€ä»“ä»·
+  DFITCAmountType volume;                     //æ‰‹æ•°
+  DFITCMatchIDType matchID;                   //æˆäº¤ç¼–å·
+  DFITCDateType matchedDate;                  //æˆäº¤æ—¥æœŸ
+  DFITCProfitLossType datePositionProfitLoss; //ç›¯å¸‚æŒä»“ç›ˆäº
+  DFITCProfitLossType dateCloseProfitLoss;    //ç›¯å¸‚å¹³ä»“ç›ˆäº
+  DFITCProfitLossType floatProfitLoss;        //æµ®åŠ¨ç›ˆäº
+  DFITCProfitLossType dMargin;                //å ç”¨ä¿è¯é‡‘
+  DFITCSpeculatorType speculator;             //æŠ•ä¿ç±»åˆ«
+  DFITCClientIDType clientID;                 //äº¤æ˜“ç¼–ç 
+  DFITCPriceType preSettlementPrice;          //æ˜¨ç»“ç®—ä»·
+  DFITCInstrumentTypeType instrumentType;     //åˆçº¦ç±»å‹
+  DFITCSPDOrderIDType spdOrderID;             //æŸœå°å§”æ‰˜å·
+  DFITCCustomCategoryType customCategory;     //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCAmountType closeOrderVol;              //å¹³ä»“å§”æ‰˜æ•°é‡
+  DFITCAmountType closeMatchVol;              //å¹³ä»“æˆäº¤æ•°é‡
+  DFITCPositionDateType positionDateType;     //æŒä»“æ—¥æœŸç±»å‹
 };
 
-
-///ÓÃ»§ÊÂ¼şÍ¨ÖªĞÅÏ¢
-struct APISTRUCT DFITCTradingNoticeInfoField
-{
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCTimeType                       SendTime;                     //·¢ËÍÊ±¼ä
-    DFITCContentType                    FieldContent;                 //ÏûÏ¢ÕıÎÄ
-    DFITCNoticeType                     noticeType;                   //ÏûÏ¢ÀàĞÍ
+///ç”¨æˆ·äº‹ä»¶é€šçŸ¥ä¿¡æ¯
+struct APISTRUCT DFITCTradingNoticeInfoField {
+  DFITCAccountIDType accountID;  //èµ„é‡‘å¸å·ID
+  DFITCTimeType SendTime;        //å‘é€æ—¶é—´
+  DFITCContentType FieldContent; //æ¶ˆæ¯æ­£æ–‡
+  DFITCNoticeType noticeType;    //æ¶ˆæ¯ç±»å‹
 };
 
-
-///ºÏÔ¼½»Ò××´Ì¬Í¨ÖªĞÅÏ¢
-struct APISTRUCT DFITCInstrumentStatusField
-{
-    DFITCExchangeIDType                 ExchangeID;                   //½»Ò×Ëù´úÂë
-    DFITCInstrumentIDType               InstrumentID;                 //ºÏÔ¼´úÂë
-    DFITCInstrumentStatusType           InstrumentStatus;             //ºÏÔ¼½»Ò××´Ì¬
-    DFITCTradingSegmentSNType           TradingSegmentSN;             //½»Ò×½×¶Î±àºÅ
-    DFITCTimeType                       EnterTime;                    //½øÈë±¾×´Ì¬Ê±¼ä
-    DFITCInstStatusEnterReasonType      EnterReason;                  //½øÈë±¾×´Ì¬Ô­Òò
+///åˆçº¦äº¤æ˜“çŠ¶æ€é€šçŸ¥ä¿¡æ¯
+struct APISTRUCT DFITCInstrumentStatusField {
+  DFITCExchangeIDType ExchangeID;             //äº¤æ˜“æ‰€ä»£ç 
+  DFITCInstrumentIDType InstrumentID;         //åˆçº¦ä»£ç 
+  DFITCInstrumentStatusType InstrumentStatus; //åˆçº¦äº¤æ˜“çŠ¶æ€
+  DFITCTradingSegmentSNType TradingSegmentSN; //äº¤æ˜“é˜¶æ®µç¼–å·
+  DFITCTimeType EnterTime;                    //è¿›å…¥æœ¬çŠ¶æ€æ—¶é—´
+  DFITCInstStatusEnterReasonType EnterReason; //è¿›å…¥æœ¬çŠ¶æ€åŸå› 
 };
 
-
-///ÓÃ»§ÃÜÂëĞŞ¸Ä
-struct APISTRUCT DFITCResetPwdField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCPasswdType                     oldpasswd;                    //¾ÉÃÜÂë
-    DFITCPasswdType                     newpasswd;                    //ĞÂÃÜÂë
+///ç”¨æˆ·å¯†ç ä¿®æ”¹
+struct APISTRUCT DFITCResetPwdField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘å¸å·ID
+  DFITCPasswdType oldpasswd;     //æ—§å¯†ç 
+  DFITCPasswdType newpasswd;     //æ–°å¯†ç 
 };
 
-
-///ÓÃ»§ÃÜÂëĞŞ¸Ä·µ»ØĞÅÏ¢
-struct APISTRUCT DFITCResetPwdRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCExecStateType                  execState;                    //×´Ì¬±êÖ¾
+///ç”¨æˆ·å¯†ç ä¿®æ”¹è¿”å›ä¿¡æ¯
+struct APISTRUCT DFITCResetPwdRspField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·ID
+  DFITCExecStateType execState;  //çŠ¶æ€æ ‡å¿—
 };
 
-
-///ÕËµ¥È·ÈÏ
-struct APISTRUCT DFITCBillConfirmField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕÊºÅID
-    DFITCDateType                       date;                         //È·ÈÏÈÕÆÚ  ¸ñÊ½£ºyyyy.mm.dd
-    DFITCConfirmMarkType                confirmFlag;                  //È·ÈÏ±êÖ¾
+///è´¦å•ç¡®è®¤
+struct APISTRUCT DFITCBillConfirmField {
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
+  DFITCAccountIDType accountID;     //èµ„é‡‘å¸å·ID
+  DFITCDateType date;               //ç¡®è®¤æ—¥æœŸ  æ ¼å¼ï¼šyyyy.mm.dd
+  DFITCConfirmMarkType confirmFlag; //ç¡®è®¤æ ‡å¿—
 };
 
-
-///ÕËµ¥È·ÈÏÏìÓ¦
-struct APISTRUCT DFITCBillConfirmRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCExecStateType                  execState;                    //×´Ì¬±êÖ¾
+///è´¦å•ç¡®è®¤å“åº”
+struct APISTRUCT DFITCBillConfirmRspField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·ID
+  DFITCExecStateType execState;  //çŠ¶æ€æ ‡å¿—
 };
 
-
-///½»Ò×±àÂë²éÑ¯
-struct APISTRUCT DFITCQryTradeCodeField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
+///äº¤æ˜“ç¼–ç æŸ¥è¯¢
+struct APISTRUCT DFITCQryTradeCodeField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·ID
 };
 
-
-///½»Ò×±àÂë²éÑ¯ÏìÓ¦
-struct APISTRUCT DFITCQryTradeCodeRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§
-    DFITCExchangeIDType                 exchangeCode;                 //½»Ò×Ëù±àÂë
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë 
-    DFITCClientStatusType               clientStatus;                 //½»Ò×±àÂë×´Ì¬
-    DFITCSpeculatorType                 clientIDType;                 //½»Ò×±àÂëÀàĞÍ
-}; 
-
-
-///¸¡Ó¯¸¡¿÷ÊÇ·ñ¼ÆËãµ½È¨ÒæÖĞ
-struct APISTRUCT DFITCEquityComputModeRtnField
-{
-    DFITCCapControlModeType             capConMode;                   //×Ê½ğ¿ØÖÆ·½Ê½,¸Ã·½Ê½ĞèÒªÓÃ»§°´Î»ÅĞ¶Ï,¿ÉÄÜÎª¶àÖÖ×éºÏ
-    DFITCPriceNoteType                  priceNote;                    //±êµÄÆÚ»õ¼Û¸ñËµÃ÷
+///äº¤æ˜“ç¼–ç æŸ¥è¯¢å“åº”
+struct APISTRUCT DFITCQryTradeCodeRtnField {
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦æˆ·
+  DFITCExchangeIDType exchangeCode;   //äº¤æ˜“æ‰€ç¼–ç 
+  DFITCClientIDType clientID;         //äº¤æ˜“ç¼–ç 
+  DFITCClientStatusType clientStatus; //äº¤æ˜“ç¼–ç çŠ¶æ€
+  DFITCSpeculatorType clientIDType;   //äº¤æ˜“ç¼–ç ç±»å‹
 };
 
-
-///²éÑ¯ÕËµ¥
-struct APISTRUCT DFITCQryBillField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§
-    DFITCDateType                       date;                         //²éÑ¯ÈÕÆÚ   ¸ñÊ½£ºyyyy.mm.dd
+///æµ®ç›ˆæµ®äºæ˜¯å¦è®¡ç®—åˆ°æƒç›Šä¸­
+struct APISTRUCT DFITCEquityComputModeRtnField {
+  DFITCCapControlModeType
+      capConMode; //èµ„é‡‘æ§åˆ¶æ–¹å¼,è¯¥æ–¹å¼éœ€è¦ç”¨æˆ·æŒ‰ä½åˆ¤æ–­,å¯èƒ½ä¸ºå¤šç§ç»„åˆ
+  DFITCPriceNoteType priceNote; //æ ‡çš„æœŸè´§ä»·æ ¼è¯´æ˜
 };
 
-
-///²éÑ¯ÕËµ¥ÏìÓ¦
-struct APISTRUCT DFITCQryBillRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§
-    DFITCMsgInfoType                    message;                      //·µ»ØĞÅÏ¢
+///æŸ¥è¯¢è´¦å•
+struct APISTRUCT DFITCQryBillField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·
+  DFITCDateType date;            //æŸ¥è¯¢æ—¥æœŸ   æ ¼å¼ï¼šyyyy.mm.dd
 };
 
-
-///³§ÉÌIDÈ·ÈÏÇëÇó
-struct APISTRUCT DFITCProductField
-{
-    DFITCProductIDType                  productID;                    //²úÆ·±àºÅ
-    DFITCSoftwareVendorIDType           vendorID;                     //Èí¼ş¹©Ó¦ÉÌ±àºÅ 
+///æŸ¥è¯¢è´¦å•å“åº”
+struct APISTRUCT DFITCQryBillRtnField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦æˆ·
+  DFITCMsgInfoType message;      //è¿”å›ä¿¡æ¯
 };
 
-
-///³§ÉÌIDÈ·ÈÏÏìÓ¦
-struct APISTRUCT DFITCProductRtnField
-{
-    DFITCProductIDType                  productID;                    //²úÆ·±àºÅ
-    DFITCSoftwareVendorIDType           vendorID;                     //Èí¼ş¹©Ó¦ÉÌ
-    DFITCProductOnlineCountType         productOnlineCount;           //²úÆ·ÔÚÏßÊıÁ¿
-    DFITCBrokerInfoType                 brokerInfoName;               //ÆÚ»õ¹«Ë¾Ãû³Æ
-    DFITCFrontIDType                    frontID;                      //Ç°ÖÃ»úID
+///å‚å•†IDç¡®è®¤è¯·æ±‚
+struct APISTRUCT DFITCProductField {
+  DFITCProductIDType productID;       //äº§å“ç¼–å·
+  DFITCSoftwareVendorIDType vendorID; //è½¯ä»¶ä¾›åº”å•†ç¼–å·
 };
 
-///²éÑ¯½»Ò×ÈÕÇëÇó
-struct APISTRUCT DFITCTradingDayField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
+///å‚å•†IDç¡®è®¤å“åº”
+struct APISTRUCT DFITCProductRtnField {
+  DFITCProductIDType productID;                   //äº§å“ç¼–å·
+  DFITCSoftwareVendorIDType vendorID;             //è½¯ä»¶ä¾›åº”å•†
+  DFITCProductOnlineCountType productOnlineCount; //äº§å“åœ¨çº¿æ•°é‡
+  DFITCBrokerInfoType brokerInfoName;             //æœŸè´§å…¬å¸åç§°
+  DFITCFrontIDType frontID;                       //å‰ç½®æœºID
 };
 
-
-///½»Ò×ÈÕÇëÇóÏìÓ¦
-struct APISTRUCT DFITCTradingDayRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCDateType                       date;                         //½»Ò×ÈÕ
+///æŸ¥è¯¢äº¤æ˜“æ—¥è¯·æ±‚
+struct APISTRUCT DFITCTradingDayField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
 };
 
-
-///Ñ¯¼ÛÍ¨Öª¶©ÔÄÇëÇó
-struct APISTRUCT DFITCQuoteSubscribeField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///äº¤æ˜“æ—¥è¯·æ±‚å“åº”
+struct APISTRUCT DFITCTradingDayRtnField {
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
+  DFITCDateType date;            //äº¤æ˜“æ—¥
 };
 
-///Ñ¯¼ÛÍ¨Öª¶©ÔÄÏìÓ¦
-struct APISTRUCT DFITCQuoteSubscribeRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExecStateType                  subscribeFlag;                //¶©ÔÄ×´Ì¬
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///è¯¢ä»·é€šçŸ¥è®¢é˜…è¯·æ±‚
+struct APISTRUCT DFITCQuoteSubscribeField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCAccountIDType accountID;   //èµ„é‡‘è´¦å·
+  DFITCExchangeIDType exchangeID; //äº¤æ˜“æ‰€
 };
 
-///Ñ¯¼ÛÍ¨ÖªÍË¶©ÇëÇó
-struct APISTRUCT DFITCQuoteUnSubscribeField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///è¯¢ä»·é€šçŸ¥è®¢é˜…å“åº”
+struct APISTRUCT DFITCQuoteSubscribeRspField {
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
+  DFITCExecStateType subscribeFlag; //è®¢é˜…çŠ¶æ€
+  DFITCExchangeIDType exchangeID;   //äº¤æ˜“æ‰€
 };
 
-///Ñ¯¼ÛÍ¨ÖªÍË¶©ÏìÓ¦
-struct APISTRUCT DFITCQuoteUnSubscribeRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExecStateType                  subscribeFlag;                //ÍË¶©×´Ì¬
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///è¯¢ä»·é€šçŸ¥é€€è®¢è¯·æ±‚
+struct APISTRUCT DFITCQuoteUnSubscribeField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCAccountIDType accountID;   //èµ„é‡‘è´¦å·
+  DFITCExchangeIDType exchangeID; //äº¤æ˜“æ‰€
 };
 
-///Ñ¯¼ÛÍ¨Öª¶©ÔÄ»Ø±¨
-struct APISTRUCT DFITCQuoteSubscribeRtnField
-{
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCSourceType                     source;                       //À´Ô´
-    DFITCDateType                       quoteTime;                    //Ñ¯¼ÛÊ±¼ä
+///è¯¢ä»·é€šçŸ¥é€€è®¢å“åº”
+struct APISTRUCT DFITCQuoteUnSubscribeRspField {
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
+  DFITCExecStateType subscribeFlag; //é€€è®¢çŠ¶æ€
+  DFITCExchangeIDType exchangeID;   //äº¤æ˜“æ‰€
 };
 
-///Ñ¯¼ÛÍ¨Öª²éÑ¯ÇëÇó
-struct APISTRUCT DFITCQryQuoteNoticeField
-{
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
+///è¯¢ä»·é€šçŸ¥è®¢é˜…å›æŠ¥
+struct APISTRUCT DFITCQuoteSubscribeRtnField {
+  DFITCQuoteIDType quoteID;           //è¯¢ä»·ç¼–å·
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCSourceType source;             //æ¥æº
+  DFITCDateType quoteTime;            //è¯¢ä»·æ—¶é—´
 };
 
-///Ñ¯¼ÛÍ¨Öª²éÑ¯ÏìÓ¦
-struct APISTRUCT DFITCQryQuoteNoticeRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCSourceType                     source;                       //À´Ô´
-    DFITCDateType                       quoteTime;                    //Ñ¯¼ÛÊ±¼ä
+///è¯¢ä»·é€šçŸ¥æŸ¥è¯¢è¯·æ±‚
+struct APISTRUCT DFITCQryQuoteNoticeField {
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦å·
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
 };
 
-///×öÊĞÉÌ±¨µ¥ÇëÇó
-struct APISTRUCT DFITCQuoteInsertField
-{
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCInsertType                     insertType;                   //×Ô¶¯µ¥Àà±ğ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ 
-    DFITCAmountType                     bOrderAmount;                 //±¨µ¥ÊıÁ¿£¨Âò£©
-    DFITCAmountType                     sOrderAmount;                 //±¨µ¥ÊıÁ¿£¨Âô£©
-    DFITCPriceType                      bInsertPrice;                 //Î¯ÍĞ¼Û¸ñ£¨Âò£©         
-    DFITCPriceType                      sInsertPrice;                 //Î¯ÍĞ¼Û¸ñ£¨Âô£©          
-    DFITCOpenCloseTypeType              bOpenCloseType;               //¿ªÆ½±êÖ¾£¨Âò£©  
-    DFITCOpenCloseTypeType              sOpenCloseType;               //¿ªÆ½±êÖ¾£¨Âô£©
-    DFITCSpeculatorType                 bSpeculator;                  //Í¶×ÊÀà±ğ£¨Âò£©       
-    DFITCSpeculatorType                 sSpeculator;                  //Í¶×ÊÀà±ğ£¨Âô£©          
-    DFITCStayTimeType                   stayTime;                     //Í£ÁôÊ±¼ä£¬½öÖ§³ÖÖ£Öİ¡£ÆäËüÇé¿ö¿ÉÉèÖÃÎª0 
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
+///è¯¢ä»·é€šçŸ¥æŸ¥è¯¢å“åº”
+struct APISTRUCT DFITCQryQuoteNoticeRtnField {
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCQuoteIDType quoteID;           //è¯¢ä»·ç¼–å·
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCSourceType source;             //æ¥æº
+  DFITCDateType quoteTime;            //è¯¢ä»·æ—¶é—´
 };
 
-
-
-///×öÊĞÉÌ±¨µ¥ÏìÓ¦
-struct APISTRUCT DFITCQuoteRspField
-{  
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ              
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ                
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID                    
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ(½ö±¨¼ÛÊ¹ÓÃ)            
-    DFITCPriceType                      margin;                       //±£Ö¤½ğ(½ö±¨¼ÛÊ¹ÓÃ)
-    DFITCDateType                       orderTime;                    //Î¯ÍĞÊ±¼ä(½ö±¨¼ÛÊ¹ÓÃ)  
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCSessionIDType                  sessionID;                    //»á»°ID 
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
+///åšå¸‚å•†æŠ¥å•è¯·æ±‚
+struct APISTRUCT DFITCQuoteInsertField {
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCInsertType insertType;             //è‡ªåŠ¨å•ç±»åˆ«
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCQuoteIDType quoteID;               //è¯¢ä»·ç¼–å·
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCAmountType bOrderAmount;           //æŠ¥å•æ•°é‡ï¼ˆä¹°ï¼‰
+  DFITCAmountType sOrderAmount;           //æŠ¥å•æ•°é‡ï¼ˆå–ï¼‰
+  DFITCPriceType bInsertPrice;            //å§”æ‰˜ä»·æ ¼ï¼ˆä¹°ï¼‰
+  DFITCPriceType sInsertPrice;            //å§”æ‰˜ä»·æ ¼ï¼ˆå–ï¼‰
+  DFITCOpenCloseTypeType bOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆä¹°ï¼‰
+  DFITCOpenCloseTypeType sOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆå–ï¼‰
+  DFITCSpeculatorType bSpeculator;        //æŠ•èµ„ç±»åˆ«ï¼ˆä¹°ï¼‰
+  DFITCSpeculatorType sSpeculator;        //æŠ•èµ„ç±»åˆ«ï¼ˆå–ï¼‰
+  DFITCStayTimeType stayTime; //åœç•™æ—¶é—´ï¼Œä»…æ”¯æŒéƒ‘å·ã€‚å…¶å®ƒæƒ…å†µå¯è®¾ç½®ä¸º0
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
 };
 
-
-///×öÊĞÉÌ±¨µ¥»Ø±¨
-struct APISTRUCT DFITCQuoteRtnField
-{
-    DFITCExchangeIDType                 exchangeID;                    //½»Ò×Ëù                   
-    DFITCClientIDType                   clientID;                      //½»Ò×±àÂë  
-    DFITCOrderSysIDType                 orderSysID;                    //±¨µ¥±àºÅ
-    DFITCInstrumentIDType               instrumentID;                  //ºÏÔ¼´úÂë                   
-    DFITCLocalOrderIDType               localOrderID;                  //±¾µØÎ¯ÍĞºÅ                
-    DFITCSeatCodeType                   seatCode;                      //Ï¯Î»´úÂë                  
-    DFITCOpenCloseTypeType              bOpenCloseType;                //¿ªÆ½±êÖ¾£¨Âò£©          
-    DFITCOpenCloseTypeType              sOpenCloseType;                //¿ªÆ½±êÖ¾£¨Âô£©             
-    DFITCSpeculatorType                 speculator;                    //Í¶×ÊÀà±ğ                       
-    DFITCAmountType                     bOrderAmount;                  //Î¯ÍĞÊıÁ¿£¨Âò£©            
-    DFITCAmountType                     sOrderAmount;                  //Î¯ÍĞÊıÁ¿£¨Âô£©           
-    DFITCPriceType                      bInsertPrice;                  //Î¯ÍĞ¼Û  £¨Âò£©               
-    DFITCPriceType                      sInsertPrice;                  //Î¯ÍĞ¼Û  £¨Âô£©               
-    DFITCSPDOrderIDType                 spdOrderID;                    //¹ñÌ¨Î¯ÍĞºÅ                               
-    DFITCAccountIDType                  accountID;                     //×Ê½ğÕËºÅ                     
-    DFITCInstrumentTypeType             instrumentType;                //ºÏÔ¼ÀàĞÍ                  
-    DFITCDateType                       suspendTime;                   //¹Òµ¥Ê±¼ä                               
-    DFITCEntrusTellerType               entrusTeller;                  //Î¯ÍĞ¹ñÔ±  
-    DFITCOrderAnswerStatusType          orderStatus;                   //Î¯ÍĞ×´Ì¬ 
-    DFITCSessionIDType                  sessionID;                     //»á»°ID
-    DFITCQuoteIDType                    quoteID;                       //Ñ¯¼Û±àºÅ
-    DFITCErrorMsgInfoType               errorMsg;                      //´íÎóĞÅÏ¢
-    DFITCCustomCategoryType             customCategory;                //×Ô¶¨ÒåÀà±ğ
+///åšå¸‚å•†æŠ¥å•å“åº”
+struct APISTRUCT DFITCQuoteRspField {
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCPriceType fee;                     //æ‰‹ç»­è´¹(ä»…æŠ¥ä»·ä½¿ç”¨)
+  DFITCPriceType margin;                  //ä¿è¯é‡‘(ä»…æŠ¥ä»·ä½¿ç”¨)
+  DFITCDateType orderTime;                //å§”æ‰˜æ—¶é—´(ä»…æŠ¥ä»·ä½¿ç”¨)
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCQuoteIDType quoteID;               //è¯¢ä»·ç¼–å·
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
 };
 
-
-
-///×öÊĞÉÌ³·µ¥»Ø±¨
-struct APISTRUCT DFITCQuoteCanceledRtnField
-{
-    DFITCExchangeIDType                 exchangeID;                    //½»Ò×Ëù                   
-    DFITCClientIDType                   clientID;                      //½»Ò×±àÂë  
-    DFITCOrderSysIDType                 orderSysID;                    //±¨µ¥±àºÅ
-    DFITCInstrumentIDType               instrumentID;                  //ºÏÔ¼´úÂë                   
-    DFITCLocalOrderIDType               localOrderID;                  //±¾µØÎ¯ÍĞºÅ                
-    DFITCSeatCodeType                   seatCode;                      //Ï¯Î»´úÂë                  
-    DFITCOpenCloseTypeType              bOpenCloseType;                //¿ªÆ½±êÖ¾£¨Âò£©          
-    DFITCOpenCloseTypeType              sOpenCloseType;                //¿ªÆ½±êÖ¾£¨Âô£©             
-    DFITCSpeculatorType                 speculator;                    //Í¶×ÊÀà±ğ                       
-    DFITCSPDOrderIDType                 spdOrderID;                    //¹ñÌ¨Î¯ÍĞºÅ                               
-    DFITCAccountIDType                  accountID;                     //×Ê½ğÕËºÅ                     
-    DFITCEntrusTellerType               entrusTeller;                  //Î¯ÍĞ¹ñÔ±       
-    DFITCOrderAnswerStatusType          orderStatus;                   //Î¯ÍĞ×´Ì¬ 
-    DFITCAmountType                     cancelAmount;                  //³·µ¥ÊıÁ¿                              
-    DFITCPriceType                      fee;                           //½â¶³ÊÖĞø·Ñ                  
-    DFITCPriceType                      margin;                        //½â¶³±£Ö¤½ğ 
-    DFITCSessionIDType                  sessionID;                     //»á»°ID
-    DFITCBuySellTypeType                buySellType;                   //ÂòÂô±êÖ¾
-    DFITCQuoteIDType                    quoteID;                       //Ñ¯¼Û±àºÅ
-    DFITCDateType                       canceledTime;                  //³·µ¥Ê±¼ä
-    DFITCCustomCategoryType             customCategory;                //×Ô¶¨ÒåÀà±ğ
+///åšå¸‚å•†æŠ¥å•å›æŠ¥
+struct APISTRUCT DFITCQuoteRtnField {
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCOrderSysIDType orderSysID;         //æŠ¥å•ç¼–å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSeatCodeType seatCode;             //å¸­ä½ä»£ç 
+  DFITCOpenCloseTypeType bOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆä¹°ï¼‰
+  DFITCOpenCloseTypeType sOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆå–ï¼‰
+  DFITCSpeculatorType speculator;         //æŠ•èµ„ç±»åˆ«
+  DFITCAmountType bOrderAmount;           //å§”æ‰˜æ•°é‡ï¼ˆä¹°ï¼‰
+  DFITCAmountType sOrderAmount;           //å§”æ‰˜æ•°é‡ï¼ˆå–ï¼‰
+  DFITCPriceType bInsertPrice;            //å§”æ‰˜ä»·  ï¼ˆä¹°ï¼‰
+  DFITCPriceType sInsertPrice;            //å§”æ‰˜ä»·  ï¼ˆå–ï¼‰
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCInstrumentTypeType instrumentType; //åˆçº¦ç±»å‹
+  DFITCDateType suspendTime;              //æŒ‚å•æ—¶é—´
+  DFITCEntrusTellerType entrusTeller;     //å§”æ‰˜æŸœå‘˜
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCQuoteIDType quoteID;               //è¯¢ä»·ç¼–å·
+  DFITCErrorMsgInfoType errorMsg;         //é”™è¯¯ä¿¡æ¯
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
 };
 
-
-
-///×öÊĞÉÌ³É½»»Ø±¨
-struct APISTRUCT DFITCQuoteMatchRtnField
-{
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCClientIDType                   clientID;                     //½»Ò×±àÂë
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCSeatCodeType                   seatCode;                     //Ï¯Î»´úÂë
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCOpenCloseTypeType              openCloseType;                //¿ªÆ½±êÖ¾
-    DFITCSpeculatorType                 speculator;                   //Í¶×ÊÀà±ğ  
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderSysIDType                 OrderSysID;                   //±¨µ¥±àºÅ(½»Ò×Ëù±¨µ¥±àºÅ)
-    DFITCMatchIDType                    matchID;                      //³É½»±àºÅ
-    DFITCAmountType                     matchedAmount;                //³É½»ÊıÁ¿
-    DFITCPriceType                      matchedPrice;                 //³É½»¼Û¸ñ
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCPriceType                      turnover;                     //³É½»½ğ¶î
-    DFITCEntrusTellerType               entrusTeller;                 //Î¯ÍĞ¹ñÔ±
-    DFITCDateType                       matchedTime;                  //³É½»Ê±¼ä
-    DFITCFeeType                        fee;                          //ÊÖĞø·Ñ
-    DFITCPriceType                      insertPrice;                  //Î¯ÍĞ¼Û¸ñ
-    DFITCAmountType                     orderAmount;                  //Î¯ÍĞÊıÁ¿
-    DFITCOrderAnswerStatusType          orderStatus;                  //Éê±¨½á¹û
-    DFITCPriceType                      margin;                       //¿ª²ÖÎª±£Ö¤½ğ,Æ½²ÖÎª½â¶³±£Ö¤½ğ
-    DFITCBuySellTypeType                buySellType;                  //ÂòÂô
-    DFITCAmountType                     closeTodayAmount;             //Æ½½ñÊıÁ¿
-    DFITCPriceType                      closePrice;                   //Æ½²Ö½ğ¶î
-    DFITCPriceType                      closeTodayPrice;              //Æ½½ñ½ğ¶î
-    DFITCAdjustmentInfoType             adjustmentInfo;               //×éºÏ»ò¶ÔËøµÄ±£Ö¤½ğµ÷ÕûĞÅÏ¢,¸ñÊ½:[ºÏÔ¼´úÂë,ÂòÂô±êÖ¾,Í¶×ÊÀà±ğ,µ÷Õû½ğ¶î;] 
-    DFITCPriceType                      frozenCapita;                 //³É½»½â¶³Î¯ÍĞ¶³½áµÄ×Ê½ğ
-    DFITCProfitLossType                 dateCloseProfitLoss;          //¶¢ÊĞÆ½²ÖÓ¯¿÷
-    DFITCInstrumentTypeType             instrumentType;               //ºÏÔ¼ÀàĞÍ
-    DFITCSessionIDType                  sessionID;                    //»á»°±êÊ¶
-    DFITCLargeMarginDirectType          largeMarginDirect;            //´ó±ß±£Ö¤½ğ·½Ïò
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
+///åšå¸‚å•†æ’¤å•å›æŠ¥
+struct APISTRUCT DFITCQuoteCanceledRtnField {
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCOrderSysIDType orderSysID;         //æŠ¥å•ç¼–å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSeatCodeType seatCode;             //å¸­ä½ä»£ç 
+  DFITCOpenCloseTypeType bOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆä¹°ï¼‰
+  DFITCOpenCloseTypeType sOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆå–ï¼‰
+  DFITCSpeculatorType speculator;         //æŠ•èµ„ç±»åˆ«
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCEntrusTellerType entrusTeller;     //å§”æ‰˜æŸœå‘˜
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCAmountType cancelAmount;           //æ’¤å•æ•°é‡
+  DFITCPriceType fee;                     //è§£å†»æ‰‹ç»­è´¹
+  DFITCPriceType margin;                  //è§£å†»ä¿è¯é‡‘
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCBuySellTypeType buySellType;       //ä¹°å–æ ‡å¿—
+  DFITCQuoteIDType quoteID;               //è¯¢ä»·ç¼–å·
+  DFITCDateType canceledTime;             //æ’¤å•æ—¶é—´
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
 };
 
-
-///ÅúÁ¿³·µ¥ÇëÇó
-struct APISTRUCT DFITCCancelAllOrderField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù±àÂë(Ä¿Ç°Ö»Ö§³Ö´óÉÌËù)
+///åšå¸‚å•†æˆäº¤å›æŠ¥
+struct APISTRUCT DFITCQuoteMatchRtnField {
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCClientIDType clientID;             //äº¤æ˜“ç¼–ç 
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCSeatCodeType seatCode;             //å¸­ä½ä»£ç 
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCOpenCloseTypeType openCloseType;   //å¼€å¹³æ ‡å¿—
+  DFITCSpeculatorType speculator;         //æŠ•èµ„ç±»åˆ«
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderSysIDType OrderSysID;         //æŠ¥å•ç¼–å·(äº¤æ˜“æ‰€æŠ¥å•ç¼–å·)
+  DFITCMatchIDType matchID;               //æˆäº¤ç¼–å·
+  DFITCAmountType matchedAmount;          //æˆäº¤æ•°é‡
+  DFITCPriceType matchedPrice;            //æˆäº¤ä»·æ ¼
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCPriceType turnover;                //æˆäº¤é‡‘é¢
+  DFITCEntrusTellerType entrusTeller;     //å§”æ‰˜æŸœå‘˜
+  DFITCDateType matchedTime;              //æˆäº¤æ—¶é—´
+  DFITCFeeType fee;                       //æ‰‹ç»­è´¹
+  DFITCPriceType insertPrice;             //å§”æ‰˜ä»·æ ¼
+  DFITCAmountType orderAmount;            //å§”æ‰˜æ•°é‡
+  DFITCOrderAnswerStatusType orderStatus; //ç”³æŠ¥ç»“æœ
+  DFITCPriceType margin; //å¼€ä»“ä¸ºä¿è¯é‡‘,å¹³ä»“ä¸ºè§£å†»ä¿è¯é‡‘
+  DFITCBuySellTypeType buySellType; //ä¹°å–
+  DFITCAmountType closeTodayAmount; //å¹³ä»Šæ•°é‡
+  DFITCPriceType closePrice;        //å¹³ä»“é‡‘é¢
+  DFITCPriceType closeTodayPrice;   //å¹³ä»Šé‡‘é¢
+  DFITCAdjustmentInfoType
+      adjustmentInfo; //ç»„åˆæˆ–å¯¹é”çš„ä¿è¯é‡‘è°ƒæ•´ä¿¡æ¯,æ ¼å¼:[åˆçº¦ä»£ç ,ä¹°å–æ ‡å¿—,æŠ•èµ„ç±»åˆ«,è°ƒæ•´é‡‘é¢;]
+  DFITCPriceType frozenCapita;             //æˆäº¤è§£å†»å§”æ‰˜å†»ç»“çš„èµ„é‡‘
+  DFITCProfitLossType dateCloseProfitLoss; //ç›¯å¸‚å¹³ä»“ç›ˆäº
+  DFITCInstrumentTypeType instrumentType;  //åˆçº¦ç±»å‹
+  DFITCSessionIDType sessionID;            //ä¼šè¯æ ‡è¯†
+  DFITCLargeMarginDirectType largeMarginDirect; //å¤§è¾¹ä¿è¯é‡‘æ–¹å‘
+  DFITCQuoteIDType quoteID;                     //è¯¢ä»·ç¼–å·
+  DFITCCustomCategoryType customCategory;       //è‡ªå®šä¹‰ç±»åˆ«
 };
 
-///ÅúÁ¿³·µ¥ÏìÓ¦
-struct APISTRUCT DFITCCancelAllOrderRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
+///æ‰¹é‡æ’¤å•è¯·æ±‚
+struct APISTRUCT DFITCCancelAllOrderField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCAccountIDType accountID;   //èµ„é‡‘è´¦æˆ·ID
+  DFITCExchangeIDType exchangeID; //äº¤æ˜“æ‰€ç¼–ç (ç›®å‰åªæ”¯æŒå¤§å•†æ‰€)
 };
 
-///Ñ¯¼ÛÇëÇó
-struct APISTRUCT DFITCForQuoteField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
+///æ‰¹é‡æ’¤å•å“åº”
+struct APISTRUCT DFITCCancelAllOrderRspField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·ID
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
 };
 
-///Ñ¯¼ÛÇëÇóÏìÓ¦
-struct APISTRUCT DFITCForQuoteRspField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCDateType                       commTime;                     //Î¯ÍĞÊ±¼ä
+///è¯¢ä»·è¯·æ±‚
+struct APISTRUCT DFITCForQuoteField {
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
 };
 
-///Ñ¯¼Û»Ø±¨
-struct APISTRUCT DFITCForQuoteRtnField
-{
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCSessionIDType                  sessionID;                    //»á»°ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
+///è¯¢ä»·è¯·æ±‚å“åº”
+struct APISTRUCT DFITCForQuoteRspField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCSPDOrderIDType spdOrderID; //æŸœå°å§”æ‰˜å·
+  DFITCDateType commTime;         //å§”æ‰˜æ—¶é—´
 };
 
-///×öÊĞÉÌ±¨¼ÛÎ¯ÍĞ²éÑ¯
-struct APISTRUCT DFITCQuoteOrderField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
+///è¯¢ä»·å›æŠ¥
+struct APISTRUCT DFITCForQuoteRtnField {
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
 };
 
-///×öÊĞÉÌ±¨¼Û²éÑ¯ÏìÓ¦
-struct APISTRUCT DFITCQuoteOrderRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCPriceType                      margin;                       //±£Ö¤½ğ
-    DFITCPriceType                      fee;                          //ÊÖĞø·Ñ
-    DFITCLocalOrderIDType               localOrderID;                 //±¾µØÎ¯ÍĞºÅ
-    DFITCAccountIDType                  accountID;                    //¿Í»§ºÅ
-    DFITCDateType                       commTime;                     //Î¯ÍĞÊ±¼ä
-    DFITCDateType                       submitTime;                   //Éê±¨Ê±¼ä
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×ËùID
-    DFITCAmountType                     bOrderAmount;                 //Î¯ÍĞÊıÁ¿£¨Âò£©
-    DFITCAmountType                     bMatchedAmount;               //³É½»ÊıÁ¿£¨Âò£©
-    DFITCAmountType                     bCancelAmount;                //³·µ¥ÊıÁ¿£¨Âò£©
-    DFITCPriceType                      bInsertPrice;                 //Î¯ÍĞ¼Û¸ñ£¨Âò£©
-    DFITCPriceType                      bMatchedPrice;                //³É½»¼Û¸ñ£¨Âò£©
-    DFITCOpenCloseTypeType              bOpenCloseType;               //¿ªÆ½±êÖ¾£¨Âò£©
-    DFITCAmountType                     sOrderAmount;                 //Î¯ÍĞÊıÁ¿£¨Âô£©
-    DFITCAmountType                     sMatchedAmount;               //³É½»ÊıÁ¿£¨Âô£©
-    DFITCAmountType                     sCancelAmount;                //³·µ¥ÊıÁ¿£¨Âô£©
-    DFITCPriceType                      sInsertPrice;                 //Î¯ÍĞ¼Û¸ñ£¨Âô£©
-    DFITCPriceType                      sMatchedPrice;                //³É½»¼Û¸ñ£¨Âô£©
-    DFITCOpenCloseTypeType              sOpenCloseType;               //¿ªÆ½±êÖ¾£¨Âô£©
-    DFITCFrontAddrType                  operStation;                  //²Ù×÷Õ¾µã
-    DFITCSessionIDType                  sessionID;                    //»á»°ID
-    DFITCQuoteIDType                    quoteID;                      //Ñ¯¼Û±àºÅ
-    DFITCCustomCategoryType             customCategory;               //×Ô¶¨ÒåÀà±ğ
+///åšå¸‚å•†æŠ¥ä»·å§”æ‰˜æŸ¥è¯¢
+struct APISTRUCT DFITCQuoteOrderField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦æˆ·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
 };
 
-///²éÑ¯×ªÕËÒøĞĞ
-struct APISTRUCT DFITCQryTransferBankField
-{
-    DFITCAccountIDType                  accountID;                     //×Ê½ğÕËºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///åšå¸‚å•†æŠ¥ä»·æŸ¥è¯¢å“åº”
+struct APISTRUCT DFITCQuoteOrderRtnField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCPriceType margin;                  //ä¿è¯é‡‘
+  DFITCPriceType fee;                     //æ‰‹ç»­è´¹
+  DFITCLocalOrderIDType localOrderID;     //æœ¬åœ°å§”æ‰˜å·
+  DFITCAccountIDType accountID;           //å®¢æˆ·å·
+  DFITCDateType commTime;                 //å§”æ‰˜æ—¶é—´
+  DFITCDateType submitTime;               //ç”³æŠ¥æ—¶é—´
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ID
+  DFITCAmountType bOrderAmount;           //å§”æ‰˜æ•°é‡ï¼ˆä¹°ï¼‰
+  DFITCAmountType bMatchedAmount;         //æˆäº¤æ•°é‡ï¼ˆä¹°ï¼‰
+  DFITCAmountType bCancelAmount;          //æ’¤å•æ•°é‡ï¼ˆä¹°ï¼‰
+  DFITCPriceType bInsertPrice;            //å§”æ‰˜ä»·æ ¼ï¼ˆä¹°ï¼‰
+  DFITCPriceType bMatchedPrice;           //æˆäº¤ä»·æ ¼ï¼ˆä¹°ï¼‰
+  DFITCOpenCloseTypeType bOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆä¹°ï¼‰
+  DFITCAmountType sOrderAmount;           //å§”æ‰˜æ•°é‡ï¼ˆå–ï¼‰
+  DFITCAmountType sMatchedAmount;         //æˆäº¤æ•°é‡ï¼ˆå–ï¼‰
+  DFITCAmountType sCancelAmount;          //æ’¤å•æ•°é‡ï¼ˆå–ï¼‰
+  DFITCPriceType sInsertPrice;            //å§”æ‰˜ä»·æ ¼ï¼ˆå–ï¼‰
+  DFITCPriceType sMatchedPrice;           //æˆäº¤ä»·æ ¼ï¼ˆå–ï¼‰
+  DFITCOpenCloseTypeType sOpenCloseType;  //å¼€å¹³æ ‡å¿—ï¼ˆå–ï¼‰
+  DFITCFrontAddrType operStation;         //æ“ä½œç«™ç‚¹
+  DFITCSessionIDType sessionID;           //ä¼šè¯ID
+  DFITCQuoteIDType quoteID;               //è¯¢ä»·ç¼–å·
+  DFITCCustomCategoryType customCategory; //è‡ªå®šä¹‰ç±»åˆ«
 };
 
-///×ªÕÊÒøĞĞÏìÓ¦
-struct APISTRUCT DFITCTransferBankRspField
-{
-    DFITCAccountIDType                  accountID;                     //¿Í»§ºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCCurrencyType                   currency;                      //±ÒÖÖ
-    DFITCDateType                       registDate;                    //µÇ¼ÇÈÕÆÚ
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///æŸ¥è¯¢è½¬è´¦é“¶è¡Œ
+struct APISTRUCT DFITCQryTransferBankField {
+  DFITCAccountIDType accountID;  //èµ„é‡‘è´¦å·
+  DFITCBankIDType bankID;        //é“¶è¡Œä»£ç 
+  DFITCRequestIDType lRequestID; //è¯·æ±‚ID
 };
 
-///²éÑ¯×ªÕËÁ÷Ë®
-struct APISTRUCT DFITCQryTransferSerialField
-{
-    DFITCAccountIDType                  accountID;                     //×Ê½ğÕËºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///è½¬å¸é“¶è¡Œå“åº”
+struct APISTRUCT DFITCTransferBankRspField {
+  DFITCAccountIDType accountID;     //å®¢æˆ·å·
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCCurrencyType currency;       //å¸ç§
+  DFITCDateType registDate;         //ç™»è®°æ—¥æœŸ
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
 };
 
-///×ªÕËÁ÷Ë®ÏìÓ¦
-struct APISTRUCT DFITCTransferSerialRspField
-{
-    DFITCAccountIDType                  accountID;                     //×Ê½ğÕËºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCCurrencyType                   currency;                      //±ÒÖÖ´úÂë
-    DFITCApplyNumberType                applyNum;                      //ÉêÇëºÅ
-    DFITCTransferType                   type;                          //×ªÕËÒµÎñÀà±ğ
-    DFITCPriceType                      tradeAmount;                   //×ªÕË½ğ¶î
-    DFITCPriceType                      curFutAccountFund;             //±¾´Î×Ê½ğÓà¶î
-    DFITCSerialType                     bankSerialNum;                 //ÒøĞĞÁ÷Ë®ºÅ
-    DFITCTimeType                       reqTransferTime;               //·¢Æğ×ªÕËÊ±¼ä
-    DFITCTimeType                       dealTransferTime;              //×ªÕË³É¹¦Ê±¼ä
-    DFITCProcResultType                 procResult;                    //×ªÕË´¦Àí½á¹û
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///æŸ¥è¯¢è½¬è´¦æµæ°´
+struct APISTRUCT DFITCQryTransferSerialField {
+  DFITCAccountIDType accountID;     //èµ„é‡‘è´¦å·
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
 };
 
-///×Ê½ğ×ªÕËÇëÇóĞÅÏ¢
-struct APISTRUCT DFITCReqTransferField
-{
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCPasswdType                     bankPassword;                  //ÒøĞĞÃÜÂë
-    DFITCAccountIDType                  accountID;                     //Í¶×ÊÕßÕËºÅ
-    DFITCPasswdType                     password;                      //ÆÚ»õÃÜÂë
-    DFITCCurrencyType                   currency;                      //±ÒÖÖ´úÂë
-    DFITCPriceType                      tradeAmount;                   //×ªÕË½ğ¶î
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///è½¬è´¦æµæ°´å“åº”
+struct APISTRUCT DFITCTransferSerialRspField {
+  DFITCAccountIDType accountID;     //èµ„é‡‘è´¦å·
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCCurrencyType currency;       //å¸ç§ä»£ç 
+  DFITCApplyNumberType applyNum;    //ç”³è¯·å·
+  DFITCTransferType type;           //è½¬è´¦ä¸šåŠ¡ç±»åˆ«
+  DFITCPriceType tradeAmount;       //è½¬è´¦é‡‘é¢
+  DFITCPriceType curFutAccountFund; //æœ¬æ¬¡èµ„é‡‘ä½™é¢
+  DFITCSerialType bankSerialNum;    //é“¶è¡Œæµæ°´å·
+  DFITCTimeType reqTransferTime;    //å‘èµ·è½¬è´¦æ—¶é—´
+  DFITCTimeType dealTransferTime;   //è½¬è´¦æˆåŠŸæ—¶é—´
+  DFITCProcResultType procResult;   //è½¬è´¦å¤„ç†ç»“æœ
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
 };
 
-///×Ê½ğ×ªÕËÏìÓ¦ĞÅÏ¢
-struct APISTRUCT DFITCTransferRspField
-{
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCAccountIDType                  accountID;                     //Í¶×ÊÕßÕËºÅ
-    DFITCPriceType                      tradeAmount;                   //×ªÕË½ğ¶î
-    DFITCApplyNumberType                applyNumber;                   //×ªÕËÉêÇëºÅ
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
+///èµ„é‡‘è½¬è´¦è¯·æ±‚ä¿¡æ¯
+struct APISTRUCT DFITCReqTransferField {
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCPasswdType bankPassword;     //é“¶è¡Œå¯†ç 
+  DFITCAccountIDType accountID;     //æŠ•èµ„è€…è´¦å·
+  DFITCPasswdType password;         //æœŸè´§å¯†ç 
+  DFITCCurrencyType currency;       //å¸ç§ä»£ç 
+  DFITCPriceType tradeAmount;       //è½¬è´¦é‡‘é¢
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
 };
 
-///×Ê½ğ×ªÕËÍ¨ÖªĞÅÏ¢
-struct APISTRUCT DFITCTransferRtnField
-{
-    DFITCAccountIDType                  accountID;                     //Í¶×ÊÕßÕËºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCTransferType                   type;                          //×ªÕËÀà±ğ
-    DFITCPriceType                      tradeAmount;                   //×ªÕË½ğ¶î
-    DFITCSerialType                     bankSerialNum;                 //ÒøĞĞÁ÷Ë®ºÅ
-    DFITCApplyNumberType                applyNumber;                   //×ªÕËÉêÇëºÅ
-    DFITCSessionIDType                  sessionID;                     //»á»°ID
+///èµ„é‡‘è½¬è´¦å“åº”ä¿¡æ¯
+struct APISTRUCT DFITCTransferRspField {
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCAccountIDType accountID;     //æŠ•èµ„è€…è´¦å·
+  DFITCPriceType tradeAmount;       //è½¬è´¦é‡‘é¢
+  DFITCApplyNumberType applyNumber; //è½¬è´¦ç”³è¯·å·
+  DFITCRequestIDType lRequestID;    //è¯·æ±‚ID
 };
 
-///ÒøĞĞ»òÖ÷Ï¯·¢Æğ³ö½ğ³åÕıÍ¨Öª
-struct APISTRUCT DFITCRepealRtnField
-{
-    DFITCAccountIDType                  accountID;                     //Í¶×ÊÕßÕËºÅ
-    DFITCBankIDType                     bankID;                        //ÒøĞĞ´úÂë
-    DFITCBankAccountType                bankAccount;                   //ÒøĞĞÕËºÅ
-    DFITCTransferType                   type;                          //×ªÕËÀà±ğ
-    DFITCPriceType                      tradeAmount;                   //×ªÕË½ğ¶î
-    DFITCSerialType                     bankSerialNum;                 //ÒøĞĞÁ÷Ë®ºÅ
-    DFITCSerialType                     repealSerial;                  //±»³åÕıÁ÷Ë®ºÅ
+///èµ„é‡‘è½¬è´¦é€šçŸ¥ä¿¡æ¯
+struct APISTRUCT DFITCTransferRtnField {
+  DFITCAccountIDType accountID;     //æŠ•èµ„è€…è´¦å·
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCTransferType type;           //è½¬è´¦ç±»åˆ«
+  DFITCPriceType tradeAmount;       //è½¬è´¦é‡‘é¢
+  DFITCSerialType bankSerialNum;    //é“¶è¡Œæµæ°´å·
+  DFITCApplyNumberType applyNumber; //è½¬è´¦ç”³è¯·å·
+  DFITCSessionIDType sessionID;     //ä¼šè¯ID
 };
 
-///½»Ò××´Ì¬²éÑ¯ÇëÇó
-struct APISTRUCT DFITCQryExchangeStatusField
-{
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
-    DFITCExchangeIDType                 exchangeID;                    //½»Ò×Ëù±àÂë
+///é“¶è¡Œæˆ–ä¸»å¸­å‘èµ·å‡ºé‡‘å†²æ­£é€šçŸ¥
+struct APISTRUCT DFITCRepealRtnField {
+  DFITCAccountIDType accountID;     //æŠ•èµ„è€…è´¦å·
+  DFITCBankIDType bankID;           //é“¶è¡Œä»£ç 
+  DFITCBankAccountType bankAccount; //é“¶è¡Œè´¦å·
+  DFITCTransferType type;           //è½¬è´¦ç±»åˆ«
+  DFITCPriceType tradeAmount;       //è½¬è´¦é‡‘é¢
+  DFITCSerialType bankSerialNum;    //é“¶è¡Œæµæ°´å·
+  DFITCSerialType repealSerial;     //è¢«å†²æ­£æµæ°´å·
 };
 
-///½»Ò×Ëù×´Ì¬²éÑ¯ÏìÓ¦
-struct APISTRUCT DFITCExchangeStatusRspField
-{
-    DFITCRequestIDType                  lRequestID;                    //ÇëÇóID
-    DFITCExchangeStatusType             exchangeStatus;                //½»Ò×Ëù×´Ì¬
-    DFITCExchangeIDType                 exchangeID;                    //½»Ò×Ëù±àÂë
+///äº¤æ˜“çŠ¶æ€æŸ¥è¯¢è¯·æ±‚
+struct APISTRUCT DFITCQryExchangeStatusField {
+  DFITCRequestIDType lRequestID;  //è¯·æ±‚ID
+  DFITCExchangeIDType exchangeID; //äº¤æ˜“æ‰€ç¼–ç 
 };
 
-///½»Ò×Ëù×´Ì¬Í¨Öª
-struct APISTRUCT DFITCExchangeStatusRtnField
-{
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeStatusType             exchangeStatus;               //½»Ò×Ëù×´Ì¬
+///äº¤æ˜“æ‰€çŠ¶æ€æŸ¥è¯¢å“åº”
+struct APISTRUCT DFITCExchangeStatusRspField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCExchangeStatusType exchangeStatus; //äº¤æ˜“æ‰€çŠ¶æ€
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€ç¼–ç 
 };
 
-///ĞĞÇé²éÑ¯ÇëÇó
-struct DFITCQryDepthMarketDataField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///äº¤æ˜“æ‰€çŠ¶æ€é€šçŸ¥
+struct APISTRUCT DFITCExchangeStatusRtnField {
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeStatusType exchangeStatus; //äº¤æ˜“æ‰€çŠ¶æ€
 };
 
-///²éÑ¯Ñ¯¼ÛÇëÇó
-struct APISTRUCT DFITCQryForQuoteField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕË»§ID
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
+///è¡Œæƒ…æŸ¥è¯¢è¯·æ±‚
+struct DFITCQryDepthMarketDataField {
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
 };
 
-///²éÑ¯Ñ¯¼ÛÏìÓ¦
-struct APISTRUCT DFITCQryForQuoteRtnField
-{
-    DFITCRequestIDType                  lRequestID;                   //ÇëÇóID
-    DFITCAccountIDType                  accountID;                    //×Ê½ğÕËºÅ
-    DFITCSPDOrderIDType                 spdOrderID;                   //¹ñÌ¨Î¯ÍĞºÅ
-    DFITCInstrumentIDType               instrumentID;                 //ºÏÔ¼´úÂë
-    DFITCExchangeIDType                 exchangeID;                   //½»Ò×Ëù
-    DFITCDateType                       SuspendTime;                  //¹ÒÆğÊ±¼ä
-    DFITCOrderAnswerStatusType          orderStatus;                  //Î¯ÍĞ×´Ì¬
+///æŸ¥è¯¢è¯¢ä»·è¯·æ±‚
+struct APISTRUCT DFITCQryForQuoteField {
+  DFITCRequestIDType lRequestID;      //è¯·æ±‚ID
+  DFITCAccountIDType accountID;       //èµ„é‡‘è´¦æˆ·ID
+  DFITCInstrumentIDType instrumentID; //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;     //äº¤æ˜“æ‰€
 };
 
-#endif//DFITCAPISTRUCT_H_
+///æŸ¥è¯¢è¯¢ä»·å“åº”
+struct APISTRUCT DFITCQryForQuoteRtnField {
+  DFITCRequestIDType lRequestID;          //è¯·æ±‚ID
+  DFITCAccountIDType accountID;           //èµ„é‡‘è´¦å·
+  DFITCSPDOrderIDType spdOrderID;         //æŸœå°å§”æ‰˜å·
+  DFITCInstrumentIDType instrumentID;     //åˆçº¦ä»£ç 
+  DFITCExchangeIDType exchangeID;         //äº¤æ˜“æ‰€
+  DFITCDateType SuspendTime;              //æŒ‚èµ·æ—¶é—´
+  DFITCOrderAnswerStatusType orderStatus; //å§”æ‰˜çŠ¶æ€
+};
+
+#endif // DFITCAPISTRUCT_H_

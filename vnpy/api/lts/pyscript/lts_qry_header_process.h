@@ -65,4 +65,3 @@ void processRspQryInvestorPosition(Task task);
 void processRspQryFundTransferSerial(Task task);
 
 void processRspQryFundInterTransferSerial(Task task);
-

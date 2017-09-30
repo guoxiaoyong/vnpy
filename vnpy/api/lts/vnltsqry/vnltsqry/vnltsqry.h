@@ -1,32 +1,32 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 
-//ÏµÍ³
+//ç³»ç»Ÿ
 #ifdef WIN32
 #include "stdafx.h"
 #endif
-#include <string>
 #include <queue>
+#include <string>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>	//python·â×°
-#include <boost/python/def.hpp>		//python·â×°
-#include <boost/python/dict.hpp>	//python·â×°
-#include <boost/python/object.hpp>	//python·â×°
-#include <boost/python.hpp>			//python·â×°
-#include <boost/thread.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>			//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
+#include <boost/any.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>          //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>        //pythonå°è£…
+#include <boost/python/def.hpp>    //pythonå°è£…
+#include <boost/python/dict.hpp>   //pythonå°è£…
+#include <boost/python/module.hpp> //pythonå°è£…
+#include <boost/python/object.hpp> //pythonå°è£…
+#include <boost/thread.hpp>        //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
+// API
 #include "SecurityFtdcQueryApi.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 
-//³£Á¿
+//å¸¸é‡
 #define ONFRONTCONNECTED 1
 #define ONFRONTDISCONNECTED 2
 #define ONHEARTBEATWARNING 3
@@ -62,464 +62,526 @@ using namespace boost;
 #define ONRSPQRYFUNDTRANSFERSERIAL 33
 #define ONRSPQRYFUNDINTERTRANSFERSERIAL 34
 
-
 ///-------------------------------------------------------------------------------------
-///APIÖĞµÄ²¿·Ö×é¼ş
+/// APIä¸­çš„éƒ¨åˆ†ç»„ä»¶
 ///-------------------------------------------------------------------------------------
 
-//GILÈ«¾ÖËø¼ò»¯»ñÈ¡ÓÃ£¬
-//ÓÃÓÚ°ïÖúC++Ïß³Ì»ñµÃGILËø£¬´Ó¶ø·ÀÖ¹python±ÀÀ£
-class PyLock
-{
+// GILå…¨å±€é”ç®€åŒ–è·å–ç”¨ï¼Œ
+//ç”¨äºå¸®åŠ©C++çº¿ç¨‹è·å¾—GILé”ï¼Œä»è€Œé˜²æ­¢pythonå´©æºƒ
+class PyLock {
 private:
-	PyGILState_STATE gil_state;
+  PyGILState_STATE gil_state;
 
 public:
-	//ÔÚÄ³¸öº¯Êı·½·¨ÖĞ´´½¨¸Ã¶ÔÏóÊ±£¬»ñµÃGILËø
-	PyLock()
-	{
-		gil_state = PyGILState_Ensure();
-	}
+  //åœ¨æŸä¸ªå‡½æ•°æ–¹æ³•ä¸­åˆ›å»ºè¯¥å¯¹è±¡æ—¶ï¼Œè·å¾—GILé”
+  PyLock() { gil_state = PyGILState_Ensure(); }
 
-	//ÔÚÄ³¸öº¯ÊıÍê³ÉºóÏú»Ù¸Ã¶ÔÏóÊ±£¬½â·ÅGILËø
-	~PyLock()
-	{
-		PyGILState_Release(gil_state);
-	}
+  //åœ¨æŸä¸ªå‡½æ•°å®Œæˆåé”€æ¯è¯¥å¯¹è±¡æ—¶ï¼Œè§£æ”¾GILé”
+  ~PyLock() { PyGILState_Release(gil_state); }
 };
 
-
-//ÈÎÎñ½á¹¹Ìå
-struct Task
-{
-	int task_name;		//»Øµ÷º¯ÊıÃû³Æ¶ÔÓ¦µÄ³£Á¿
-	any task_data;		//Êı¾İ½á¹¹Ìå
-	any task_error;		//´íÎó½á¹¹Ìå
-	int task_id;		//ÇëÇóid
-	bool task_last;		//ÊÇ·ñÎª×îºó·µ»Ø
+//ä»»åŠ¡ç»“æ„ä½“
+struct Task {
+  int task_name;  //å›è°ƒå‡½æ•°åç§°å¯¹åº”çš„å¸¸é‡
+  any task_data;  //æ•°æ®ç»“æ„ä½“
+  any task_error; //é”™è¯¯ç»“æ„ä½“
+  int task_id;    //è¯·æ±‚id
+  bool task_last; //æ˜¯å¦ä¸ºæœ€åè¿”å›
 };
 
+///çº¿ç¨‹å®‰å…¨çš„é˜Ÿåˆ—
+template <typename Data>
 
-///Ïß³Ì°²È«µÄ¶ÓÁĞ
-template<typename Data>
-
-class ConcurrentQueue
-{
+class ConcurrentQueue {
 private:
-	queue<Data> the_queue;								//±ê×¼¿â¶ÓÁĞ
-	mutable mutex the_mutex;							//boost»¥³âËø
-	condition_variable the_condition_variable;			//boostÌõ¼ş±äÁ¿
+  queue<Data> the_queue;                     //æ ‡å‡†åº“é˜Ÿåˆ—
+  mutable mutex the_mutex;                   // boostäº’æ–¥é”
+  condition_variable the_condition_variable; // boostæ¡ä»¶å˜é‡
 
 public:
+  //å­˜å…¥æ–°çš„ä»»åŠ¡
+  void push(Data const &data) {
+    mutex::scoped_lock lock(the_mutex);  //è·å–äº’æ–¥é”
+    the_queue.push(data);                //å‘é˜Ÿåˆ—ä¸­å­˜å…¥æ•°æ®
+    lock.unlock();                       //é‡Šæ”¾é”
+    the_condition_variable.notify_one(); //é€šçŸ¥æ­£åœ¨é˜»å¡ç­‰å¾…çš„çº¿ç¨‹
+  }
 
-	//´æÈëĞÂµÄÈÎÎñ
-	void push(Data const& data)
-	{
-		mutex::scoped_lock lock(the_mutex);				//»ñÈ¡»¥³âËø
-		the_queue.push(data);							//Ïò¶ÓÁĞÖĞ´æÈëÊı¾İ
-		lock.unlock();									//ÊÍ·ÅËø
-		the_condition_variable.notify_one();			//Í¨ÖªÕıÔÚ×èÈûµÈ´ıµÄÏß³Ì
-	}
+  //æ£€æŸ¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+  bool empty() const {
+    mutex::scoped_lock lock(the_mutex);
+    return the_queue.empty();
+  }
 
-	//¼ì²é¶ÓÁĞÊÇ·ñÎª¿Õ
-	bool empty() const
-	{
-		mutex::scoped_lock lock(the_mutex);
-		return the_queue.empty();
-	}
+  //å–å‡º
+  Data wait_and_pop() {
+    mutex::scoped_lock lock(the_mutex);
 
-	//È¡³ö
-	Data wait_and_pop()
-	{
-		mutex::scoped_lock lock(the_mutex);
+    while (the_queue.empty()) //å½“é˜Ÿåˆ—ä¸ºç©ºæ—¶
+    {
+      the_condition_variable.wait(lock); //ç­‰å¾…æ¡ä»¶å˜é‡é€šçŸ¥
+    }
 
-		while (the_queue.empty())						//µ±¶ÓÁĞÎª¿ÕÊ±
-		{
-			the_condition_variable.wait(lock);			//µÈ´ıÌõ¼ş±äÁ¿Í¨Öª
-		}
-
-		Data popped_value = the_queue.front();			//»ñÈ¡¶ÓÁĞÖĞµÄ×îºóÒ»¸öÈÎÎñ
-		the_queue.pop();								//É¾³ı¸ÃÈÎÎñ
-		return popped_value;							//·µ»Ø¸ÃÈÎÎñ
-	}
-
+    Data popped_value = the_queue.front(); //è·å–é˜Ÿåˆ—ä¸­çš„æœ€åä¸€ä¸ªä»»åŠ¡
+    the_queue.pop();                       //åˆ é™¤è¯¥ä»»åŠ¡
+    return popped_value;                   //è¿”å›è¯¥ä»»åŠ¡
+  }
 };
 
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æ•´æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getInt(dict d, string key, int *value);
 
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄÕûÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getInt(dict d, string key, int* value);
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æµ®ç‚¹æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getDouble(dict d, string key, double *value);
 
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ¸¡µãÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getDouble(dict d, string key, double* value);
-
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ×Ö·û´®£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getChar(dict d, string key, char* value);
-
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getChar(dict d, string key, char *value);
 
 ///-------------------------------------------------------------------------------------
-///C++ SPIµÄ»Øµ÷º¯Êı·½·¨ÊµÏÖ
+/// C++ SPIçš„å›è°ƒå‡½æ•°æ–¹æ³•å®ç°
 ///-------------------------------------------------------------------------------------
 
-//APIµÄ¼Ì³ĞÊµÏÖ
-class QryApi : public CSecurityFtdcQuerySpi
-{
+// APIçš„ç»§æ‰¿å®ç°
+class QryApi : public CSecurityFtdcQuerySpi {
 private:
-	CSecurityFtdcQueryApi* api;			//API¶ÔÏó
-	thread *task_thread;				//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	ConcurrentQueue<Task> task_queue;	//ÈÎÎñ¶ÓÁĞ
+  CSecurityFtdcQueryApi *api; // APIå¯¹è±¡
+  thread *task_thread;        //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  ConcurrentQueue<Task> task_queue; //ä»»åŠ¡é˜Ÿåˆ—
 
 public:
-	QryApi()
-	{
-		function0<void> f = boost::bind(&QryApi::processTask, this);
-		thread t(f);
-		this->task_thread = &t;
-	};
+  QryApi() {
+    function0<void> f = boost::bind(&QryApi::processTask, this);
+    thread t(f);
+    this->task_thread = &t;
+  };
+
+  ~QryApi(){};
+
+  //-------------------------------------------------------------------------------------
+  // APIå›è°ƒå‡½æ•°
+  //-------------------------------------------------------------------------------------
+
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected();
+
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param nReason é”™è¯¯åŸå› 
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
+  ///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+  virtual void OnFrontDisconnected(int nReason);
+
+  ///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  ///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
+  virtual void OnHeartBeatWarning(int nTimeLapse);
+
+  ///é”™è¯¯åº”ç­”
+  virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast);
+
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin,
+                              CSecurityFtdcRspInfoField *pRspInfo,
+                              int nRequestID, bool bIsLast);
+
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,
+                               CSecurityFtdcRspInfoField *pRspInfo,
+                               int nRequestID, bool bIsLast);
+
+  ///è·å–è®¤è¯éšæœºç è¯·æ±‚å“åº”
+  virtual void
+  OnRspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,
+                         CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢äº¤æ˜“æ‰€å“åº”
+  virtual void OnRspQryExchange(CSecurityFtdcExchangeField *pExchange,
+                                CSecurityFtdcRspInfoField *pRspInfo,
+                                int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦å“åº”
+  virtual void OnRspQryInstrument(CSecurityFtdcInstrumentField *pInstrument,
+                                  CSecurityFtdcRspInfoField *pRspInfo,
+                                  int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…å“åº”
+  virtual void OnRspQryInvestor(CSecurityFtdcInvestorField *pInvestor,
+                                CSecurityFtdcRspInfoField *pRspInfo,
+                                int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢äº¤æ˜“ç¼–ç å“åº”
+  virtual void OnRspQryTradingCode(CSecurityFtdcTradingCodeField *pTradingCode,
+                                   CSecurityFtdcRspInfoField *pRspInfo,
+                                   int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·å“åº”
+  virtual void
+  OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount,
+                         CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢å€ºåˆ¸åˆ©æ¯å“åº”
+  virtual void
+  OnRspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest,
+                       CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢å¸‚å€¼é…å”®ä¿¡æ¯å“åº”
+  virtual void OnRspQryMarketRationInfo(
+      CSecurityFtdcMarketRationInfoField *pMarketRationInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦æ‰‹ç»­è´¹ç‡å“åº”
+  virtual void OnRspQryInstrumentCommissionRate(
+      CSecurityFtdcInstrumentCommissionRateField *pInstrumentCommissionRate,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢ETFåˆçº¦å“åº”
+  virtual void
+  OnRspQryETFInstrument(CSecurityFtdcETFInstrumentField *pETFInstrument,
+                        CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                        bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢ETFè‚¡ç¥¨ç¯®å“åº”
+  virtual void OnRspQryETFBasket(CSecurityFtdcETFBasketField *pETFBasket,
+                                 CSecurityFtdcRspInfoField *pRspInfo,
+                                 int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢OFåˆçº¦å“åº”
+  virtual void
+  OnRspQryOFInstrument(CSecurityFtdcOFInstrumentField *pOFInstrument,
+                       CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢SFåˆçº¦å“åº”
+  virtual void
+  OnRspQrySFInstrument(CSecurityFtdcSFInstrumentField *pSFInstrument,
+                       CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦å•æ‰‹ä¿è¯é‡‘å“åº”
+  virtual void OnRspQryInstrumentUnitMargin(
+      CSecurityFtdcInstrumentUnitMarginField *pInstrumentUnitMargin,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+
+  ///è¯·æ±‚æŸ¥è¯¢é¢„äº¤å‰²ä¿¡æ¯å“åº”
+  virtual void
+  OnRspQryPreDelivInfo(CSecurityFtdcPreDelivInfoField *pPreDelivInfo,
+                       CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast);
 
-	~QryApi()
-	{
-	};
+  ///è¯·æ±‚æŸ¥è¯¢å¯èåˆ¸åˆ†é…ä¿¡æ¯å“åº”
+  virtual void OnRspQryCreditStockAssignInfo(
+      CSecurityFtdcCreditStockAssignInfoField *pCreditStockAssignInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	//-------------------------------------------------------------------------------------
-	//API»Øµ÷º¯Êı
-	//-------------------------------------------------------------------------------------
+  ///è¯·æ±‚æŸ¥è¯¢å¯èèµ„åˆ†é…ä¿¡æ¯å“åº”
+  virtual void OnRspQryCreditCashAssignInfo(
+      CSecurityFtdcCreditCashAssignInfoField *pCreditCashAssignInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected();
+  ///è¯·æ±‚æŸ¥è¯¢è¯åˆ¸æŠ˜ç®—ç‡å“åº”
+  virtual void
+  OnRspQryConversionRate(CSecurityFtdcConversionRateField *pConversionRate,
+                         CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast);
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçĞ´Ê§°Ü
-	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
-	virtual void OnFrontDisconnected(int nReason);
+  ///è¯·æ±‚æŸ¥è¯¢å†å²ä¿¡ç”¨è´Ÿå€ºä¿¡æ¯å“åº”
+  virtual void OnRspQryHisCreditDebtInfo(
+      CSecurityFtdcHisCreditDebtInfoField *pHisCreditDebtInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ĞÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
-	virtual void OnHeartBeatWarning(int nTimeLapse);
+  ///è¯·æ±‚æŸ¥è¯¢è¡Œæƒ…é™æ€ä¿¡æ¯å“åº”
+  virtual void OnRspQryMarketDataStaticInfo(
+      CSecurityFtdcMarketDataStaticInfoField *pMarketDataStaticInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///´íÎóÓ¦´ğ
-	virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢åˆ°æœŸå›è´­ä¿¡æ¯å“åº”
+  virtual void OnRspQryExpireRepurchInfo(
+      CSecurityFtdcExpireRepurchInfoField *pExpireRepurchInfo,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢å€ºåˆ¸è´¨æŠ¼ä¸ºæ ‡å‡†åˆ¸æ¯”ä¾‹å“åº”
+  virtual void
+  OnRspQryBondPledgeRate(CSecurityFtdcBondPledgeRateField *pBondPledgeRate,
+                         CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast);
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢å€ºåˆ¸è´¨æŠ¼ä»£ç å¯¹ç…§å…³ç³»å“åº”
+  virtual void OnRspQryPledgeBond(CSecurityFtdcPledgeBondField *pPledgeBond,
+                                  CSecurityFtdcRspInfoField *pRspInfo,
+                                  int nRequestID, bool bIsLast);
 
-	///»ñÈ¡ÈÏÖ¤Ëæ»úÂëÇëÇóÏìÓ¦
-	virtual void OnRspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
+  virtual void OnRspQryOrder(CSecurityFtdcOrderField *pOrder,
+                             CSecurityFtdcRspInfoField *pRspInfo,
+                             int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯½»Ò×ËùÏìÓ¦
-	virtual void OnRspQryExchange(CSecurityFtdcExchangeField *pExchange, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢æˆäº¤å“åº”
+  virtual void OnRspQryTrade(CSecurityFtdcTradeField *pTrade,
+                             CSecurityFtdcRspInfoField *pRspInfo,
+                             int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯ºÏÔ¼ÏìÓ¦
-	virtual void OnRspQryInstrument(CSecurityFtdcInstrumentField *pInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“å“åº”
+  virtual void OnRspQryInvestorPosition(
+      CSecurityFtdcInvestorPositionField *pInvestorPosition,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕßÏìÓ¦
-	virtual void OnRspQryInvestor(CSecurityFtdcInvestorField *pInvestor, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///èµ„é‡‘è½¬è´¦æŸ¥è¯¢åº”ç­”
+  virtual void
+  OnRspQryFundTransferSerial(CSecurityFtdcFundTransferField *pFundTransfer,
+                             CSecurityFtdcRspInfoField *pRspInfo,
+                             int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯½»Ò×±àÂëÏìÓ¦
-	virtual void OnRspQryTradingCode(CSecurityFtdcTradingCodeField *pTradingCode, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///èµ„é‡‘å†…è½¬æµæ°´æŸ¥è¯¢åº”ç­”
+  virtual void OnRspQryFundInterTransferSerial(
+      CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯×Ê½ğÕË»§ÏìÓ¦
-	virtual void OnRspQryTradingAccount(CSecurityFtdcTradingAccountField *pTradingAccount, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  //-------------------------------------------------------------------------------------
+  // taskï¼šä»»åŠ¡
+  //-------------------------------------------------------------------------------------
 
-	///ÇëÇó²éÑ¯Õ®È¯ÀûÏ¢ÏìÓ¦
-	virtual void OnRspQryBondInterest(CSecurityFtdcBondInterestField *pBondInterest, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processTask();
 
-	///ÇëÇó²éÑ¯ÊĞÖµÅäÊÛĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryMarketRationInfo(CSecurityFtdcMarketRationInfoField *pMarketRationInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processFrontConnected(Task task);
 
-	///ÇëÇó²éÑ¯ºÏÔ¼ÊÖĞø·ÑÂÊÏìÓ¦
-	virtual void OnRspQryInstrumentCommissionRate(CSecurityFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processFrontDisconnected(Task task);
 
-	///ÇëÇó²éÑ¯ETFºÏÔ¼ÏìÓ¦
-	virtual void OnRspQryETFInstrument(CSecurityFtdcETFInstrumentField *pETFInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processHeartBeatWarning(Task task);
 
-	///ÇëÇó²éÑ¯ETF¹ÉÆ±ÀºÏìÓ¦
-	virtual void OnRspQryETFBasket(CSecurityFtdcETFBasketField *pETFBasket, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspError(Task task);
 
-	///ÇëÇó²éÑ¯OFºÏÔ¼ÏìÓ¦
-	virtual void OnRspQryOFInstrument(CSecurityFtdcOFInstrumentField *pOFInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspUserLogin(Task task);
 
-	///ÇëÇó²éÑ¯SFºÏÔ¼ÏìÓ¦
-	virtual void OnRspQrySFInstrument(CSecurityFtdcSFInstrumentField *pSFInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspUserLogout(Task task);
 
-	///ÇëÇó²éÑ¯ºÏÔ¼µ¥ÊÖ±£Ö¤½ğÏìÓ¦
-	virtual void OnRspQryInstrumentUnitMargin(CSecurityFtdcInstrumentUnitMarginField *pInstrumentUnitMargin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspFetchAuthRandCode(Task task);
 
-	///ÇëÇó²éÑ¯Ô¤½»¸îĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryPreDelivInfo(CSecurityFtdcPreDelivInfoField *pPreDelivInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryExchange(Task task);
 
-	///ÇëÇó²éÑ¯¿ÉÈÚÈ¯·ÖÅäĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryCreditStockAssignInfo(CSecurityFtdcCreditStockAssignInfoField *pCreditStockAssignInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryInstrument(Task task);
 
-	///ÇëÇó²éÑ¯¿ÉÈÚ×Ê·ÖÅäĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryCreditCashAssignInfo(CSecurityFtdcCreditCashAssignInfoField *pCreditCashAssignInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryInvestor(Task task);
 
-	///ÇëÇó²éÑ¯Ö¤È¯ÕÛËãÂÊÏìÓ¦
-	virtual void OnRspQryConversionRate(CSecurityFtdcConversionRateField *pConversionRate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryTradingCode(Task task);
 
-	///ÇëÇó²éÑ¯ÀúÊ·ĞÅÓÃ¸ºÕ®ĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryHisCreditDebtInfo(CSecurityFtdcHisCreditDebtInfoField *pHisCreditDebtInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryTradingAccount(Task task);
 
-	///ÇëÇó²éÑ¯ĞĞÇé¾²Ì¬ĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryMarketDataStaticInfo(CSecurityFtdcMarketDataStaticInfoField *pMarketDataStaticInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryBondInterest(Task task);
 
-	///ÇëÇó²éÑ¯µ½ÆÚ»Ø¹ºĞÅÏ¢ÏìÓ¦
-	virtual void OnRspQryExpireRepurchInfo(CSecurityFtdcExpireRepurchInfoField *pExpireRepurchInfo, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryMarketRationInfo(Task task);
 
-	///ÇëÇó²éÑ¯Õ®È¯ÖÊÑºÎª±ê×¼È¯±ÈÀıÏìÓ¦
-	virtual void OnRspQryBondPledgeRate(CSecurityFtdcBondPledgeRateField *pBondPledgeRate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryInstrumentCommissionRate(Task task);
 
-	///ÇëÇó²éÑ¯Õ®È¯ÖÊÑº´úÂë¶ÔÕÕ¹ØÏµÏìÓ¦
-	virtual void OnRspQryPledgeBond(CSecurityFtdcPledgeBondField *pPledgeBond, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryETFInstrument(Task task);
 
-	///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
-	virtual void OnRspQryOrder(CSecurityFtdcOrderField *pOrder, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryETFBasket(Task task);
 
-	///ÇëÇó²éÑ¯³É½»ÏìÓ¦
-	virtual void OnRspQryTrade(CSecurityFtdcTradeField *pTrade, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryOFInstrument(Task task);
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÏìÓ¦
-	virtual void OnRspQryInvestorPosition(CSecurityFtdcInvestorPositionField *pInvestorPosition, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQrySFInstrument(Task task);
 
-	///×Ê½ğ×ªÕË²éÑ¯Ó¦´ğ
-	virtual void OnRspQryFundTransferSerial(CSecurityFtdcFundTransferField *pFundTransfer, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryInstrumentUnitMargin(Task task);
 
-	///×Ê½ğÄÚ×ªÁ÷Ë®²éÑ¯Ó¦´ğ
-	virtual void OnRspQryFundInterTransferSerial(CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspQryPreDelivInfo(Task task);
 
-	//-------------------------------------------------------------------------------------
-	//task£ºÈÎÎñ
-	//-------------------------------------------------------------------------------------
+  void processRspQryCreditStockAssignInfo(Task task);
 
-	void processTask();
+  void processRspQryCreditCashAssignInfo(Task task);
 
-	void processFrontConnected(Task task);
+  void processRspQryConversionRate(Task task);
 
-	void processFrontDisconnected(Task task);
+  void processRspQryHisCreditDebtInfo(Task task);
 
-	void processHeartBeatWarning(Task task);
+  void processRspQryMarketDataStaticInfo(Task task);
 
-	void processRspError(Task task);
+  void processRspQryExpireRepurchInfo(Task task);
 
-	void processRspUserLogin(Task task);
+  void processRspQryBondPledgeRate(Task task);
 
-	void processRspUserLogout(Task task);
+  void processRspQryPledgeBond(Task task);
 
-	void processRspFetchAuthRandCode(Task task);
+  void processRspQryOrder(Task task);
 
-	void processRspQryExchange(Task task);
+  void processRspQryTrade(Task task);
 
-	void processRspQryInstrument(Task task);
+  void processRspQryInvestorPosition(Task task);
 
-	void processRspQryInvestor(Task task);
+  void processRspQryFundTransferSerial(Task task);
 
-	void processRspQryTradingCode(Task task);
+  void processRspQryFundInterTransferSerial(Task task);
 
-	void processRspQryTradingAccount(Task task);
+  //-------------------------------------------------------------------------------------
+  // dataï¼šå›è°ƒå‡½æ•°çš„æ•°æ®å­—å…¸
+  // errorï¼šå›è°ƒå‡½æ•°çš„é”™è¯¯å­—å…¸
+  // idï¼šè¯·æ±‚id
+  // lastï¼šæ˜¯å¦ä¸ºæœ€åè¿”å›
+  // iï¼šæ•´æ•°
+  //-------------------------------------------------------------------------------------
 
-	void processRspQryBondInterest(Task task);
+  virtual void onFrontConnected(){};
 
-	void processRspQryMarketRationInfo(Task task);
+  virtual void onFrontDisconnected(int i){};
 
-	void processRspQryInstrumentCommissionRate(Task task);
+  virtual void onHeartBeatWarning(int i){};
 
-	void processRspQryETFInstrument(Task task);
+  virtual void onRspError(dict error, int id, bool last){};
 
-	void processRspQryETFBasket(Task task);
+  virtual void onRspUserLogin(dict data, dict error, int id, bool last){};
 
-	void processRspQryOFInstrument(Task task);
+  virtual void onRspUserLogout(dict data, dict error, int id, bool last){};
 
-	void processRspQrySFInstrument(Task task);
+  virtual void onRspFetchAuthRandCode(dict data, dict error, int id,
+                                      bool last){};
 
-	void processRspQryInstrumentUnitMargin(Task task);
+  virtual void onRspQryExchange(dict data, dict error, int id, bool last){};
 
-	void processRspQryPreDelivInfo(Task task);
+  virtual void onRspQryInstrument(dict data, dict error, int id, bool last){};
 
-	void processRspQryCreditStockAssignInfo(Task task);
+  virtual void onRspQryInvestor(dict data, dict error, int id, bool last){};
 
-	void processRspQryCreditCashAssignInfo(Task task);
+  virtual void onRspQryTradingCode(dict data, dict error, int id, bool last){};
 
-	void processRspQryConversionRate(Task task);
+  virtual void onRspQryTradingAccount(dict data, dict error, int id,
+                                      bool last){};
 
-	void processRspQryHisCreditDebtInfo(Task task);
+  virtual void onRspQryBondInterest(dict data, dict error, int id, bool last){};
 
-	void processRspQryMarketDataStaticInfo(Task task);
+  virtual void onRspQryMarketRationInfo(dict data, dict error, int id,
+                                        bool last){};
 
-	void processRspQryExpireRepurchInfo(Task task);
+  virtual void onRspQryInstrumentCommissionRate(dict data, dict error, int id,
+                                                bool last){};
 
-	void processRspQryBondPledgeRate(Task task);
+  virtual void onRspQryETFInstrument(dict data, dict error, int id,
+                                     bool last){};
 
-	void processRspQryPledgeBond(Task task);
+  virtual void onRspQryETFBasket(dict data, dict error, int id, bool last){};
 
-	void processRspQryOrder(Task task);
+  virtual void onRspQryOFInstrument(dict data, dict error, int id, bool last){};
 
-	void processRspQryTrade(Task task);
+  virtual void onRspQrySFInstrument(dict data, dict error, int id, bool last){};
 
-	void processRspQryInvestorPosition(Task task);
+  virtual void onRspQryInstrumentUnitMargin(dict data, dict error, int id,
+                                            bool last){};
 
-	void processRspQryFundTransferSerial(Task task);
+  virtual void onRspQryPreDelivInfo(dict data, dict error, int id, bool last){};
 
-	void processRspQryFundInterTransferSerial(Task task);
+  virtual void onRspQryCreditStockAssignInfo(dict data, dict error, int id,
+                                             bool last){};
 
-	//-------------------------------------------------------------------------------------
-	//data£º»Øµ÷º¯ÊıµÄÊı¾İ×Öµä
-	//error£º»Øµ÷º¯ÊıµÄ´íÎó×Öµä
-	//id£ºÇëÇóid
-	//last£ºÊÇ·ñÎª×îºó·µ»Ø
-	//i£ºÕûÊı
-	//-------------------------------------------------------------------------------------
+  virtual void onRspQryCreditCashAssignInfo(dict data, dict error, int id,
+                                            bool last){};
 
-	virtual void onFrontConnected(){};
+  virtual void onRspQryConversionRate(dict data, dict error, int id,
+                                      bool last){};
 
-	virtual void onFrontDisconnected(int i){};
+  virtual void onRspQryHisCreditDebtInfo(dict data, dict error, int id,
+                                         bool last){};
 
-	virtual void onHeartBeatWarning(int i){};
+  virtual void onRspQryMarketDataStaticInfo(dict data, dict error, int id,
+                                            bool last){};
 
-	virtual void onRspError(dict error, int id, bool last) {};
+  virtual void onRspQryExpireRepurchInfo(dict data, dict error, int id,
+                                         bool last){};
 
-	virtual void onRspUserLogin(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryBondPledgeRate(dict data, dict error, int id,
+                                      bool last){};
 
-	virtual void onRspUserLogout(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryPledgeBond(dict data, dict error, int id, bool last){};
 
-	virtual void onRspFetchAuthRandCode(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryOrder(dict data, dict error, int id, bool last){};
 
-	virtual void onRspQryExchange(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryTrade(dict data, dict error, int id, bool last){};
 
-	virtual void onRspQryInstrument(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryInvestorPosition(dict data, dict error, int id,
+                                        bool last){};
 
-	virtual void onRspQryInvestor(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryFundTransferSerial(dict data, dict error, int id,
+                                          bool last){};
 
-	virtual void onRspQryTradingCode(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryFundInterTransferSerial(dict data, dict error, int id,
+                                               bool last){};
 
-	virtual void onRspQryTradingAccount(dict data, dict error, int id, bool last) {};
+  //-------------------------------------------------------------------------------------
+  // req:ä¸»åŠ¨å‡½æ•°çš„è¯·æ±‚å­—å…¸
+  //-------------------------------------------------------------------------------------
 
-	virtual void onRspQryBondInterest(dict data, dict error, int id, bool last) {};
+  void createFtdcQueryApi(string pszFlowPath = "");
 
-	virtual void onRspQryMarketRationInfo(dict data, dict error, int id, bool last) {};
+  void release();
 
-	virtual void onRspQryInstrumentCommissionRate(dict data, dict error, int id, bool last) {};
+  void init();
 
-	virtual void onRspQryETFInstrument(dict data, dict error, int id, bool last) {};
+  int join();
 
-	virtual void onRspQryETFBasket(dict data, dict error, int id, bool last) {};
+  int exit();
 
-	virtual void onRspQryOFInstrument(dict data, dict error, int id, bool last) {};
+  string getTradingDay();
 
-	virtual void onRspQrySFInstrument(dict data, dict error, int id, bool last) {};
+  void registerFront(string pszFrontAddress);
 
-	virtual void onRspQryInstrumentUnitMargin(dict data, dict error, int id, bool last) {};
+  int reqUserLogin(dict req, int nRequestID);
 
-	virtual void onRspQryPreDelivInfo(dict data, dict error, int id, bool last) {};
+  int reqUserLogout(dict req, int nRequestID);
 
-	virtual void onRspQryCreditStockAssignInfo(dict data, dict error, int id, bool last) {};
+  int reqFetchAuthRandCode(dict req, int nRequestID);
 
-	virtual void onRspQryCreditCashAssignInfo(dict data, dict error, int id, bool last) {};
+  int reqQryExchange(dict req, int nRequestID);
 
-	virtual void onRspQryConversionRate(dict data, dict error, int id, bool last) {};
+  int reqQryInstrument(dict req, int nRequestID);
 
-	virtual void onRspQryHisCreditDebtInfo(dict data, dict error, int id, bool last) {};
+  int reqQryInvestor(dict req, int nRequestID);
 
-	virtual void onRspQryMarketDataStaticInfo(dict data, dict error, int id, bool last) {};
+  int reqQryTradingCode(dict req, int nRequestID);
 
-	virtual void onRspQryExpireRepurchInfo(dict data, dict error, int id, bool last) {};
+  int reqQryTradingAccount(dict req, int nRequestID);
 
-	virtual void onRspQryBondPledgeRate(dict data, dict error, int id, bool last) {};
+  int reqQryBondInterest(dict req, int nRequestID);
 
-	virtual void onRspQryPledgeBond(dict data, dict error, int id, bool last) {};
+  int reqQryMarketRationInfo(dict req, int nRequestID);
 
-	virtual void onRspQryOrder(dict data, dict error, int id, bool last) {};
+  int reqQryInstrumentCommissionRate(dict req, int nRequestID);
 
-	virtual void onRspQryTrade(dict data, dict error, int id, bool last) {};
+  int reqQryETFInstrument(dict req, int nRequestID);
 
-	virtual void onRspQryInvestorPosition(dict data, dict error, int id, bool last) {};
+  int reqQryETFBasket(dict req, int nRequestID);
 
-	virtual void onRspQryFundTransferSerial(dict data, dict error, int id, bool last) {};
+  int reqQryOFInstrument(dict req, int nRequestID);
 
-	virtual void onRspQryFundInterTransferSerial(dict data, dict error, int id, bool last) {};
+  int reqQrySFInstrument(dict req, int nRequestID);
 
-	//-------------------------------------------------------------------------------------
-	//req:Ö÷¶¯º¯ÊıµÄÇëÇó×Öµä
-	//-------------------------------------------------------------------------------------
+  int reqQryInstrumentUnitMargin(dict req, int nRequestID);
 
-	void createFtdcQueryApi(string pszFlowPath = "");
+  int reqQryPreDelivInfo(dict req, int nRequestID);
 
-	void release();
+  int reqQryCreditStockAssignInfo(dict req, int nRequestID);
 
-	void init();
+  int reqQryCreditCashAssignInfo(dict req, int nRequestID);
 
-	int join();
+  int reqQryConversionRate(dict req, int nRequestID);
 
-	int exit();
+  int reqQryHisCreditDebtInfo(dict req, int nRequestID);
 
-	string getTradingDay();
+  int reqQryMarketDataStaticInfo(dict req, int nRequestID);
 
-	void registerFront(string pszFrontAddress);
+  int reqQryExpireRepurchInfo(dict req, int nRequestID);
 
-	int reqUserLogin(dict req, int nRequestID);
+  int reqQryBondPledgeRate(dict req, int nRequestID);
 
-	int reqUserLogout(dict req, int nRequestID);
+  int reqQryPledgeBond(dict req, int nRequestID);
 
-	int reqFetchAuthRandCode(dict req, int nRequestID);
+  int reqQryOrder(dict req, int nRequestID);
 
-	int reqQryExchange(dict req, int nRequestID);
+  int reqQryTrade(dict req, int nRequestID);
 
-	int reqQryInstrument(dict req, int nRequestID);
+  int reqQryInvestorPosition(dict req, int nRequestID);
 
-	int reqQryInvestor(dict req, int nRequestID);
+  int reqQryFundTransferSerial(dict req, int nRequestID);
 
-	int reqQryTradingCode(dict req, int nRequestID);
-
-	int reqQryTradingAccount(dict req, int nRequestID);
-
-	int reqQryBondInterest(dict req, int nRequestID);
-
-	int reqQryMarketRationInfo(dict req, int nRequestID);
-
-	int reqQryInstrumentCommissionRate(dict req, int nRequestID);
-
-	int reqQryETFInstrument(dict req, int nRequestID);
-
-	int reqQryETFBasket(dict req, int nRequestID);
-
-	int reqQryOFInstrument(dict req, int nRequestID);
-
-	int reqQrySFInstrument(dict req, int nRequestID);
-
-	int reqQryInstrumentUnitMargin(dict req, int nRequestID);
-
-	int reqQryPreDelivInfo(dict req, int nRequestID);
-
-	int reqQryCreditStockAssignInfo(dict req, int nRequestID);
-
-	int reqQryCreditCashAssignInfo(dict req, int nRequestID);
-
-	int reqQryConversionRate(dict req, int nRequestID);
-
-	int reqQryHisCreditDebtInfo(dict req, int nRequestID);
-
-	int reqQryMarketDataStaticInfo(dict req, int nRequestID);
-
-	int reqQryExpireRepurchInfo(dict req, int nRequestID);
-
-	int reqQryBondPledgeRate(dict req, int nRequestID);
-
-	int reqQryPledgeBond(dict req, int nRequestID);
-
-	int reqQryOrder(dict req, int nRequestID);
-
-	int reqQryTrade(dict req, int nRequestID);
-
-	int reqQryInvestorPosition(dict req, int nRequestID);
-
-	int reqQryFundTransferSerial(dict req, int nRequestID);
-
-	int reqQryFundInterTransferSerial(dict req, int nRequestID);
+  int reqQryFundInterTransferSerial(dict req, int nRequestID);
 };

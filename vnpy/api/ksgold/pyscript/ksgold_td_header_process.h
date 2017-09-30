@@ -37,4 +37,3 @@ void processRspQryInvestorPosition(Task task);
 void processRspQryClientStorage(Task task);
 
 void processRspSubMarketData(Task task);
-

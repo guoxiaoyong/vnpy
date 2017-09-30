@@ -59,4 +59,3 @@ void processRspQryTopic(Task task);
 void processRspQryInvestorFee(Task task);
 
 void processRspQryInvestorMargin(Task task);
-

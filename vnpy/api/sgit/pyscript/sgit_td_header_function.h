@@ -131,4 +131,3 @@ int reqFromFutureToBankByFuture(dict req, int nRequestID);
 int reqQueryBankAccountMoneyByFuture(dict req, int nRequestID);
 
 int reqMBLQuot(dict req, int nRequestID);
-

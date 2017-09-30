@@ -75,4 +75,3 @@ void processRspQryFundInterTransferSerial(Task task);
 void processRtnFundInterTransferSerial(Task task);
 
 void processErrRtnFundInterTransfer(Task task);
-

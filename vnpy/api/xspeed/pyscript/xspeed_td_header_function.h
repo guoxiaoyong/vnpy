@@ -24,7 +24,7 @@ int reqQryPositionDetail(dict req);
 
 int reqConfirmProductInfo(dict req);
 
-int reqResetPassword (dict req);
+int reqResetPassword(dict req);
 
 int reqBillConfirm(dict req);
 
@@ -61,4 +61,3 @@ int reqFromFutureToBankByFuture(dict req);
 int reqQryExchangeStatus(dict req);
 
 int reqQryDepthMarketData(dict req);
-

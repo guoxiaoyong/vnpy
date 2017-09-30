@@ -35,4 +35,3 @@ int reqQryTopic(dict req, int nRequestID);
 int reqQryInvestorFee(dict req, int nRequestID);
 
 int reqQryInvestorMargin(dict req, int nRequestID);
-

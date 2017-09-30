@@ -11,5852 +11,5628 @@
 
 #include "SgitFtdcUserApiDataType.h"
 
-///ĞÅÏ¢·Ö·¢
-struct CSgitFtdcDisseminationField
-{
-	///ĞòÁĞÏµÁĞºÅ
-	TSgitFtdcSequenceSeriesType	SequenceSeries;
-	///ĞòÁĞºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-};
-
-///ÓÃ»§µÇÂ¼ÇëÇó
-struct CSgitFtdcReqUserLoginField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///½Ó¿Ú¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	InterfaceProductInfo;
-	///Ğ­ÒéĞÅÏ¢
-	TSgitFtdcProtocolInfoType	ProtocolInfo;
-	///MacµØÖ·
-	TSgitFtdcMacAddressType	MacAddress;
-	///¶¯Ì¬ÃÜÂë
-	TSgitFtdcPasswordType	OneTimePassword;
-	///ÖÕ¶ËIPµØÖ·
-	TSgitFtdcIPAddressType	ClientIPAddress;
-};
-
-///ÓÃ»§µÇÂ¼Ó¦´ğ
-struct CSgitFtdcRspUserLoginField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///µÇÂ¼³É¹¦Ê±¼ä
-	TSgitFtdcTimeType	LoginTime;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×ÏµÍ³Ãû³Æ
-	TSgitFtdcSystemNameType	SystemName;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///×î´ó±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	MaxOrderRef;
-	///ÉÏÆÚËùÊ±¼ä
-	TSgitFtdcTimeType	SHFETime;
-	///´óÉÌËùÊ±¼ä
-	TSgitFtdcTimeType	DCETime;
-	///Ö£ÉÌËùÊ±¼ä
-	TSgitFtdcTimeType	CZCETime;
-	///ÖĞ½ğËùÊ±¼ä
-	TSgitFtdcTimeType	FFEXTime;
-};
-
-///ÓÃ»§µÇ³öÇëÇó
-struct CSgitFtdcUserLogoutField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///Ç¿ÖÆ½»Ò×Ô±ÍË³ö
-struct CSgitFtdcForceUserLogoutField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///¿Í»§¶ËÈÏÖ¤ÇëÇó
-struct CSgitFtdcReqAuthenticateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///ÈÏÖ¤Âë
-	TSgitFtdcAuthCodeType	AuthCode;
-};
-
-///¿Í»§¶ËÈÏÖ¤ÏìÓ¦
-struct CSgitFtdcRspAuthenticateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-};
-
-///¿Í»§¶ËÈÏÖ¤ĞÅÏ¢
-struct CSgitFtdcAuthenticationInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///ÈÏÖ¤ĞÅÏ¢
-	TSgitFtdcAuthInfoType	AuthInfo;
-	///ÊÇ·ñÎªÈÏÖ¤½á¹û
-	TSgitFtdcBoolType	IsResult;
-};
-
-///ÒøÆÚ×ªÕÊ±¨ÎÄÍ·
-struct CSgitFtdcTransferHeaderField
-{
-	///°æ±¾ºÅ£¬³£Á¿£¬1.0
-	TSgitFtdcVersionType	Version;
-	///½»Ò×´úÂë£¬±ØÌî
-	TSgitFtdcTradeCodeType	TradeCode;
-	///½»Ò×ÈÕÆÚ£¬±ØÌî£¬¸ñÊ½£ºyyyymmdd
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä£¬±ØÌî£¬¸ñÊ½£ºhhmmss
-	TSgitFtdcTradeTimeType	TradeTime;
-	///·¢Æğ·½Á÷Ë®ºÅ£¬N/A
-	TSgitFtdcTradeSerialType	TradeSerial;
-	///ÆÚ»õ¹«Ë¾´úÂë£¬±ØÌî
-	TSgitFtdcFutureIDType	FutureID;
-	///ÒøĞĞ´úÂë£¬¸ù¾İ²éÑ¯ÒøĞĞµÃµ½£¬±ØÌî
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë£¬¸ù¾İ²éÑ¯ÒøĞĞµÃµ½£¬±ØÌî
-	TSgitFtdcBankBrchIDType	BankBrchID;
-	///²Ù×÷Ô±£¬N/A
-	TSgitFtdcOperNoType	OperNo;
-	///½»Ò×Éè±¸ÀàĞÍ£¬N/A
-	TSgitFtdcDeviceIDType	DeviceID;
-	///¼ÇÂ¼Êı£¬N/A
-	TSgitFtdcRecordNumType	RecordNum;
-	///»á»°±àºÅ£¬N/A
-	TSgitFtdcSessionIDType	SessionID;
-	///ÇëÇó±àºÅ£¬N/A
-	TSgitFtdcRequestIDType	RequestID;
-};
-
-///ÒøĞĞ×Ê½ğ×ªÆÚ»õÇëÇó£¬TradeCode=202001
-struct CSgitFtdcTransferBankToFutureReqField
-{
-	///ÆÚ»õ×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///ÃÜÂë±êÖ¾
-	TSgitFtdcFuturePwdFlagType	FuturePwdFlag;
-	///ÃÜÂë
-	TSgitFtdcFutureAccPwdType	FutureAccPwd;
-	///×ªÕË½ğ¶î
-	TSgitFtdcMoneyType	TradeAmt;
-	///¿Í»§ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	CustFee;
-	///±ÒÖÖ£ºRMB-ÈËÃñ±Ò USD-ÃÀÔ² HKD-¸ÛÔª
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///ÒøĞĞ×Ê½ğ×ªÆÚ»õÇëÇóÏìÓ¦
-struct CSgitFtdcTransferBankToFutureRspField
-{
-	///ÏìÓ¦´úÂë
-	TSgitFtdcRetCodeType	RetCode;
-	///ÏìÓ¦ĞÅÏ¢
-	TSgitFtdcRetInfoType	RetInfo;
-	///×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcMoneyType	TradeAmt;
-	///Ó¦ÊÕ¿Í»§ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	CustFee;
-	///±ÒÖÖ
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///ÆÚ»õ×Ê½ğ×ªÒøĞĞÇëÇó£¬TradeCode=202002
-struct CSgitFtdcTransferFutureToBankReqField
-{
-	///ÆÚ»õ×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///ÃÜÂë±êÖ¾
-	TSgitFtdcFuturePwdFlagType	FuturePwdFlag;
-	///ÃÜÂë
-	TSgitFtdcFutureAccPwdType	FutureAccPwd;
-	///×ªÕË½ğ¶î
-	TSgitFtdcMoneyType	TradeAmt;
-	///¿Í»§ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	CustFee;
-	///±ÒÖÖ£ºRMB-ÈËÃñ±Ò USD-ÃÀÔ² HKD-¸ÛÔª
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///ÆÚ»õ×Ê½ğ×ªÒøĞĞÇëÇóÏìÓ¦
-struct CSgitFtdcTransferFutureToBankRspField
-{
-	///ÏìÓ¦´úÂë
-	TSgitFtdcRetCodeType	RetCode;
-	///ÏìÓ¦ĞÅÏ¢
-	TSgitFtdcRetInfoType	RetInfo;
-	///×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcMoneyType	TradeAmt;
-	///Ó¦ÊÕ¿Í»§ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	CustFee;
-	///±ÒÖÖ
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///²éÑ¯ÒøĞĞ×Ê½ğÇëÇó£¬TradeCode=204002
-struct CSgitFtdcTransferQryBankReqField
-{
-	///ÆÚ»õ×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///ÃÜÂë±êÖ¾
-	TSgitFtdcFuturePwdFlagType	FuturePwdFlag;
-	///ÃÜÂë
-	TSgitFtdcFutureAccPwdType	FutureAccPwd;
-	///±ÒÖÖ£ºRMB-ÈËÃñ±Ò USD-ÃÀÔ² HKD-¸ÛÔª
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///²éÑ¯ÒøĞĞ×Ê½ğÇëÇóÏìÓ¦
-struct CSgitFtdcTransferQryBankRspField
-{
-	///ÏìÓ¦´úÂë
-	TSgitFtdcRetCodeType	RetCode;
-	///ÏìÓ¦ĞÅÏ¢
-	TSgitFtdcRetInfoType	RetInfo;
-	///×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-	///ÒøĞĞÓà¶î
-	TSgitFtdcMoneyType	TradeAmt;
-	///ÒøĞĞ¿ÉÓÃÓà¶î
-	TSgitFtdcMoneyType	UseAmt;
-	///ÒøĞĞ¿ÉÈ¡Óà¶î
-	TSgitFtdcMoneyType	FetchAmt;
-	///±ÒÖÖ
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-};
-
-///²éÑ¯ÒøĞĞ½»Ò×Ã÷Ï¸ÇëÇó£¬TradeCode=204999
-struct CSgitFtdcTransferQryDetailReqField
-{
-	///ÆÚ»õ×Ê½ğÕË»§
-	TSgitFtdcAccountIDType	FutureAccount;
-};
-
-///²éÑ¯ÒøĞĞ½»Ò×Ã÷Ï¸ÇëÇóÏìÓ¦
-struct CSgitFtdcTransferQryDetailRspField
-{
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///½»Ò×´úÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÆÚ»õÁ÷Ë®ºÅ
-	TSgitFtdcTradeSerialNoType	FutureSerial;
-	///ÆÚ»õ¹«Ë¾´úÂë
-	TSgitFtdcFutureIDType	FutureID;
-	///×Ê½ğÕÊºÅ
-	TSgitFtdcFutureAccountType	FutureAccount;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcTradeSerialNoType	BankSerial;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TSgitFtdcBankBrchIDType	BankBrchID;
-	///ÒøĞĞÕËºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcCertCodeType	CertCode;
-	///»õ±Ò´úÂë
-	TSgitFtdcCurrencyCodeType	CurrencyCode;
-	///·¢Éú½ğ¶î
-	TSgitFtdcMoneyType	TxAmount;
-	///ÓĞĞ§±êÖ¾
-	TSgitFtdcTransferValidFlagType	Flag;
-};
-
-///ÏìÓ¦ĞÅÏ¢
-struct CSgitFtdcRspInfoField
-{
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///½»Ò×Ëù
-struct CSgitFtdcExchangeField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×ËùÃû³Æ
-	TSgitFtdcExchangeNameType	ExchangeName;
-	///½»Ò×ËùÊôĞÔ
-	TSgitFtdcExchangePropertyType	ExchangeProperty;
-};
-
-///²úÆ·
-struct CSgitFtdcProductField
-{
-	///²úÆ·´úÂë
-	TSgitFtdcInstrumentIDType	ProductID;
-	///²úÆ·Ãû³Æ
-	TSgitFtdcProductNameType	ProductName;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///²úÆ·ÀàĞÍ
-	TSgitFtdcProductClassType	ProductClass;
-	///ºÏÔ¼ÊıÁ¿³ËÊı
-	TSgitFtdcVolumeMultipleType	VolumeMultiple;
-	///×îĞ¡±ä¶¯¼ÛÎ»
-	TSgitFtdcPriceType	PriceTick;
-	///ÊĞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MaxMarketOrderVolume;
-	///ÊĞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MinMarketOrderVolume;
-	///ÏŞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MaxLimitOrderVolume;
-	///ÏŞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MinLimitOrderVolume;
-	///³Ö²ÖÀàĞÍ
-	TSgitFtdcPositionTypeType	PositionType;
-	///³Ö²ÖÈÕÆÚÀàĞÍ
-	TSgitFtdcPositionDateTypeType	PositionDateType;
-};
-
-///ºÏÔ¼
-struct CSgitFtdcInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼Ãû³Æ
-	TSgitFtdcInstrumentNameType	InstrumentName;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///²úÆ·´úÂë
-	TSgitFtdcInstrumentIDType	ProductID;
-	///²úÆ·ÀàĞÍ
-	TSgitFtdcProductClassType	ProductClass;
-	///½»¸îÄê·İ
-	TSgitFtdcYearType	DeliveryYear;
-	///½»¸îÔÂ
-	TSgitFtdcMonthType	DeliveryMonth;
-	///ÊĞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MaxMarketOrderVolume;
-	///ÊĞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MinMarketOrderVolume;
-	///ÏŞ¼Ûµ¥×î´óÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MaxLimitOrderVolume;
-	///ÏŞ¼Ûµ¥×îĞ¡ÏÂµ¥Á¿
-	TSgitFtdcVolumeType	MinLimitOrderVolume;
-	///ºÏÔ¼ÊıÁ¿³ËÊı
-	TSgitFtdcVolumeMultipleType	VolumeMultiple;
-	///×îĞ¡±ä¶¯¼ÛÎ»
-	TSgitFtdcPriceType	PriceTick;
-	///´´½¨ÈÕ
-	TSgitFtdcDateType	CreateDate;
-	///ÉÏÊĞÈÕ
-	TSgitFtdcDateType	OpenDate;
-	///µ½ÆÚÈÕ
-	TSgitFtdcDateType	ExpireDate;
-	///¿ªÊ¼½»¸îÈÕ
-	TSgitFtdcDateType	StartDelivDate;
-	///½áÊø½»¸îÈÕ
-	TSgitFtdcDateType	EndDelivDate;
-	///ºÏÔ¼ÉúÃüÖÜÆÚ×´Ì¬
-	TSgitFtdcInstLifePhaseType	InstLifePhase;
-	///µ±Ç°ÊÇ·ñ½»Ò×
-	TSgitFtdcBoolType	IsTrading;
-	///³Ö²ÖÀàĞÍ
-	TSgitFtdcPositionTypeType	PositionType;
-	///³Ö²ÖÈÕÆÚÀàĞÍ
-	TSgitFtdcPositionDateTypeType	PositionDateType;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatio;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatio;
-};
-
-///¾­¼Í¹«Ë¾
-struct CSgitFtdcBrokerField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///¾­¼Í¹«Ë¾¼ò³Æ
-	TSgitFtdcBrokerAbbrType	BrokerAbbr;
-	///¾­¼Í¹«Ë¾Ãû³Æ
-	TSgitFtdcBrokerNameType	BrokerName;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-};
-
-///½»Ò×Ëù½»Ò×Ô±
-struct CSgitFtdcTraderField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°ÊıÁ¿
-	TSgitFtdcInstallCountType	InstallCount;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///Í¶×ÊÕß
-struct CSgitFtdcInvestorField
-{
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·Ö×é´úÂë
-	TSgitFtdcInvestorIDType	InvestorGroupID;
-	///Í¶×ÊÕßÃû³Æ
-	TSgitFtdcPartyNameType	InvestorName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdentifiedCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-	///ÁªÏµµç»°
-	TSgitFtdcTelephoneType	Telephone;
-	///Í¨Ñ¶µØÖ·
-	TSgitFtdcAddressType	Address;
-	///¿ª»§ÈÕÆÚ
-	TSgitFtdcDateType	OpenDate;
-	///ÊÖ»ú
-	TSgitFtdcMobileType	Mobile;
-	///ÊÖĞø·ÑÂÊÄ£°å´úÂë
-	TSgitFtdcInvestorIDType	CommModelID;
-};
-
-///½»Ò×±àÂë
-struct CSgitFtdcTradingCodeField
-{
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-	///½»Ò×±àÂëÀàĞÍ
-	TSgitFtdcClientIDTypeType	ClientIDType;
-};
-
-///»áÔ±±àÂëºÍ¾­¼Í¹«Ë¾±àÂë¶ÔÕÕ±í
-struct CSgitFtdcPartBrokerField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-};
-
-///¹ÜÀíÓÃ»§
-struct CSgitFtdcSuperUserField
-{
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§Ãû³Æ
-	TSgitFtdcUserNameType	UserName;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-};
-
-///¹ÜÀíÓÃ»§¹¦ÄÜÈ¨ÏŞ
-struct CSgitFtdcSuperUserFunctionField
-{
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///¹¦ÄÜ´úÂë
-	TSgitFtdcFunctionCodeType	FunctionCode;
-};
-
-///Í¶×ÊÕß×é
-struct CSgitFtdcInvestorGroupField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·Ö×é´úÂë
-	TSgitFtdcInvestorIDType	InvestorGroupID;
-	///Í¶×ÊÕß·Ö×éÃû³Æ
-	TSgitFtdcInvestorGroupNameType	InvestorGroupName;
-};
-
-///×Ê½ğÕË»§
-struct CSgitFtdcTradingAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÉÏ´ÎÖÊÑº½ğ¶î
-	TSgitFtdcMoneyType	PreMortgage;
-	///ÉÏ´ÎĞÅÓÃ¶î¶È
-	TSgitFtdcMoneyType	PreCredit;
-	///ÉÏ´Î´æ¿î¶î
-	TSgitFtdcMoneyType	PreDeposit;
-	///ÉÏ´Î½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	PreBalance;
-	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	PreMargin;
-	///ÀûÏ¢»ùÊı
-	TSgitFtdcMoneyType	InterestBase;
-	///ÀûÏ¢ÊÕÈë
-	TSgitFtdcMoneyType	Interest;
-	///Èë½ğ½ğ¶î
-	TSgitFtdcMoneyType	Deposit;
-	///³ö½ğ½ğ¶î
-	TSgitFtdcMoneyType	Withdraw;
-	///¶³½áµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TSgitFtdcMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TSgitFtdcMoneyType	FrozenCommission;
-	///µ±Ç°±£Ö¤½ğ×Ü¶î
-	TSgitFtdcMoneyType	CurrMargin;
-	///×Ê½ğ²î¶î
-	TSgitFtdcMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfit;
-	///ÆÚ»õ½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	Balance;
-	///¿ÉÓÃ×Ê½ğ
-	TSgitFtdcMoneyType	Available;
-	///¿ÉÈ¡×Ê½ğ
-	TSgitFtdcMoneyType	WithdrawQuota;
-	///»ù±¾×¼±¸½ğ
-	TSgitFtdcMoneyType	Reserve;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///ĞÅÓÃ¶î¶È
-	TSgitFtdcMoneyType	Credit;
-	///ÖÊÑº½ğ¶î
-	TSgitFtdcMoneyType	Mortgage;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeMargin;
-	///Í¶×ÊÕß½»¸î±£Ö¤½ğ
-	TSgitFtdcMoneyType	DeliveryMargin;
-	///½»Ò×Ëù½»¸î±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeDeliveryMargin;
-};
-
-///Í¶×ÊÕß³Ö²Ö
-struct CSgitFtdcInvestorPositionField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///³Ö²Ö¶à¿Õ·½Ïò
-	TSgitFtdcPosiDirectionType	PosiDirection;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///³Ö²ÖÈÕÆÚ
-	TSgitFtdcPositionDateType	PositionDate;
-	///ÉÏÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	YdPosition;
-	///½ñÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	Position;
-	///¶àÍ·¶³½á
-	TSgitFtdcVolumeType	LongFrozen;
-	///¿ÕÍ·¶³½á
-	TSgitFtdcVolumeType	ShortFrozen;
-	///¿ª²Ö¶³½á½ğ¶î
-	TSgitFtdcMoneyType	LongFrozenAmount;
-	///¿ª²Ö¶³½á½ğ¶î
-	TSgitFtdcMoneyType	ShortFrozenAmount;
-	///¿ª²ÖÁ¿
-	TSgitFtdcVolumeType	OpenVolume;
-	///Æ½²ÖÁ¿
-	TSgitFtdcVolumeType	CloseVolume;
-	///¿ª²Ö½ğ¶î
-	TSgitFtdcMoneyType	OpenAmount;
-	///Æ½²Ö½ğ¶î
-	TSgitFtdcMoneyType	CloseAmount;
-	///³Ö²Ö³É±¾
-	TSgitFtdcMoneyType	PositionCost;
-	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	PreMargin;
-	///Õ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	UseMargin;
-	///¶³½áµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TSgitFtdcMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TSgitFtdcMoneyType	FrozenCommission;
-	///×Ê½ğ²î¶î
-	TSgitFtdcMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfit;
-	///ÉÏ´Î½áËã¼Û
-	TSgitFtdcPriceType	PreSettlementPrice;
-	///±¾´Î½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///¿ª²Ö³É±¾
-	TSgitFtdcMoneyType	OpenCost;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeMargin;
-	///×éºÏ³É½»ĞÎ³ÉµÄ³Ö²Ö
-	TSgitFtdcVolumeType	CombPosition;
-	///×éºÏ¶àÍ·¶³½á
-	TSgitFtdcVolumeType	CombLongFrozen;
-	///×éºÏ¿ÕÍ·¶³½á
-	TSgitFtdcVolumeType	CombShortFrozen;
-	///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByDate;
-	///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByTrade;
-	///½ñÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	TodayPosition;
-	///±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TSgitFtdcRatioType	MarginRateByVolume;
-};
-
-///ºÏÔ¼±£Ö¤½ğÂÊ
-struct CSgitFtdcInstrumentMarginRateField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatioByMoney;
-	///¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	LongMarginRatioByVolume;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatioByMoney;
-	///¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ShortMarginRatioByVolume;
-	///ÊÇ·ñÏà¶Ô½»Ò×ËùÊÕÈ¡
-	TSgitFtdcBoolType	IsRelative;
-};
-
-///ºÏÔ¼ÊÖĞø·ÑÂÊ
-struct CSgitFtdcInstrumentCommissionRateField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¿ª²ÖÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	OpenRatioByMoney;
-	///¿ª²ÖÊÖĞø·Ñ
-	TSgitFtdcRatioType	OpenRatioByVolume;
-	///Æ½²ÖÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	CloseRatioByMoney;
-	///Æ½²ÖÊÖĞø·Ñ
-	TSgitFtdcRatioType	CloseRatioByVolume;
-	///Æ½½ñÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	CloseTodayRatioByMoney;
-	///Æ½½ñÊÖĞø·Ñ
-	TSgitFtdcRatioType	CloseTodayRatioByVolume;
-};
-
-///Éî¶ÈĞĞÇé
-struct CSgitFtdcDepthMarketDataField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///×îĞÂ¼Û
-	TSgitFtdcPriceType	LastPrice;
-	///ÉÏ´Î½áËã¼Û
-	TSgitFtdcPriceType	PreSettlementPrice;
-	///×òÊÕÅÌ
-	TSgitFtdcPriceType	PreClosePrice;
-	///×ò³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	PreOpenInterest;
-	///½ñ¿ªÅÌ
-	TSgitFtdcPriceType	OpenPrice;
-	///×î¸ß¼Û
-	TSgitFtdcPriceType	HighestPrice;
-	///×îµÍ¼Û
-	TSgitFtdcPriceType	LowestPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///³É½»½ğ¶î
-	TSgitFtdcMoneyType	Turnover;
-	///³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	OpenInterest;
-	///½ñÊÕÅÌ
-	TSgitFtdcPriceType	ClosePrice;
-	///±¾´Î½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///ÕÇÍ£°å¼Û
-	TSgitFtdcPriceType	UpperLimitPrice;
-	///µøÍ£°å¼Û
-	TSgitFtdcPriceType	LowerLimitPrice;
-	///×òĞéÊµ¶È
-	TSgitFtdcRatioType	PreDelta;
-	///½ñĞéÊµ¶È
-	TSgitFtdcRatioType	CurrDelta;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///×îºóĞŞ¸ÄºÁÃë
-	TSgitFtdcMillisecType	UpdateMillisec;
-	///ÉêÂò¼ÛÒ»
-	TSgitFtdcPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TSgitFtdcVolumeType	BidVolume1;
-	///ÉêÂô¼ÛÒ»
-	TSgitFtdcPriceType	AskPrice1;
-	///ÉêÂôÁ¿Ò»
-	TSgitFtdcVolumeType	AskVolume1;
-	///ÉêÂò¼Û¶ş
-	TSgitFtdcPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TSgitFtdcVolumeType	BidVolume2;
-	///ÉêÂô¼Û¶ş
-	TSgitFtdcPriceType	AskPrice2;
-	///ÉêÂôÁ¿¶ş
-	TSgitFtdcVolumeType	AskVolume2;
-	///ÉêÂò¼ÛÈı
-	TSgitFtdcPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TSgitFtdcVolumeType	BidVolume3;
-	///ÉêÂô¼ÛÈı
-	TSgitFtdcPriceType	AskPrice3;
-	///ÉêÂôÁ¿Èı
-	TSgitFtdcVolumeType	AskVolume3;
-	///ÉêÂò¼ÛËÄ
-	TSgitFtdcPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TSgitFtdcVolumeType	BidVolume4;
-	///ÉêÂô¼ÛËÄ
-	TSgitFtdcPriceType	AskPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TSgitFtdcVolumeType	AskVolume4;
-	///ÉêÂò¼ÛÎå
-	TSgitFtdcPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TSgitFtdcVolumeType	BidVolume5;
-	///ÉêÂô¼ÛÎå
-	TSgitFtdcPriceType	AskPrice5;
-	///ÉêÂôÁ¿Îå
-	TSgitFtdcVolumeType	AskVolume5;
-	///µ±ÈÕ¾ù¼Û
-	TSgitFtdcPriceType	AveragePrice;
-};
-
-///Í¶×ÊÕßºÏÔ¼½»Ò×È¨ÏŞ
-struct CSgitFtdcInstrumentTradingRightField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×È¨ÏŞ
-	TSgitFtdcTradingRightType	TradingRight;
-};
-
-///¾­¼Í¹«Ë¾ÓÃ»§
-struct CSgitFtdcBrokerUserField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§Ãû³Æ
-	TSgitFtdcUserNameType	UserName;
-	///ÓÃ»§ÀàĞÍ
-	TSgitFtdcUserTypeType	UserType;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-	///ÊÇ·ñÊ¹ÓÃÁîÅÆ
-	TSgitFtdcBoolType	IsUsingOTP;
-};
-
-///¾­¼Í¹«Ë¾ÓÃ»§¿ÚÁî
-struct CSgitFtdcBrokerUserPasswordField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-};
-
-///¾­¼Í¹«Ë¾ÓÃ»§¹¦ÄÜÈ¨ÏŞ
-struct CSgitFtdcBrokerUserFunctionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///¾­¼Í¹«Ë¾¹¦ÄÜ´úÂë
-	TSgitFtdcBrokerFunctionCodeType	BrokerFunctionCode;
-};
-
-///½»Ò×Ëù½»Ò×Ô±±¨ÅÌ»ú
-struct CSgitFtdcTraderOfferField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù½»Ò×Ô±Á¬½Ó×´Ì¬
-	TSgitFtdcTraderConnectStatusType	TraderConnectStatus;
-	///·¢³öÁ¬½ÓÇëÇóµÄÈÕÆÚ
-	TSgitFtdcDateType	ConnectRequestDate;
-	///·¢³öÁ¬½ÓÇëÇóµÄÊ±¼ä
-	TSgitFtdcTimeType	ConnectRequestTime;
-	///ÉÏ´Î±¨¸æÈÕÆÚ
-	TSgitFtdcDateType	LastReportDate;
-	///ÉÏ´Î±¨¸æÊ±¼ä
-	TSgitFtdcTimeType	LastReportTime;
-	///Íê³ÉÁ¬½ÓÈÕÆÚ
-	TSgitFtdcDateType	ConnectDate;
-	///Íê³ÉÁ¬½ÓÊ±¼ä
-	TSgitFtdcTimeType	ConnectTime;
-	///Æô¶¯ÈÕÆÚ
-	TSgitFtdcDateType	StartDate;
-	///Æô¶¯Ê±¼ä
-	TSgitFtdcTimeType	StartTime;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///±¾Ï¯Î»×î´ó³É½»±àºÅ
-	TSgitFtdcTradeIDType	MaxTradeID;
-	///±¾Ï¯Î»×î´ó±¨µ¥±¸¿½
-	TSgitFtdcReturnCodeType	MaxOrderMessageReference;
-};
-
-///Í¶×ÊÕß½áËã½á¹û
-struct CSgitFtdcSettlementInfoField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///ÏûÏ¢ÕıÎÄ
-	TSgitFtdcContentType	Content;
-};
-
-///ºÏÔ¼±£Ö¤½ğÂÊµ÷Õû
-struct CSgitFtdcInstrumentMarginRateAdjustField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatioByMoney;
-	///¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	LongMarginRatioByVolume;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatioByMoney;
-	///¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ShortMarginRatioByVolume;
-	///ÊÇ·ñÏà¶Ô½»Ò×ËùÊÕÈ¡
-	TSgitFtdcBoolType	IsRelative;
-};
-
-///½»Ò×Ëù±£Ö¤½ğÂÊ
-struct CSgitFtdcExchangeMarginRateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatioByMoney;
-	///¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	LongMarginRatioByVolume;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatioByMoney;
-	///¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ShortMarginRatioByVolume;
-};
-
-///½»Ò×Ëù±£Ö¤½ğÂÊµ÷Õû
-struct CSgitFtdcExchangeMarginRateAdjustField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¸úËæ½»Ò×ËùÍ¶×ÊÕß¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatioByMoney;
-	///¸úËæ½»Ò×ËùÍ¶×ÊÕß¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	LongMarginRatioByVolume;
-	///¸úËæ½»Ò×ËùÍ¶×ÊÕß¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatioByMoney;
-	///¸úËæ½»Ò×ËùÍ¶×ÊÕß¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ShortMarginRatioByVolume;
-	///½»Ò×Ëù¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ExchLongMarginRatioByMoney;
-	///½»Ò×Ëù¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ExchLongMarginRatioByVolume;
-	///½»Ò×Ëù¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ExchShortMarginRatioByMoney;
-	///½»Ò×Ëù¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ExchShortMarginRatioByVolume;
-	///²»¸úËæ½»Ò×ËùÍ¶×ÊÕß¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	NoLongMarginRatioByMoney;
-	///²»¸úËæ½»Ò×ËùÍ¶×ÊÕß¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	NoLongMarginRatioByVolume;
-	///²»¸úËæ½»Ò×ËùÍ¶×ÊÕß¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	NoShortMarginRatioByMoney;
-	///²»¸úËæ½»Ò×ËùÍ¶×ÊÕß¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	NoShortMarginRatioByVolume;
-};
-
-///½áËãÒıÓÃ
-struct CSgitFtdcSettlementRefField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-};
-
-///µ±Ç°Ê±¼ä
-struct CSgitFtdcCurrentTimeField
-{
-	///µ±Ç°ÈÕÆÚ
-	TSgitFtdcDateType	CurrDate;
-	///µ±Ç°Ê±¼ä
-	TSgitFtdcTimeType	CurrTime;
-	///µ±Ç°Ê±¼ä£¨ºÁÃë£©
-	TSgitFtdcMillisecType	CurrMillisec;
-};
-
-///Í¨Ñ¶½×¶Î
-struct CSgitFtdcCommPhaseField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///Í¨Ñ¶Ê±¶Î±àºÅ
-	TSgitFtdcCommPhaseNoType	CommPhaseNo;
-};
-
-///µÇÂ¼ĞÅÏ¢
-struct CSgitFtdcLoginInfoField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///µÇÂ¼ÈÕÆÚ
-	TSgitFtdcDateType	LoginDate;
-	///µÇÂ¼Ê±¼ä
-	TSgitFtdcTimeType	LoginTime;
-	///IPµØÖ·
-	TSgitFtdcIPAddressType	IPAddress;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///½Ó¿Ú¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	InterfaceProductInfo;
-	///Ğ­ÒéĞÅÏ¢
-	TSgitFtdcProtocolInfoType	ProtocolInfo;
-	///ÏµÍ³Ãû³Æ
-	TSgitFtdcSystemNameType	SystemName;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///×î´ó±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	MaxOrderRef;
-	///ÉÏÆÚËùÊ±¼ä
-	TSgitFtdcTimeType	SHFETime;
-	///´óÉÌËùÊ±¼ä
-	TSgitFtdcTimeType	DCETime;
-	///Ö£ÉÌËùÊ±¼ä
-	TSgitFtdcTimeType	CZCETime;
-	///ÖĞ½ğËùÊ±¼ä
-	TSgitFtdcTimeType	FFEXTime;
-	///MacµØÖ·
-	TSgitFtdcMacAddressType	MacAddress;
-	///¶¯Ì¬ÃÜÂë
-	TSgitFtdcPasswordType	OneTimePassword;
-};
-
-///µÇÂ¼ĞÅÏ¢
-struct CSgitFtdcLogoutAllField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///ÏµÍ³Ãû³Æ
-	TSgitFtdcSystemNameType	SystemName;
-};
-
-///Ç°ÖÃ×´Ì¬
-struct CSgitFtdcFrontStatusField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///ÉÏ´Î±¨¸æÈÕÆÚ
-	TSgitFtdcDateType	LastReportDate;
-	///ÉÏ´Î±¨¸æÊ±¼ä
-	TSgitFtdcTimeType	LastReportTime;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-};
-
-///ÓÃ»§¿ÚÁî±ä¸ü
-struct CSgitFtdcUserPasswordUpdateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///Ô­À´µÄ¿ÚÁî
-	TSgitFtdcPasswordType	OldPassword;
-	///ĞÂµÄ¿ÚÁî
-	TSgitFtdcPasswordType	NewPassword;
-};
-
-///ÊäÈë±¨µ¥
-struct CSgitFtdcInputOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TSgitFtdcBoolType	UserForceClose;
-};
-
-///±¨µ¥
-struct CSgitFtdcOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¨µ¥Ìá½»×´Ì¬
-	TSgitFtdcOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TSgitFtdcSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///±¨µ¥À´Ô´
-	TSgitFtdcOrderSourceType	OrderSource;
-	///±¨µ¥×´Ì¬
-	TSgitFtdcOrderStatusType	OrderStatus;
-	///±¨µ¥ÀàĞÍ
-	TSgitFtdcOrderTypeType	OrderType;
-	///½ñ³É½»ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTraded;
-	///Ê£ÓàÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotal;
-	///±¨µ¥ÈÕÆÚ
-	TSgitFtdcDateType	InsertDate;
-	///Î¯ÍĞÊ±¼ä
-	TSgitFtdcTimeType	InsertTime;
-	///¼¤»îÊ±¼ä
-	TSgitFtdcTimeType	ActiveTime;
-	///¹ÒÆğÊ±¼ä
-	TSgitFtdcTimeType	SuspendTime;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///³·ÏúÊ±¼ä
-	TSgitFtdcTimeType	CancelTime;
-	///×îºóĞŞ¸Ä½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	ActiveTraderID;
-	///½áËã»áÔ±±àºÅ
-	TSgitFtdcParticipantIDType	ClearingPartID;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TSgitFtdcErrorMsgType	StatusMsg;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TSgitFtdcBoolType	UserForceClose;
-	///²Ù×÷ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	ActiveUserID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TSgitFtdcSequenceNoType	BrokerOrderSeq;
-	///Ïà¹Ø±¨µ¥
-	TSgitFtdcOrderSysIDType	RelativeOrderSysID;
-};
-
-///½»Ò×Ëù±¨µ¥
-struct CSgitFtdcExchangeOrderField
-{
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¨µ¥Ìá½»×´Ì¬
-	TSgitFtdcOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TSgitFtdcSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///±¨µ¥À´Ô´
-	TSgitFtdcOrderSourceType	OrderSource;
-	///±¨µ¥×´Ì¬
-	TSgitFtdcOrderStatusType	OrderStatus;
-	///±¨µ¥ÀàĞÍ
-	TSgitFtdcOrderTypeType	OrderType;
-	///½ñ³É½»ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTraded;
-	///Ê£ÓàÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotal;
-	///±¨µ¥ÈÕÆÚ
-	TSgitFtdcDateType	InsertDate;
-	///Î¯ÍĞÊ±¼ä
-	TSgitFtdcTimeType	InsertTime;
-	///¼¤»îÊ±¼ä
-	TSgitFtdcTimeType	ActiveTime;
-	///¹ÒÆğÊ±¼ä
-	TSgitFtdcTimeType	SuspendTime;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///³·ÏúÊ±¼ä
-	TSgitFtdcTimeType	CancelTime;
-	///×îºóĞŞ¸Ä½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	ActiveTraderID;
-	///½áËã»áÔ±±àºÅ
-	TSgitFtdcParticipantIDType	ClearingPartID;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-};
-
-///½»Ò×Ëù±¨µ¥²åÈëÊ§°Ü
-struct CSgitFtdcExchangeOrderInsertErrorField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÊäÈë±¨µ¥²Ù×÷
-struct CSgitFtdcInputOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///±¨µ¥²Ù×÷ÒıÓÃ
-	TSgitFtdcOrderActionRefType	OrderActionRef;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TSgitFtdcActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TSgitFtdcVolumeType	VolumeChange;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///±¨µ¥²Ù×÷
-struct CSgitFtdcOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///±¨µ¥²Ù×÷ÒıÓÃ
-	TSgitFtdcOrderActionRefType	OrderActionRef;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TSgitFtdcActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TSgitFtdcVolumeType	VolumeChange;
-	///²Ù×÷ÈÕÆÚ
-	TSgitFtdcDateType	ActionDate;
-	///²Ù×÷Ê±¼ä
-	TSgitFtdcTimeType	ActionTime;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///²Ù×÷±¾µØ±àºÅ
-	TSgitFtdcOrderLocalIDType	ActionLocalID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///±¨µ¥²Ù×÷×´Ì¬
-	TSgitFtdcOrderActionStatusType	OrderActionStatus;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///×´Ì¬ĞÅÏ¢
-	TSgitFtdcErrorMsgType	StatusMsg;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///½»Ò×Ëù±¨µ¥²Ù×÷
-struct CSgitFtdcExchangeOrderActionField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TSgitFtdcActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TSgitFtdcVolumeType	VolumeChange;
-	///²Ù×÷ÈÕÆÚ
-	TSgitFtdcDateType	ActionDate;
-	///²Ù×÷Ê±¼ä
-	TSgitFtdcTimeType	ActionTime;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///²Ù×÷±¾µØ±àºÅ
-	TSgitFtdcOrderLocalIDType	ActionLocalID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///±¨µ¥²Ù×÷×´Ì¬
-	TSgitFtdcOrderActionStatusType	OrderActionStatus;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///½»Ò×Ëù±¨µ¥²Ù×÷Ê§°Ü
-struct CSgitFtdcExchangeOrderActionErrorField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///²Ù×÷±¾µØ±àºÅ
-	TSgitFtdcOrderLocalIDType	ActionLocalID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///½»Ò×Ëù³É½»
-struct CSgitFtdcExchangeTradeField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///³É½»±àºÅ
-	TSgitFtdcTradeIDType	TradeID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///½»Ò×½ÇÉ«
-	TSgitFtdcTradingRoleType	TradingRole;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///¿ªÆ½±êÖ¾
-	TSgitFtdcOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	Price;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///³É½»Ê±ÆÚ
-	TSgitFtdcDateType	TradeDate;
-	///³É½»Ê±¼ä
-	TSgitFtdcTimeType	TradeTime;
-	///³É½»ÀàĞÍ
-	TSgitFtdcTradeTypeType	TradeType;
-	///³É½»¼ÛÀ´Ô´
-	TSgitFtdcPriceSourceType	PriceSource;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½áËã»áÔ±±àºÅ
-	TSgitFtdcParticipantIDType	ClearingPartID;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///³É½»À´Ô´
-	TSgitFtdcTradeSourceType	TradeSource;
-};
-
-///³É½»
-struct CSgitFtdcTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///³É½»±àºÅ
-	TSgitFtdcTradeIDType	TradeID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///½»Ò×½ÇÉ«
-	TSgitFtdcTradingRoleType	TradingRole;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///¿ªÆ½±êÖ¾
-	TSgitFtdcOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	Price;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///³É½»Ê±ÆÚ
-	TSgitFtdcDateType	TradeDate;
-	///³É½»Ê±¼ä
-	TSgitFtdcTimeType	TradeTime;
-	///³É½»ÀàĞÍ
-	TSgitFtdcTradeTypeType	TradeType;
-	///³É½»¼ÛÀ´Ô´
-	TSgitFtdcPriceSourceType	PriceSource;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½áËã»áÔ±±àºÅ
-	TSgitFtdcParticipantIDType	ClearingPartID;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TSgitFtdcSequenceNoType	BrokerOrderSeq;
-	///³É½»À´Ô´
-	TSgitFtdcTradeSourceType	TradeSource;
-};
-
-///ÓÃ»§»á»°
-struct CSgitFtdcUserSessionField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///µÇÂ¼ÈÕÆÚ
-	TSgitFtdcDateType	LoginDate;
-	///µÇÂ¼Ê±¼ä
-	TSgitFtdcTimeType	LoginTime;
-	///IPµØÖ·
-	TSgitFtdcIPAddressType	IPAddress;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///½Ó¿Ú¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	InterfaceProductInfo;
-	///Ğ­ÒéĞÅÏ¢
-	TSgitFtdcProtocolInfoType	ProtocolInfo;
-	///MacµØÖ·
-	TSgitFtdcMacAddressType	MacAddress;
-};
-
-///²éÑ¯×î´ó±¨µ¥ÊıÁ¿
-struct CSgitFtdcQueryMaxOrderVolumeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///¿ªÆ½±êÖ¾
-	TSgitFtdcOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///×î´óÔÊĞí±¨µ¥ÊıÁ¿
-	TSgitFtdcVolumeType	MaxVolume;
-};
-
-///Í¶×ÊÕß½áËã½á¹ûÈ·ÈÏĞÅÏ¢
-struct CSgitFtdcSettlementInfoConfirmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///È·ÈÏÈÕÆÚ
-	TSgitFtdcDateType	ConfirmDate;
-	///È·ÈÏÊ±¼ä
-	TSgitFtdcTimeType	ConfirmTime;
-};
-
-///³öÈë½ğÍ¬²½
-struct CSgitFtdcSyncDepositField
-{
-	///³öÈë½ğÁ÷Ë®ºÅ
-	TSgitFtdcDepositSeqNoType	DepositSeqNo;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Èë½ğ½ğ¶î
-	TSgitFtdcMoneyType	Deposit;
-	///ÊÇ·ñÇ¿ÖÆ½øĞĞ
-	TSgitFtdcBoolType	IsForce;
-};
-
-///¾­¼Í¹«Ë¾Í¬²½
-struct CSgitFtdcBrokerSyncField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄÍ¶×ÊÕß
-struct CSgitFtdcSyncingInvestorField
-{
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·Ö×é´úÂë
-	TSgitFtdcInvestorIDType	InvestorGroupID;
-	///Í¶×ÊÕßÃû³Æ
-	TSgitFtdcPartyNameType	InvestorName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdentifiedCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-	///ÁªÏµµç»°
-	TSgitFtdcTelephoneType	Telephone;
-	///Í¨Ñ¶µØÖ·
-	TSgitFtdcAddressType	Address;
-	///¿ª»§ÈÕÆÚ
-	TSgitFtdcDateType	OpenDate;
-	///ÊÖ»ú
-	TSgitFtdcMobileType	Mobile;
-	///ÊÖĞø·ÑÂÊÄ£°å´úÂë
-	TSgitFtdcInvestorIDType	CommModelID;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄ½»Ò×´úÂë
-struct CSgitFtdcSyncingTradingCodeField
-{
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-	///½»Ò×±àÂëÀàĞÍ
-	TSgitFtdcClientIDTypeType	ClientIDType;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄÍ¶×ÊÕß·Ö×é
-struct CSgitFtdcSyncingInvestorGroupField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·Ö×é´úÂë
-	TSgitFtdcInvestorIDType	InvestorGroupID;
-	///Í¶×ÊÕß·Ö×éÃû³Æ
-	TSgitFtdcInvestorGroupNameType	InvestorGroupName;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄ½»Ò×ÕËºÅ
-struct CSgitFtdcSyncingTradingAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÉÏ´ÎÖÊÑº½ğ¶î
-	TSgitFtdcMoneyType	PreMortgage;
-	///ÉÏ´ÎĞÅÓÃ¶î¶È
-	TSgitFtdcMoneyType	PreCredit;
-	///ÉÏ´Î´æ¿î¶î
-	TSgitFtdcMoneyType	PreDeposit;
-	///ÉÏ´Î½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	PreBalance;
-	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	PreMargin;
-	///ÀûÏ¢»ùÊı
-	TSgitFtdcMoneyType	InterestBase;
-	///ÀûÏ¢ÊÕÈë
-	TSgitFtdcMoneyType	Interest;
-	///Èë½ğ½ğ¶î
-	TSgitFtdcMoneyType	Deposit;
-	///³ö½ğ½ğ¶î
-	TSgitFtdcMoneyType	Withdraw;
-	///¶³½áµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TSgitFtdcMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TSgitFtdcMoneyType	FrozenCommission;
-	///µ±Ç°±£Ö¤½ğ×Ü¶î
-	TSgitFtdcMoneyType	CurrMargin;
-	///×Ê½ğ²î¶î
-	TSgitFtdcMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfit;
-	///ÆÚ»õ½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	Balance;
-	///¿ÉÓÃ×Ê½ğ
-	TSgitFtdcMoneyType	Available;
-	///¿ÉÈ¡×Ê½ğ
-	TSgitFtdcMoneyType	WithdrawQuota;
-	///»ù±¾×¼±¸½ğ
-	TSgitFtdcMoneyType	Reserve;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///ĞÅÓÃ¶î¶È
-	TSgitFtdcMoneyType	Credit;
-	///ÖÊÑº½ğ¶î
-	TSgitFtdcMoneyType	Mortgage;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeMargin;
-	///Í¶×ÊÕß½»¸î±£Ö¤½ğ
-	TSgitFtdcMoneyType	DeliveryMargin;
-	///½»Ò×Ëù½»¸î±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeDeliveryMargin;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄÍ¶×ÊÕß³Ö²Ö
-struct CSgitFtdcSyncingInvestorPositionField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///³Ö²Ö¶à¿Õ·½Ïò
-	TSgitFtdcPosiDirectionType	PosiDirection;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///³Ö²ÖÈÕÆÚ
-	TSgitFtdcPositionDateType	PositionDate;
-	///ÉÏÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	YdPosition;
-	///½ñÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	Position;
-	///¶àÍ·¶³½á
-	TSgitFtdcVolumeType	LongFrozen;
-	///¿ÕÍ·¶³½á
-	TSgitFtdcVolumeType	ShortFrozen;
-	///¿ª²Ö¶³½á½ğ¶î
-	TSgitFtdcMoneyType	LongFrozenAmount;
-	///¿ª²Ö¶³½á½ğ¶î
-	TSgitFtdcMoneyType	ShortFrozenAmount;
-	///¿ª²ÖÁ¿
-	TSgitFtdcVolumeType	OpenVolume;
-	///Æ½²ÖÁ¿
-	TSgitFtdcVolumeType	CloseVolume;
-	///¿ª²Ö½ğ¶î
-	TSgitFtdcMoneyType	OpenAmount;
-	///Æ½²Ö½ğ¶î
-	TSgitFtdcMoneyType	CloseAmount;
-	///³Ö²Ö³É±¾
-	TSgitFtdcMoneyType	PositionCost;
-	///ÉÏ´ÎÕ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	PreMargin;
-	///Õ¼ÓÃµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	UseMargin;
-	///¶³½áµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	FrozenMargin;
-	///¶³½áµÄ×Ê½ğ
-	TSgitFtdcMoneyType	FrozenCash;
-	///¶³½áµÄÊÖĞø·Ñ
-	TSgitFtdcMoneyType	FrozenCommission;
-	///×Ê½ğ²î¶î
-	TSgitFtdcMoneyType	CashIn;
-	///ÊÖĞø·Ñ
-	TSgitFtdcMoneyType	Commission;
-	///Æ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfit;
-	///³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfit;
-	///ÉÏ´Î½áËã¼Û
-	TSgitFtdcPriceType	PreSettlementPrice;
-	///±¾´Î½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///¿ª²Ö³É±¾
-	TSgitFtdcMoneyType	OpenCost;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchangeMargin;
-	///×éºÏ³É½»ĞÎ³ÉµÄ³Ö²Ö
-	TSgitFtdcVolumeType	CombPosition;
-	///×éºÏ¶àÍ·¶³½á
-	TSgitFtdcVolumeType	CombLongFrozen;
-	///×éºÏ¿ÕÍ·¶³½á
-	TSgitFtdcVolumeType	CombShortFrozen;
-	///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByDate;
-	///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByTrade;
-	///½ñÈÕ³Ö²Ö
-	TSgitFtdcVolumeType	TodayPosition;
-	///±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TSgitFtdcRatioType	MarginRateByVolume;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄºÏÔ¼±£Ö¤½ğÂÊ
-struct CSgitFtdcSyncingInstrumentMarginRateField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///¶àÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	LongMarginRatioByMoney;
-	///¶àÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	LongMarginRatioByVolume;
-	///¿ÕÍ·±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	ShortMarginRatioByMoney;
-	///¿ÕÍ·±£Ö¤½ğ·Ñ
-	TSgitFtdcMoneyType	ShortMarginRatioByVolume;
-	///ÊÇ·ñÏà¶Ô½»Ò×ËùÊÕÈ¡
-	TSgitFtdcBoolType	IsRelative;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄºÏÔ¼ÊÖĞø·ÑÂÊ
-struct CSgitFtdcSyncingInstrumentCommissionRateField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¿ª²ÖÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	OpenRatioByMoney;
-	///¿ª²ÖÊÖĞø·Ñ
-	TSgitFtdcRatioType	OpenRatioByVolume;
-	///Æ½²ÖÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	CloseRatioByMoney;
-	///Æ½²ÖÊÖĞø·Ñ
-	TSgitFtdcRatioType	CloseRatioByVolume;
-	///Æ½½ñÊÖĞø·ÑÂÊ
-	TSgitFtdcRatioType	CloseTodayRatioByMoney;
-	///Æ½½ñÊÖĞø·Ñ
-	TSgitFtdcRatioType	CloseTodayRatioByVolume;
-};
-
-///ÕıÔÚÍ¬²½ÖĞµÄºÏÔ¼½»Ò×È¨ÏŞ
-struct CSgitFtdcSyncingInstrumentTradingRightField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×È¨ÏŞ
-	TSgitFtdcTradingRightType	TradingRight;
-};
-
-///²éÑ¯±¨µ¥
-struct CSgitFtdcQryOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///¿ªÊ¼Ê±¼ä
-	TSgitFtdcTimeType	InsertTimeStart;
-	///½áÊøÊ±¼ä
-	TSgitFtdcTimeType	InsertTimeEnd;
-};
-
-///²éÑ¯³É½»
-struct CSgitFtdcQryTradeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///³É½»±àºÅ
-	TSgitFtdcTradeIDType	TradeID;
-	///¿ªÊ¼Ê±¼ä
-	TSgitFtdcTimeType	TradeTimeStart;
-	///½áÊøÊ±¼ä
-	TSgitFtdcTimeType	TradeTimeEnd;
-};
-
-///²éÑ¯Í¶×ÊÕß³Ö²Ö
-struct CSgitFtdcQryInvestorPositionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯×Ê½ğÕË»§
-struct CSgitFtdcQryTradingAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///²éÑ¯Í¶×ÊÕß
-struct CSgitFtdcQryInvestorField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///²éÑ¯½»Ò×±àÂë
-struct CSgitFtdcQryTradingCodeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///½»Ò×±àÂëÀàĞÍ
-	TSgitFtdcClientIDTypeType	ClientIDType;
-};
-
-///²éÑ¯½»Ò×±àÂë
-struct CSgitFtdcQryInvestorGroupField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///²éÑ¯½»Ò×±àÂë
-struct CSgitFtdcQryInstrumentMarginRateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-};
-
-///²éÑ¯½»Ò×±àÂë
-struct CSgitFtdcQryInstrumentCommissionRateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯½»Ò×±àÂë
-struct CSgitFtdcQryInstrumentTradingRightField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾
-struct CSgitFtdcQryBrokerField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///²éÑ¯½»Ò×Ô±
-struct CSgitFtdcQryTraderField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾»áÔ±´úÂë
-struct CSgitFtdcQryPartBrokerField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-};
-
-///²éÑ¯¹ÜÀíÓÃ»§¹¦ÄÜÈ¨ÏŞ
-struct CSgitFtdcQrySuperUserFunctionField
-{
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///²éÑ¯ÓÃ»§»á»°
-struct CSgitFtdcQryUserSessionField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///²éÑ¯Ç°ÖÃ×´Ì¬
-struct CSgitFtdcQryFrontStatusField
-{
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-};
-
-///²éÑ¯½»Ò×Ëù±¨µ¥
-struct CSgitFtdcQryExchangeOrderField
-{
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-};
-
-///²éÑ¯±¨µ¥²Ù×÷
-struct CSgitFtdcQryOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///²éÑ¯½»Ò×Ëù±¨µ¥²Ù×÷
-struct CSgitFtdcQryExchangeOrderActionField
-{
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-};
-
-///²éÑ¯¹ÜÀíÓÃ»§
-struct CSgitFtdcQrySuperUserField
-{
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///²éÑ¯½»Ò×Ëù
-struct CSgitFtdcQryExchangeField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///²éÑ¯²úÆ·
-struct CSgitFtdcQryProductField
-{
-	///²úÆ·´úÂë
-	TSgitFtdcInstrumentIDType	ProductID;
-};
-
-///²éÑ¯ºÏÔ¼
-struct CSgitFtdcQryInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///²úÆ·´úÂë
-	TSgitFtdcInstrumentIDType	ProductID;
-};
-
-///²éÑ¯ĞĞÇé
-struct CSgitFtdcQryDepthMarketDataField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§
-struct CSgitFtdcQryBrokerUserField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§È¨ÏŞ
-struct CSgitFtdcQryBrokerUserFunctionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-};
-
-///²éÑ¯½»Ò×Ô±±¨ÅÌ»ú
-struct CSgitFtdcQryTraderOfferField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-};
-
-///²éÑ¯³öÈë½ğÁ÷Ë®
-struct CSgitFtdcQrySyncDepositField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///³öÈë½ğÁ÷Ë®ºÅ
-	TSgitFtdcDepositSeqNoType	DepositSeqNo;
-};
-
-///²éÑ¯Í¶×ÊÕß½áËã½á¹û
-struct CSgitFtdcQrySettlementInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-};
-
-///²éÑ¯±¨µ¥
-struct CSgitFtdcQryHisOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///¿ªÊ¼Ê±¼ä
-	TSgitFtdcTimeType	InsertTimeStart;
-	///½áÊøÊ±¼ä
-	TSgitFtdcTimeType	InsertTimeEnd;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-};
-
-///ÊĞ³¡ĞĞÇé
-struct CSgitFtdcMarketDataField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///×îĞÂ¼Û
-	TSgitFtdcPriceType	LastPrice;
-	///ÉÏ´Î½áËã¼Û
-	TSgitFtdcPriceType	PreSettlementPrice;
-	///×òÊÕÅÌ
-	TSgitFtdcPriceType	PreClosePrice;
-	///×ò³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	PreOpenInterest;
-	///½ñ¿ªÅÌ
-	TSgitFtdcPriceType	OpenPrice;
-	///×î¸ß¼Û
-	TSgitFtdcPriceType	HighestPrice;
-	///×îµÍ¼Û
-	TSgitFtdcPriceType	LowestPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///³É½»½ğ¶î
-	TSgitFtdcMoneyType	Turnover;
-	///³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	OpenInterest;
-	///½ñÊÕÅÌ
-	TSgitFtdcPriceType	ClosePrice;
-	///±¾´Î½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///ÕÇÍ£°å¼Û
-	TSgitFtdcPriceType	UpperLimitPrice;
-	///µøÍ£°å¼Û
-	TSgitFtdcPriceType	LowerLimitPrice;
-	///×òĞéÊµ¶È
-	TSgitFtdcRatioType	PreDelta;
-	///½ñĞéÊµ¶È
-	TSgitFtdcRatioType	CurrDelta;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///×îºóĞŞ¸ÄºÁÃë
-	TSgitFtdcMillisecType	UpdateMillisec;
-};
-
-///ĞĞÇé»ù´¡ÊôĞÔ
-struct CSgitFtdcMarketDataBaseField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///ÉÏ´Î½áËã¼Û
-	TSgitFtdcPriceType	PreSettlementPrice;
-	///×òÊÕÅÌ
-	TSgitFtdcPriceType	PreClosePrice;
-	///×ò³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	PreOpenInterest;
-	///×òĞéÊµ¶È
-	TSgitFtdcRatioType	PreDelta;
-};
-
-///ĞĞÇé¾²Ì¬ÊôĞÔ
-struct CSgitFtdcMarketDataStaticField
-{
-	///½ñ¿ªÅÌ
-	TSgitFtdcPriceType	OpenPrice;
-	///×î¸ß¼Û
-	TSgitFtdcPriceType	HighestPrice;
-	///×îµÍ¼Û
-	TSgitFtdcPriceType	LowestPrice;
-	///½ñÊÕÅÌ
-	TSgitFtdcPriceType	ClosePrice;
-	///ÕÇÍ£°å¼Û
-	TSgitFtdcPriceType	UpperLimitPrice;
-	///µøÍ£°å¼Û
-	TSgitFtdcPriceType	LowerLimitPrice;
-	///±¾´Î½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///½ñĞéÊµ¶È
-	TSgitFtdcRatioType	CurrDelta;
-};
-
-///ĞĞÇé×îĞÂ³É½»ÊôĞÔ
-struct CSgitFtdcMarketDataLastMatchField
-{
-	///×îĞÂ¼Û
-	TSgitFtdcPriceType	LastPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///³É½»½ğ¶î
-	TSgitFtdcMoneyType	Turnover;
-	///³Ö²ÖÁ¿
-	TSgitFtdcLargeVolumeType	OpenInterest;
-};
-
-///ĞĞÇé×îÓÅ¼ÛÊôĞÔ
-struct CSgitFtdcMarketDataBestPriceField
-{
-	///ÉêÂò¼ÛÒ»
-	TSgitFtdcPriceType	BidPrice1;
-	///ÉêÂòÁ¿Ò»
-	TSgitFtdcVolumeType	BidVolume1;
-	///ÉêÂô¼ÛÒ»
-	TSgitFtdcPriceType	AskPrice1;
-	///ÉêÂôÁ¿Ò»
-	TSgitFtdcVolumeType	AskVolume1;
-};
-
-///ĞĞÇéÉêÂò¶ş¡¢ÈıÊôĞÔ
-struct CSgitFtdcMarketDataBid23Field
-{
-	///ÉêÂò¼Û¶ş
-	TSgitFtdcPriceType	BidPrice2;
-	///ÉêÂòÁ¿¶ş
-	TSgitFtdcVolumeType	BidVolume2;
-	///ÉêÂò¼ÛÈı
-	TSgitFtdcPriceType	BidPrice3;
-	///ÉêÂòÁ¿Èı
-	TSgitFtdcVolumeType	BidVolume3;
-};
-
-///ĞĞÇéÉêÂô¶ş¡¢ÈıÊôĞÔ
-struct CSgitFtdcMarketDataAsk23Field
-{
-	///ÉêÂô¼Û¶ş
-	TSgitFtdcPriceType	AskPrice2;
-	///ÉêÂôÁ¿¶ş
-	TSgitFtdcVolumeType	AskVolume2;
-	///ÉêÂô¼ÛÈı
-	TSgitFtdcPriceType	AskPrice3;
-	///ÉêÂôÁ¿Èı
-	TSgitFtdcVolumeType	AskVolume3;
-};
-
-///ĞĞÇéÉêÂòËÄ¡¢ÎåÊôĞÔ
-struct CSgitFtdcMarketDataBid45Field
-{
-	///ÉêÂò¼ÛËÄ
-	TSgitFtdcPriceType	BidPrice4;
-	///ÉêÂòÁ¿ËÄ
-	TSgitFtdcVolumeType	BidVolume4;
-	///ÉêÂò¼ÛÎå
-	TSgitFtdcPriceType	BidPrice5;
-	///ÉêÂòÁ¿Îå
-	TSgitFtdcVolumeType	BidVolume5;
-};
-
-///ĞĞÇéÉêÂôËÄ¡¢ÎåÊôĞÔ
-struct CSgitFtdcMarketDataAsk45Field
-{
-	///ÉêÂô¼ÛËÄ
-	TSgitFtdcPriceType	AskPrice4;
-	///ÉêÂôÁ¿ËÄ
-	TSgitFtdcVolumeType	AskVolume4;
-	///ÉêÂô¼ÛÎå
-	TSgitFtdcPriceType	AskPrice5;
-	///ÉêÂôÁ¿Îå
-	TSgitFtdcVolumeType	AskVolume5;
-};
-
-///ĞĞÇé¸üĞÂÊ±¼äÊôĞÔ
-struct CSgitFtdcMarketDataUpdateTimeField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///×îºóĞŞ¸ÄºÁÃë
-	TSgitFtdcMillisecType	UpdateMillisec;
-};
-
-///ĞĞÇé½»Ò×Ëù´úÂëÊôĞÔ
-struct CSgitFtdcMarketDataExchangeField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcPriceType	ExchangeID;
-};
-
-///Ö¸¶¨µÄºÏÔ¼
-struct CSgitFtdcSpecificInstrumentField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///ºÏÔ¼×´Ì¬
-struct CSgitFtdcInstrumentStatusField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///½áËã×é´úÂë
-	TSgitFtdcSettlementGroupIDType	SettlementGroupID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///ºÏÔ¼½»Ò××´Ì¬
-	TSgitFtdcInstrumentStatusType	InstrumentStatus;
-	///½»Ò×½×¶Î±àºÅ
-	TSgitFtdcTradingSegmentSNType	TradingSegmentSN;
-	///½øÈë±¾×´Ì¬Ê±¼ä
-	TSgitFtdcTimeType	EnterTime;
-	///½øÈë±¾×´Ì¬Ô­Òò
-	TSgitFtdcInstStatusEnterReasonType	EnterReason;
-};
-
-///²éÑ¯ºÏÔ¼×´Ì¬
-struct CSgitFtdcQryInstrumentStatusField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-};
-
-///Í¶×ÊÕßÕË»§
-struct CSgitFtdcInvestorAccountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-};
-
-///¸¡¶¯Ó¯¿÷Ëã·¨
-struct CSgitFtdcPositionProfitAlgorithmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///Ó¯¿÷Ëã·¨
-	TSgitFtdcAlgorithmType	Algorithm;
-	///±¸×¢
-	TSgitFtdcMemoType	Memo;
-};
-
-///»áÔ±×Ê½ğÕÛ¿Û
-struct CSgitFtdcDiscountField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///×Ê½ğÕÛ¿Û±ÈÀı
-	TSgitFtdcRatioType	Discount;
-};
-
-///²éÑ¯×ªÕÊÒøĞĞ
-struct CSgitFtdcQryTransferBankField
-{
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TSgitFtdcBankBrchIDType	BankBrchID;
-};
-
-///×ªÕÊÒøĞĞ
-struct CSgitFtdcTransferBankField
-{
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TSgitFtdcBankBrchIDType	BankBrchID;
-	///ÒøĞĞÃû³Æ
-	TSgitFtdcBankNameType	BankName;
-	///ÊÇ·ñ»îÔ¾
-	TSgitFtdcBoolType	IsActive;
-};
-
-///²éÑ¯Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
-struct CSgitFtdcQryInvestorPositionDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///Í¶×ÊÕß³Ö²ÖÃ÷Ï¸
-struct CSgitFtdcInvestorPositionDetailField
-{
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///ÂòÂô
-	TSgitFtdcDirectionType	Direction;
-	///¿ª²ÖÈÕÆÚ
-	TSgitFtdcDateType	OpenDate;
-	///³É½»±àºÅ
-	TSgitFtdcTradeIDType	TradeID;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-	///¿ª²Ö¼Û
-	TSgitFtdcPriceType	OpenPrice;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///³É½»ÀàĞÍ
-	TSgitFtdcTradeTypeType	TradeType;
-	///×éºÏºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	CombInstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByDate;
-	///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfitByTrade;
-	///ÖğÈÕ¶¢ÊĞ³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfitByDate;
-	///Öğ±Ê¶Ô³å³Ö²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	PositionProfitByTrade;
-	///Í¶×ÊÕß±£Ö¤½ğ
-	TSgitFtdcMoneyType	Margin;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchMargin;
-	///±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TSgitFtdcRatioType	MarginRateByVolume;
-	///×ò½áËã¼Û
-	TSgitFtdcPriceType	LastSettlementPrice;
-	///½áËã¼Û
-	TSgitFtdcPriceType	SettlementPrice;
-	///Æ½²ÖÁ¿
-	TSgitFtdcVolumeType	CloseVolume;
-	///Æ½²Ö½ğ¶î
-	TSgitFtdcMoneyType	CloseAmount;
-};
-
-///×Ê½ğÕË»§¿ÚÁîÓò
-struct CSgitFtdcTradingAccountPasswordField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-};
-
-///½»Ò×ËùĞĞÇé±¨ÅÌ»ú
-struct CSgitFtdcMDTraderOfferField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù½»Ò×Ô±Á¬½Ó×´Ì¬
-	TSgitFtdcTraderConnectStatusType	TraderConnectStatus;
-	///·¢³öÁ¬½ÓÇëÇóµÄÈÕÆÚ
-	TSgitFtdcDateType	ConnectRequestDate;
-	///·¢³öÁ¬½ÓÇëÇóµÄÊ±¼ä
-	TSgitFtdcTimeType	ConnectRequestTime;
-	///ÉÏ´Î±¨¸æÈÕÆÚ
-	TSgitFtdcDateType	LastReportDate;
-	///ÉÏ´Î±¨¸æÊ±¼ä
-	TSgitFtdcTimeType	LastReportTime;
-	///Íê³ÉÁ¬½ÓÈÕÆÚ
-	TSgitFtdcDateType	ConnectDate;
-	///Íê³ÉÁ¬½ÓÊ±¼ä
-	TSgitFtdcTimeType	ConnectTime;
-	///Æô¶¯ÈÕÆÚ
-	TSgitFtdcDateType	StartDate;
-	///Æô¶¯Ê±¼ä
-	TSgitFtdcTimeType	StartTime;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///±¾Ï¯Î»×î´ó³É½»±àºÅ
-	TSgitFtdcTradeIDType	MaxTradeID;
-	///±¾Ï¯Î»×î´ó±¨µ¥±¸¿½
-	TSgitFtdcReturnCodeType	MaxOrderMessageReference;
-};
-
-///²éÑ¯ĞĞÇé±¨ÅÌ»ú
-struct CSgitFtdcQryMDTraderOfferField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-};
-
-///²éÑ¯¿Í»§Í¨Öª
-struct CSgitFtdcQryNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///¿Í»§Í¨Öª
-struct CSgitFtdcNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÏûÏ¢ÕıÎÄ
-	TSgitFtdcContentType	Content;
-	///¾­¼Í¹«Ë¾Í¨ÖªÄÚÈİĞòÁĞºÅ
-	TSgitFtdcSequenceLabelType	SequenceLabel;
-};
-
-///ÓÃ»§È¨ÏŞ
-struct CSgitFtdcUserRightField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///¿Í»§È¨ÏŞÀàĞÍ
-	TSgitFtdcUserRightTypeType	UserRightType;
-	///ÊÇ·ñ½ûÖ¹
-	TSgitFtdcBoolType	IsForbidden;
-};
-
-///²éÑ¯½áËãĞÅÏ¢È·ÈÏÓò
-struct CSgitFtdcQrySettlementInfoConfirmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///×°ÔØ½áËãĞÅÏ¢
-struct CSgitFtdcLoadSettlementInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///¾­¼Í¹«Ë¾¿ÉÌá×Ê½ğËã·¨±í
-struct CSgitFtdcBrokerWithdrawAlgorithmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///¿ÉÌá×Ê½ğËã·¨
-	TSgitFtdcAlgorithmType	WithdrawAlgorithm;
-	///×Ê½ğÊ¹ÓÃÂÊ
-	TSgitFtdcRatioType	UsingRatio;
-	///¿ÉÌáÊÇ·ñ°üº¬Æ½²ÖÓ¯Àû
-	TSgitFtdcIncludeCloseProfitType	IncludeCloseProfit;
-	///±¾ÈÕÎŞ²ÖÇÒÎŞ³É½»¿Í»§ÊÇ·ñÊÜ¿ÉÌá±ÈÀıÏŞÖÆ
-	TSgitFtdcAllWithoutTradeType	AllWithoutTrade;
-	///¿ÉÓÃÊÇ·ñ°üº¬Æ½²ÖÓ¯Àû
-	TSgitFtdcIncludeCloseProfitType	AvailIncludeCloseProfit;
-	///ÊÇ·ñÆôÓÃÓÃ»§ÊÂ¼ş
-	TSgitFtdcBoolType	IsBrokerUserEvent;
-};
-
-///×Ê½ğÕË»§¿ÚÁî±ä¸üÓò
-struct CSgitFtdcTradingAccountPasswordUpdateV1Field
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Ô­À´µÄ¿ÚÁî
-	TSgitFtdcPasswordType	OldPassword;
-	///ĞÂµÄ¿ÚÁî
-	TSgitFtdcPasswordType	NewPassword;
-};
-
-///×Ê½ğÕË»§¿ÚÁî±ä¸üÓò
-struct CSgitFtdcTradingAccountPasswordUpdateField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///Ô­À´µÄ¿ÚÁî
-	TSgitFtdcPasswordType	OldPassword;
-	///ĞÂµÄ¿ÚÁî
-	TSgitFtdcPasswordType	NewPassword;
-};
-
-///²éÑ¯×éºÏºÏÔ¼·ÖÍÈ
-struct CSgitFtdcQryCombinationLegField
-{
-	///×éºÏºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	CombInstrumentID;
-	///µ¥ÍÈ±àºÅ
-	TSgitFtdcLegIDType	LegID;
-	///µ¥ÍÈºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	LegInstrumentID;
-};
-
-///²éÑ¯×éºÏºÏÔ¼·ÖÍÈ
-struct CSgitFtdcQrySyncStatusField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-};
-
-///×éºÏ½»Ò×ºÏÔ¼µÄµ¥ÍÈ
-struct CSgitFtdcCombinationLegField
-{
-	///×éºÏºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	CombInstrumentID;
-	///µ¥ÍÈ±àºÅ
-	TSgitFtdcLegIDType	LegID;
-	///µ¥ÍÈºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	LegInstrumentID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///µ¥ÍÈ³ËÊı
-	TSgitFtdcLegMultipleType	LegMultiple;
-	///ÅÉÉú²ãÊı
-	TSgitFtdcImplyLevelType	ImplyLevel;
-};
-
-///Êı¾İÍ¬²½×´Ì¬
-struct CSgitFtdcSyncStatusField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///Êı¾İÍ¬²½×´Ì¬
-	TSgitFtdcDataSyncStatusType	DataSyncStatus;
-};
-
-///²éÑ¯ÁªÏµÈË
-struct CSgitFtdcQryLinkManField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///ÁªÏµÈË
-struct CSgitFtdcLinkManField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ÁªÏµÈËÀàĞÍ
-	TSgitFtdcPersonTypeType	PersonType;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdentifiedCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///Ãû³Æ
-	TSgitFtdcPartyNameType	PersonName;
-	///ÁªÏµµç»°
-	TSgitFtdcTelephoneType	Telephone;
-	///Í¨Ñ¶µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊÕş±àÂë
-	TSgitFtdcZipCodeType	ZipCode;
-	///ÓÅÏÈ¼¶
-	TSgitFtdcPriorityType	Priority;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§ÊÂ¼ş
-struct CSgitFtdcQryBrokerUserEventField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§ÊÂ¼şÀàĞÍ
-	TSgitFtdcUserEventTypeType	UserEventType;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾ÓÃ»§ÊÂ¼ş
-struct CSgitFtdcBrokerUserEventField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ÓÃ»§ÊÂ¼şÀàĞÍ
-	TSgitFtdcUserEventTypeType	UserEventType;
-	///ÓÃ»§ÊÂ¼şĞòºÅ
-	TSgitFtdcSequenceNoType	EventSequenceNo;
-	///ÊÂ¼ş·¢ÉúÈÕÆÚ
-	TSgitFtdcDateType	EventDate;
-	///ÊÂ¼ş·¢ÉúÊ±¼ä
-	TSgitFtdcTimeType	EventTime;
-	///ÓÃ»§ÊÂ¼şĞÅÏ¢
-	TSgitFtdcUserEventInfoType	UserEventInfo;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///²éÑ¯Ç©Ô¼ÒøĞĞÇëÇó
-struct CSgitFtdcQryContractBankField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TSgitFtdcBankBrchIDType	BankBrchID;
-};
-
-///²éÑ¯Ç©Ô¼ÒøĞĞÏìÓ¦
-struct CSgitFtdcContractBankField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖĞĞÄ´úÂë
-	TSgitFtdcBankBrchIDType	BankBrchID;
-	///ÒøĞĞÃû³Æ
-	TSgitFtdcBankNameType	BankName;
-};
-
-///Í¶×ÊÕß×éºÏ³Ö²ÖÃ÷Ï¸
-struct CSgitFtdcInvestorPositionCombineDetailField
-{
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///¿ª²ÖÈÕÆÚ
-	TSgitFtdcDateType	OpenDate;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///×éºÏ±àºÅ
-	TSgitFtdcTradeIDType	ComTradeID;
-	///´éºÏ±àºÅ
-	TSgitFtdcTradeIDType	TradeID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///ÂòÂô
-	TSgitFtdcDirectionType	Direction;
-	///³Ö²ÖÁ¿
-	TSgitFtdcVolumeType	TotalAmt;
-	///Í¶×ÊÕß±£Ö¤½ğ
-	TSgitFtdcMoneyType	Margin;
-	///½»Ò×Ëù±£Ö¤½ğ
-	TSgitFtdcMoneyType	ExchMargin;
-	///±£Ö¤½ğÂÊ
-	TSgitFtdcRatioType	MarginRateByMoney;
-	///±£Ö¤½ğÂÊ(°´ÊÖÊı)
-	TSgitFtdcRatioType	MarginRateByVolume;
-	///µ¥ÍÈ±àºÅ
-	TSgitFtdcLegIDType	LegID;
-	///µ¥ÍÈ³ËÊı
-	TSgitFtdcLegMultipleType	LegMultiple;
-	///×éºÏ³Ö²ÖºÏÔ¼±àÂë
-	TSgitFtdcInstrumentIDType	CombInstrumentID;
-};
-
-///Ô¤Âñµ¥
-struct CSgitFtdcParkedOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TSgitFtdcBoolType	UserForceClose;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///Ô¤Âñ±¨µ¥±àºÅ
-	TSgitFtdcParkedOrderIDType	ParkedOrderID;
-	///ÓÃ»§ÀàĞÍ
-	TSgitFtdcUserTypeType	UserType;
-	///Ô¤Âñµ¥×´Ì¬
-	TSgitFtdcParkedOrderStatusType	Status;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÊäÈëÔ¤Âñµ¥²Ù×÷
-struct CSgitFtdcParkedOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///±¨µ¥²Ù×÷ÒıÓÃ
-	TSgitFtdcOrderActionRefType	OrderActionRef;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TSgitFtdcActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TSgitFtdcVolumeType	VolumeChange;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///Ô¤Âñ³·µ¥µ¥±àºÅ
-	TSgitFtdcParkedOrderActionIDType	ParkedOrderActionID;
-	///ÓÃ»§ÀàĞÍ
-	TSgitFtdcUserTypeType	UserType;
-	///Ô¤Âñ³·µ¥×´Ì¬
-	TSgitFtdcParkedOrderStatusType	Status;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯Ô¤Âñµ¥
-struct CSgitFtdcQryParkedOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///²éÑ¯Ô¤Âñ³·µ¥
-struct CSgitFtdcQryParkedOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///É¾³ıÔ¤Âñµ¥
-struct CSgitFtdcRemoveParkedOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Ô¤Âñ±¨µ¥±àºÅ
-	TSgitFtdcParkedOrderIDType	ParkedOrderID;
-};
-
-///É¾³ıÔ¤Âñ³·µ¥
-struct CSgitFtdcRemoveParkedOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Ô¤Âñ³·µ¥±àºÅ
-	TSgitFtdcParkedOrderActionIDType	ParkedOrderActionID;
-};
-
-///¾­¼Í¹«Ë¾¿ÉÌá×Ê½ğËã·¨±í
-struct CSgitFtdcInvestorWithdrawAlgorithmField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///¿ÉÌá×Ê½ğ±ÈÀı
-	TSgitFtdcRatioType	UsingRatio;
-};
-
-///²éÑ¯×éºÏ³Ö²ÖÃ÷Ï¸
-struct CSgitFtdcQryInvestorPositionCombineDetailField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///×éºÏ³Ö²ÖºÏÔ¼±àÂë
-	TSgitFtdcInstrumentIDType	CombInstrumentID;
-};
-
-///³É½»¾ù¼Û
-struct CSgitFtdcMarketDataAveragePriceField
-{
-	///µ±ÈÕ¾ù¼Û
-	TSgitFtdcPriceType	AveragePrice;
-};
-
-///Ğ£ÑéÍ¶×ÊÕßÃÜÂë
-struct CSgitFtdcVerifyInvestorPasswordField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ÃÜÂë
-	TSgitFtdcPasswordType	Password;
-};
-
-///ÓÃ»§IP
-struct CSgitFtdcUserIPField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///IPµØÖ·
-	TSgitFtdcIPAddressType	IPAddress;
-	///IPµØÖ·ÑÚÂë
-	TSgitFtdcIPAddressType	IPMask;
-	///MacµØÖ·
-	TSgitFtdcMacAddressType	MacAddress;
-};
-
-///ÓÃ»§ÊÂ¼şÍ¨ÖªĞÅÏ¢
-struct CSgitFtdcTradingNoticeInfoField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///·¢ËÍÊ±¼ä
-	TSgitFtdcTimeType	SendTime;
-	///ÏûÏ¢ÕıÎÄ
-	TSgitFtdcContentType	FieldContent;
-	///ĞòÁĞÏµÁĞºÅ
-	TSgitFtdcSequenceSeriesType	SequenceSeries;
-	///ĞòÁĞºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-};
-
-///ÓÃ»§ÊÂ¼şÍ¨Öª
-struct CSgitFtdcTradingNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß·¶Î§
-	TSgitFtdcInvestorRangeType	InvestorRange;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ĞòÁĞÏµÁĞºÅ
-	TSgitFtdcSequenceSeriesType	SequenceSeries;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///·¢ËÍÊ±¼ä
-	TSgitFtdcTimeType	SendTime;
-	///ĞòÁĞºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///ÏûÏ¢ÕıÎÄ
-	TSgitFtdcContentType	FieldContent;
-};
-
-///²éÑ¯½»Ò×ÊÂ¼şÍ¨Öª
-struct CSgitFtdcQryTradingNoticeField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///²éÑ¯´íÎó±¨µ¥
-struct CSgitFtdcQryErrOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///´íÎó±¨µ¥
-struct CSgitFtdcErrOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TSgitFtdcBoolType	UserForceClose;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯´íÎó±¨µ¥²Ù×÷
-struct CSgitFtdcErrorConditionalOrderField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///±¨µ¥¼Û¸ñÌõ¼ş
-	TSgitFtdcOrderPriceTypeType	OrderPriceType;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///×éºÏ¿ªÆ½±êÖ¾
-	TSgitFtdcCombOffsetFlagType	CombOffsetFlag;
-	///×éºÏÍ¶»úÌ×±£±êÖ¾
-	TSgitFtdcCombHedgeFlagType	CombHedgeFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotalOriginal;
-	///ÓĞĞ§ÆÚÀàĞÍ
-	TSgitFtdcTimeConditionType	TimeCondition;
-	///GTDÈÕÆÚ
-	TSgitFtdcDateType	GTDDate;
-	///³É½»Á¿ÀàĞÍ
-	TSgitFtdcVolumeConditionType	VolumeCondition;
-	///×îĞ¡³É½»Á¿
-	TSgitFtdcVolumeType	MinVolume;
-	///´¥·¢Ìõ¼ş
-	TSgitFtdcContingentConditionType	ContingentCondition;
-	///Ö¹Ëğ¼Û
-	TSgitFtdcPriceType	StopPrice;
-	///Ç¿Æ½Ô­Òò
-	TSgitFtdcForceCloseReasonType	ForceCloseReason;
-	///×Ô¶¯¹ÒÆğ±êÖ¾
-	TSgitFtdcBoolType	IsAutoSuspend;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂë
-	TSgitFtdcExchangeInstIDType	ExchangeInstID;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¨µ¥Ìá½»×´Ì¬
-	TSgitFtdcOrderSubmitStatusType	OrderSubmitStatus;
-	///±¨µ¥ÌáÊ¾ĞòºÅ
-	TSgitFtdcSequenceNoType	NotifySequence;
-	///½»Ò×ÈÕ
-	TSgitFtdcDateType	TradingDay;
-	///½áËã±àºÅ
-	TSgitFtdcSettlementIDType	SettlementID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///±¨µ¥À´Ô´
-	TSgitFtdcOrderSourceType	OrderSource;
-	///±¨µ¥×´Ì¬
-	TSgitFtdcOrderStatusType	OrderStatus;
-	///±¨µ¥ÀàĞÍ
-	TSgitFtdcOrderTypeType	OrderType;
-	///½ñ³É½»ÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTraded;
-	///Ê£ÓàÊıÁ¿
-	TSgitFtdcVolumeType	VolumeTotal;
-	///±¨µ¥ÈÕÆÚ
-	TSgitFtdcDateType	InsertDate;
-	///Î¯ÍĞÊ±¼ä
-	TSgitFtdcTimeType	InsertTime;
-	///¼¤»îÊ±¼ä
-	TSgitFtdcTimeType	ActiveTime;
-	///¹ÒÆğÊ±¼ä
-	TSgitFtdcTimeType	SuspendTime;
-	///×îºóĞŞ¸ÄÊ±¼ä
-	TSgitFtdcTimeType	UpdateTime;
-	///³·ÏúÊ±¼ä
-	TSgitFtdcTimeType	CancelTime;
-	///×îºóĞŞ¸Ä½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	ActiveTraderID;
-	///½áËã»áÔ±±àºÅ
-	TSgitFtdcParticipantIDType	ClearingPartID;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///ÓÃ»§¶Ë²úÆ·ĞÅÏ¢
-	TSgitFtdcProductInfoType	UserProductInfo;
-	///×´Ì¬ĞÅÏ¢
-	TSgitFtdcErrorMsgType	StatusMsg;
-	///ÓÃ»§Ç¿ÆÀ±êÖ¾
-	TSgitFtdcBoolType	UserForceClose;
-	///²Ù×÷ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	ActiveUserID;
-	///¾­¼Í¹«Ë¾±¨µ¥±àºÅ
-	TSgitFtdcSequenceNoType	BrokerOrderSeq;
-	///Ïà¹Ø±¨µ¥
-	TSgitFtdcOrderSysIDType	RelativeOrderSysID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯´íÎó±¨µ¥²Ù×÷
-struct CSgitFtdcQryErrOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///´íÎó±¨µ¥²Ù×÷
-struct CSgitFtdcErrOrderActionField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///±¨µ¥²Ù×÷ÒıÓÃ
-	TSgitFtdcOrderActionRefType	OrderActionRef;
-	///±¨µ¥ÒıÓÃ
-	TSgitFtdcOrderRefType	OrderRef;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///Ç°ÖÃ±àºÅ
-	TSgitFtdcFrontIDType	FrontID;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///±¨µ¥±àºÅ
-	TSgitFtdcOrderSysIDType	OrderSysID;
-	///²Ù×÷±êÖ¾
-	TSgitFtdcActionFlagType	ActionFlag;
-	///¼Û¸ñ
-	TSgitFtdcPriceType	LimitPrice;
-	///ÊıÁ¿±ä»¯
-	TSgitFtdcVolumeType	VolumeChange;
-	///²Ù×÷ÈÕÆÚ
-	TSgitFtdcDateType	ActionDate;
-	///²Ù×÷Ê±¼ä
-	TSgitFtdcTimeType	ActionTime;
-	///½»Ò×Ëù½»Ò×Ô±´úÂë
-	TSgitFtdcTraderIDType	TraderID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///±¾µØ±¨µ¥±àºÅ
-	TSgitFtdcOrderLocalIDType	OrderLocalID;
-	///²Ù×÷±¾µØ±àºÅ
-	TSgitFtdcOrderLocalIDType	ActionLocalID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///¿Í»§´úÂë
-	TSgitFtdcClientIDType	ClientID;
-	///ÒµÎñµ¥Ôª
-	TSgitFtdcBusinessUnitType	BusinessUnit;
-	///±¨µ¥²Ù×÷×´Ì¬
-	TSgitFtdcOrderActionStatusType	OrderActionStatus;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///×´Ì¬ĞÅÏ¢
-	TSgitFtdcErrorMsgType	StatusMsg;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯½»Ò×Ëù×´Ì¬
-struct CSgitFtdcQryExchangeSequenceField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///½»Ò×Ëù×´Ì¬
-struct CSgitFtdcExchangeSequenceField
-{
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ĞòºÅ
-	TSgitFtdcSequenceNoType	SequenceNo;
-	///ºÏÔ¼½»Ò××´Ì¬
-	TSgitFtdcInstrumentStatusType	MarketStatus;
-};
-
-///¸ù¾İ¼Û¸ñ²éÑ¯×î´ó±¨µ¥ÊıÁ¿
-struct CSgitFtdcQueryMaxOrderVolumeWithPriceField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///¿ªÆ½±êÖ¾
-	TSgitFtdcOffsetFlagType	OffsetFlag;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///×î´óÔÊĞí±¨µ¥ÊıÁ¿
-	TSgitFtdcVolumeType	MaxVolume;
-	///±¨µ¥¼Û¸ñ
-	TSgitFtdcPriceType	Price;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾½»Ò×²ÎÊı
-struct CSgitFtdcQryBrokerTradingParamsField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///¾­¼Í¹«Ë¾½»Ò×²ÎÊı
-struct CSgitFtdcBrokerTradingParamsField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///±£Ö¤½ğ¼Û¸ñÀàĞÍ
-	TSgitFtdcMarginPriceTypeType	MarginPriceType;
-	///Ó¯¿÷Ëã·¨
-	TSgitFtdcAlgorithmType	Algorithm;
-	///¿ÉÓÃÊÇ·ñ°üº¬Æ½²ÖÓ¯Àû
-	TSgitFtdcIncludeCloseProfitType	AvailIncludeCloseProfit;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾½»Ò×Ëã·¨
-struct CSgitFtdcQryBrokerTradingAlgosField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///¾­¼Í¹«Ë¾½»Ò×Ëã·¨
-struct CSgitFtdcBrokerTradingAlgosField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///³Ö²Ö´¦ÀíËã·¨±àºÅ
-	TSgitFtdcHandlePositionAlgoIDType	HandlePositionAlgoID;
-	///Ñ°ÕÒ±£Ö¤½ğÂÊËã·¨±àºÅ
-	TSgitFtdcFindMarginRateAlgoIDType	FindMarginRateAlgoID;
-	///×Ê½ğ´¦ÀíËã·¨±àºÅ
-	TSgitFtdcHandleTradingAccountAlgoIDType	HandleTradingAccountAlgoID;
-};
-
-///²éÑ¯¾­¼Í¹«Ë¾×Ê½ğ
-struct CSgitFtdcQueryBrokerDepositField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-};
-
-///¾­¼Í¹«Ë¾×Ê½ğ
-struct CSgitFtdcBrokerDepositField
-{
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///»áÔ±´úÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ÉÏ´Î½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	PreBalance;
-	///µ±Ç°±£Ö¤½ğ×Ü¶î
-	TSgitFtdcMoneyType	CurrMargin;
-	///Æ½²ÖÓ¯¿÷
-	TSgitFtdcMoneyType	CloseProfit;
-	///ÆÚ»õ½áËã×¼±¸½ğ
-	TSgitFtdcMoneyType	Balance;
-	///Èë½ğ½ğ¶î
-	TSgitFtdcMoneyType	Deposit;
-	///³ö½ğ½ğ¶î
-	TSgitFtdcMoneyType	Withdraw;
-	///¿ÉÌá×Ê½ğ
-	TSgitFtdcMoneyType	Available;
-	///»ù±¾×¼±¸½ğ
-	TSgitFtdcMoneyType	Reserve;
-	///¶³½áµÄ±£Ö¤½ğ
-	TSgitFtdcMoneyType	FrozenMargin;
-};
-
-///²éÑ¯±£Ö¤½ğ¼à¹ÜÏµÍ³¾­¼Í¹«Ë¾ÃÜÔ¿
-struct CSgitFtdcQryCFMMCBrokerKeyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-};
-
-///±£Ö¤½ğ¼à¹ÜÏµÍ³¾­¼Í¹«Ë¾ÃÜÔ¿
-struct CSgitFtdcCFMMCBrokerKeyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///¾­¼Í¹«Ë¾Í³Ò»±àÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///ÃÜÔ¿Éú³ÉÈÕÆÚ
-	TSgitFtdcDateType	CreateDate;
-	///ÃÜÔ¿Éú³ÉÊ±¼ä
-	TSgitFtdcTimeType	CreateTime;
-	///ÃÜÔ¿±àºÅ
-	TSgitFtdcSequenceNoType	KeyID;
-	///¶¯Ì¬ÃÜÔ¿
-	TSgitFtdcCFMMCKeyType	CurrentKey;
-	///¶¯Ì¬ÃÜÔ¿ÀàĞÍ
-	TSgitFtdcCFMMCKeyKindType	KeyKind;
-};
-
-///±£Ö¤½ğ¼à¹ÜÏµÍ³¾­¼Í¹«Ë¾×Ê½ğÕË»§ÃÜÔ¿
-struct CSgitFtdcCFMMCTradingAccountKeyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///¾­¼Í¹«Ë¾Í³Ò»±àÂë
-	TSgitFtdcParticipantIDType	ParticipantID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÃÜÔ¿±àºÅ
-	TSgitFtdcSequenceNoType	KeyID;
-	///¶¯Ì¬ÃÜÔ¿
-	TSgitFtdcCFMMCKeyType	CurrentKey;
-};
-
-///ÇëÇó²éÑ¯±£Ö¤½ğ¼à¹ÜÏµÍ³¾­¼Í¹«Ë¾×Ê½ğÕË»§ÃÜÔ¿
-struct CSgitFtdcQryCFMMCTradingAccountKeyField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-};
-
-///ÓÃ»§¶¯Ì¬ÁîÅÆ²ÎÊı
-struct CSgitFtdcBrokerUserOTPParamField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///¶¯Ì¬ÁîÅÆÌá¹©ÉÌ
-	TSgitFtdcOTPVendorsIDType	OTPVendorsID;
-	///¶¯Ì¬ÁîÅÆĞòÁĞºÅ
-	TSgitFtdcSerialNumberType	SerialNumber;
-	///ÁîÅÆÃÜÔ¿
-	TSgitFtdcAuthKeyType	AuthKey;
-	///Æ¯ÒÆÖµ
-	TSgitFtdcLastDriftType	LastDrift;
-	///³É¹¦Öµ
-	TSgitFtdcLastSuccessType	LastSuccess;
-	///¶¯Ì¬ÁîÅÆÀàĞÍ
-	TSgitFtdcOTPTypeType	OTPType;
-};
-
-///ÊÖ¹¤Í¬²½ÓÃ»§¶¯Ì¬ÁîÅÆ
-struct CSgitFtdcManualSyncBrokerUserOTPField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///¶¯Ì¬ÁîÅÆÀàĞÍ
-	TSgitFtdcOTPTypeType	OTPType;
-	///µÚÒ»¸ö¶¯Ì¬ÃÜÂë
-	TSgitFtdcPasswordType	FirstOTP;
-	///µÚ¶ş¸ö¶¯Ì¬ÃÜÂë
-	TSgitFtdcPasswordType	SecondOTP;
-};
-
-///Í¶×ÊÕßÊÖĞø·ÑÂÊÄ£°å
-struct CSgitFtdcCommRateModelField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÊÖĞø·ÑÂÊÄ£°å´úÂë
-	TSgitFtdcInvestorIDType	CommModelID;
-	///Ä£°åÃû³Æ
-	TSgitFtdcCommModelNameType	CommModelName;
-};
-
-///ÇëÇó²éÑ¯Í¶×ÊÕßÊÖĞø·ÑÂÊÄ£°å
-struct CSgitFtdcQryCommRateModelField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÊÖĞø·ÑÂÊÄ£°å´úÂë
-	TSgitFtdcInvestorIDType	CommModelID;
-};
-
-///²Öµ¥ÕÛµÖĞÅÏ¢
-struct CSgitFtdcEWarrantOffsetField
-{
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradingDay;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-	///ÂòÂô·½Ïò
-	TSgitFtdcDirectionType	Direction;
-	///Í¶»úÌ×±£±êÖ¾
-	TSgitFtdcHedgeFlagType	HedgeFlag;
-	///ÊıÁ¿
-	TSgitFtdcVolumeType	Volume;
-};
-
-///²éÑ¯²Öµ¥ÕÛµÖĞÅÏ¢
-struct CSgitFtdcQryEWarrantOffsetField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///½»Ò×Ëù´úÂë
-	TSgitFtdcExchangeIDType	ExchangeID;
-	///ºÏÔ¼´úÂë
-	TSgitFtdcInstrumentIDType	InstrumentID;
-};
-
-///×ªÕÊ¿ª»§ÇëÇó
-struct CSgitFtdcReqOpenAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///»ã³®±êÖ¾
-	TSgitFtdcCashExchangeCodeType	CashExchangeCode;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///×ªÕÊÏú»§ÇëÇó
-struct CSgitFtdcReqCancelAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///»ã³®±êÖ¾
-	TSgitFtdcCashExchangeCodeType	CashExchangeCode;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///±ä¸üÒøĞĞÕË»§ÇëÇó
-struct CSgitFtdcReqChangeAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///ĞÂÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	NewBankAccount;
-	///ĞÂÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	NewBankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-};
-
-///×ªÕËÇëÇó
-struct CSgitFtdcReqTransferField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÆÚ»õ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TSgitFtdcFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TSgitFtdcCustFeeType	CustFee;
-	///Ó¦ÊÕÆÚ»õ¹«Ë¾·ÑÓÃ
-	TSgitFtdcFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TSgitFtdcTransferStatusType	TransferStatus;
-};
-
-///ÒøĞĞ·¢ÆğÒøĞĞ×Ê½ğ×ªÆÚ»õÏìÓ¦
-struct CSgitFtdcRspTransferField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÆÚ»õ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TSgitFtdcFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TSgitFtdcCustFeeType	CustFee;
-	///Ó¦ÊÕÆÚ»õ¹«Ë¾·ÑÓÃ
-	TSgitFtdcFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TSgitFtdcTransferStatusType	TransferStatus;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///³åÕıÇëÇó
-struct CSgitFtdcReqRepealField
-{
-	///³åÕıÊ±¼ä¼ä¸ô
-	TSgitFtdcRepealTimeIntervalType	RepealTimeInterval;
-	///ÒÑ¾­³åÕı´ÎÊı
-	TSgitFtdcRepealedTimesType	RepealedTimes;
-	///ÒøĞĞ³åÕı±êÖ¾
-	TSgitFtdcBankRepealFlagType	BankRepealFlag;
-	///ÆÚÉÌ³åÕı±êÖ¾
-	TSgitFtdcBrokerRepealFlagType	BrokerRepealFlag;
-	///±»³åÕıÆ½Ì¨Á÷Ë®ºÅ
-	TSgitFtdcPlateSerialType	PlateRepealSerial;
-	///±»³åÕıÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankRepealSerial;
-	///±»³åÕıÆÚ»õÁ÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureRepealSerial;
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÆÚ»õ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TSgitFtdcFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TSgitFtdcCustFeeType	CustFee;
-	///Ó¦ÊÕÆÚ»õ¹«Ë¾·ÑÓÃ
-	TSgitFtdcFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TSgitFtdcTransferStatusType	TransferStatus;
-};
-
-///³åÕıÏìÓ¦
-struct CSgitFtdcRspRepealField
-{
-	///³åÕıÊ±¼ä¼ä¸ô
-	TSgitFtdcRepealTimeIntervalType	RepealTimeInterval;
-	///ÒÑ¾­³åÕı´ÎÊı
-	TSgitFtdcRepealedTimesType	RepealedTimes;
-	///ÒøĞĞ³åÕı±êÖ¾
-	TSgitFtdcBankRepealFlagType	BankRepealFlag;
-	///ÆÚÉÌ³åÕı±êÖ¾
-	TSgitFtdcBrokerRepealFlagType	BrokerRepealFlag;
-	///±»³åÕıÆ½Ì¨Á÷Ë®ºÅ
-	TSgitFtdcPlateSerialType	PlateRepealSerial;
-	///±»³åÕıÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankRepealSerial;
-	///±»³åÕıÆÚ»õÁ÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureRepealSerial;
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÆÚ»õ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	FutureFetchAmount;
-	///·ÑÓÃÖ§¸¶±êÖ¾
-	TSgitFtdcFeePayFlagType	FeePayFlag;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TSgitFtdcCustFeeType	CustFee;
-	///Ó¦ÊÕÆÚ»õ¹«Ë¾·ÑÓÃ
-	TSgitFtdcFutureFeeType	BrokerFee;
-	///·¢ËÍ·½¸ø½ÓÊÕ·½µÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///×ªÕË½»Ò××´Ì¬
-	TSgitFtdcTransferStatusType	TransferStatus;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢ÇëÇó
-struct CSgitFtdcReqQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢ÏìÓ¦
-struct CSgitFtdcRspQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///ÒøĞĞ¿ÉÓÃ½ğ¶î
-	TSgitFtdcTradeAmountType	BankUseAmount;
-	///ÒøĞĞ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	BankFetchAmount;
-};
-
-///ÆÚÉÌÇ©µ½Ç©ÍË
-struct CSgitFtdcFutureSignIOField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///ÆÚÉÌÇ©µ½ÏìÓ¦
-struct CSgitFtdcRspFutureSignInField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-	///PINÃÜÔ¿
-	TSgitFtdcPasswordKeyType	PinKey;
-	///MACÃÜÔ¿
-	TSgitFtdcPasswordKeyType	MacKey;
-};
-
-///ÆÚÉÌÇ©ÍËÇëÇó
-struct CSgitFtdcReqFutureSignOutField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///ÆÚÉÌÇ©ÍËÏìÓ¦
-struct CSgitFtdcRspFutureSignOutField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯Ö¸¶¨Á÷Ë®ºÅµÄ½»Ò×½á¹ûÇëÇó
-struct CSgitFtdcReqQueryTradeResultBySerialField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///Á÷Ë®ºÅ
-	TSgitFtdcSerialType	Reference;
-	///±¾Á÷Ë®ºÅ·¢²¼ÕßµÄ»ú¹¹ÀàĞÍ
-	TSgitFtdcInstitutionTypeType	RefrenceIssureType;
-	///±¾Á÷Ë®ºÅ·¢²¼Õß»ú¹¹±àÂë
-	TSgitFtdcOrganCodeType	RefrenceIssure;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-};
-
-///²éÑ¯Ö¸¶¨Á÷Ë®ºÅµÄ½»Ò×½á¹ûÏìÓ¦
-struct CSgitFtdcRspQueryTradeResultBySerialField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-	///Á÷Ë®ºÅ
-	TSgitFtdcSerialType	Reference;
-	///±¾Á÷Ë®ºÅ·¢²¼ÕßµÄ»ú¹¹ÀàĞÍ
-	TSgitFtdcInstitutionTypeType	RefrenceIssureType;
-	///±¾Á÷Ë®ºÅ·¢²¼Õß»ú¹¹±àÂë
-	TSgitFtdcOrganCodeType	RefrenceIssure;
-	///Ô­Ê¼·µ»Ø´úÂë
-	TSgitFtdcReturnCodeType	OriginReturnCode;
-	///Ô­Ê¼·µ»ØÂëÃèÊö
-	TSgitFtdcDescrInfoForReturnCodeType	OriginDescrInfoForReturnCode;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///×ªÕÊ½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-};
-
-///ÈÕÖÕÎÄ¼ş¾ÍĞ÷ÇëÇó
-struct CSgitFtdcReqDayEndFileReadyField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///ÎÄ¼şÒµÎñ¹¦ÄÜ
-	TSgitFtdcFileBusinessCodeType	FileBusinessCode;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-};
-
-///·µ»Ø½á¹û
-struct CSgitFtdcReturnResultField
-{
-	///·µ»Ø´úÂë
-	TSgitFtdcReturnCodeType	ReturnCode;
-	///·µ»ØÂëÃèÊö
-	TSgitFtdcDescrInfoForReturnCodeType	DescrInfoForReturnCode;
-};
-
-///ÑéÖ¤ÆÚ»õ×Ê½ğÃÜÂë
-struct CSgitFtdcVerifyFuturePasswordField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///ÑéÖ¤¿Í»§ĞÅÏ¢
-struct CSgitFtdcVerifyCustInfoField
-{
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-};
-
-///ÑéÖ¤ÆÚ»õ×Ê½ğÃÜÂëºÍ¿Í»§ĞÅÏ¢
-struct CSgitFtdcVerifyFuturePasswordAndCustInfoField
-{
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-};
-
-///ÑéÖ¤ÆÚ»õ×Ê½ğÃÜÂëºÍ¿Í»§ĞÅÏ¢
-struct CSgitFtdcDepositResultInformField
-{
-	///³öÈë½ğÁ÷Ë®ºÅ£¬¸ÃÁ÷Ë®ºÅÎªÒøÆÚ±¨ÅÌ·µ»ØµÄÁ÷Ë®ºÅ
-	TSgitFtdcDepositSeqNoType	DepositSeqNo;
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///Èë½ğ½ğ¶î
-	TSgitFtdcMoneyType	Deposit;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///·µ»Ø´úÂë
-	TSgitFtdcReturnCodeType	ReturnCode;
-	///·µ»ØÂëÃèÊö
-	TSgitFtdcDescrInfoForReturnCodeType	DescrInfoForReturnCode;
-};
-
-///½»Ò×ºËĞÄÏòÒøÆÚ±¨ÅÌ·¢³öÃÜÔ¿Í¬²½ÇëÇó
-struct CSgitFtdcReqSyncKeyField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×ºËĞÄ¸øÒøÆÚ±¨ÅÌµÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-};
-
-///½»Ò×ºËĞÄÏòÒøÆÚ±¨ÅÌ·¢³öÃÜÔ¿Í¬²½ÏìÓ¦
-struct CSgitFtdcRspSyncKeyField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×ºËĞÄ¸øÒøÆÚ±¨ÅÌµÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///²éÑ¯ÕË»§ĞÅÏ¢Í¨Öª
-struct CSgitFtdcNotifyQueryAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///ÒøĞĞ¿ÉÓÃ½ğ¶î
-	TSgitFtdcTradeAmountType	BankUseAmount;
-	///ÒøĞĞ¿ÉÈ¡½ğ¶î
-	TSgitFtdcTradeAmountType	BankFetchAmount;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÒøÆÚ×ªÕË½»Ò×Á÷Ë®±í
-struct CSgitFtdcTransferSerialField
-{
-	///Æ½Ì¨Á÷Ë®ºÅ
-	TSgitFtdcPlateSerialType	PlateSerial;
-	///½»Ò×·¢Æğ·½ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcDateType	TradingDay;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///½»Ò×´úÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///»á»°±àºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///ÒøĞĞ±àÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹±àÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///ÆÚ»õ¹«Ë¾±àÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///ÆÚ»õ¹«Ë¾ÕÊºÅÀàĞÍ
-	TSgitFtdcFutureAccTypeType	FutureAccType;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///Í¶×ÊÕß´úÂë
-	TSgitFtdcInvestorIDType	InvestorID;
-	///ÆÚ»õ¹«Ë¾Á÷Ë®ºÅ
-	TSgitFtdcFutureSerialType	FutureSerial;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///½»Ò×½ğ¶î
-	TSgitFtdcTradeAmountType	TradeAmount;
-	///Ó¦ÊÕ¿Í»§·ÑÓÃ
-	TSgitFtdcCustFeeType	CustFee;
-	///Ó¦ÊÕÆÚ»õ¹«Ë¾·ÑÓÃ
-	TSgitFtdcFutureFeeType	BrokerFee;
-	///ÓĞĞ§±êÖ¾
-	TSgitFtdcAvailabilityFlagType	AvailabilityFlag;
-	///²Ù×÷Ô±
-	TSgitFtdcOperatorCodeType	OperatorCode;
-	///ĞÂÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankNewAccount;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÇëÇó²éÑ¯×ªÕÊÁ÷Ë®
-struct CSgitFtdcQryTransferSerialField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÒøĞĞ±àÂë
-	TSgitFtdcBankIDType	BankID;
-};
-
-///ÆÚÉÌÇ©µ½Í¨Öª
-struct CSgitFtdcNotifyFutureSignInField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-	///PINÃÜÔ¿
-	TSgitFtdcPasswordKeyType	PinKey;
-	///MACÃÜÔ¿
-	TSgitFtdcPasswordKeyType	MacKey;
-};
-
-///ÆÚÉÌÇ©ÍËÍ¨Öª
-struct CSgitFtdcNotifyFutureSignOutField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///½»Ò×ºËĞÄÏòÒøÆÚ±¨ÅÌ·¢³öÃÜÔ¿Í¬²½´¦Àí½á¹ûµÄÍ¨Öª
-struct CSgitFtdcNotifySyncKeyField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÓÃ»§±êÊ¶
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×ºËĞÄ¸øÒøÆÚ±¨ÅÌµÄÏûÏ¢
-	TSgitFtdcAddInfoType	Message;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///ÇëÇó±àºÅ
-	TSgitFtdcRequestIDType	RequestID;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÇëÇó²éÑ¯ÒøÆÚÇ©Ô¼¹ØÏµ
-struct CSgitFtdcQryAccountregisterField
-{
-	///¾­¼Í¹«Ë¾´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÒøĞĞ±àÂë
-	TSgitFtdcBankIDType	BankID;
-};
-
-///¿Í»§¿ªÏú»§ĞÅÏ¢±í
-struct CSgitFtdcAccountregisterField
-{
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDay;
-	///ÒøĞĞ±àÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹±àÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÆÚ»õ¹«Ë¾±àÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚ»õ¹«Ë¾·ÖÖ§»ú¹¹±àÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///¿ªÏú»§Àà±ğ
-	TSgitFtdcOpenOrDestroyType	OpenOrDestroy;
-	///Ç©Ô¼ÈÕÆÚ
-	TSgitFtdcTradeDateType	RegDate;
-	///½âÔ¼ÈÕÆÚ
-	TSgitFtdcTradeDateType	OutDate;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-};
-
-///ÒøÆÚ¿ª»§ĞÅÏ¢
-struct CSgitFtdcOpenAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///»ã³®±êÖ¾
-	TSgitFtdcCashExchangeCodeType	CashExchangeCode;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÒøÆÚÏú»§ĞÅÏ¢
-struct CSgitFtdcCancelAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///»ã³®±êÖ¾
-	TSgitFtdcCashExchangeCodeType	CashExchangeCode;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///ÇşµÀ±êÖ¾
-	TSgitFtdcDeviceIDType	DeviceID;
-	///ÆÚ»õµ¥Î»ÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankSecuAccType;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÆÚ»õµ¥Î»ÕÊºÅ
-	TSgitFtdcBankAccountType	BankSecuAcc;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×¹ñÔ±
-	TSgitFtdcOperNoType	OperNo;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÒøÆÚ±ä¸üÒøĞĞÕËºÅĞÅÏ¢
-struct CSgitFtdcChangeAccountField
-{
-	///ÒµÎñ¹¦ÄÜÂë
-	TSgitFtdcTradeCodeType	TradeCode;
-	///ÒøĞĞ´úÂë
-	TSgitFtdcBankIDType	BankID;
-	///ÒøĞĞ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcBankBrchIDType	BankBranchID;
-	///ÆÚÉÌ´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÆÚÉÌ·ÖÖ§»ú¹¹´úÂë
-	TSgitFtdcFutureBranchIDType	BrokerBranchID;
-	///½»Ò×ÈÕÆÚ
-	TSgitFtdcTradeDateType	TradeDate;
-	///½»Ò×Ê±¼ä
-	TSgitFtdcTradeTimeType	TradeTime;
-	///ÒøĞĞÁ÷Ë®ºÅ
-	TSgitFtdcBankSerialType	BankSerial;
-	///½»Ò×ÏµÍ³ÈÕÆÚ 
-	TSgitFtdcTradeDateType	TradingDay;
-	///ÒøÆÚÆ½Ì¨ÏûÏ¢Á÷Ë®ºÅ
-	TSgitFtdcSerialType	PlateSerial;
-	///×îºó·ÖÆ¬±êÖ¾
-	TSgitFtdcLastFragmentType	LastFragment;
-	///»á»°ºÅ
-	TSgitFtdcSessionIDType	SessionID;
-	///¿Í»§ĞÕÃû
-	TSgitFtdcIndividualNameType	CustomerName;
-	///Ö¤¼şÀàĞÍ
-	TSgitFtdcIdCardTypeType	IdCardType;
-	///Ö¤¼şºÅÂë
-	TSgitFtdcIdentifiedCardNoType	IdentifiedCardNo;
-	///ĞÔ±ğ
-	TSgitFtdcGenderType	Gender;
-	///¹ú¼Ò´úÂë
-	TSgitFtdcCountryCodeType	CountryCode;
-	///¿Í»§ÀàĞÍ
-	TSgitFtdcCustTypeType	CustType;
-	///µØÖ·
-	TSgitFtdcAddressType	Address;
-	///ÓÊ±à
-	TSgitFtdcZipCodeType	ZipCode;
-	///µç»°ºÅÂë
-	TSgitFtdcTelephoneType	Telephone;
-	///ÊÖ»ú
-	TSgitFtdcMobilePhoneType	MobilePhone;
-	///´«Õæ
-	TSgitFtdcFaxType	Fax;
-	///µç×ÓÓÊ¼ş
-	TSgitFtdcEMailType	EMail;
-	///×Ê½ğÕË»§×´Ì¬
-	TSgitFtdcMoneyAccountStatusType	MoneyAccountStatus;
-	///ÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	BankAccount;
-	///ÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	BankPassWord;
-	///ĞÂÒøĞĞÕÊºÅ
-	TSgitFtdcBankAccountType	NewBankAccount;
-	///ĞÂÒøĞĞÃÜÂë
-	TSgitFtdcPasswordType	NewBankPassWord;
-	///Í¶×ÊÕßÕÊºÅ
-	TSgitFtdcAccountIDType	AccountID;
-	///ÆÚ»õÃÜÂë
-	TSgitFtdcPasswordType	Password;
-	///ÒøĞĞÕÊºÅÀàĞÍ
-	TSgitFtdcBankAccTypeType	BankAccType;
-	///°²×°±àºÅ
-	TSgitFtdcInstallIDType	InstallID;
-	///ÑéÖ¤¿Í»§Ö¤¼şºÅÂë±êÖ¾
-	TSgitFtdcYesNoIndicatorType	VerifyCertNoFlag;
-	///±ÒÖÖ´úÂë
-	TSgitFtdcCurrencyIDType	CurrencyID;
-	///ÆÚ»õ¹«Ë¾ÒøĞĞ±àÂë
-	TSgitFtdcBankCodingForFutureType	BrokerIDByBank;
-	///ÒøĞĞÃÜÂë±êÖ¾
-	TSgitFtdcPwdFlagType	BankPwdFlag;
-	///ÆÚ»õ×Ê½ğÃÜÂëºË¶Ô±êÖ¾
-	TSgitFtdcPwdFlagType	SecuPwdFlag;
-	///½»Ò×ID
-	TSgitFtdcTIDType	TID;
-	///ÕªÒª
-	TSgitFtdcDigestType	Digest;
-	///´íÎó´úÂë
-	TSgitFtdcErrorIDType	ErrorID;
-	///´íÎóĞÅÏ¢
-	TSgitFtdcErrorMsgType	ErrorMsg;
-};
-
-///ÔÖ±¸ÖĞĞÄ½»Ò×È¨ÏŞ
-struct CSgitFtdcUserRightsAssignField
-{
-	///Ó¦ÓÃµ¥Ôª´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///ÓÃ»§´úÂë
-	TSgitFtdcUserIDType	UserID;
-	///½»Ò×ÖĞĞÄ´úÂë
-	TSgitFtdcDRIdentityIDType	DRIdentityID;
-};
-
-///¾­¼Ã¹«Ë¾ÊÇ·ñÓĞÔÚ±¾±êÊ¾µÄ½»Ò×È¨ÏŞ
-struct CSgitFtdcBrokerUserRightAssignField
-{
-	///Ó¦ÓÃµ¥Ôª´úÂë
-	TSgitFtdcBrokerIDType	BrokerID;
-	///½»Ò×ÖĞĞÄ´úÂë
-	TSgitFtdcDRIdentityIDType	DRIdentityID;
-	///ÄÜ·ñ½»Ò×
-	TSgitFtdcBoolType	Tradeable;
-};
-
-///ÔÖ±¸½»Ò××ª»»±¨ÎÄ
-struct CSgitFtdcDRTransferField
-{
-	///Ô­½»Ò×ÖĞĞÄ´úÂë
-	TSgitFtdcDRIdentityIDType	OrigDRIdentityID;
-	///Ä¿±ê½»Ò×ÖĞĞÄ´úÂë
-	TSgitFtdcDRIdentityIDType	DestDRIdentityID;
-	///Ô­Ó¦ÓÃµ¥Ôª´úÂë
-	TSgitFtdcBrokerIDType	OrigBrokerID;
-	///Ä¿±êÒ×ÓÃµ¥Ôª´úÂë
-	TSgitFtdcBrokerIDType	DestBrokerID;
-};
-
-//ºÏÔ¼¼ÛÎ»²éÑ¯Óò
-struct CSgitMBLQuotReq
-{
-	TSgitFtdcInstrumentIDType  StartContractID;     //ÆğÊ¼ºÏÔ¼ºÅ
-	TSgitFtdcInstrumentIDType  EndContractID;       //½áÊøºÏÔ¼ºÅ
-	TSgitFtdcDirectionType     BsFlag;              //ÂòÂô±êÖ¾
-};
-
-//ºÏÔ¼¼ÛÎ»Óò
-struct CSgitMBLQuotData
-{
-	TSgitFtdcInstrumentIDType  ContractID;          //ºÏÔ¼ºÅ
-	TSgitFtdcDirectionType     BsFlag;              //ÂòÂô±êÖ¾
-	TSgitFtdcPriceType         Price;               //¼Û¸ñ
-	TSgitFtdcVolumeType        Qty;                 //ÊıÁ¿
-};
-
-//¶©ÔÄºÏÔ¼ĞĞÇéĞĞÇé
-struct CSgitSubQuotField
-{
-	TSgitFtdcInstrumentIDType  ContractID;     //ºÏÔ¼ºÅ
+///ä¿¡æ¯åˆ†å‘
+struct CSgitFtdcDisseminationField {
+  ///åºåˆ—ç³»åˆ—å·
+  TSgitFtdcSequenceSeriesType SequenceSeries;
+  ///åºåˆ—å·
+  TSgitFtdcSequenceNoType SequenceNo;
+};
+
+///ç”¨æˆ·ç™»å½•è¯·æ±‚
+struct CSgitFtdcReqUserLoginField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///æ¥å£ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType InterfaceProductInfo;
+  ///åè®®ä¿¡æ¯
+  TSgitFtdcProtocolInfoType ProtocolInfo;
+  /// Macåœ°å€
+  TSgitFtdcMacAddressType MacAddress;
+  ///åŠ¨æ€å¯†ç 
+  TSgitFtdcPasswordType OneTimePassword;
+  ///ç»ˆç«¯IPåœ°å€
+  TSgitFtdcIPAddressType ClientIPAddress;
+};
+
+///ç”¨æˆ·ç™»å½•åº”ç­”
+struct CSgitFtdcRspUserLoginField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç™»å½•æˆåŠŸæ—¶é—´
+  TSgitFtdcTimeType LoginTime;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“ç³»ç»Ÿåç§°
+  TSgitFtdcSystemNameType SystemName;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///æœ€å¤§æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType MaxOrderRef;
+  ///ä¸ŠæœŸæ‰€æ—¶é—´
+  TSgitFtdcTimeType SHFETime;
+  ///å¤§å•†æ‰€æ—¶é—´
+  TSgitFtdcTimeType DCETime;
+  ///éƒ‘å•†æ‰€æ—¶é—´
+  TSgitFtdcTimeType CZCETime;
+  ///ä¸­é‡‘æ‰€æ—¶é—´
+  TSgitFtdcTimeType FFEXTime;
+};
+
+///ç”¨æˆ·ç™»å‡ºè¯·æ±‚
+struct CSgitFtdcUserLogoutField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///å¼ºåˆ¶äº¤æ˜“å‘˜é€€å‡º
+struct CSgitFtdcForceUserLogoutField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///å®¢æˆ·ç«¯è®¤è¯è¯·æ±‚
+struct CSgitFtdcReqAuthenticateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///è®¤è¯ç 
+  TSgitFtdcAuthCodeType AuthCode;
+};
+
+///å®¢æˆ·ç«¯è®¤è¯å“åº”
+struct CSgitFtdcRspAuthenticateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+};
+
+///å®¢æˆ·ç«¯è®¤è¯ä¿¡æ¯
+struct CSgitFtdcAuthenticationInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///è®¤è¯ä¿¡æ¯
+  TSgitFtdcAuthInfoType AuthInfo;
+  ///æ˜¯å¦ä¸ºè®¤è¯ç»“æœ
+  TSgitFtdcBoolType IsResult;
+};
+
+///é“¶æœŸè½¬å¸æŠ¥æ–‡å¤´
+struct CSgitFtdcTransferHeaderField {
+  ///ç‰ˆæœ¬å·ï¼Œå¸¸é‡ï¼Œ1.0
+  TSgitFtdcVersionType Version;
+  ///äº¤æ˜“ä»£ç ï¼Œå¿…å¡«
+  TSgitFtdcTradeCodeType TradeCode;
+  ///äº¤æ˜“æ—¥æœŸï¼Œå¿…å¡«ï¼Œæ ¼å¼ï¼šyyyymmdd
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´ï¼Œå¿…å¡«ï¼Œæ ¼å¼ï¼šhhmmss
+  TSgitFtdcTradeTimeType TradeTime;
+  ///å‘èµ·æ–¹æµæ°´å·ï¼ŒN/A
+  TSgitFtdcTradeSerialType TradeSerial;
+  ///æœŸè´§å…¬å¸ä»£ç ï¼Œå¿…å¡«
+  TSgitFtdcFutureIDType FutureID;
+  ///é“¶è¡Œä»£ç ï¼Œæ ¹æ®æŸ¥è¯¢é“¶è¡Œå¾—åˆ°ï¼Œå¿…å¡«
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç ï¼Œæ ¹æ®æŸ¥è¯¢é“¶è¡Œå¾—åˆ°ï¼Œå¿…å¡«
+  TSgitFtdcBankBrchIDType BankBrchID;
+  ///æ“ä½œå‘˜ï¼ŒN/A
+  TSgitFtdcOperNoType OperNo;
+  ///äº¤æ˜“è®¾å¤‡ç±»å‹ï¼ŒN/A
+  TSgitFtdcDeviceIDType DeviceID;
+  ///è®°å½•æ•°ï¼ŒN/A
+  TSgitFtdcRecordNumType RecordNum;
+  ///ä¼šè¯ç¼–å·ï¼ŒN/A
+  TSgitFtdcSessionIDType SessionID;
+  ///è¯·æ±‚ç¼–å·ï¼ŒN/A
+  TSgitFtdcRequestIDType RequestID;
+};
+
+///é“¶è¡Œèµ„é‡‘è½¬æœŸè´§è¯·æ±‚ï¼ŒTradeCode=202001
+struct CSgitFtdcTransferBankToFutureReqField {
+  ///æœŸè´§èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///å¯†ç æ ‡å¿—
+  TSgitFtdcFuturePwdFlagType FuturePwdFlag;
+  ///å¯†ç 
+  TSgitFtdcFutureAccPwdType FutureAccPwd;
+  ///è½¬è´¦é‡‘é¢
+  TSgitFtdcMoneyType TradeAmt;
+  ///å®¢æˆ·æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType CustFee;
+  ///å¸ç§ï¼šRMB-äººæ°‘å¸ USD-ç¾åœ† HKD-æ¸¯å…ƒ
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///é“¶è¡Œèµ„é‡‘è½¬æœŸè´§è¯·æ±‚å“åº”
+struct CSgitFtdcTransferBankToFutureRspField {
+  ///å“åº”ä»£ç 
+  TSgitFtdcRetCodeType RetCode;
+  ///å“åº”ä¿¡æ¯
+  TSgitFtdcRetInfoType RetInfo;
+  ///èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcMoneyType TradeAmt;
+  ///åº”æ”¶å®¢æˆ·æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType CustFee;
+  ///å¸ç§
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///æœŸè´§èµ„é‡‘è½¬é“¶è¡Œè¯·æ±‚ï¼ŒTradeCode=202002
+struct CSgitFtdcTransferFutureToBankReqField {
+  ///æœŸè´§èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///å¯†ç æ ‡å¿—
+  TSgitFtdcFuturePwdFlagType FuturePwdFlag;
+  ///å¯†ç 
+  TSgitFtdcFutureAccPwdType FutureAccPwd;
+  ///è½¬è´¦é‡‘é¢
+  TSgitFtdcMoneyType TradeAmt;
+  ///å®¢æˆ·æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType CustFee;
+  ///å¸ç§ï¼šRMB-äººæ°‘å¸ USD-ç¾åœ† HKD-æ¸¯å…ƒ
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///æœŸè´§èµ„é‡‘è½¬é“¶è¡Œè¯·æ±‚å“åº”
+struct CSgitFtdcTransferFutureToBankRspField {
+  ///å“åº”ä»£ç 
+  TSgitFtdcRetCodeType RetCode;
+  ///å“åº”ä¿¡æ¯
+  TSgitFtdcRetInfoType RetInfo;
+  ///èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcMoneyType TradeAmt;
+  ///åº”æ”¶å®¢æˆ·æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType CustFee;
+  ///å¸ç§
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///æŸ¥è¯¢é“¶è¡Œèµ„é‡‘è¯·æ±‚ï¼ŒTradeCode=204002
+struct CSgitFtdcTransferQryBankReqField {
+  ///æœŸè´§èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///å¯†ç æ ‡å¿—
+  TSgitFtdcFuturePwdFlagType FuturePwdFlag;
+  ///å¯†ç 
+  TSgitFtdcFutureAccPwdType FutureAccPwd;
+  ///å¸ç§ï¼šRMB-äººæ°‘å¸ USD-ç¾åœ† HKD-æ¸¯å…ƒ
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///æŸ¥è¯¢é“¶è¡Œèµ„é‡‘è¯·æ±‚å“åº”
+struct CSgitFtdcTransferQryBankRspField {
+  ///å“åº”ä»£ç 
+  TSgitFtdcRetCodeType RetCode;
+  ///å“åº”ä¿¡æ¯
+  TSgitFtdcRetInfoType RetInfo;
+  ///èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+  ///é“¶è¡Œä½™é¢
+  TSgitFtdcMoneyType TradeAmt;
+  ///é“¶è¡Œå¯ç”¨ä½™é¢
+  TSgitFtdcMoneyType UseAmt;
+  ///é“¶è¡Œå¯å–ä½™é¢
+  TSgitFtdcMoneyType FetchAmt;
+  ///å¸ç§
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+};
+
+///æŸ¥è¯¢é“¶è¡Œäº¤æ˜“æ˜ç»†è¯·æ±‚ï¼ŒTradeCode=204999
+struct CSgitFtdcTransferQryDetailReqField {
+  ///æœŸè´§èµ„é‡‘è´¦æˆ·
+  TSgitFtdcAccountIDType FutureAccount;
+};
+
+///æŸ¥è¯¢é“¶è¡Œäº¤æ˜“æ˜ç»†è¯·æ±‚å“åº”
+struct CSgitFtdcTransferQryDetailRspField {
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///äº¤æ˜“ä»£ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///æœŸè´§æµæ°´å·
+  TSgitFtdcTradeSerialNoType FutureSerial;
+  ///æœŸè´§å…¬å¸ä»£ç 
+  TSgitFtdcFutureIDType FutureID;
+  ///èµ„é‡‘å¸å·
+  TSgitFtdcFutureAccountType FutureAccount;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcTradeSerialNoType BankSerial;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TSgitFtdcBankBrchIDType BankBrchID;
+  ///é“¶è¡Œè´¦å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcCertCodeType CertCode;
+  ///è´§å¸ä»£ç 
+  TSgitFtdcCurrencyCodeType CurrencyCode;
+  ///å‘ç”Ÿé‡‘é¢
+  TSgitFtdcMoneyType TxAmount;
+  ///æœ‰æ•ˆæ ‡å¿—
+  TSgitFtdcTransferValidFlagType Flag;
+};
+
+///å“åº”ä¿¡æ¯
+struct CSgitFtdcRspInfoField {
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///äº¤æ˜“æ‰€
+struct CSgitFtdcExchangeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€åç§°
+  TSgitFtdcExchangeNameType ExchangeName;
+  ///äº¤æ˜“æ‰€å±æ€§
+  TSgitFtdcExchangePropertyType ExchangeProperty;
+};
+
+///äº§å“
+struct CSgitFtdcProductField {
+  ///äº§å“ä»£ç 
+  TSgitFtdcInstrumentIDType ProductID;
+  ///äº§å“åç§°
+  TSgitFtdcProductNameType ProductName;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº§å“ç±»å‹
+  TSgitFtdcProductClassType ProductClass;
+  ///åˆçº¦æ•°é‡ä¹˜æ•°
+  TSgitFtdcVolumeMultipleType VolumeMultiple;
+  ///æœ€å°å˜åŠ¨ä»·ä½
+  TSgitFtdcPriceType PriceTick;
+  ///å¸‚ä»·å•æœ€å¤§ä¸‹å•é‡
+  TSgitFtdcVolumeType MaxMarketOrderVolume;
+  ///å¸‚ä»·å•æœ€å°ä¸‹å•é‡
+  TSgitFtdcVolumeType MinMarketOrderVolume;
+  ///é™ä»·å•æœ€å¤§ä¸‹å•é‡
+  TSgitFtdcVolumeType MaxLimitOrderVolume;
+  ///é™ä»·å•æœ€å°ä¸‹å•é‡
+  TSgitFtdcVolumeType MinLimitOrderVolume;
+  ///æŒä»“ç±»å‹
+  TSgitFtdcPositionTypeType PositionType;
+  ///æŒä»“æ—¥æœŸç±»å‹
+  TSgitFtdcPositionDateTypeType PositionDateType;
+};
+
+///åˆçº¦
+struct CSgitFtdcInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åç§°
+  TSgitFtdcInstrumentNameType InstrumentName;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº§å“ä»£ç 
+  TSgitFtdcInstrumentIDType ProductID;
+  ///äº§å“ç±»å‹
+  TSgitFtdcProductClassType ProductClass;
+  ///äº¤å‰²å¹´ä»½
+  TSgitFtdcYearType DeliveryYear;
+  ///äº¤å‰²æœˆ
+  TSgitFtdcMonthType DeliveryMonth;
+  ///å¸‚ä»·å•æœ€å¤§ä¸‹å•é‡
+  TSgitFtdcVolumeType MaxMarketOrderVolume;
+  ///å¸‚ä»·å•æœ€å°ä¸‹å•é‡
+  TSgitFtdcVolumeType MinMarketOrderVolume;
+  ///é™ä»·å•æœ€å¤§ä¸‹å•é‡
+  TSgitFtdcVolumeType MaxLimitOrderVolume;
+  ///é™ä»·å•æœ€å°ä¸‹å•é‡
+  TSgitFtdcVolumeType MinLimitOrderVolume;
+  ///åˆçº¦æ•°é‡ä¹˜æ•°
+  TSgitFtdcVolumeMultipleType VolumeMultiple;
+  ///æœ€å°å˜åŠ¨ä»·ä½
+  TSgitFtdcPriceType PriceTick;
+  ///åˆ›å»ºæ—¥
+  TSgitFtdcDateType CreateDate;
+  ///ä¸Šå¸‚æ—¥
+  TSgitFtdcDateType OpenDate;
+  ///åˆ°æœŸæ—¥
+  TSgitFtdcDateType ExpireDate;
+  ///å¼€å§‹äº¤å‰²æ—¥
+  TSgitFtdcDateType StartDelivDate;
+  ///ç»“æŸäº¤å‰²æ—¥
+  TSgitFtdcDateType EndDelivDate;
+  ///åˆçº¦ç”Ÿå‘½å‘¨æœŸçŠ¶æ€
+  TSgitFtdcInstLifePhaseType InstLifePhase;
+  ///å½“å‰æ˜¯å¦äº¤æ˜“
+  TSgitFtdcBoolType IsTrading;
+  ///æŒä»“ç±»å‹
+  TSgitFtdcPositionTypeType PositionType;
+  ///æŒä»“æ—¥æœŸç±»å‹
+  TSgitFtdcPositionDateTypeType PositionDateType;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatio;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatio;
+};
+
+///ç»çºªå…¬å¸
+struct CSgitFtdcBrokerField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç»çºªå…¬å¸ç®€ç§°
+  TSgitFtdcBrokerAbbrType BrokerAbbr;
+  ///ç»çºªå…¬å¸åç§°
+  TSgitFtdcBrokerNameType BrokerName;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+};
+
+///äº¤æ˜“æ‰€äº¤æ˜“å‘˜
+struct CSgitFtdcTraderField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…æ•°é‡
+  TSgitFtdcInstallCountType InstallCount;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///æŠ•èµ„è€…
+struct CSgitFtdcInvestorField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…åˆ†ç»„ä»£ç 
+  TSgitFtdcInvestorIDType InvestorGroupID;
+  ///æŠ•èµ„è€…åç§°
+  TSgitFtdcPartyNameType InvestorName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdentifiedCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+  ///è”ç³»ç”µè¯
+  TSgitFtdcTelephoneType Telephone;
+  ///é€šè®¯åœ°å€
+  TSgitFtdcAddressType Address;
+  ///å¼€æˆ·æ—¥æœŸ
+  TSgitFtdcDateType OpenDate;
+  ///æ‰‹æœº
+  TSgitFtdcMobileType Mobile;
+  ///æ‰‹ç»­è´¹ç‡æ¨¡æ¿ä»£ç 
+  TSgitFtdcInvestorIDType CommModelID;
+};
+
+///äº¤æ˜“ç¼–ç 
+struct CSgitFtdcTradingCodeField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+  ///äº¤æ˜“ç¼–ç ç±»å‹
+  TSgitFtdcClientIDTypeType ClientIDType;
+};
+
+///ä¼šå‘˜ç¼–ç å’Œç»çºªå…¬å¸ç¼–ç å¯¹ç…§è¡¨
+struct CSgitFtdcPartBrokerField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+};
+
+///ç®¡ç†ç”¨æˆ·
+struct CSgitFtdcSuperUserField {
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·åç§°
+  TSgitFtdcUserNameType UserName;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+};
+
+///ç®¡ç†ç”¨æˆ·åŠŸèƒ½æƒé™
+struct CSgitFtdcSuperUserFunctionField {
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åŠŸèƒ½ä»£ç 
+  TSgitFtdcFunctionCodeType FunctionCode;
+};
+
+///æŠ•èµ„è€…ç»„
+struct CSgitFtdcInvestorGroupField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…åˆ†ç»„ä»£ç 
+  TSgitFtdcInvestorIDType InvestorGroupID;
+  ///æŠ•èµ„è€…åˆ†ç»„åç§°
+  TSgitFtdcInvestorGroupNameType InvestorGroupName;
+};
+
+///èµ„é‡‘è´¦æˆ·
+struct CSgitFtdcTradingAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///ä¸Šæ¬¡è´¨æŠ¼é‡‘é¢
+  TSgitFtdcMoneyType PreMortgage;
+  ///ä¸Šæ¬¡ä¿¡ç”¨é¢åº¦
+  TSgitFtdcMoneyType PreCredit;
+  ///ä¸Šæ¬¡å­˜æ¬¾é¢
+  TSgitFtdcMoneyType PreDeposit;
+  ///ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType PreBalance;
+  ///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType PreMargin;
+  ///åˆ©æ¯åŸºæ•°
+  TSgitFtdcMoneyType InterestBase;
+  ///åˆ©æ¯æ”¶å…¥
+  TSgitFtdcMoneyType Interest;
+  ///å…¥é‡‘é‡‘é¢
+  TSgitFtdcMoneyType Deposit;
+  ///å‡ºé‡‘é‡‘é¢
+  TSgitFtdcMoneyType Withdraw;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TSgitFtdcMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType FrozenCommission;
+  ///å½“å‰ä¿è¯é‡‘æ€»é¢
+  TSgitFtdcMoneyType CurrMargin;
+  ///èµ„é‡‘å·®é¢
+  TSgitFtdcMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfit;
+  ///æœŸè´§ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Balance;
+  ///å¯ç”¨èµ„é‡‘
+  TSgitFtdcMoneyType Available;
+  ///å¯å–èµ„é‡‘
+  TSgitFtdcMoneyType WithdrawQuota;
+  ///åŸºæœ¬å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Reserve;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///ä¿¡ç”¨é¢åº¦
+  TSgitFtdcMoneyType Credit;
+  ///è´¨æŠ¼é‡‘é¢
+  TSgitFtdcMoneyType Mortgage;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeMargin;
+  ///æŠ•èµ„è€…äº¤å‰²ä¿è¯é‡‘
+  TSgitFtdcMoneyType DeliveryMargin;
+  ///äº¤æ˜“æ‰€äº¤å‰²ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeDeliveryMargin;
+};
+
+///æŠ•èµ„è€…æŒä»“
+struct CSgitFtdcInvestorPositionField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŒä»“å¤šç©ºæ–¹å‘
+  TSgitFtdcPosiDirectionType PosiDirection;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///æŒä»“æ—¥æœŸ
+  TSgitFtdcPositionDateType PositionDate;
+  ///ä¸Šæ—¥æŒä»“
+  TSgitFtdcVolumeType YdPosition;
+  ///ä»Šæ—¥æŒä»“
+  TSgitFtdcVolumeType Position;
+  ///å¤šå¤´å†»ç»“
+  TSgitFtdcVolumeType LongFrozen;
+  ///ç©ºå¤´å†»ç»“
+  TSgitFtdcVolumeType ShortFrozen;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TSgitFtdcMoneyType LongFrozenAmount;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TSgitFtdcMoneyType ShortFrozenAmount;
+  ///å¼€ä»“é‡
+  TSgitFtdcVolumeType OpenVolume;
+  ///å¹³ä»“é‡
+  TSgitFtdcVolumeType CloseVolume;
+  ///å¼€ä»“é‡‘é¢
+  TSgitFtdcMoneyType OpenAmount;
+  ///å¹³ä»“é‡‘é¢
+  TSgitFtdcMoneyType CloseAmount;
+  ///æŒä»“æˆæœ¬
+  TSgitFtdcMoneyType PositionCost;
+  ///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType PreMargin;
+  ///å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType UseMargin;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TSgitFtdcMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType FrozenCommission;
+  ///èµ„é‡‘å·®é¢
+  TSgitFtdcMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfit;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType PreSettlementPrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///å¼€ä»“æˆæœ¬
+  TSgitFtdcMoneyType OpenCost;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeMargin;
+  ///ç»„åˆæˆäº¤å½¢æˆçš„æŒä»“
+  TSgitFtdcVolumeType CombPosition;
+  ///ç»„åˆå¤šå¤´å†»ç»“
+  TSgitFtdcVolumeType CombLongFrozen;
+  ///ç»„åˆç©ºå¤´å†»ç»“
+  TSgitFtdcVolumeType CombShortFrozen;
+  ///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByDate;
+  ///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByTrade;
+  ///ä»Šæ—¥æŒä»“
+  TSgitFtdcVolumeType TodayPosition;
+  ///ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TSgitFtdcRatioType MarginRateByVolume;
+};
+
+///åˆçº¦ä¿è¯é‡‘ç‡
+struct CSgitFtdcInstrumentMarginRateField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatioByMoney;
+  ///å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType LongMarginRatioByVolume;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatioByMoney;
+  ///ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ShortMarginRatioByVolume;
+  ///æ˜¯å¦ç›¸å¯¹äº¤æ˜“æ‰€æ”¶å–
+  TSgitFtdcBoolType IsRelative;
+};
+
+///åˆçº¦æ‰‹ç»­è´¹ç‡
+struct CSgitFtdcInstrumentCommissionRateField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å¼€ä»“æ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType OpenRatioByMoney;
+  ///å¼€ä»“æ‰‹ç»­è´¹
+  TSgitFtdcRatioType OpenRatioByVolume;
+  ///å¹³ä»“æ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType CloseRatioByMoney;
+  ///å¹³ä»“æ‰‹ç»­è´¹
+  TSgitFtdcRatioType CloseRatioByVolume;
+  ///å¹³ä»Šæ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType CloseTodayRatioByMoney;
+  ///å¹³ä»Šæ‰‹ç»­è´¹
+  TSgitFtdcRatioType CloseTodayRatioByVolume;
+};
+
+///æ·±åº¦è¡Œæƒ…
+struct CSgitFtdcDepthMarketDataField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///æœ€æ–°ä»·
+  TSgitFtdcPriceType LastPrice;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType PreSettlementPrice;
+  ///æ˜¨æ”¶ç›˜
+  TSgitFtdcPriceType PreClosePrice;
+  ///æ˜¨æŒä»“é‡
+  TSgitFtdcLargeVolumeType PreOpenInterest;
+  ///ä»Šå¼€ç›˜
+  TSgitFtdcPriceType OpenPrice;
+  ///æœ€é«˜ä»·
+  TSgitFtdcPriceType HighestPrice;
+  ///æœ€ä½ä»·
+  TSgitFtdcPriceType LowestPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///æˆäº¤é‡‘é¢
+  TSgitFtdcMoneyType Turnover;
+  ///æŒä»“é‡
+  TSgitFtdcLargeVolumeType OpenInterest;
+  ///ä»Šæ”¶ç›˜
+  TSgitFtdcPriceType ClosePrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///æ¶¨åœæ¿ä»·
+  TSgitFtdcPriceType UpperLimitPrice;
+  ///è·Œåœæ¿ä»·
+  TSgitFtdcPriceType LowerLimitPrice;
+  ///æ˜¨è™šå®åº¦
+  TSgitFtdcRatioType PreDelta;
+  ///ä»Šè™šå®åº¦
+  TSgitFtdcRatioType CurrDelta;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æœ€åä¿®æ”¹æ¯«ç§’
+  TSgitFtdcMillisecType UpdateMillisec;
+  ///ç”³ä¹°ä»·ä¸€
+  TSgitFtdcPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TSgitFtdcVolumeType BidVolume1;
+  ///ç”³å–ä»·ä¸€
+  TSgitFtdcPriceType AskPrice1;
+  ///ç”³å–é‡ä¸€
+  TSgitFtdcVolumeType AskVolume1;
+  ///ç”³ä¹°ä»·äºŒ
+  TSgitFtdcPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TSgitFtdcVolumeType BidVolume2;
+  ///ç”³å–ä»·äºŒ
+  TSgitFtdcPriceType AskPrice2;
+  ///ç”³å–é‡äºŒ
+  TSgitFtdcVolumeType AskVolume2;
+  ///ç”³ä¹°ä»·ä¸‰
+  TSgitFtdcPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TSgitFtdcVolumeType BidVolume3;
+  ///ç”³å–ä»·ä¸‰
+  TSgitFtdcPriceType AskPrice3;
+  ///ç”³å–é‡ä¸‰
+  TSgitFtdcVolumeType AskVolume3;
+  ///ç”³ä¹°ä»·å››
+  TSgitFtdcPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TSgitFtdcVolumeType BidVolume4;
+  ///ç”³å–ä»·å››
+  TSgitFtdcPriceType AskPrice4;
+  ///ç”³å–é‡å››
+  TSgitFtdcVolumeType AskVolume4;
+  ///ç”³ä¹°ä»·äº”
+  TSgitFtdcPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TSgitFtdcVolumeType BidVolume5;
+  ///ç”³å–ä»·äº”
+  TSgitFtdcPriceType AskPrice5;
+  ///ç”³å–é‡äº”
+  TSgitFtdcVolumeType AskVolume5;
+  ///å½“æ—¥å‡ä»·
+  TSgitFtdcPriceType AveragePrice;
+};
+
+///æŠ•èµ„è€…åˆçº¦äº¤æ˜“æƒé™
+struct CSgitFtdcInstrumentTradingRightField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æƒé™
+  TSgitFtdcTradingRightType TradingRight;
+};
+
+///ç»çºªå…¬å¸ç”¨æˆ·
+struct CSgitFtdcBrokerUserField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·åç§°
+  TSgitFtdcUserNameType UserName;
+  ///ç”¨æˆ·ç±»å‹
+  TSgitFtdcUserTypeType UserType;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+  ///æ˜¯å¦ä½¿ç”¨ä»¤ç‰Œ
+  TSgitFtdcBoolType IsUsingOTP;
+};
+
+///ç»çºªå…¬å¸ç”¨æˆ·å£ä»¤
+struct CSgitFtdcBrokerUserPasswordField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+};
+
+///ç»çºªå…¬å¸ç”¨æˆ·åŠŸèƒ½æƒé™
+struct CSgitFtdcBrokerUserFunctionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç»çºªå…¬å¸åŠŸèƒ½ä»£ç 
+  TSgitFtdcBrokerFunctionCodeType BrokerFunctionCode;
+};
+
+///äº¤æ˜“æ‰€äº¤æ˜“å‘˜æŠ¥ç›˜æœº
+struct CSgitFtdcTraderOfferField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜è¿æ¥çŠ¶æ€
+  TSgitFtdcTraderConnectStatusType TraderConnectStatus;
+  ///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¥æœŸ
+  TSgitFtdcDateType ConnectRequestDate;
+  ///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¶é—´
+  TSgitFtdcTimeType ConnectRequestTime;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+  TSgitFtdcDateType LastReportDate;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+  TSgitFtdcTimeType LastReportTime;
+  ///å®Œæˆè¿æ¥æ—¥æœŸ
+  TSgitFtdcDateType ConnectDate;
+  ///å®Œæˆè¿æ¥æ—¶é—´
+  TSgitFtdcTimeType ConnectTime;
+  ///å¯åŠ¨æ—¥æœŸ
+  TSgitFtdcDateType StartDate;
+  ///å¯åŠ¨æ—¶é—´
+  TSgitFtdcTimeType StartTime;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœ¬å¸­ä½æœ€å¤§æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType MaxTradeID;
+  ///æœ¬å¸­ä½æœ€å¤§æŠ¥å•å¤‡æ‹·
+  TSgitFtdcReturnCodeType MaxOrderMessageReference;
+};
+
+///æŠ•èµ„è€…ç»“ç®—ç»“æœ
+struct CSgitFtdcSettlementInfoField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TSgitFtdcContentType Content;
+};
+
+///åˆçº¦ä¿è¯é‡‘ç‡è°ƒæ•´
+struct CSgitFtdcInstrumentMarginRateAdjustField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatioByMoney;
+  ///å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType LongMarginRatioByVolume;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatioByMoney;
+  ///ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ShortMarginRatioByVolume;
+  ///æ˜¯å¦ç›¸å¯¹äº¤æ˜“æ‰€æ”¶å–
+  TSgitFtdcBoolType IsRelative;
+};
+
+///äº¤æ˜“æ‰€ä¿è¯é‡‘ç‡
+struct CSgitFtdcExchangeMarginRateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatioByMoney;
+  ///å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType LongMarginRatioByVolume;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatioByMoney;
+  ///ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ShortMarginRatioByVolume;
+};
+
+///äº¤æ˜“æ‰€ä¿è¯é‡‘ç‡è°ƒæ•´
+struct CSgitFtdcExchangeMarginRateAdjustField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatioByMoney;
+  ///è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType LongMarginRatioByVolume;
+  ///è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatioByMoney;
+  ///è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ShortMarginRatioByVolume;
+  ///äº¤æ˜“æ‰€å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ExchLongMarginRatioByMoney;
+  ///äº¤æ˜“æ‰€å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ExchLongMarginRatioByVolume;
+  ///äº¤æ˜“æ‰€ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ExchShortMarginRatioByMoney;
+  ///äº¤æ˜“æ‰€ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ExchShortMarginRatioByVolume;
+  ///ä¸è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType NoLongMarginRatioByMoney;
+  ///ä¸è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType NoLongMarginRatioByVolume;
+  ///ä¸è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType NoShortMarginRatioByMoney;
+  ///ä¸è·Ÿéšäº¤æ˜“æ‰€æŠ•èµ„è€…ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType NoShortMarginRatioByVolume;
+};
+
+///ç»“ç®—å¼•ç”¨
+struct CSgitFtdcSettlementRefField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+};
+
+///å½“å‰æ—¶é—´
+struct CSgitFtdcCurrentTimeField {
+  ///å½“å‰æ—¥æœŸ
+  TSgitFtdcDateType CurrDate;
+  ///å½“å‰æ—¶é—´
+  TSgitFtdcTimeType CurrTime;
+  ///å½“å‰æ—¶é—´ï¼ˆæ¯«ç§’ï¼‰
+  TSgitFtdcMillisecType CurrMillisec;
+};
+
+///é€šè®¯é˜¶æ®µ
+struct CSgitFtdcCommPhaseField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///é€šè®¯æ—¶æ®µç¼–å·
+  TSgitFtdcCommPhaseNoType CommPhaseNo;
+};
+
+///ç™»å½•ä¿¡æ¯
+struct CSgitFtdcLoginInfoField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç™»å½•æ—¥æœŸ
+  TSgitFtdcDateType LoginDate;
+  ///ç™»å½•æ—¶é—´
+  TSgitFtdcTimeType LoginTime;
+  /// IPåœ°å€
+  TSgitFtdcIPAddressType IPAddress;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///æ¥å£ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType InterfaceProductInfo;
+  ///åè®®ä¿¡æ¯
+  TSgitFtdcProtocolInfoType ProtocolInfo;
+  ///ç³»ç»Ÿåç§°
+  TSgitFtdcSystemNameType SystemName;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///æœ€å¤§æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType MaxOrderRef;
+  ///ä¸ŠæœŸæ‰€æ—¶é—´
+  TSgitFtdcTimeType SHFETime;
+  ///å¤§å•†æ‰€æ—¶é—´
+  TSgitFtdcTimeType DCETime;
+  ///éƒ‘å•†æ‰€æ—¶é—´
+  TSgitFtdcTimeType CZCETime;
+  ///ä¸­é‡‘æ‰€æ—¶é—´
+  TSgitFtdcTimeType FFEXTime;
+  /// Macåœ°å€
+  TSgitFtdcMacAddressType MacAddress;
+  ///åŠ¨æ€å¯†ç 
+  TSgitFtdcPasswordType OneTimePassword;
+};
+
+///ç™»å½•ä¿¡æ¯
+struct CSgitFtdcLogoutAllField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç³»ç»Ÿåç§°
+  TSgitFtdcSystemNameType SystemName;
+};
+
+///å‰ç½®çŠ¶æ€
+struct CSgitFtdcFrontStatusField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+  TSgitFtdcDateType LastReportDate;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+  TSgitFtdcTimeType LastReportTime;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+};
+
+///ç”¨æˆ·å£ä»¤å˜æ›´
+struct CSgitFtdcUserPasswordUpdateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åŸæ¥çš„å£ä»¤
+  TSgitFtdcPasswordType OldPassword;
+  ///æ–°çš„å£ä»¤
+  TSgitFtdcPasswordType NewPassword;
+};
+
+///è¾“å…¥æŠ¥å•
+struct CSgitFtdcInputOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TSgitFtdcBoolType UserForceClose;
+};
+
+///æŠ¥å•
+struct CSgitFtdcOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æŠ¥å•æäº¤çŠ¶æ€
+  TSgitFtdcOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TSgitFtdcSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æŠ¥å•æ¥æº
+  TSgitFtdcOrderSourceType OrderSource;
+  ///æŠ¥å•çŠ¶æ€
+  TSgitFtdcOrderStatusType OrderStatus;
+  ///æŠ¥å•ç±»å‹
+  TSgitFtdcOrderTypeType OrderType;
+  ///ä»Šæˆäº¤æ•°é‡
+  TSgitFtdcVolumeType VolumeTraded;
+  ///å‰©ä½™æ•°é‡
+  TSgitFtdcVolumeType VolumeTotal;
+  ///æŠ¥å•æ—¥æœŸ
+  TSgitFtdcDateType InsertDate;
+  ///å§”æ‰˜æ—¶é—´
+  TSgitFtdcTimeType InsertTime;
+  ///æ¿€æ´»æ—¶é—´
+  TSgitFtdcTimeType ActiveTime;
+  ///æŒ‚èµ·æ—¶é—´
+  TSgitFtdcTimeType SuspendTime;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æ’¤é”€æ—¶é—´
+  TSgitFtdcTimeType CancelTime;
+  ///æœ€åä¿®æ”¹äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType ActiveTraderID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TSgitFtdcParticipantIDType ClearingPartID;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TSgitFtdcErrorMsgType StatusMsg;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TSgitFtdcBoolType UserForceClose;
+  ///æ“ä½œç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType ActiveUserID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TSgitFtdcSequenceNoType BrokerOrderSeq;
+  ///ç›¸å…³æŠ¥å•
+  TSgitFtdcOrderSysIDType RelativeOrderSysID;
+};
+
+///äº¤æ˜“æ‰€æŠ¥å•
+struct CSgitFtdcExchangeOrderField {
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æŠ¥å•æäº¤çŠ¶æ€
+  TSgitFtdcOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TSgitFtdcSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æŠ¥å•æ¥æº
+  TSgitFtdcOrderSourceType OrderSource;
+  ///æŠ¥å•çŠ¶æ€
+  TSgitFtdcOrderStatusType OrderStatus;
+  ///æŠ¥å•ç±»å‹
+  TSgitFtdcOrderTypeType OrderType;
+  ///ä»Šæˆäº¤æ•°é‡
+  TSgitFtdcVolumeType VolumeTraded;
+  ///å‰©ä½™æ•°é‡
+  TSgitFtdcVolumeType VolumeTotal;
+  ///æŠ¥å•æ—¥æœŸ
+  TSgitFtdcDateType InsertDate;
+  ///å§”æ‰˜æ—¶é—´
+  TSgitFtdcTimeType InsertTime;
+  ///æ¿€æ´»æ—¶é—´
+  TSgitFtdcTimeType ActiveTime;
+  ///æŒ‚èµ·æ—¶é—´
+  TSgitFtdcTimeType SuspendTime;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æ’¤é”€æ—¶é—´
+  TSgitFtdcTimeType CancelTime;
+  ///æœ€åä¿®æ”¹äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType ActiveTraderID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TSgitFtdcParticipantIDType ClearingPartID;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+};
+
+///äº¤æ˜“æ‰€æŠ¥å•æ’å…¥å¤±è´¥
+struct CSgitFtdcExchangeOrderInsertErrorField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///è¾“å…¥æŠ¥å•æ“ä½œ
+struct CSgitFtdcInputOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ¥å•æ“ä½œå¼•ç”¨
+  TSgitFtdcOrderActionRefType OrderActionRef;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TSgitFtdcActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TSgitFtdcVolumeType VolumeChange;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŠ¥å•æ“ä½œ
+struct CSgitFtdcOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ¥å•æ“ä½œå¼•ç”¨
+  TSgitFtdcOrderActionRefType OrderActionRef;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TSgitFtdcActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TSgitFtdcVolumeType VolumeChange;
+  ///æ“ä½œæ—¥æœŸ
+  TSgitFtdcDateType ActionDate;
+  ///æ“ä½œæ—¶é—´
+  TSgitFtdcTimeType ActionTime;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///æ“ä½œæœ¬åœ°ç¼–å·
+  TSgitFtdcOrderLocalIDType ActionLocalID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///æŠ¥å•æ“ä½œçŠ¶æ€
+  TSgitFtdcOrderActionStatusType OrderActionStatus;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///çŠ¶æ€ä¿¡æ¯
+  TSgitFtdcErrorMsgType StatusMsg;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///äº¤æ˜“æ‰€æŠ¥å•æ“ä½œ
+struct CSgitFtdcExchangeOrderActionField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TSgitFtdcActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TSgitFtdcVolumeType VolumeChange;
+  ///æ“ä½œæ—¥æœŸ
+  TSgitFtdcDateType ActionDate;
+  ///æ“ä½œæ—¶é—´
+  TSgitFtdcTimeType ActionTime;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///æ“ä½œæœ¬åœ°ç¼–å·
+  TSgitFtdcOrderLocalIDType ActionLocalID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///æŠ¥å•æ“ä½œçŠ¶æ€
+  TSgitFtdcOrderActionStatusType OrderActionStatus;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///äº¤æ˜“æ‰€æŠ¥å•æ“ä½œå¤±è´¥
+struct CSgitFtdcExchangeOrderActionErrorField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///æ“ä½œæœ¬åœ°ç¼–å·
+  TSgitFtdcOrderLocalIDType ActionLocalID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///äº¤æ˜“æ‰€æˆäº¤
+struct CSgitFtdcExchangeTradeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType TradeID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///äº¤æ˜“è§’è‰²
+  TSgitFtdcTradingRoleType TradingRole;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///å¼€å¹³æ ‡å¿—
+  TSgitFtdcOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType Price;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///æˆäº¤æ—¶æœŸ
+  TSgitFtdcDateType TradeDate;
+  ///æˆäº¤æ—¶é—´
+  TSgitFtdcTimeType TradeTime;
+  ///æˆäº¤ç±»å‹
+  TSgitFtdcTradeTypeType TradeType;
+  ///æˆäº¤ä»·æ¥æº
+  TSgitFtdcPriceSourceType PriceSource;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TSgitFtdcParticipantIDType ClearingPartID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///æˆäº¤æ¥æº
+  TSgitFtdcTradeSourceType TradeSource;
+};
+
+///æˆäº¤
+struct CSgitFtdcTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType TradeID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///äº¤æ˜“è§’è‰²
+  TSgitFtdcTradingRoleType TradingRole;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///å¼€å¹³æ ‡å¿—
+  TSgitFtdcOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType Price;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///æˆäº¤æ—¶æœŸ
+  TSgitFtdcDateType TradeDate;
+  ///æˆäº¤æ—¶é—´
+  TSgitFtdcTimeType TradeTime;
+  ///æˆäº¤ç±»å‹
+  TSgitFtdcTradeTypeType TradeType;
+  ///æˆäº¤ä»·æ¥æº
+  TSgitFtdcPriceSourceType PriceSource;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TSgitFtdcParticipantIDType ClearingPartID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TSgitFtdcSequenceNoType BrokerOrderSeq;
+  ///æˆäº¤æ¥æº
+  TSgitFtdcTradeSourceType TradeSource;
+};
+
+///ç”¨æˆ·ä¼šè¯
+struct CSgitFtdcUserSessionField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç™»å½•æ—¥æœŸ
+  TSgitFtdcDateType LoginDate;
+  ///ç™»å½•æ—¶é—´
+  TSgitFtdcTimeType LoginTime;
+  /// IPåœ°å€
+  TSgitFtdcIPAddressType IPAddress;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///æ¥å£ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType InterfaceProductInfo;
+  ///åè®®ä¿¡æ¯
+  TSgitFtdcProtocolInfoType ProtocolInfo;
+  /// Macåœ°å€
+  TSgitFtdcMacAddressType MacAddress;
+};
+
+///æŸ¥è¯¢æœ€å¤§æŠ¥å•æ•°é‡
+struct CSgitFtdcQueryMaxOrderVolumeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///å¼€å¹³æ ‡å¿—
+  TSgitFtdcOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///æœ€å¤§å…è®¸æŠ¥å•æ•°é‡
+  TSgitFtdcVolumeType MaxVolume;
+};
+
+///æŠ•èµ„è€…ç»“ç®—ç»“æœç¡®è®¤ä¿¡æ¯
+struct CSgitFtdcSettlementInfoConfirmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç¡®è®¤æ—¥æœŸ
+  TSgitFtdcDateType ConfirmDate;
+  ///ç¡®è®¤æ—¶é—´
+  TSgitFtdcTimeType ConfirmTime;
+};
+
+///å‡ºå…¥é‡‘åŒæ­¥
+struct CSgitFtdcSyncDepositField {
+  ///å‡ºå…¥é‡‘æµæ°´å·
+  TSgitFtdcDepositSeqNoType DepositSeqNo;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å…¥é‡‘é‡‘é¢
+  TSgitFtdcMoneyType Deposit;
+  ///æ˜¯å¦å¼ºåˆ¶è¿›è¡Œ
+  TSgitFtdcBoolType IsForce;
+};
+
+///ç»çºªå…¬å¸åŒæ­¥
+struct CSgitFtdcBrokerSyncField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„æŠ•èµ„è€…
+struct CSgitFtdcSyncingInvestorField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…åˆ†ç»„ä»£ç 
+  TSgitFtdcInvestorIDType InvestorGroupID;
+  ///æŠ•èµ„è€…åç§°
+  TSgitFtdcPartyNameType InvestorName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdentifiedCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+  ///è”ç³»ç”µè¯
+  TSgitFtdcTelephoneType Telephone;
+  ///é€šè®¯åœ°å€
+  TSgitFtdcAddressType Address;
+  ///å¼€æˆ·æ—¥æœŸ
+  TSgitFtdcDateType OpenDate;
+  ///æ‰‹æœº
+  TSgitFtdcMobileType Mobile;
+  ///æ‰‹ç»­è´¹ç‡æ¨¡æ¿ä»£ç 
+  TSgitFtdcInvestorIDType CommModelID;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„äº¤æ˜“ä»£ç 
+struct CSgitFtdcSyncingTradingCodeField {
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+  ///äº¤æ˜“ç¼–ç ç±»å‹
+  TSgitFtdcClientIDTypeType ClientIDType;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„æŠ•èµ„è€…åˆ†ç»„
+struct CSgitFtdcSyncingInvestorGroupField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…åˆ†ç»„ä»£ç 
+  TSgitFtdcInvestorIDType InvestorGroupID;
+  ///æŠ•èµ„è€…åˆ†ç»„åç§°
+  TSgitFtdcInvestorGroupNameType InvestorGroupName;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„äº¤æ˜“è´¦å·
+struct CSgitFtdcSyncingTradingAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///ä¸Šæ¬¡è´¨æŠ¼é‡‘é¢
+  TSgitFtdcMoneyType PreMortgage;
+  ///ä¸Šæ¬¡ä¿¡ç”¨é¢åº¦
+  TSgitFtdcMoneyType PreCredit;
+  ///ä¸Šæ¬¡å­˜æ¬¾é¢
+  TSgitFtdcMoneyType PreDeposit;
+  ///ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType PreBalance;
+  ///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType PreMargin;
+  ///åˆ©æ¯åŸºæ•°
+  TSgitFtdcMoneyType InterestBase;
+  ///åˆ©æ¯æ”¶å…¥
+  TSgitFtdcMoneyType Interest;
+  ///å…¥é‡‘é‡‘é¢
+  TSgitFtdcMoneyType Deposit;
+  ///å‡ºé‡‘é‡‘é¢
+  TSgitFtdcMoneyType Withdraw;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TSgitFtdcMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType FrozenCommission;
+  ///å½“å‰ä¿è¯é‡‘æ€»é¢
+  TSgitFtdcMoneyType CurrMargin;
+  ///èµ„é‡‘å·®é¢
+  TSgitFtdcMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfit;
+  ///æœŸè´§ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Balance;
+  ///å¯ç”¨èµ„é‡‘
+  TSgitFtdcMoneyType Available;
+  ///å¯å–èµ„é‡‘
+  TSgitFtdcMoneyType WithdrawQuota;
+  ///åŸºæœ¬å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Reserve;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///ä¿¡ç”¨é¢åº¦
+  TSgitFtdcMoneyType Credit;
+  ///è´¨æŠ¼é‡‘é¢
+  TSgitFtdcMoneyType Mortgage;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeMargin;
+  ///æŠ•èµ„è€…äº¤å‰²ä¿è¯é‡‘
+  TSgitFtdcMoneyType DeliveryMargin;
+  ///äº¤æ˜“æ‰€äº¤å‰²ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeDeliveryMargin;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„æŠ•èµ„è€…æŒä»“
+struct CSgitFtdcSyncingInvestorPositionField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŒä»“å¤šç©ºæ–¹å‘
+  TSgitFtdcPosiDirectionType PosiDirection;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///æŒä»“æ—¥æœŸ
+  TSgitFtdcPositionDateType PositionDate;
+  ///ä¸Šæ—¥æŒä»“
+  TSgitFtdcVolumeType YdPosition;
+  ///ä»Šæ—¥æŒä»“
+  TSgitFtdcVolumeType Position;
+  ///å¤šå¤´å†»ç»“
+  TSgitFtdcVolumeType LongFrozen;
+  ///ç©ºå¤´å†»ç»“
+  TSgitFtdcVolumeType ShortFrozen;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TSgitFtdcMoneyType LongFrozenAmount;
+  ///å¼€ä»“å†»ç»“é‡‘é¢
+  TSgitFtdcMoneyType ShortFrozenAmount;
+  ///å¼€ä»“é‡
+  TSgitFtdcVolumeType OpenVolume;
+  ///å¹³ä»“é‡
+  TSgitFtdcVolumeType CloseVolume;
+  ///å¼€ä»“é‡‘é¢
+  TSgitFtdcMoneyType OpenAmount;
+  ///å¹³ä»“é‡‘é¢
+  TSgitFtdcMoneyType CloseAmount;
+  ///æŒä»“æˆæœ¬
+  TSgitFtdcMoneyType PositionCost;
+  ///ä¸Šæ¬¡å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType PreMargin;
+  ///å ç”¨çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType UseMargin;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType FrozenMargin;
+  ///å†»ç»“çš„èµ„é‡‘
+  TSgitFtdcMoneyType FrozenCash;
+  ///å†»ç»“çš„æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType FrozenCommission;
+  ///èµ„é‡‘å·®é¢
+  TSgitFtdcMoneyType CashIn;
+  ///æ‰‹ç»­è´¹
+  TSgitFtdcMoneyType Commission;
+  ///å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfit;
+  ///æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfit;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType PreSettlementPrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///å¼€ä»“æˆæœ¬
+  TSgitFtdcMoneyType OpenCost;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchangeMargin;
+  ///ç»„åˆæˆäº¤å½¢æˆçš„æŒä»“
+  TSgitFtdcVolumeType CombPosition;
+  ///ç»„åˆå¤šå¤´å†»ç»“
+  TSgitFtdcVolumeType CombLongFrozen;
+  ///ç»„åˆç©ºå¤´å†»ç»“
+  TSgitFtdcVolumeType CombShortFrozen;
+  ///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByDate;
+  ///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByTrade;
+  ///ä»Šæ—¥æŒä»“
+  TSgitFtdcVolumeType TodayPosition;
+  ///ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TSgitFtdcRatioType MarginRateByVolume;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„åˆçº¦ä¿è¯é‡‘ç‡
+struct CSgitFtdcSyncingInstrumentMarginRateField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///å¤šå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType LongMarginRatioByMoney;
+  ///å¤šå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType LongMarginRatioByVolume;
+  ///ç©ºå¤´ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType ShortMarginRatioByMoney;
+  ///ç©ºå¤´ä¿è¯é‡‘è´¹
+  TSgitFtdcMoneyType ShortMarginRatioByVolume;
+  ///æ˜¯å¦ç›¸å¯¹äº¤æ˜“æ‰€æ”¶å–
+  TSgitFtdcBoolType IsRelative;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„åˆçº¦æ‰‹ç»­è´¹ç‡
+struct CSgitFtdcSyncingInstrumentCommissionRateField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å¼€ä»“æ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType OpenRatioByMoney;
+  ///å¼€ä»“æ‰‹ç»­è´¹
+  TSgitFtdcRatioType OpenRatioByVolume;
+  ///å¹³ä»“æ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType CloseRatioByMoney;
+  ///å¹³ä»“æ‰‹ç»­è´¹
+  TSgitFtdcRatioType CloseRatioByVolume;
+  ///å¹³ä»Šæ‰‹ç»­è´¹ç‡
+  TSgitFtdcRatioType CloseTodayRatioByMoney;
+  ///å¹³ä»Šæ‰‹ç»­è´¹
+  TSgitFtdcRatioType CloseTodayRatioByVolume;
+};
+
+///æ­£åœ¨åŒæ­¥ä¸­çš„åˆçº¦äº¤æ˜“æƒé™
+struct CSgitFtdcSyncingInstrumentTradingRightField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æƒé™
+  TSgitFtdcTradingRightType TradingRight;
+};
+
+///æŸ¥è¯¢æŠ¥å•
+struct CSgitFtdcQryOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///å¼€å§‹æ—¶é—´
+  TSgitFtdcTimeType InsertTimeStart;
+  ///ç»“æŸæ—¶é—´
+  TSgitFtdcTimeType InsertTimeEnd;
+};
+
+///æŸ¥è¯¢æˆäº¤
+struct CSgitFtdcQryTradeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType TradeID;
+  ///å¼€å§‹æ—¶é—´
+  TSgitFtdcTimeType TradeTimeStart;
+  ///ç»“æŸæ—¶é—´
+  TSgitFtdcTimeType TradeTimeEnd;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“
+struct CSgitFtdcQryInvestorPositionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢èµ„é‡‘è´¦æˆ·
+struct CSgitFtdcQryTradingAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…
+struct CSgitFtdcQryInvestorField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+struct CSgitFtdcQryTradingCodeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///äº¤æ˜“ç¼–ç ç±»å‹
+  TSgitFtdcClientIDTypeType ClientIDType;
+};
+
+///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+struct CSgitFtdcQryInvestorGroupField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+struct CSgitFtdcQryInstrumentMarginRateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+};
+
+///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+struct CSgitFtdcQryInstrumentCommissionRateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“ç¼–ç 
+struct CSgitFtdcQryInstrumentTradingRightField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸
+struct CSgitFtdcQryBrokerField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“å‘˜
+struct CSgitFtdcQryTraderField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸ä¼šå‘˜ä»£ç 
+struct CSgitFtdcQryPartBrokerField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+};
+
+///æŸ¥è¯¢ç®¡ç†ç”¨æˆ·åŠŸèƒ½æƒé™
+struct CSgitFtdcQrySuperUserFunctionField {
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///æŸ¥è¯¢ç”¨æˆ·ä¼šè¯
+struct CSgitFtdcQryUserSessionField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///æŸ¥è¯¢å‰ç½®çŠ¶æ€
+struct CSgitFtdcQryFrontStatusField {
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“æ‰€æŠ¥å•
+struct CSgitFtdcQryExchangeOrderField {
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+};
+
+///æŸ¥è¯¢æŠ¥å•æ“ä½œ
+struct CSgitFtdcQryOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“æ‰€æŠ¥å•æ“ä½œ
+struct CSgitFtdcQryExchangeOrderActionField {
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+};
+
+///æŸ¥è¯¢ç®¡ç†ç”¨æˆ·
+struct CSgitFtdcQrySuperUserField {
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“æ‰€
+struct CSgitFtdcQryExchangeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///æŸ¥è¯¢äº§å“
+struct CSgitFtdcQryProductField {
+  ///äº§å“ä»£ç 
+  TSgitFtdcInstrumentIDType ProductID;
+};
+
+///æŸ¥è¯¢åˆçº¦
+struct CSgitFtdcQryInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº§å“ä»£ç 
+  TSgitFtdcInstrumentIDType ProductID;
+};
+
+///æŸ¥è¯¢è¡Œæƒ…
+struct CSgitFtdcQryDepthMarketDataField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·
+struct CSgitFtdcQryBrokerUserField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·æƒé™
+struct CSgitFtdcQryBrokerUserFunctionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+};
+
+///æŸ¥è¯¢äº¤æ˜“å‘˜æŠ¥ç›˜æœº
+struct CSgitFtdcQryTraderOfferField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+};
+
+///æŸ¥è¯¢å‡ºå…¥é‡‘æµæ°´
+struct CSgitFtdcQrySyncDepositField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///å‡ºå…¥é‡‘æµæ°´å·
+  TSgitFtdcDepositSeqNoType DepositSeqNo;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…ç»“ç®—ç»“æœ
+struct CSgitFtdcQrySettlementInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+};
+
+///æŸ¥è¯¢æŠ¥å•
+struct CSgitFtdcQryHisOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///å¼€å§‹æ—¶é—´
+  TSgitFtdcTimeType InsertTimeStart;
+  ///ç»“æŸæ—¶é—´
+  TSgitFtdcTimeType InsertTimeEnd;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+};
+
+///å¸‚åœºè¡Œæƒ…
+struct CSgitFtdcMarketDataField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///æœ€æ–°ä»·
+  TSgitFtdcPriceType LastPrice;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType PreSettlementPrice;
+  ///æ˜¨æ”¶ç›˜
+  TSgitFtdcPriceType PreClosePrice;
+  ///æ˜¨æŒä»“é‡
+  TSgitFtdcLargeVolumeType PreOpenInterest;
+  ///ä»Šå¼€ç›˜
+  TSgitFtdcPriceType OpenPrice;
+  ///æœ€é«˜ä»·
+  TSgitFtdcPriceType HighestPrice;
+  ///æœ€ä½ä»·
+  TSgitFtdcPriceType LowestPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///æˆäº¤é‡‘é¢
+  TSgitFtdcMoneyType Turnover;
+  ///æŒä»“é‡
+  TSgitFtdcLargeVolumeType OpenInterest;
+  ///ä»Šæ”¶ç›˜
+  TSgitFtdcPriceType ClosePrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///æ¶¨åœæ¿ä»·
+  TSgitFtdcPriceType UpperLimitPrice;
+  ///è·Œåœæ¿ä»·
+  TSgitFtdcPriceType LowerLimitPrice;
+  ///æ˜¨è™šå®åº¦
+  TSgitFtdcRatioType PreDelta;
+  ///ä»Šè™šå®åº¦
+  TSgitFtdcRatioType CurrDelta;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æœ€åä¿®æ”¹æ¯«ç§’
+  TSgitFtdcMillisecType UpdateMillisec;
+};
+
+///è¡Œæƒ…åŸºç¡€å±æ€§
+struct CSgitFtdcMarketDataBaseField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ä¸Šæ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType PreSettlementPrice;
+  ///æ˜¨æ”¶ç›˜
+  TSgitFtdcPriceType PreClosePrice;
+  ///æ˜¨æŒä»“é‡
+  TSgitFtdcLargeVolumeType PreOpenInterest;
+  ///æ˜¨è™šå®åº¦
+  TSgitFtdcRatioType PreDelta;
+};
+
+///è¡Œæƒ…é™æ€å±æ€§
+struct CSgitFtdcMarketDataStaticField {
+  ///ä»Šå¼€ç›˜
+  TSgitFtdcPriceType OpenPrice;
+  ///æœ€é«˜ä»·
+  TSgitFtdcPriceType HighestPrice;
+  ///æœ€ä½ä»·
+  TSgitFtdcPriceType LowestPrice;
+  ///ä»Šæ”¶ç›˜
+  TSgitFtdcPriceType ClosePrice;
+  ///æ¶¨åœæ¿ä»·
+  TSgitFtdcPriceType UpperLimitPrice;
+  ///è·Œåœæ¿ä»·
+  TSgitFtdcPriceType LowerLimitPrice;
+  ///æœ¬æ¬¡ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///ä»Šè™šå®åº¦
+  TSgitFtdcRatioType CurrDelta;
+};
+
+///è¡Œæƒ…æœ€æ–°æˆäº¤å±æ€§
+struct CSgitFtdcMarketDataLastMatchField {
+  ///æœ€æ–°ä»·
+  TSgitFtdcPriceType LastPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///æˆäº¤é‡‘é¢
+  TSgitFtdcMoneyType Turnover;
+  ///æŒä»“é‡
+  TSgitFtdcLargeVolumeType OpenInterest;
+};
+
+///è¡Œæƒ…æœ€ä¼˜ä»·å±æ€§
+struct CSgitFtdcMarketDataBestPriceField {
+  ///ç”³ä¹°ä»·ä¸€
+  TSgitFtdcPriceType BidPrice1;
+  ///ç”³ä¹°é‡ä¸€
+  TSgitFtdcVolumeType BidVolume1;
+  ///ç”³å–ä»·ä¸€
+  TSgitFtdcPriceType AskPrice1;
+  ///ç”³å–é‡ä¸€
+  TSgitFtdcVolumeType AskVolume1;
+};
+
+///è¡Œæƒ…ç”³ä¹°äºŒã€ä¸‰å±æ€§
+struct CSgitFtdcMarketDataBid23Field {
+  ///ç”³ä¹°ä»·äºŒ
+  TSgitFtdcPriceType BidPrice2;
+  ///ç”³ä¹°é‡äºŒ
+  TSgitFtdcVolumeType BidVolume2;
+  ///ç”³ä¹°ä»·ä¸‰
+  TSgitFtdcPriceType BidPrice3;
+  ///ç”³ä¹°é‡ä¸‰
+  TSgitFtdcVolumeType BidVolume3;
+};
+
+///è¡Œæƒ…ç”³å–äºŒã€ä¸‰å±æ€§
+struct CSgitFtdcMarketDataAsk23Field {
+  ///ç”³å–ä»·äºŒ
+  TSgitFtdcPriceType AskPrice2;
+  ///ç”³å–é‡äºŒ
+  TSgitFtdcVolumeType AskVolume2;
+  ///ç”³å–ä»·ä¸‰
+  TSgitFtdcPriceType AskPrice3;
+  ///ç”³å–é‡ä¸‰
+  TSgitFtdcVolumeType AskVolume3;
+};
+
+///è¡Œæƒ…ç”³ä¹°å››ã€äº”å±æ€§
+struct CSgitFtdcMarketDataBid45Field {
+  ///ç”³ä¹°ä»·å››
+  TSgitFtdcPriceType BidPrice4;
+  ///ç”³ä¹°é‡å››
+  TSgitFtdcVolumeType BidVolume4;
+  ///ç”³ä¹°ä»·äº”
+  TSgitFtdcPriceType BidPrice5;
+  ///ç”³ä¹°é‡äº”
+  TSgitFtdcVolumeType BidVolume5;
+};
+
+///è¡Œæƒ…ç”³å–å››ã€äº”å±æ€§
+struct CSgitFtdcMarketDataAsk45Field {
+  ///ç”³å–ä»·å››
+  TSgitFtdcPriceType AskPrice4;
+  ///ç”³å–é‡å››
+  TSgitFtdcVolumeType AskVolume4;
+  ///ç”³å–ä»·äº”
+  TSgitFtdcPriceType AskPrice5;
+  ///ç”³å–é‡äº”
+  TSgitFtdcVolumeType AskVolume5;
+};
+
+///è¡Œæƒ…æ›´æ–°æ—¶é—´å±æ€§
+struct CSgitFtdcMarketDataUpdateTimeField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æœ€åä¿®æ”¹æ¯«ç§’
+  TSgitFtdcMillisecType UpdateMillisec;
+};
+
+///è¡Œæƒ…äº¤æ˜“æ‰€ä»£ç å±æ€§
+struct CSgitFtdcMarketDataExchangeField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcPriceType ExchangeID;
+};
+
+///æŒ‡å®šçš„åˆçº¦
+struct CSgitFtdcSpecificInstrumentField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///åˆçº¦çŠ¶æ€
+struct CSgitFtdcInstrumentStatusField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///ç»“ç®—ç»„ä»£ç 
+  TSgitFtdcSettlementGroupIDType SettlementGroupID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///åˆçº¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcInstrumentStatusType InstrumentStatus;
+  ///äº¤æ˜“é˜¶æ®µç¼–å·
+  TSgitFtdcTradingSegmentSNType TradingSegmentSN;
+  ///è¿›å…¥æœ¬çŠ¶æ€æ—¶é—´
+  TSgitFtdcTimeType EnterTime;
+  ///è¿›å…¥æœ¬çŠ¶æ€åŸå› 
+  TSgitFtdcInstStatusEnterReasonType EnterReason;
+};
+
+///æŸ¥è¯¢åˆçº¦çŠ¶æ€
+struct CSgitFtdcQryInstrumentStatusField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+};
+
+///æŠ•èµ„è€…è´¦æˆ·
+struct CSgitFtdcInvestorAccountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+};
+
+///æµ®åŠ¨ç›ˆäºç®—æ³•
+struct CSgitFtdcPositionProfitAlgorithmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///ç›ˆäºç®—æ³•
+  TSgitFtdcAlgorithmType Algorithm;
+  ///å¤‡æ³¨
+  TSgitFtdcMemoType Memo;
+};
+
+///ä¼šå‘˜èµ„é‡‘æŠ˜æ‰£
+struct CSgitFtdcDiscountField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///èµ„é‡‘æŠ˜æ‰£æ¯”ä¾‹
+  TSgitFtdcRatioType Discount;
+};
+
+///æŸ¥è¯¢è½¬å¸é“¶è¡Œ
+struct CSgitFtdcQryTransferBankField {
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TSgitFtdcBankBrchIDType BankBrchID;
+};
+
+///è½¬å¸é“¶è¡Œ
+struct CSgitFtdcTransferBankField {
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TSgitFtdcBankBrchIDType BankBrchID;
+  ///é“¶è¡Œåç§°
+  TSgitFtdcBankNameType BankName;
+  ///æ˜¯å¦æ´»è·ƒ
+  TSgitFtdcBoolType IsActive;
+};
+
+///æŸ¥è¯¢æŠ•èµ„è€…æŒä»“æ˜ç»†
+struct CSgitFtdcQryInvestorPositionDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŠ•èµ„è€…æŒä»“æ˜ç»†
+struct CSgitFtdcInvestorPositionDetailField {
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///ä¹°å–
+  TSgitFtdcDirectionType Direction;
+  ///å¼€ä»“æ—¥æœŸ
+  TSgitFtdcDateType OpenDate;
+  ///æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType TradeID;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+  ///å¼€ä»“ä»·
+  TSgitFtdcPriceType OpenPrice;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///æˆäº¤ç±»å‹
+  TSgitFtdcTradeTypeType TradeType;
+  ///ç»„åˆåˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType CombInstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByDate;
+  ///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfitByTrade;
+  ///é€æ—¥ç›¯å¸‚æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfitByDate;
+  ///é€ç¬”å¯¹å†²æŒä»“ç›ˆäº
+  TSgitFtdcMoneyType PositionProfitByTrade;
+  ///æŠ•èµ„è€…ä¿è¯é‡‘
+  TSgitFtdcMoneyType Margin;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchMargin;
+  ///ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TSgitFtdcRatioType MarginRateByVolume;
+  ///æ˜¨ç»“ç®—ä»·
+  TSgitFtdcPriceType LastSettlementPrice;
+  ///ç»“ç®—ä»·
+  TSgitFtdcPriceType SettlementPrice;
+  ///å¹³ä»“é‡
+  TSgitFtdcVolumeType CloseVolume;
+  ///å¹³ä»“é‡‘é¢
+  TSgitFtdcMoneyType CloseAmount;
+};
+
+///èµ„é‡‘è´¦æˆ·å£ä»¤åŸŸ
+struct CSgitFtdcTradingAccountPasswordField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+};
+
+///äº¤æ˜“æ‰€è¡Œæƒ…æŠ¥ç›˜æœº
+struct CSgitFtdcMDTraderOfferField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜è¿æ¥çŠ¶æ€
+  TSgitFtdcTraderConnectStatusType TraderConnectStatus;
+  ///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¥æœŸ
+  TSgitFtdcDateType ConnectRequestDate;
+  ///å‘å‡ºè¿æ¥è¯·æ±‚çš„æ—¶é—´
+  TSgitFtdcTimeType ConnectRequestTime;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¥æœŸ
+  TSgitFtdcDateType LastReportDate;
+  ///ä¸Šæ¬¡æŠ¥å‘Šæ—¶é—´
+  TSgitFtdcTimeType LastReportTime;
+  ///å®Œæˆè¿æ¥æ—¥æœŸ
+  TSgitFtdcDateType ConnectDate;
+  ///å®Œæˆè¿æ¥æ—¶é—´
+  TSgitFtdcTimeType ConnectTime;
+  ///å¯åŠ¨æ—¥æœŸ
+  TSgitFtdcDateType StartDate;
+  ///å¯åŠ¨æ—¶é—´
+  TSgitFtdcTimeType StartTime;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœ¬å¸­ä½æœ€å¤§æˆäº¤ç¼–å·
+  TSgitFtdcTradeIDType MaxTradeID;
+  ///æœ¬å¸­ä½æœ€å¤§æŠ¥å•å¤‡æ‹·
+  TSgitFtdcReturnCodeType MaxOrderMessageReference;
+};
+
+///æŸ¥è¯¢è¡Œæƒ…æŠ¥ç›˜æœº
+struct CSgitFtdcQryMDTraderOfferField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+};
+
+///æŸ¥è¯¢å®¢æˆ·é€šçŸ¥
+struct CSgitFtdcQryNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///å®¢æˆ·é€šçŸ¥
+struct CSgitFtdcNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TSgitFtdcContentType Content;
+  ///ç»çºªå…¬å¸é€šçŸ¥å†…å®¹åºåˆ—å·
+  TSgitFtdcSequenceLabelType SequenceLabel;
+};
+
+///ç”¨æˆ·æƒé™
+struct CSgitFtdcUserRightField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///å®¢æˆ·æƒé™ç±»å‹
+  TSgitFtdcUserRightTypeType UserRightType;
+  ///æ˜¯å¦ç¦æ­¢
+  TSgitFtdcBoolType IsForbidden;
+};
+
+///æŸ¥è¯¢ç»“ç®—ä¿¡æ¯ç¡®è®¤åŸŸ
+struct CSgitFtdcQrySettlementInfoConfirmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///è£…è½½ç»“ç®—ä¿¡æ¯
+struct CSgitFtdcLoadSettlementInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///ç»çºªå…¬å¸å¯æèµ„é‡‘ç®—æ³•è¡¨
+struct CSgitFtdcBrokerWithdrawAlgorithmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///å¯æèµ„é‡‘ç®—æ³•
+  TSgitFtdcAlgorithmType WithdrawAlgorithm;
+  ///èµ„é‡‘ä½¿ç”¨ç‡
+  TSgitFtdcRatioType UsingRatio;
+  ///å¯ææ˜¯å¦åŒ…å«å¹³ä»“ç›ˆåˆ©
+  TSgitFtdcIncludeCloseProfitType IncludeCloseProfit;
+  ///æœ¬æ—¥æ— ä»“ä¸”æ— æˆäº¤å®¢æˆ·æ˜¯å¦å—å¯ææ¯”ä¾‹é™åˆ¶
+  TSgitFtdcAllWithoutTradeType AllWithoutTrade;
+  ///å¯ç”¨æ˜¯å¦åŒ…å«å¹³ä»“ç›ˆåˆ©
+  TSgitFtdcIncludeCloseProfitType AvailIncludeCloseProfit;
+  ///æ˜¯å¦å¯ç”¨ç”¨æˆ·äº‹ä»¶
+  TSgitFtdcBoolType IsBrokerUserEvent;
+};
+
+///èµ„é‡‘è´¦æˆ·å£ä»¤å˜æ›´åŸŸ
+struct CSgitFtdcTradingAccountPasswordUpdateV1Field {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åŸæ¥çš„å£ä»¤
+  TSgitFtdcPasswordType OldPassword;
+  ///æ–°çš„å£ä»¤
+  TSgitFtdcPasswordType NewPassword;
+};
+
+///èµ„é‡‘è´¦æˆ·å£ä»¤å˜æ›´åŸŸ
+struct CSgitFtdcTradingAccountPasswordUpdateField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///åŸæ¥çš„å£ä»¤
+  TSgitFtdcPasswordType OldPassword;
+  ///æ–°çš„å£ä»¤
+  TSgitFtdcPasswordType NewPassword;
+};
+
+///æŸ¥è¯¢ç»„åˆåˆçº¦åˆ†è…¿
+struct CSgitFtdcQryCombinationLegField {
+  ///ç»„åˆåˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType CombInstrumentID;
+  ///å•è…¿ç¼–å·
+  TSgitFtdcLegIDType LegID;
+  ///å•è…¿åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType LegInstrumentID;
+};
+
+///æŸ¥è¯¢ç»„åˆåˆçº¦åˆ†è…¿
+struct CSgitFtdcQrySyncStatusField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+};
+
+///ç»„åˆäº¤æ˜“åˆçº¦çš„å•è…¿
+struct CSgitFtdcCombinationLegField {
+  ///ç»„åˆåˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType CombInstrumentID;
+  ///å•è…¿ç¼–å·
+  TSgitFtdcLegIDType LegID;
+  ///å•è…¿åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType LegInstrumentID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///å•è…¿ä¹˜æ•°
+  TSgitFtdcLegMultipleType LegMultiple;
+  ///æ´¾ç”Ÿå±‚æ•°
+  TSgitFtdcImplyLevelType ImplyLevel;
+};
+
+///æ•°æ®åŒæ­¥çŠ¶æ€
+struct CSgitFtdcSyncStatusField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///æ•°æ®åŒæ­¥çŠ¶æ€
+  TSgitFtdcDataSyncStatusType DataSyncStatus;
+};
+
+///æŸ¥è¯¢è”ç³»äºº
+struct CSgitFtdcQryLinkManField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///è”ç³»äºº
+struct CSgitFtdcLinkManField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///è”ç³»äººç±»å‹
+  TSgitFtdcPersonTypeType PersonType;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdentifiedCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///åç§°
+  TSgitFtdcPartyNameType PersonName;
+  ///è”ç³»ç”µè¯
+  TSgitFtdcTelephoneType Telephone;
+  ///é€šè®¯åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®æ”¿ç¼–ç 
+  TSgitFtdcZipCodeType ZipCode;
+  ///ä¼˜å…ˆçº§
+  TSgitFtdcPriorityType Priority;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·äº‹ä»¶
+struct CSgitFtdcQryBrokerUserEventField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·äº‹ä»¶ç±»å‹
+  TSgitFtdcUserEventTypeType UserEventType;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸ç”¨æˆ·äº‹ä»¶
+struct CSgitFtdcBrokerUserEventField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///ç”¨æˆ·äº‹ä»¶ç±»å‹
+  TSgitFtdcUserEventTypeType UserEventType;
+  ///ç”¨æˆ·äº‹ä»¶åºå·
+  TSgitFtdcSequenceNoType EventSequenceNo;
+  ///äº‹ä»¶å‘ç”Ÿæ—¥æœŸ
+  TSgitFtdcDateType EventDate;
+  ///äº‹ä»¶å‘ç”Ÿæ—¶é—´
+  TSgitFtdcTimeType EventTime;
+  ///ç”¨æˆ·äº‹ä»¶ä¿¡æ¯
+  TSgitFtdcUserEventInfoType UserEventInfo;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///æŸ¥è¯¢ç­¾çº¦é“¶è¡Œè¯·æ±‚
+struct CSgitFtdcQryContractBankField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TSgitFtdcBankBrchIDType BankBrchID;
+};
+
+///æŸ¥è¯¢ç­¾çº¦é“¶è¡Œå“åº”
+struct CSgitFtdcContractBankField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†ä¸­å¿ƒä»£ç 
+  TSgitFtdcBankBrchIDType BankBrchID;
+  ///é“¶è¡Œåç§°
+  TSgitFtdcBankNameType BankName;
+};
+
+///æŠ•èµ„è€…ç»„åˆæŒä»“æ˜ç»†
+struct CSgitFtdcInvestorPositionCombineDetailField {
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///å¼€ä»“æ—¥æœŸ
+  TSgitFtdcDateType OpenDate;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»„åˆç¼–å·
+  TSgitFtdcTradeIDType ComTradeID;
+  ///æ’®åˆç¼–å·
+  TSgitFtdcTradeIDType TradeID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///ä¹°å–
+  TSgitFtdcDirectionType Direction;
+  ///æŒä»“é‡
+  TSgitFtdcVolumeType TotalAmt;
+  ///æŠ•èµ„è€…ä¿è¯é‡‘
+  TSgitFtdcMoneyType Margin;
+  ///äº¤æ˜“æ‰€ä¿è¯é‡‘
+  TSgitFtdcMoneyType ExchMargin;
+  ///ä¿è¯é‡‘ç‡
+  TSgitFtdcRatioType MarginRateByMoney;
+  ///ä¿è¯é‡‘ç‡(æŒ‰æ‰‹æ•°)
+  TSgitFtdcRatioType MarginRateByVolume;
+  ///å•è…¿ç¼–å·
+  TSgitFtdcLegIDType LegID;
+  ///å•è…¿ä¹˜æ•°
+  TSgitFtdcLegMultipleType LegMultiple;
+  ///ç»„åˆæŒä»“åˆçº¦ç¼–ç 
+  TSgitFtdcInstrumentIDType CombInstrumentID;
+};
+
+///é¢„åŸ‹å•
+struct CSgitFtdcParkedOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TSgitFtdcBoolType UserForceClose;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///é¢„åŸ‹æŠ¥å•ç¼–å·
+  TSgitFtdcParkedOrderIDType ParkedOrderID;
+  ///ç”¨æˆ·ç±»å‹
+  TSgitFtdcUserTypeType UserType;
+  ///é¢„åŸ‹å•çŠ¶æ€
+  TSgitFtdcParkedOrderStatusType Status;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///è¾“å…¥é¢„åŸ‹å•æ“ä½œ
+struct CSgitFtdcParkedOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ¥å•æ“ä½œå¼•ç”¨
+  TSgitFtdcOrderActionRefType OrderActionRef;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TSgitFtdcActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TSgitFtdcVolumeType VolumeChange;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///é¢„åŸ‹æ’¤å•å•ç¼–å·
+  TSgitFtdcParkedOrderActionIDType ParkedOrderActionID;
+  ///ç”¨æˆ·ç±»å‹
+  TSgitFtdcUserTypeType UserType;
+  ///é¢„åŸ‹æ’¤å•çŠ¶æ€
+  TSgitFtdcParkedOrderStatusType Status;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢é¢„åŸ‹å•
+struct CSgitFtdcQryParkedOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///æŸ¥è¯¢é¢„åŸ‹æ’¤å•
+struct CSgitFtdcQryParkedOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///åˆ é™¤é¢„åŸ‹å•
+struct CSgitFtdcRemoveParkedOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///é¢„åŸ‹æŠ¥å•ç¼–å·
+  TSgitFtdcParkedOrderIDType ParkedOrderID;
+};
+
+///åˆ é™¤é¢„åŸ‹æ’¤å•
+struct CSgitFtdcRemoveParkedOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///é¢„åŸ‹æ’¤å•ç¼–å·
+  TSgitFtdcParkedOrderActionIDType ParkedOrderActionID;
+};
+
+///ç»çºªå…¬å¸å¯æèµ„é‡‘ç®—æ³•è¡¨
+struct CSgitFtdcInvestorWithdrawAlgorithmField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å¯æèµ„é‡‘æ¯”ä¾‹
+  TSgitFtdcRatioType UsingRatio;
+};
+
+///æŸ¥è¯¢ç»„åˆæŒä»“æ˜ç»†
+struct CSgitFtdcQryInvestorPositionCombineDetailField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ç»„åˆæŒä»“åˆçº¦ç¼–ç 
+  TSgitFtdcInstrumentIDType CombInstrumentID;
+};
+
+///æˆäº¤å‡ä»·
+struct CSgitFtdcMarketDataAveragePriceField {
+  ///å½“æ—¥å‡ä»·
+  TSgitFtdcPriceType AveragePrice;
+};
+
+///æ ¡éªŒæŠ•èµ„è€…å¯†ç 
+struct CSgitFtdcVerifyInvestorPasswordField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å¯†ç 
+  TSgitFtdcPasswordType Password;
+};
+
+///ç”¨æˆ·IP
+struct CSgitFtdcUserIPField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  /// IPåœ°å€
+  TSgitFtdcIPAddressType IPAddress;
+  /// IPåœ°å€æ©ç 
+  TSgitFtdcIPAddressType IPMask;
+  /// Macåœ°å€
+  TSgitFtdcMacAddressType MacAddress;
+};
+
+///ç”¨æˆ·äº‹ä»¶é€šçŸ¥ä¿¡æ¯
+struct CSgitFtdcTradingNoticeInfoField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å‘é€æ—¶é—´
+  TSgitFtdcTimeType SendTime;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TSgitFtdcContentType FieldContent;
+  ///åºåˆ—ç³»åˆ—å·
+  TSgitFtdcSequenceSeriesType SequenceSeries;
+  ///åºåˆ—å·
+  TSgitFtdcSequenceNoType SequenceNo;
+};
+
+///ç”¨æˆ·äº‹ä»¶é€šçŸ¥
+struct CSgitFtdcTradingNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…èŒƒå›´
+  TSgitFtdcInvestorRangeType InvestorRange;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åºåˆ—ç³»åˆ—å·
+  TSgitFtdcSequenceSeriesType SequenceSeries;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///å‘é€æ—¶é—´
+  TSgitFtdcTimeType SendTime;
+  ///åºåˆ—å·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///æ¶ˆæ¯æ­£æ–‡
+  TSgitFtdcContentType FieldContent;
+};
+
+///æŸ¥è¯¢äº¤æ˜“äº‹ä»¶é€šçŸ¥
+struct CSgitFtdcQryTradingNoticeField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///æŸ¥è¯¢é”™è¯¯æŠ¥å•
+struct CSgitFtdcQryErrOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///é”™è¯¯æŠ¥å•
+struct CSgitFtdcErrOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TSgitFtdcBoolType UserForceClose;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢é”™è¯¯æŠ¥å•æ“ä½œ
+struct CSgitFtdcErrorConditionalOrderField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///æŠ¥å•ä»·æ ¼æ¡ä»¶
+  TSgitFtdcOrderPriceTypeType OrderPriceType;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///ç»„åˆå¼€å¹³æ ‡å¿—
+  TSgitFtdcCombOffsetFlagType CombOffsetFlag;
+  ///ç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcCombHedgeFlagType CombHedgeFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡
+  TSgitFtdcVolumeType VolumeTotalOriginal;
+  ///æœ‰æ•ˆæœŸç±»å‹
+  TSgitFtdcTimeConditionType TimeCondition;
+  /// GTDæ—¥æœŸ
+  TSgitFtdcDateType GTDDate;
+  ///æˆäº¤é‡ç±»å‹
+  TSgitFtdcVolumeConditionType VolumeCondition;
+  ///æœ€å°æˆäº¤é‡
+  TSgitFtdcVolumeType MinVolume;
+  ///è§¦å‘æ¡ä»¶
+  TSgitFtdcContingentConditionType ContingentCondition;
+  ///æ­¢æŸä»·
+  TSgitFtdcPriceType StopPrice;
+  ///å¼ºå¹³åŸå› 
+  TSgitFtdcForceCloseReasonType ForceCloseReason;
+  ///è‡ªåŠ¨æŒ‚èµ·æ ‡å¿—
+  TSgitFtdcBoolType IsAutoSuspend;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///åˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç 
+  TSgitFtdcExchangeInstIDType ExchangeInstID;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æŠ¥å•æäº¤çŠ¶æ€
+  TSgitFtdcOrderSubmitStatusType OrderSubmitStatus;
+  ///æŠ¥å•æç¤ºåºå·
+  TSgitFtdcSequenceNoType NotifySequence;
+  ///äº¤æ˜“æ—¥
+  TSgitFtdcDateType TradingDay;
+  ///ç»“ç®—ç¼–å·
+  TSgitFtdcSettlementIDType SettlementID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æŠ¥å•æ¥æº
+  TSgitFtdcOrderSourceType OrderSource;
+  ///æŠ¥å•çŠ¶æ€
+  TSgitFtdcOrderStatusType OrderStatus;
+  ///æŠ¥å•ç±»å‹
+  TSgitFtdcOrderTypeType OrderType;
+  ///ä»Šæˆäº¤æ•°é‡
+  TSgitFtdcVolumeType VolumeTraded;
+  ///å‰©ä½™æ•°é‡
+  TSgitFtdcVolumeType VolumeTotal;
+  ///æŠ¥å•æ—¥æœŸ
+  TSgitFtdcDateType InsertDate;
+  ///å§”æ‰˜æ—¶é—´
+  TSgitFtdcTimeType InsertTime;
+  ///æ¿€æ´»æ—¶é—´
+  TSgitFtdcTimeType ActiveTime;
+  ///æŒ‚èµ·æ—¶é—´
+  TSgitFtdcTimeType SuspendTime;
+  ///æœ€åä¿®æ”¹æ—¶é—´
+  TSgitFtdcTimeType UpdateTime;
+  ///æ’¤é”€æ—¶é—´
+  TSgitFtdcTimeType CancelTime;
+  ///æœ€åä¿®æ”¹äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType ActiveTraderID;
+  ///ç»“ç®—ä¼šå‘˜ç¼–å·
+  TSgitFtdcParticipantIDType ClearingPartID;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///ç”¨æˆ·ç«¯äº§å“ä¿¡æ¯
+  TSgitFtdcProductInfoType UserProductInfo;
+  ///çŠ¶æ€ä¿¡æ¯
+  TSgitFtdcErrorMsgType StatusMsg;
+  ///ç”¨æˆ·å¼ºè¯„æ ‡å¿—
+  TSgitFtdcBoolType UserForceClose;
+  ///æ“ä½œç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType ActiveUserID;
+  ///ç»çºªå…¬å¸æŠ¥å•ç¼–å·
+  TSgitFtdcSequenceNoType BrokerOrderSeq;
+  ///ç›¸å…³æŠ¥å•
+  TSgitFtdcOrderSysIDType RelativeOrderSysID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢é”™è¯¯æŠ¥å•æ“ä½œ
+struct CSgitFtdcQryErrOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///é”™è¯¯æŠ¥å•æ“ä½œ
+struct CSgitFtdcErrOrderActionField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æŠ¥å•æ“ä½œå¼•ç”¨
+  TSgitFtdcOrderActionRefType OrderActionRef;
+  ///æŠ¥å•å¼•ç”¨
+  TSgitFtdcOrderRefType OrderRef;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///å‰ç½®ç¼–å·
+  TSgitFtdcFrontIDType FrontID;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///æŠ¥å•ç¼–å·
+  TSgitFtdcOrderSysIDType OrderSysID;
+  ///æ“ä½œæ ‡å¿—
+  TSgitFtdcActionFlagType ActionFlag;
+  ///ä»·æ ¼
+  TSgitFtdcPriceType LimitPrice;
+  ///æ•°é‡å˜åŒ–
+  TSgitFtdcVolumeType VolumeChange;
+  ///æ“ä½œæ—¥æœŸ
+  TSgitFtdcDateType ActionDate;
+  ///æ“ä½œæ—¶é—´
+  TSgitFtdcTimeType ActionTime;
+  ///äº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç 
+  TSgitFtdcTraderIDType TraderID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœ¬åœ°æŠ¥å•ç¼–å·
+  TSgitFtdcOrderLocalIDType OrderLocalID;
+  ///æ“ä½œæœ¬åœ°ç¼–å·
+  TSgitFtdcOrderLocalIDType ActionLocalID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å®¢æˆ·ä»£ç 
+  TSgitFtdcClientIDType ClientID;
+  ///ä¸šåŠ¡å•å…ƒ
+  TSgitFtdcBusinessUnitType BusinessUnit;
+  ///æŠ¥å•æ“ä½œçŠ¶æ€
+  TSgitFtdcOrderActionStatusType OrderActionStatus;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///çŠ¶æ€ä¿¡æ¯
+  TSgitFtdcErrorMsgType StatusMsg;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢äº¤æ˜“æ‰€çŠ¶æ€
+struct CSgitFtdcQryExchangeSequenceField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///äº¤æ˜“æ‰€çŠ¶æ€
+struct CSgitFtdcExchangeSequenceField {
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åºå·
+  TSgitFtdcSequenceNoType SequenceNo;
+  ///åˆçº¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcInstrumentStatusType MarketStatus;
+};
+
+///æ ¹æ®ä»·æ ¼æŸ¥è¯¢æœ€å¤§æŠ¥å•æ•°é‡
+struct CSgitFtdcQueryMaxOrderVolumeWithPriceField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///å¼€å¹³æ ‡å¿—
+  TSgitFtdcOffsetFlagType OffsetFlag;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///æœ€å¤§å…è®¸æŠ¥å•æ•°é‡
+  TSgitFtdcVolumeType MaxVolume;
+  ///æŠ¥å•ä»·æ ¼
+  TSgitFtdcPriceType Price;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸äº¤æ˜“å‚æ•°
+struct CSgitFtdcQryBrokerTradingParamsField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///ç»çºªå…¬å¸äº¤æ˜“å‚æ•°
+struct CSgitFtdcBrokerTradingParamsField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///ä¿è¯é‡‘ä»·æ ¼ç±»å‹
+  TSgitFtdcMarginPriceTypeType MarginPriceType;
+  ///ç›ˆäºç®—æ³•
+  TSgitFtdcAlgorithmType Algorithm;
+  ///å¯ç”¨æ˜¯å¦åŒ…å«å¹³ä»“ç›ˆåˆ©
+  TSgitFtdcIncludeCloseProfitType AvailIncludeCloseProfit;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸äº¤æ˜“ç®—æ³•
+struct CSgitFtdcQryBrokerTradingAlgosField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///ç»çºªå…¬å¸äº¤æ˜“ç®—æ³•
+struct CSgitFtdcBrokerTradingAlgosField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///æŒä»“å¤„ç†ç®—æ³•ç¼–å·
+  TSgitFtdcHandlePositionAlgoIDType HandlePositionAlgoID;
+  ///å¯»æ‰¾ä¿è¯é‡‘ç‡ç®—æ³•ç¼–å·
+  TSgitFtdcFindMarginRateAlgoIDType FindMarginRateAlgoID;
+  ///èµ„é‡‘å¤„ç†ç®—æ³•ç¼–å·
+  TSgitFtdcHandleTradingAccountAlgoIDType HandleTradingAccountAlgoID;
+};
+
+///æŸ¥è¯¢ç»çºªå…¬å¸èµ„é‡‘
+struct CSgitFtdcQueryBrokerDepositField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+};
+
+///ç»çºªå…¬å¸èµ„é‡‘
+struct CSgitFtdcBrokerDepositField {
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ä¼šå‘˜ä»£ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType PreBalance;
+  ///å½“å‰ä¿è¯é‡‘æ€»é¢
+  TSgitFtdcMoneyType CurrMargin;
+  ///å¹³ä»“ç›ˆäº
+  TSgitFtdcMoneyType CloseProfit;
+  ///æœŸè´§ç»“ç®—å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Balance;
+  ///å…¥é‡‘é‡‘é¢
+  TSgitFtdcMoneyType Deposit;
+  ///å‡ºé‡‘é‡‘é¢
+  TSgitFtdcMoneyType Withdraw;
+  ///å¯æèµ„é‡‘
+  TSgitFtdcMoneyType Available;
+  ///åŸºæœ¬å‡†å¤‡é‡‘
+  TSgitFtdcMoneyType Reserve;
+  ///å†»ç»“çš„ä¿è¯é‡‘
+  TSgitFtdcMoneyType FrozenMargin;
+};
+
+///æŸ¥è¯¢ä¿è¯é‡‘ç›‘ç®¡ç³»ç»Ÿç»çºªå…¬å¸å¯†é’¥
+struct CSgitFtdcQryCFMMCBrokerKeyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+};
+
+///ä¿è¯é‡‘ç›‘ç®¡ç³»ç»Ÿç»çºªå…¬å¸å¯†é’¥
+struct CSgitFtdcCFMMCBrokerKeyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç»çºªå…¬å¸ç»Ÿä¸€ç¼–ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///å¯†é’¥ç”Ÿæˆæ—¥æœŸ
+  TSgitFtdcDateType CreateDate;
+  ///å¯†é’¥ç”Ÿæˆæ—¶é—´
+  TSgitFtdcTimeType CreateTime;
+  ///å¯†é’¥ç¼–å·
+  TSgitFtdcSequenceNoType KeyID;
+  ///åŠ¨æ€å¯†é’¥
+  TSgitFtdcCFMMCKeyType CurrentKey;
+  ///åŠ¨æ€å¯†é’¥ç±»å‹
+  TSgitFtdcCFMMCKeyKindType KeyKind;
+};
+
+///ä¿è¯é‡‘ç›‘ç®¡ç³»ç»Ÿç»çºªå…¬å¸èµ„é‡‘è´¦æˆ·å¯†é’¥
+struct CSgitFtdcCFMMCTradingAccountKeyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç»çºªå…¬å¸ç»Ÿä¸€ç¼–ç 
+  TSgitFtdcParticipantIDType ParticipantID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///å¯†é’¥ç¼–å·
+  TSgitFtdcSequenceNoType KeyID;
+  ///åŠ¨æ€å¯†é’¥
+  TSgitFtdcCFMMCKeyType CurrentKey;
+};
+
+///è¯·æ±‚æŸ¥è¯¢ä¿è¯é‡‘ç›‘ç®¡ç³»ç»Ÿç»çºªå…¬å¸èµ„é‡‘è´¦æˆ·å¯†é’¥
+struct CSgitFtdcQryCFMMCTradingAccountKeyField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+};
+
+///ç”¨æˆ·åŠ¨æ€ä»¤ç‰Œå‚æ•°
+struct CSgitFtdcBrokerUserOTPParamField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åŠ¨æ€ä»¤ç‰Œæä¾›å•†
+  TSgitFtdcOTPVendorsIDType OTPVendorsID;
+  ///åŠ¨æ€ä»¤ç‰Œåºåˆ—å·
+  TSgitFtdcSerialNumberType SerialNumber;
+  ///ä»¤ç‰Œå¯†é’¥
+  TSgitFtdcAuthKeyType AuthKey;
+  ///æ¼‚ç§»å€¼
+  TSgitFtdcLastDriftType LastDrift;
+  ///æˆåŠŸå€¼
+  TSgitFtdcLastSuccessType LastSuccess;
+  ///åŠ¨æ€ä»¤ç‰Œç±»å‹
+  TSgitFtdcOTPTypeType OTPType;
+};
+
+///æ‰‹å·¥åŒæ­¥ç”¨æˆ·åŠ¨æ€ä»¤ç‰Œ
+struct CSgitFtdcManualSyncBrokerUserOTPField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///åŠ¨æ€ä»¤ç‰Œç±»å‹
+  TSgitFtdcOTPTypeType OTPType;
+  ///ç¬¬ä¸€ä¸ªåŠ¨æ€å¯†ç 
+  TSgitFtdcPasswordType FirstOTP;
+  ///ç¬¬äºŒä¸ªåŠ¨æ€å¯†ç 
+  TSgitFtdcPasswordType SecondOTP;
+};
+
+///æŠ•èµ„è€…æ‰‹ç»­è´¹ç‡æ¨¡æ¿
+struct CSgitFtdcCommRateModelField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æ‰‹ç»­è´¹ç‡æ¨¡æ¿ä»£ç 
+  TSgitFtdcInvestorIDType CommModelID;
+  ///æ¨¡æ¿åç§°
+  TSgitFtdcCommModelNameType CommModelName;
+};
+
+///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æ‰‹ç»­è´¹ç‡æ¨¡æ¿
+struct CSgitFtdcQryCommRateModelField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æ‰‹ç»­è´¹ç‡æ¨¡æ¿ä»£ç 
+  TSgitFtdcInvestorIDType CommModelID;
+};
+
+///ä»“å•æŠ˜æŠµä¿¡æ¯
+struct CSgitFtdcEWarrantOffsetField {
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+  ///ä¹°å–æ–¹å‘
+  TSgitFtdcDirectionType Direction;
+  ///æŠ•æœºå¥—ä¿æ ‡å¿—
+  TSgitFtdcHedgeFlagType HedgeFlag;
+  ///æ•°é‡
+  TSgitFtdcVolumeType Volume;
+};
+
+///æŸ¥è¯¢ä»“å•æŠ˜æŠµä¿¡æ¯
+struct CSgitFtdcQryEWarrantOffsetField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///äº¤æ˜“æ‰€ä»£ç 
+  TSgitFtdcExchangeIDType ExchangeID;
+  ///åˆçº¦ä»£ç 
+  TSgitFtdcInstrumentIDType InstrumentID;
+};
+
+///è½¬å¸å¼€æˆ·è¯·æ±‚
+struct CSgitFtdcReqOpenAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ±‡é’æ ‡å¿—
+  TSgitFtdcCashExchangeCodeType CashExchangeCode;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///è½¬å¸é”€æˆ·è¯·æ±‚
+struct CSgitFtdcReqCancelAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ±‡é’æ ‡å¿—
+  TSgitFtdcCashExchangeCodeType CashExchangeCode;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///å˜æ›´é“¶è¡Œè´¦æˆ·è¯·æ±‚
+struct CSgitFtdcReqChangeAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æ–°é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType NewBankAccount;
+  ///æ–°é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType NewBankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+};
+
+///è½¬è´¦è¯·æ±‚
+struct CSgitFtdcReqTransferField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æœŸè´§å¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TSgitFtdcFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TSgitFtdcCustFeeType CustFee;
+  ///åº”æ”¶æœŸè´§å…¬å¸è´¹ç”¨
+  TSgitFtdcFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcTransferStatusType TransferStatus;
+};
+
+///é“¶è¡Œå‘èµ·é“¶è¡Œèµ„é‡‘è½¬æœŸè´§å“åº”
+struct CSgitFtdcRspTransferField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æœŸè´§å¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TSgitFtdcFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TSgitFtdcCustFeeType CustFee;
+  ///åº”æ”¶æœŸè´§å…¬å¸è´¹ç”¨
+  TSgitFtdcFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcTransferStatusType TransferStatus;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///å†²æ­£è¯·æ±‚
+struct CSgitFtdcReqRepealField {
+  ///å†²æ­£æ—¶é—´é—´éš”
+  TSgitFtdcRepealTimeIntervalType RepealTimeInterval;
+  ///å·²ç»å†²æ­£æ¬¡æ•°
+  TSgitFtdcRepealedTimesType RepealedTimes;
+  ///é“¶è¡Œå†²æ­£æ ‡å¿—
+  TSgitFtdcBankRepealFlagType BankRepealFlag;
+  ///æœŸå•†å†²æ­£æ ‡å¿—
+  TSgitFtdcBrokerRepealFlagType BrokerRepealFlag;
+  ///è¢«å†²æ­£å¹³å°æµæ°´å·
+  TSgitFtdcPlateSerialType PlateRepealSerial;
+  ///è¢«å†²æ­£é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankRepealSerial;
+  ///è¢«å†²æ­£æœŸè´§æµæ°´å·
+  TSgitFtdcFutureSerialType FutureRepealSerial;
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æœŸè´§å¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TSgitFtdcFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TSgitFtdcCustFeeType CustFee;
+  ///åº”æ”¶æœŸè´§å…¬å¸è´¹ç”¨
+  TSgitFtdcFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcTransferStatusType TransferStatus;
+};
+
+///å†²æ­£å“åº”
+struct CSgitFtdcRspRepealField {
+  ///å†²æ­£æ—¶é—´é—´éš”
+  TSgitFtdcRepealTimeIntervalType RepealTimeInterval;
+  ///å·²ç»å†²æ­£æ¬¡æ•°
+  TSgitFtdcRepealedTimesType RepealedTimes;
+  ///é“¶è¡Œå†²æ­£æ ‡å¿—
+  TSgitFtdcBankRepealFlagType BankRepealFlag;
+  ///æœŸå•†å†²æ­£æ ‡å¿—
+  TSgitFtdcBrokerRepealFlagType BrokerRepealFlag;
+  ///è¢«å†²æ­£å¹³å°æµæ°´å·
+  TSgitFtdcPlateSerialType PlateRepealSerial;
+  ///è¢«å†²æ­£é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankRepealSerial;
+  ///è¢«å†²æ­£æœŸè´§æµæ°´å·
+  TSgitFtdcFutureSerialType FutureRepealSerial;
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æœŸè´§å¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType FutureFetchAmount;
+  ///è´¹ç”¨æ”¯ä»˜æ ‡å¿—
+  TSgitFtdcFeePayFlagType FeePayFlag;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TSgitFtdcCustFeeType CustFee;
+  ///åº”æ”¶æœŸè´§å…¬å¸è´¹ç”¨
+  TSgitFtdcFutureFeeType BrokerFee;
+  ///å‘é€æ–¹ç»™æ¥æ”¶æ–¹çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///è½¬è´¦äº¤æ˜“çŠ¶æ€
+  TSgitFtdcTransferStatusType TransferStatus;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯è¯·æ±‚
+struct CSgitFtdcReqQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯å“åº”
+struct CSgitFtdcRspQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é“¶è¡Œå¯ç”¨é‡‘é¢
+  TSgitFtdcTradeAmountType BankUseAmount;
+  ///é“¶è¡Œå¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType BankFetchAmount;
+};
+
+///æœŸå•†ç­¾åˆ°ç­¾é€€
+struct CSgitFtdcFutureSignIOField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///æœŸå•†ç­¾åˆ°å“åº”
+struct CSgitFtdcRspFutureSignInField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+  /// PINå¯†é’¥
+  TSgitFtdcPasswordKeyType PinKey;
+  /// MACå¯†é’¥
+  TSgitFtdcPasswordKeyType MacKey;
+};
+
+///æœŸå•†ç­¾é€€è¯·æ±‚
+struct CSgitFtdcReqFutureSignOutField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///æœŸå•†ç­¾é€€å“åº”
+struct CSgitFtdcRspFutureSignOutField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢æŒ‡å®šæµæ°´å·çš„äº¤æ˜“ç»“æœè¯·æ±‚
+struct CSgitFtdcReqQueryTradeResultBySerialField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///æµæ°´å·
+  TSgitFtdcSerialType Reference;
+  ///æœ¬æµæ°´å·å‘å¸ƒè€…çš„æœºæ„ç±»å‹
+  TSgitFtdcInstitutionTypeType RefrenceIssureType;
+  ///æœ¬æµæ°´å·å‘å¸ƒè€…æœºæ„ç¼–ç 
+  TSgitFtdcOrganCodeType RefrenceIssure;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+};
+
+///æŸ¥è¯¢æŒ‡å®šæµæ°´å·çš„äº¤æ˜“ç»“æœå“åº”
+struct CSgitFtdcRspQueryTradeResultBySerialField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+  ///æµæ°´å·
+  TSgitFtdcSerialType Reference;
+  ///æœ¬æµæ°´å·å‘å¸ƒè€…çš„æœºæ„ç±»å‹
+  TSgitFtdcInstitutionTypeType RefrenceIssureType;
+  ///æœ¬æµæ°´å·å‘å¸ƒè€…æœºæ„ç¼–ç 
+  TSgitFtdcOrganCodeType RefrenceIssure;
+  ///åŸå§‹è¿”å›ä»£ç 
+  TSgitFtdcReturnCodeType OriginReturnCode;
+  ///åŸå§‹è¿”å›ç æè¿°
+  TSgitFtdcDescrInfoForReturnCodeType OriginDescrInfoForReturnCode;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///è½¬å¸é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+};
+
+///æ—¥ç»ˆæ–‡ä»¶å°±ç»ªè¯·æ±‚
+struct CSgitFtdcReqDayEndFileReadyField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///æ–‡ä»¶ä¸šåŠ¡åŠŸèƒ½
+  TSgitFtdcFileBusinessCodeType FileBusinessCode;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+};
+
+///è¿”å›ç»“æœ
+struct CSgitFtdcReturnResultField {
+  ///è¿”å›ä»£ç 
+  TSgitFtdcReturnCodeType ReturnCode;
+  ///è¿”å›ç æè¿°
+  TSgitFtdcDescrInfoForReturnCodeType DescrInfoForReturnCode;
+};
+
+///éªŒè¯æœŸè´§èµ„é‡‘å¯†ç 
+struct CSgitFtdcVerifyFuturePasswordField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///éªŒè¯å®¢æˆ·ä¿¡æ¯
+struct CSgitFtdcVerifyCustInfoField {
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+};
+
+///éªŒè¯æœŸè´§èµ„é‡‘å¯†ç å’Œå®¢æˆ·ä¿¡æ¯
+struct CSgitFtdcVerifyFuturePasswordAndCustInfoField {
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+};
+
+///éªŒè¯æœŸè´§èµ„é‡‘å¯†ç å’Œå®¢æˆ·ä¿¡æ¯
+struct CSgitFtdcDepositResultInformField {
+  ///å‡ºå…¥é‡‘æµæ°´å·ï¼Œè¯¥æµæ°´å·ä¸ºé“¶æœŸæŠ¥ç›˜è¿”å›çš„æµæ°´å·
+  TSgitFtdcDepositSeqNoType DepositSeqNo;
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///å…¥é‡‘é‡‘é¢
+  TSgitFtdcMoneyType Deposit;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///è¿”å›ä»£ç 
+  TSgitFtdcReturnCodeType ReturnCode;
+  ///è¿”å›ç æè¿°
+  TSgitFtdcDescrInfoForReturnCodeType DescrInfoForReturnCode;
+};
+
+///äº¤æ˜“æ ¸å¿ƒå‘é“¶æœŸæŠ¥ç›˜å‘å‡ºå¯†é’¥åŒæ­¥è¯·æ±‚
+struct CSgitFtdcReqSyncKeyField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“æ ¸å¿ƒç»™é“¶æœŸæŠ¥ç›˜çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+};
+
+///äº¤æ˜“æ ¸å¿ƒå‘é“¶æœŸæŠ¥ç›˜å‘å‡ºå¯†é’¥åŒæ­¥å“åº”
+struct CSgitFtdcRspSyncKeyField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“æ ¸å¿ƒç»™é“¶æœŸæŠ¥ç›˜çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///æŸ¥è¯¢è´¦æˆ·ä¿¡æ¯é€šçŸ¥
+struct CSgitFtdcNotifyQueryAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é“¶è¡Œå¯ç”¨é‡‘é¢
+  TSgitFtdcTradeAmountType BankUseAmount;
+  ///é“¶è¡Œå¯å–é‡‘é¢
+  TSgitFtdcTradeAmountType BankFetchAmount;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///é“¶æœŸè½¬è´¦äº¤æ˜“æµæ°´è¡¨
+struct CSgitFtdcTransferSerialField {
+  ///å¹³å°æµæ°´å·
+  TSgitFtdcPlateSerialType PlateSerial;
+  ///äº¤æ˜“å‘èµ·æ–¹æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcDateType TradingDay;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///äº¤æ˜“ä»£ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///ä¼šè¯ç¼–å·
+  TSgitFtdcSessionIDType SessionID;
+  ///é“¶è¡Œç¼–ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ç¼–ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///æœŸè´§å…¬å¸ç¼–ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///æœŸè´§å…¬å¸å¸å·ç±»å‹
+  TSgitFtdcFutureAccTypeType FutureAccType;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æŠ•èµ„è€…ä»£ç 
+  TSgitFtdcInvestorIDType InvestorID;
+  ///æœŸè´§å…¬å¸æµæ°´å·
+  TSgitFtdcFutureSerialType FutureSerial;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///äº¤æ˜“é‡‘é¢
+  TSgitFtdcTradeAmountType TradeAmount;
+  ///åº”æ”¶å®¢æˆ·è´¹ç”¨
+  TSgitFtdcCustFeeType CustFee;
+  ///åº”æ”¶æœŸè´§å…¬å¸è´¹ç”¨
+  TSgitFtdcFutureFeeType BrokerFee;
+  ///æœ‰æ•ˆæ ‡å¿—
+  TSgitFtdcAvailabilityFlagType AvailabilityFlag;
+  ///æ“ä½œå‘˜
+  TSgitFtdcOperatorCodeType OperatorCode;
+  ///æ–°é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankNewAccount;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///è¯·æ±‚æŸ¥è¯¢è½¬å¸æµæ°´
+struct CSgitFtdcQryTransferSerialField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///é“¶è¡Œç¼–ç 
+  TSgitFtdcBankIDType BankID;
+};
+
+///æœŸå•†ç­¾åˆ°é€šçŸ¥
+struct CSgitFtdcNotifyFutureSignInField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+  /// PINå¯†é’¥
+  TSgitFtdcPasswordKeyType PinKey;
+  /// MACå¯†é’¥
+  TSgitFtdcPasswordKeyType MacKey;
+};
+
+///æœŸå•†ç­¾é€€é€šçŸ¥
+struct CSgitFtdcNotifyFutureSignOutField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///äº¤æ˜“æ ¸å¿ƒå‘é“¶æœŸæŠ¥ç›˜å‘å‡ºå¯†é’¥åŒæ­¥å¤„ç†ç»“æœçš„é€šçŸ¥
+struct CSgitFtdcNotifySyncKeyField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///ç”¨æˆ·æ ‡è¯†
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“æ ¸å¿ƒç»™é“¶æœŸæŠ¥ç›˜çš„æ¶ˆæ¯
+  TSgitFtdcAddInfoType Message;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///è¯·æ±‚ç¼–å·
+  TSgitFtdcRequestIDType RequestID;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///è¯·æ±‚æŸ¥è¯¢é“¶æœŸç­¾çº¦å…³ç³»
+struct CSgitFtdcQryAccountregisterField {
+  ///ç»çºªå…¬å¸ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///é“¶è¡Œç¼–ç 
+  TSgitFtdcBankIDType BankID;
+};
+
+///å®¢æˆ·å¼€é”€æˆ·ä¿¡æ¯è¡¨
+struct CSgitFtdcAccountregisterField {
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDay;
+  ///é“¶è¡Œç¼–ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ç¼–ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///æœŸè´§å…¬å¸ç¼–ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸè´§å…¬å¸åˆ†æ”¯æœºæ„ç¼–ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///å¼€é”€æˆ·ç±»åˆ«
+  TSgitFtdcOpenOrDestroyType OpenOrDestroy;
+  ///ç­¾çº¦æ—¥æœŸ
+  TSgitFtdcTradeDateType RegDate;
+  ///è§£çº¦æ—¥æœŸ
+  TSgitFtdcTradeDateType OutDate;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+};
+
+///é“¶æœŸå¼€æˆ·ä¿¡æ¯
+struct CSgitFtdcOpenAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ±‡é’æ ‡å¿—
+  TSgitFtdcCashExchangeCodeType CashExchangeCode;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///é“¶æœŸé”€æˆ·ä¿¡æ¯
+struct CSgitFtdcCancelAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æ±‡é’æ ‡å¿—
+  TSgitFtdcCashExchangeCodeType CashExchangeCode;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///æ¸ é“æ ‡å¿—
+  TSgitFtdcDeviceIDType DeviceID;
+  ///æœŸè´§å•ä½å¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankSecuAccType;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///æœŸè´§å•ä½å¸å·
+  TSgitFtdcBankAccountType BankSecuAcc;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“æŸœå‘˜
+  TSgitFtdcOperNoType OperNo;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///é“¶æœŸå˜æ›´é“¶è¡Œè´¦å·ä¿¡æ¯
+struct CSgitFtdcChangeAccountField {
+  ///ä¸šåŠ¡åŠŸèƒ½ç 
+  TSgitFtdcTradeCodeType TradeCode;
+  ///é“¶è¡Œä»£ç 
+  TSgitFtdcBankIDType BankID;
+  ///é“¶è¡Œåˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcBankBrchIDType BankBranchID;
+  ///æœŸå•†ä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///æœŸå•†åˆ†æ”¯æœºæ„ä»£ç 
+  TSgitFtdcFutureBranchIDType BrokerBranchID;
+  ///äº¤æ˜“æ—¥æœŸ
+  TSgitFtdcTradeDateType TradeDate;
+  ///äº¤æ˜“æ—¶é—´
+  TSgitFtdcTradeTimeType TradeTime;
+  ///é“¶è¡Œæµæ°´å·
+  TSgitFtdcBankSerialType BankSerial;
+  ///äº¤æ˜“ç³»ç»Ÿæ—¥æœŸ
+  TSgitFtdcTradeDateType TradingDay;
+  ///é“¶æœŸå¹³å°æ¶ˆæ¯æµæ°´å·
+  TSgitFtdcSerialType PlateSerial;
+  ///æœ€ååˆ†ç‰‡æ ‡å¿—
+  TSgitFtdcLastFragmentType LastFragment;
+  ///ä¼šè¯å·
+  TSgitFtdcSessionIDType SessionID;
+  ///å®¢æˆ·å§“å
+  TSgitFtdcIndividualNameType CustomerName;
+  ///è¯ä»¶ç±»å‹
+  TSgitFtdcIdCardTypeType IdCardType;
+  ///è¯ä»¶å·ç 
+  TSgitFtdcIdentifiedCardNoType IdentifiedCardNo;
+  ///æ€§åˆ«
+  TSgitFtdcGenderType Gender;
+  ///å›½å®¶ä»£ç 
+  TSgitFtdcCountryCodeType CountryCode;
+  ///å®¢æˆ·ç±»å‹
+  TSgitFtdcCustTypeType CustType;
+  ///åœ°å€
+  TSgitFtdcAddressType Address;
+  ///é‚®ç¼–
+  TSgitFtdcZipCodeType ZipCode;
+  ///ç”µè¯å·ç 
+  TSgitFtdcTelephoneType Telephone;
+  ///æ‰‹æœº
+  TSgitFtdcMobilePhoneType MobilePhone;
+  ///ä¼ çœŸ
+  TSgitFtdcFaxType Fax;
+  ///ç”µå­é‚®ä»¶
+  TSgitFtdcEMailType EMail;
+  ///èµ„é‡‘è´¦æˆ·çŠ¶æ€
+  TSgitFtdcMoneyAccountStatusType MoneyAccountStatus;
+  ///é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType BankAccount;
+  ///é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType BankPassWord;
+  ///æ–°é“¶è¡Œå¸å·
+  TSgitFtdcBankAccountType NewBankAccount;
+  ///æ–°é“¶è¡Œå¯†ç 
+  TSgitFtdcPasswordType NewBankPassWord;
+  ///æŠ•èµ„è€…å¸å·
+  TSgitFtdcAccountIDType AccountID;
+  ///æœŸè´§å¯†ç 
+  TSgitFtdcPasswordType Password;
+  ///é“¶è¡Œå¸å·ç±»å‹
+  TSgitFtdcBankAccTypeType BankAccType;
+  ///å®‰è£…ç¼–å·
+  TSgitFtdcInstallIDType InstallID;
+  ///éªŒè¯å®¢æˆ·è¯ä»¶å·ç æ ‡å¿—
+  TSgitFtdcYesNoIndicatorType VerifyCertNoFlag;
+  ///å¸ç§ä»£ç 
+  TSgitFtdcCurrencyIDType CurrencyID;
+  ///æœŸè´§å…¬å¸é“¶è¡Œç¼–ç 
+  TSgitFtdcBankCodingForFutureType BrokerIDByBank;
+  ///é“¶è¡Œå¯†ç æ ‡å¿—
+  TSgitFtdcPwdFlagType BankPwdFlag;
+  ///æœŸè´§èµ„é‡‘å¯†ç æ ¸å¯¹æ ‡å¿—
+  TSgitFtdcPwdFlagType SecuPwdFlag;
+  ///äº¤æ˜“ID
+  TSgitFtdcTIDType TID;
+  ///æ‘˜è¦
+  TSgitFtdcDigestType Digest;
+  ///é”™è¯¯ä»£ç 
+  TSgitFtdcErrorIDType ErrorID;
+  ///é”™è¯¯ä¿¡æ¯
+  TSgitFtdcErrorMsgType ErrorMsg;
+};
+
+///ç¾å¤‡ä¸­å¿ƒäº¤æ˜“æƒé™
+struct CSgitFtdcUserRightsAssignField {
+  ///åº”ç”¨å•å…ƒä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///ç”¨æˆ·ä»£ç 
+  TSgitFtdcUserIDType UserID;
+  ///äº¤æ˜“ä¸­å¿ƒä»£ç 
+  TSgitFtdcDRIdentityIDType DRIdentityID;
+};
+
+///ç»æµå…¬å¸æ˜¯å¦æœ‰åœ¨æœ¬æ ‡ç¤ºçš„äº¤æ˜“æƒé™
+struct CSgitFtdcBrokerUserRightAssignField {
+  ///åº”ç”¨å•å…ƒä»£ç 
+  TSgitFtdcBrokerIDType BrokerID;
+  ///äº¤æ˜“ä¸­å¿ƒä»£ç 
+  TSgitFtdcDRIdentityIDType DRIdentityID;
+  ///èƒ½å¦äº¤æ˜“
+  TSgitFtdcBoolType Tradeable;
+};
+
+///ç¾å¤‡äº¤æ˜“è½¬æ¢æŠ¥æ–‡
+struct CSgitFtdcDRTransferField {
+  ///åŸäº¤æ˜“ä¸­å¿ƒä»£ç 
+  TSgitFtdcDRIdentityIDType OrigDRIdentityID;
+  ///ç›®æ ‡äº¤æ˜“ä¸­å¿ƒä»£ç 
+  TSgitFtdcDRIdentityIDType DestDRIdentityID;
+  ///åŸåº”ç”¨å•å…ƒä»£ç 
+  TSgitFtdcBrokerIDType OrigBrokerID;
+  ///ç›®æ ‡æ˜“ç”¨å•å…ƒä»£ç 
+  TSgitFtdcBrokerIDType DestBrokerID;
+};
+
+//åˆçº¦ä»·ä½æŸ¥è¯¢åŸŸ
+struct CSgitMBLQuotReq {
+  TSgitFtdcInstrumentIDType StartContractID; //èµ·å§‹åˆçº¦å·
+  TSgitFtdcInstrumentIDType EndContractID;   //ç»“æŸåˆçº¦å·
+  TSgitFtdcDirectionType BsFlag;             //ä¹°å–æ ‡å¿—
+};
+
+//åˆçº¦ä»·ä½åŸŸ
+struct CSgitMBLQuotData {
+  TSgitFtdcInstrumentIDType ContractID; //åˆçº¦å·
+  TSgitFtdcDirectionType BsFlag;        //ä¹°å–æ ‡å¿—
+  TSgitFtdcPriceType Price;             //ä»·æ ¼
+  TSgitFtdcVolumeType Qty;              //æ•°é‡
+};
+
+//è®¢é˜…åˆçº¦è¡Œæƒ…è¡Œæƒ…
+struct CSgitSubQuotField {
+  TSgitFtdcInstrumentIDType ContractID; //åˆçº¦å·
 };
 
 #endif

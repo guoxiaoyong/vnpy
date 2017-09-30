@@ -1,71 +1,68 @@
 #ifndef _NEWCONSTANT_H
 #define _NEWCONSTANT_H
-//ÊĞ³¡ÀàĞÍ ±äÁ¿Ãû:TMarketType
-#define SPOT		"00"     //ÏÖ»õ
-#define DEFER		"10"     //µİÑÓ
-#define FUTURES		"11"     //ÆÚ»õ
-#define FORWARD		"01"     //Ô¶ÆÚ
-#define DELIVERY	"AP"	 //½»¸î
-#define MIDDLE		"MD"	 //ÖĞÁ¢²Ö
+//å¸‚åœºç±»å‹ å˜é‡å:TMarketType
+#define SPOT "00"     //ç°è´§
+#define DEFER "10"    //é€’å»¶
+#define FUTURES "11"  //æœŸè´§
+#define FORWARD "01"  //è¿œæœŸ
+#define DELIVERY "AP" //äº¤å‰²
+#define MIDDLE "MD"   //ä¸­ç«‹ä»“
 
+//å¸‚åœºçŠ¶æ€
+#define M_INITING '0' //åˆå§‹åŒ–ä¸­
+#define M_INIT '1'    //åˆå§‹åŒ–å®Œæˆ
+#define M_OPEN '2'    //å¼€å¸‚
+#define M_TRADE '3'   //äº¤æ˜“
+#define M_PAUSE '4'   //æš‚åœ
+#define M_CLOSE '5'   //æ”¶å¸‚
 
-//ÊĞ³¡×´Ì¬
-#define M_INITING	'0'     //³õÊ¼»¯ÖĞ
-#define M_INIT		'1'     //³õÊ¼»¯Íê³É
-#define M_OPEN		'2'     //¿ªÊĞ
-#define M_TRADE		'3'     //½»Ò×
-#define M_PAUSE		'4'     //ÔİÍ£
-#define M_CLOSE		'5'     //ÊÕÊĞ
+//å§”æ‰˜å•çŠ¶æ€
+#define Entrust_Sending '1'          // 1ï¼šå·²ç»å‘é€ï¼›
+#define Entrust_Waiting '2'          // 2ï¼šç­‰å¾…æŠ¥å…¥
+#define Entrust_In '3'               // 3ï¼šå·²ç»æŠ¥å…¥ï¼›
+#define Entrust_All_Cancel '4'       // 4ï¼šå…¨éƒ¨æ’¤é”€ï¼›
+#define Entrust_All_Done '5'         // 5ï¼šå…¨éƒ¨æˆäº¤ï¼›
+#define Entrust_Part_Done '6'        // 6ï¼šéƒ¨åˆ†æˆäº¤ï¼›
+#define Entrust_Part_Done_Cancel '7' // 7ï¼šéƒ¨æˆéƒ¨æ’¤
+#define Entrust_Wait_Cancel '8'      //ç­‰å¾…æ’¤é”€
+#define Entrust_Error '9'            //é”™è¯¯å§”æ‰˜
+#define Entrust_By_Exch 'A'          //åœºå†…æ’¤å•
+#define Entrust_By_Emergency 'B'     //åº”æ€¥æ’¤å•
 
-//Î¯ÍĞµ¥×´Ì¬
-#define Entrust_Sending				'1'			//1£ºÒÑ¾­·¢ËÍ£»
-#define Entrust_Waiting				'2'			//2£ºµÈ´ı±¨Èë
-#define Entrust_In				'3'			//3£ºÒÑ¾­±¨Èë£»
-#define Entrust_All_Cancel			'4'			//4£ºÈ«²¿³·Ïú£»
-#define Entrust_All_Done			'5'			//5£ºÈ«²¿³É½»£»
-#define Entrust_Part_Done			'6'			//6£º²¿·Ö³É½»£»
-#define Entrust_Part_Done_Cancel		'7'			//7£º²¿³É²¿³·
-#define Entrust_Wait_Cancel			'8'			//µÈ´ı³·Ïú
-#define Entrust_Error				'9'			//´íÎóÎ¯ÍĞ
-#define Entrust_By_Exch				'A'			//³¡ÄÚ³·µ¥
-#define Entrust_By_Emergency			'B'			//Ó¦¼±³·µ¥
+//å¼€å¹³ä»“æ ‡å¿— å˜é‡å:TOffsetFlag
+#define P_OPEN '0'   //å¼€ä»“
+#define p_OFFSET '1' //å¹³ä»“
 
+//ä¹°å–æ–¹å‘æ ‡å¿— å˜é‡å:TBSFlag
+#define BUY '0'  //ä¹°
+#define SELL '1' //å–
 
-//¿ªÆ½²Ö±êÖ¾ ±äÁ¿Ãû:TOffsetFlag
-#define P_OPEN		    '0'     //¿ª²Ö
-#define p_OFFSET	    '1'     //Æ½²Ö
+//å§”æ‰˜ç±»å‹
+#define SPOT_ENTRUST '0'     //ç°è´§
+#define TN_ENTRUST '4'       //ç°è´§T+N
+#define DEFER_ENTRUST '1'    //ç°è´§å»¶æœŸ
+#define DELIVERY_ENTRUST '2' //äº¤å‰²
+#define MIDDLE_ENTRUST '3'   //ä¸­ç«‹ä»“
 
+//æ¸ é“ç±»å‹
+#define COUNTER_CHANNEL '1'  //æŸœå°
+#define TEL_CHANNEL '2'      //ç”µè¯é“¶è¡Œ
+#define NET_CHANNEL '3'      //ç½‘é“¶
+#define TRADER_CHANNEL '4'   //äº¤æ˜“å‘˜
+#define SELF_CHANNEL '5'     //è‡ªåŠ©ç»ˆç«¯
+#define PHONE_CHANNEL '6'    //æ‰‹æœºé“¶è¡Œ
+#define TRADEAPI_CHANNEL '7' //äº¤æ˜“API
 
-//ÂòÂô·½Ïò±êÖ¾ ±äÁ¿Ãû:TBSFlag
-#define BUY		'0'     //Âò
-#define SELL	'1'     //Âô
+//å®¢æˆ·ç±»åˆ«
+#define CLIENT_SPOT '0'    //ç°è´§
+#define CLIENT_FUTURE '1'  //æœŸè´§
+#define CLIENT_GENERAL '2' //é€šç”¨
 
-//Î¯ÍĞÀàĞÍ
-#define  SPOT_ENTRUST     '0' //ÏÖ»õ
-#define  TN_ENTRUST       '4' //ÏÖ»õT+N
-#define  DEFER_ENTRUST    '1' //ÏÖ»õÑÓÆÚ
-#define  DELIVERY_ENTRUST '2' //½»¸î
-#define  MIDDLE_ENTRUST   '3' //ÖĞÁ¢²Ö
+//ç™»å½•ç±»å‹
+#define BANKACC_TYPE "1"   //é“¶è¡Œè´¦å·ç™»å½•
+#define TRADECODE_TYPE "2" //äº¤æ˜“ç¼–ç ç™»å½•
 
-//ÇşµÀÀàĞÍ
-#define  COUNTER_CHANNEL  '1' //¹ñÌ¨
-#define  TEL_CHANNEL      '2' //µç»°ÒøĞĞ
-#define  NET_CHANNEL      '3' //ÍøÒø
-#define  TRADER_CHANNEL   '4' //½»Ò×Ô±
-#define  SELF_CHANNEL	  '5' //×ÔÖúÖÕ¶Ë
-#define  PHONE_CHANNEL	  '6' //ÊÖ»úÒøĞĞ
-#define  TRADEAPI_CHANNEL '7' //½»Ò×API
-
-//¿Í»§Àà±ğ
-#define CLIENT_SPOT    '0' //ÏÖ»õ
-#define CLIENT_FUTURE  '1' //ÆÚ»õ
-#define CLIENT_GENERAL '2' //Í¨ÓÃ
-
-//µÇÂ¼ÀàĞÍ
-#define BANKACC_TYPE   "1" //ÒøĞĞÕËºÅµÇÂ¼
-#define TRADECODE_TYPE "2" //½»Ò×±àÂëµÇÂ¼
-
-//»îÔ¾±êÖ¾
-#define ACTIVITY_ON '1' //Ñ¯¼ÛºÏÔ¼
+//æ´»è·ƒæ ‡å¿—
+#define ACTIVITY_ON '1' //è¯¢ä»·åˆçº¦
 
 #endif _NEWCONSTANT_H

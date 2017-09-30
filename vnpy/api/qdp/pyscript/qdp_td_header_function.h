@@ -47,4 +47,3 @@ int reqQryTransferSerial(dict req, int nRequestID);
 int reqQrySGEDeferRate(dict req, int nRequestID);
 
 int reqQryMarketData(dict req, int nRequestID);
-

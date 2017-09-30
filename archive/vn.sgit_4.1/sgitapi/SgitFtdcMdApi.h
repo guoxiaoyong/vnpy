@@ -18,101 +18,109 @@
 #define MD_API_EXPORT __declspec(dllimport)
 #endif
 #else
-#define MD_API_EXPORT 
+#define MD_API_EXPORT
 #endif
 
-class CSgitFtdcMdSpi
-{
+class CSgitFtdcMdSpi {
 public:
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected(){};
-	
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param pErrMsg ´íÎóÔ­Òò
-	virtual void OnFrontDisconnected(char *pErrMsg){};	
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected(){};
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CSgitFtdcRspUserLoginField *pRspUserLogin, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param pErrMsg é”™è¯¯åŸå› 
+  virtual void OnFrontDisconnected(char *pErrMsg){};
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CSgitFtdcUserLogoutField *pUserLogout, CSgitFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CSgitFtdcRspUserLoginField *pRspUserLogin,
+                              CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast){};
 
-	///Éî¶ÈĞĞÇéÍ¨Öª
-	virtual void OnRtnDepthMarketData(CSgitFtdcDepthMarketDataField *pDepthMarketData) {};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CSgitFtdcUserLogoutField *pUserLogout,
+                               CSgitFtdcRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast){};
+
+  ///æ·±åº¦è¡Œæƒ…é€šçŸ¥
+  virtual void
+  OnRtnDepthMarketData(CSgitFtdcDepthMarketDataField *pDepthMarketData){};
 };
 
-class MD_API_EXPORT CSgitFtdcMdApi
-{
+class MD_API_EXPORT CSgitFtdcMdApi {
 public:
-	///´´½¨MdApi
-	///@param pszFlowPath ´æÖü¶©ÔÄĞÅÏ¢ÎÄ¼şµÄÄ¿Â¼£¬Ä¬ÈÏÎªµ±Ç°Ä¿Â¼
-	///@return ´´½¨³öµÄUserApi
-	static CSgitFtdcMdApi *CreateFtdcMdApi(const char *pszFlowPath = "");
-	
-	///É¾³ı½Ó¿Ú¶ÔÏó±¾Éí
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊıÉ¾³ı½Ó¿Ú¶ÔÏó
-	virtual void Release() = 0;
-	
-	///³õÊ¼»¯
-	///@remark ³õÊ¼»¯ÔËĞĞ»·¾³,Ö»ÓĞµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
-	///isLogged ¿ª·¢µ÷ÊÔÊ±Ê¹ÓÃtrue£¬¿ÉÒÔ´òÓ¡³öÊÕµ½µÄÏûÏ¢°üÄÚÈİ
-	virtual void Init(bool isLogged) = 0;
-	
-	///µÈ´ı½Ó¿ÚÏß³Ì½áÊøÔËĞĞ
-	///@return Ïß³ÌÍË³ö´úÂë
-	virtual int Join() = 0;
-	
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
-	///@retrun »ñÈ¡µ½µÄ½»Ò×ÈÕ
-	///@remark Ö»ÓĞµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕıÈ·µÄ½»Ò×ÈÕ
-	virtual const char *GetTradingDay() = 0;
-	
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
-	///@remark ¡°tcp¡±´ú±í´«ÊäĞ­Òé£¬¡°127.0.0.1¡±´ú±í·şÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·şÎñÆ÷¶Ë¿ÚºÅ¡£
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
+  ///åˆ›å»ºMdApi
+  ///@param pszFlowPath å­˜è´®è®¢é˜…ä¿¡æ¯æ–‡ä»¶çš„ç›®å½•ï¼Œé»˜è®¤ä¸ºå½“å‰ç›®å½•
+  ///@return åˆ›å»ºå‡ºçš„UserApi
+  static CSgitFtdcMdApi *CreateFtdcMdApi(const char *pszFlowPath = "");
 
-	/**ÓÃ¶à²¥Ê±TCPÅäÖÃÒ²ĞèÒªÉèÖÃ
-	*µ÷ÓÃ¸Ãº¯Êı£¬Ä¬ÈÏ²ÉÓÃtcpÄ£Ê½·¢ËÍĞĞÇé
-	*ÉèÖÃ¶à²¥µÄÅäÖÃ MlCast://hostIP$multiaddress:port£¬
-	*Èç¹ûÖ»ÓĞÒ»ÕÅÍø¿¨¿ÉÒÔ MlCast://ANY$multiaddress:port	
-	* @param szMlCastAddr ±¾»úipµØÖ·¡¢¶à²¥×é¼°¶Ë¿Ú	
-	*/
-	virtual void SetMultiCastAddr(char *szMlCastAddr) = 0;
-	
-	///×¢²á»Øµ÷½Ó¿Ú
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀı
-	virtual void RegisterSpi(CSgitFtdcMdSpi *pSpi) = 0;
-	///¶©ÔÄÊĞ³¡Á÷¡£
-	///@param nResumeType ¹«¹²Á÷ÖØ´«·½Ê½  
-	///        Sgit_TERT_RESTART:´Ó±¾½»Ò×ÈÕ¿ªÊ¼ÖØ´«
-	///        Sgit_TERT_RESUME:´ÓÉÏ´ÎÊÕµ½µÄĞø´«
-	///        Sgit_TERT_QUICK:Ö»´«ËÍµÇÂ¼ºó¹«¹²Á÷µÄÄÚÈİ
-	///@remark ¸Ã·½·¨ÒªÔÚInit·½·¨Ç°µ÷ÓÃ¡£Èô²»µ÷ÓÃÔò²»»áÊÕµ½¹«¹²Á÷µÄÊı¾İ¡£
-	virtual void SubscribeMarketTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
+  ///åˆ é™¤æ¥å£å¯¹è±¡æœ¬èº«
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æ¥å£å¯¹è±¡
+  virtual void Release() = 0;
 
-	///
-	/// ·¢ËÍĞĞÇé¶©ÔÄ
-	/// @param iRequestID ÇëÇóºÅ
-	/// @param pMBLQuotReq ĞĞÇé¶©ÔÄÇëÇóÓò
-	/// @return 0±íÊ¾³É¹¦
-	/// @return ÆäËü±íÊ¾Ê§°Ü
-	///
-	virtual int SubQuot(CSgitSubQuotField *pSgitSubQuotField)=0;
-	///·¢ËÍ¾ÍĞ÷Ö¸Áîµ½Ç°ÖÃ,Í¨ÖªÇ°ÖÃ¿ÉÒÔ¸ø×Ô¼º·¢ËÍË½ÓĞÁ÷Óë¹«¹²Á÷
-	/// @return 0±íÊ¾³É¹¦
-	/// @return ÆäËü²Î¼û´íÎóÂë
-	///
-	virtual int Ready() = 0;
+  ///åˆå§‹åŒ–
+  ///@remark åˆå§‹åŒ–è¿è¡Œç¯å¢ƒ,åªæœ‰è°ƒç”¨å,æ¥å£æ‰å¼€å§‹å·¥ä½œ
+  /// isLogged å¼€å‘è°ƒè¯•æ—¶ä½¿ç”¨trueï¼Œå¯ä»¥æ‰“å°å‡ºæ”¶åˆ°çš„æ¶ˆæ¯åŒ…å†…å®¹
+  virtual void Init(bool isLogged) = 0;
 
-	///ÓÃ»§µÇÂ¼ÇëÇó
-	virtual int ReqUserLogin(CSgitFtdcReqUserLoginField *pReqUserLoginField, int nRequestID) = 0;
+  ///ç­‰å¾…æ¥å£çº¿ç¨‹ç»“æŸè¿è¡Œ
+  ///@return çº¿ç¨‹é€€å‡ºä»£ç 
+  virtual int Join() = 0;
 
-	///µÇ³öÇëÇó
-	virtual int ReqUserLogout(CSgitFtdcUserLogoutField *pUserLogout, int nRequestID) = 0;
+  ///è·å–å½“å‰äº¤æ˜“æ—¥
+  ///@retrun è·å–åˆ°çš„äº¤æ˜“æ—¥
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸå,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
+  virtual const char *GetTradingDay() = 0;
+
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
+
+  /**ç”¨å¤šæ’­æ—¶TCPé…ç½®ä¹Ÿéœ€è¦è®¾ç½®
+   *è°ƒç”¨è¯¥å‡½æ•°ï¼Œé»˜è®¤é‡‡ç”¨tcpæ¨¡å¼å‘é€è¡Œæƒ…
+   *è®¾ç½®å¤šæ’­çš„é…ç½® MlCast://hostIP$multiaddress:portï¼Œ
+   *å¦‚æœåªæœ‰ä¸€å¼ ç½‘å¡å¯ä»¥ MlCast://ANY$multiaddress:port
+   * @param szMlCastAddr æœ¬æœºipåœ°å€ã€å¤šæ’­ç»„åŠç«¯å£
+   */
+  virtual void SetMultiCastAddr(char *szMlCastAddr) = 0;
+
+  ///æ³¨å†Œå›è°ƒæ¥å£
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›è°ƒæ¥å£ç±»çš„å®ä¾‹
+  virtual void RegisterSpi(CSgitFtdcMdSpi *pSpi) = 0;
+  ///è®¢é˜…å¸‚åœºæµã€‚
+  ///@param nResumeType å…¬å…±æµé‡ä¼ æ–¹å¼
+  ///        Sgit_TERT_RESTART:ä»æœ¬äº¤æ˜“æ—¥å¼€å§‹é‡ä¼ 
+  ///        Sgit_TERT_RESUME:ä»ä¸Šæ¬¡æ”¶åˆ°çš„ç»­ä¼ 
+  ///        Sgit_TERT_QUICK:åªä¼ é€ç™»å½•åå…¬å…±æµçš„å†…å®¹
+  ///@remark è¯¥æ–¹æ³•è¦åœ¨Initæ–¹æ³•å‰è°ƒç”¨ã€‚è‹¥ä¸è°ƒç”¨åˆ™ä¸ä¼šæ”¶åˆ°å…¬å…±æµçš„æ•°æ®ã€‚
+  virtual void SubscribeMarketTopic(Sgit_TE_RESUME_TYPE nResumeType) = 0;
+
+  ///
+  /// å‘é€è¡Œæƒ…è®¢é˜…
+  /// @param iRequestID è¯·æ±‚å·
+  /// @param pMBLQuotReq è¡Œæƒ…è®¢é˜…è¯·æ±‚åŸŸ
+  /// @return 0è¡¨ç¤ºæˆåŠŸ
+  /// @return å…¶å®ƒè¡¨ç¤ºå¤±è´¥
+  ///
+  virtual int SubQuot(CSgitSubQuotField *pSgitSubQuotField) = 0;
+  ///å‘é€å°±ç»ªæŒ‡ä»¤åˆ°å‰ç½®,é€šçŸ¥å‰ç½®å¯ä»¥ç»™è‡ªå·±å‘é€ç§æœ‰æµä¸å…¬å…±æµ
+  /// @return 0è¡¨ç¤ºæˆåŠŸ
+  /// @return å…¶å®ƒå‚è§é”™è¯¯ç 
+  ///
+  virtual int Ready() = 0;
+
+  ///ç”¨æˆ·ç™»å½•è¯·æ±‚
+  virtual int ReqUserLogin(CSgitFtdcReqUserLoginField *pReqUserLoginField,
+                           int nRequestID) = 0;
+
+  ///ç™»å‡ºè¯·æ±‚
+  virtual int ReqUserLogout(CSgitFtdcUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
+
 protected:
-	~CSgitFtdcMdApi(){};
+  ~CSgitFtdcMdApi(){};
 };
 
 #endif

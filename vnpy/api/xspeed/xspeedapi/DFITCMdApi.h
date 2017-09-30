@@ -1,201 +1,222 @@
 /**
- * °æÈ¨ËùÓĞ(C)2012-2016, ´óÁ¬·É´´ĞÅÏ¢¼¼ÊõÓĞÏŞ¹«Ë¾
- * ÎÄ¼şÃû³Æ£ºDFITCMdApi.h
- * ÎÄ¼şËµÃ÷£º¶¨ÒåXSpeedĞĞÇéAPI½Ó¿Ú
- * µ±Ç°°æ±¾£º1.0.14.45
- * ×÷Õß£ºXSpeedÏîÄ¿×é
- * ·¢²¼ÈÕÆÚ£º2015Äê5ÔÂ6ÈÕ
+ * ç‰ˆæƒæ‰€æœ‰(C)2012-2016, å¤§è¿é£åˆ›ä¿¡æ¯æŠ€æœ¯æœ‰é™å…¬å¸
+ * æ–‡ä»¶åç§°ï¼šDFITCMdApi.h
+ * æ–‡ä»¶è¯´æ˜ï¼šå®šä¹‰XSpeedè¡Œæƒ…APIæ¥å£
+ * å½“å‰ç‰ˆæœ¬ï¼š1.0.14.45
+ * ä½œè€…ï¼šXSpeedé¡¹ç›®ç»„
+ * å‘å¸ƒæ—¥æœŸï¼š2015å¹´5æœˆ6æ—¥
  */
 
 #ifndef DLMDAPI_H_
 #define DLMDAPI_H_
 
-
 #include "DFITCApiStruct.h"
 
-
 #ifdef WIN32
-    #ifdef DFITCAPI_EXPORTS
-        #define MDAPI_API __declspec(dllexport)
-    #else
-        #define MDAPI_API __declspec(dllimport)
-    #endif//DFITCAPI_EXPORTS
+#ifdef DFITCAPI_EXPORTS
+#define MDAPI_API __declspec(dllexport)
 #else
-    #define MDAPI_API 
-#endif//WIN32
+#define MDAPI_API __declspec(dllimport)
+#endif // DFITCAPI_EXPORTS
+#else
+#define MDAPI_API
+#endif // WIN32
 
-namespace DFITCXSPEEDMDAPI
-{
-    class DFITCMdSpi
-    {
-    public:
-        DFITCMdSpi(){}
+namespace DFITCXSPEEDMDAPI {
+class DFITCMdSpi {
+public:
+  DFITCMdSpi() {}
 
-        /** 
-         * ÍøÂçÁ¬½ÓÕı³£ÏìÓ¦
-         */
-        virtual void OnFrontConnected(){};
+  /**
+   * ç½‘ç»œè¿æ¥æ­£å¸¸å“åº”
+   */
+  virtual void OnFrontConnected(){};
 
-        /**
-         * ÍøÂçÁ¬½Ó²»Õı³£ÏìÓ¦
-         */
-        virtual void OnFrontDisconnected(int nReason){};
+  /**
+   * ç½‘ç»œè¿æ¥ä¸æ­£å¸¸å“åº”
+   */
+  virtual void OnFrontDisconnected(int nReason){};
 
-        /**
-         * µÇÂ½ÇëÇóÏìÓ¦:µ±ÓÃ»§·¢³öµÇÂ¼ÇëÇóºó£¬Ç°ÖÃ»ú·µ»ØÏìÓ¦Ê±´Ë·½·¨»á±»µ÷ÓÃ£¬Í¨ÖªÓÃ»§µÇÂ¼ÊÇ·ñ³É¹¦¡£
-         * @param pRspUserLogin:ÓÃ»§µÇÂ¼ĞÅÏ¢½á¹¹µØÖ·¡£
-         * @param pRspInfo:ÈôÇëÇóÊ§°Ü£¬·µ»Ø´íÎóĞÅÏ¢µØÖ·£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-         */
-		virtual void OnRspUserLogin(struct DFITCUserLoginInfoRtnField * pRspUserLogin, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * ç™»é™†è¯·æ±‚å“åº”:å½“ç”¨æˆ·å‘å‡ºç™»å½•è¯·æ±‚åï¼Œå‰ç½®æœºè¿”å›å“åº”æ—¶æ­¤æ–¹æ³•ä¼šè¢«è°ƒç”¨ï¼Œé€šçŸ¥ç”¨æˆ·ç™»å½•æ˜¯å¦æˆåŠŸã€‚
+   * @param pRspUserLogin:ç”¨æˆ·ç™»å½•ä¿¡æ¯ç»“æ„åœ°å€ã€‚
+   * @param pRspInfo:è‹¥è¯·æ±‚å¤±è´¥ï¼Œè¿”å›é”™è¯¯ä¿¡æ¯åœ°å€ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void OnRspUserLogin(struct DFITCUserLoginInfoRtnField *pRspUserLogin,
+                              struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * µÇ³öÇëÇóÏìÓ¦:µ±ÓÃ»§·¢³öÍË³öÇëÇóºó£¬Ç°ÖÃ»ú·µ»ØÏìÓ¦´Ë·½·¨»á±»µ÷ÓÃ£¬Í¨ÖªÓÃ»§ÍË³ö×´Ì¬¡£
-         * @param pRspUsrLogout:·µ»ØÓÃ»§ÍË³öĞÅÏ¢½á¹¹µØÖ·¡£
-         * @param pRspInfo:ÈôÇëÇóÊ§°Ü£¬·µ»Ø´íÎóĞÅÏ¢µØÖ·¡£
-         */
-		virtual void OnRspUserLogout(struct DFITCUserLogoutInfoRtnField * pRspUsrLogout, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * ç™»å‡ºè¯·æ±‚å“åº”:å½“ç”¨æˆ·å‘å‡ºé€€å‡ºè¯·æ±‚åï¼Œå‰ç½®æœºè¿”å›å“åº”æ­¤æ–¹æ³•ä¼šè¢«è°ƒç”¨ï¼Œé€šçŸ¥ç”¨æˆ·é€€å‡ºçŠ¶æ€ã€‚
+   * @param pRspUsrLogout:è¿”å›ç”¨æˆ·é€€å‡ºä¿¡æ¯ç»“æ„åœ°å€ã€‚
+   * @param pRspInfo:è‹¥è¯·æ±‚å¤±è´¥ï¼Œè¿”å›é”™è¯¯ä¿¡æ¯åœ°å€ã€‚
+   */
+  virtual void
+  OnRspUserLogout(struct DFITCUserLogoutInfoRtnField *pRspUsrLogout,
+                  struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * ´íÎóÓ¦´ğ
-         * @param pRspInfo:´íÎóĞÅÏ¢µØÖ·¡£
-         */
-		virtual void OnRspError(struct DFITCErrorRtnField *pRspInfo) {};
+  /**
+   * é”™è¯¯åº”ç­”
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯åœ°å€ã€‚
+   */
+  virtual void OnRspError(struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * ĞĞÇé¶©ÔÄÓ¦´ğ:µ±ÓÃ»§·¢³öĞĞÇé¶©ÔÄ¸Ã·½·¨»á±»µ÷ÓÃ¡£
-         * @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-         * @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-         */
-		virtual void OnRspSubMarketData(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * è¡Œæƒ…è®¢é˜…åº”ç­”:å½“ç”¨æˆ·å‘å‡ºè¡Œæƒ…è®¢é˜…è¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspSubMarketData(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                     struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ:µ±ÓÃ»§·¢³öÍË¶©ÇëÇóºó¸Ã·½·¨»á±»µ÷ÓÃ¡£
-         * @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-         * @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-         */
-		virtual void OnRspUnSubMarketData(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”:å½“ç”¨æˆ·å‘å‡ºé€€è®¢è¯·æ±‚åè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspUnSubMarketData(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                       struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * ¶©ÔÄÑ¯¼ÛÓ¦´ğ
-         * @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-         * @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-         */
-		virtual void OnRspSubForQuoteRsp(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * è®¢é˜…è¯¢ä»·åº”ç­”
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspSubForQuoteRsp(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                      struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
-         * @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-         * @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-         */
-		virtual void OnRspUnSubForQuoteRsp(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo) {};
+  /**
+   * å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void OnRspUnSubForQuoteRsp(
+      struct DFITCSpecificInstrumentField *pSpecificInstrument,
+      struct DFITCErrorRtnField *pRspInfo){};
 
-        /**
-         * ĞĞÇéÏûÏ¢Ó¦´ğ:Èç¹û¶©ÔÄĞĞÇé³É¹¦ÇÒÓĞĞĞÇé·µ»ØÊ±£¬¸Ã·½·¨»á±»µ÷ÓÃ¡£
-         * @param pMarketDataField:Ö¸ÏòĞĞÇéĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄĞĞÇéĞÅÏ¢¡£
-         */
-		virtual void OnMarketData(struct DFITCDepthMarketDataField * pMarketDataField) {};
+  /**
+   * è¡Œæƒ…æ¶ˆæ¯åº”ç­”:å¦‚æœè®¢é˜…è¡Œæƒ…æˆåŠŸä¸”æœ‰è¡Œæƒ…è¿”å›æ—¶ï¼Œè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param
+   * pMarketDataField:æŒ‡å‘è¡Œæƒ…ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¡Œæƒ…ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnMarketData(struct DFITCDepthMarketDataField *pMarketDataField){};
 
-        /**
-         * ×Ô¶¨Òå×éºÏĞĞÇéÏûÏ¢Ó¦´ğ:Èç¹û¶©ÔÄĞĞÇé³É¹¦ÇÒÓĞĞĞÇé·µ»ØÊ±£¬¸Ã·½·¨»á±»µ÷ÓÃ¡£
-         * @param pMarketDataField:Ö¸ÏòĞĞÇéĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄĞĞÇéĞÅÏ¢¡£
-         */
-		virtual void OnCustomMarketData(struct DFITCCustomMarketDataField * pMarketDataField) {};
+  /**
+   * è‡ªå®šä¹‰ç»„åˆè¡Œæƒ…æ¶ˆæ¯åº”ç­”:å¦‚æœè®¢é˜…è¡Œæƒ…æˆåŠŸä¸”æœ‰è¡Œæƒ…è¿”å›æ—¶ï¼Œè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param
+   * pMarketDataField:æŒ‡å‘è¡Œæƒ…ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¡Œæƒ…ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnCustomMarketData(struct DFITCCustomMarketDataField *pMarketDataField){};
 
-        /**
-         * Ñ¯¼ÛÍ¨Öª
-         * @param pForQuoteField:Ö¸ÏòÑ¯¼ÛĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄÑ¯¼ÛĞÅÏ¢¡£
-         */
-		virtual void OnRtnForQuoteRsp(struct DFITCQuoteSubscribeRtnField * pForQuoteField) {};
+  /**
+   * è¯¢ä»·é€šçŸ¥
+   * @param pForQuoteField:æŒ‡å‘è¯¢ä»·ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¯¢ä»·ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRtnForQuoteRsp(struct DFITCQuoteSubscribeRtnField *pForQuoteField){};
 
-        /**
-         * ½»Ò×ÈÕÈ·ÈÏÏìÓ¦:ÓÃÓÚ½ÓÊÕ½»Ò×ÈÕĞÅÏ¢¡£
-         * @param pTradingDayRtnData: ·µ»Ø½»Ò×ÈÕÇëÇóÈ·ÈÏÏìÓ¦½á¹¹µÄµØÖ·¡£
-         */
-        virtual void OnRspTradingDay(struct DFITCTradingDayRtnField * pTradingDayRtnData){};
-    };//end of DFITCMdSpi
+  /**
+   * äº¤æ˜“æ—¥ç¡®è®¤å“åº”:ç”¨äºæ¥æ”¶äº¤æ˜“æ—¥ä¿¡æ¯ã€‚
+   * @param pTradingDayRtnData: è¿”å›äº¤æ˜“æ—¥è¯·æ±‚ç¡®è®¤å“åº”ç»“æ„çš„åœ°å€ã€‚
+   */
+  virtual void
+  OnRspTradingDay(struct DFITCTradingDayRtnField *pTradingDayRtnData){};
+}; // end of DFITCMdSpi
 
-    class MDAPI_API DFITCMdApi
-    {
-    public:
-        /**
-         * ´´½¨ĞĞÇéAPIÊµÀı
-         * @return ´´½¨³öµÄUserApi
-         */
-        static DFITCMdApi * CreateDFITCMdApi();
+class MDAPI_API DFITCMdApi {
+public:
+  /**
+   * åˆ›å»ºè¡Œæƒ…APIå®ä¾‹
+   * @return åˆ›å»ºå‡ºçš„UserApi
+   */
+  static DFITCMdApi *CreateDFITCMdApi();
 
-        /**
-         * ½øĞĞÒ»ÏµÁĞ³õÊ¼»¯¹¤×÷:×¢²á»Øµ÷º¯Êı½Ó¿Ú,Á¬½ÓĞĞÇéÇ°ÖÃ¡£
-         * @param pszSvrAddr:ĞĞÇéÇ°ÖÃÍøÂçµØÖ·¡£
-         *                  ÍøÂçµØÖ·µÄ¸ñÊ½Îª:"protocol://ipaddress:port",Èç"tcp://127.0.0.1:10915"
-         *                  ÆäÖĞprotocolµÄÖµÎªtcp,udp,udpb(¹ã²¥ĞĞÇé),±íÊ¾½ÓÊÕĞĞÇéµÄ·½Ê½;Èç¹ûÊÇudp½ÓÊÕĞĞÇéÊı¾İ,udpµÄ¶Ë¿Ú½«ÓÉAPI×ÔĞĞÈ·¶¨£¬
-		 *                  Èç¹ûÊÇudpb¹ã²¥ĞĞÇé£¬ĞèÒªÓëÆÚ»õ¹«Ë¾È·ÈÏ±¨ÅÌ¹ã²¥ĞĞÇé¶Ë¿Ú¡£
-         *                  ipaddress±íÊ¾ĞĞÇéÇ°ÖÃµÄIP,port±íÊ¾ĞĞÇéÇ°ÖÃµÄ¶Ë¿Ú
-         * @param pSpi:ÀàDFITCMdSpi¶ÔÏóÊµÀı
-         * @return 0 - ³É¹¦; -1 - Ê§°Ü¡£
-         */
-        virtual int Init(char * pszSvrAddr, DFITCMdSpi * pSpi) = 0;
+  /**
+   * è¿›è¡Œä¸€ç³»åˆ—åˆå§‹åŒ–å·¥ä½œ:æ³¨å†Œå›è°ƒå‡½æ•°æ¥å£,è¿æ¥è¡Œæƒ…å‰ç½®ã€‚
+   * @param pszSvrAddr:è¡Œæƒ…å‰ç½®ç½‘ç»œåœ°å€ã€‚
+   *                  ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸º:"protocol://ipaddress:port",å¦‚"tcp://127.0.0.1:10915"
+   *                  å…¶ä¸­protocolçš„å€¼ä¸ºtcp,udp,udpb(å¹¿æ’­è¡Œæƒ…),è¡¨ç¤ºæ¥æ”¶è¡Œæƒ…çš„æ–¹å¼;å¦‚æœæ˜¯udpæ¥æ”¶è¡Œæƒ…æ•°æ®,udpçš„ç«¯å£å°†ç”±APIè‡ªè¡Œç¡®å®šï¼Œ
+   *                  å¦‚æœæ˜¯udpbå¹¿æ’­è¡Œæƒ…ï¼Œéœ€è¦ä¸æœŸè´§å…¬å¸ç¡®è®¤æŠ¥ç›˜å¹¿æ’­è¡Œæƒ…ç«¯å£ã€‚
+   *                  ipaddressè¡¨ç¤ºè¡Œæƒ…å‰ç½®çš„IP,portè¡¨ç¤ºè¡Œæƒ…å‰ç½®çš„ç«¯å£
+   * @param pSpi:ç±»DFITCMdSpiå¯¹è±¡å®ä¾‹
+   * @return 0 - æˆåŠŸ; -1 - å¤±è´¥ã€‚
+   */
+  virtual int Init(char *pszSvrAddr, DFITCMdSpi *pSpi) = 0;
 
-        /**
-         * É¾³ı½Ó¿Ú¶ÔÏó±¾Éí£¬²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊıÉ¾³ı½Ó¿Ú¶ÔÏó¡£
-         */
-        virtual void Release() = 0;
+  /**
+   * åˆ é™¤æ¥å£å¯¹è±¡æœ¬èº«ï¼Œä¸å†ä½¿ç”¨æœ¬æ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æ¥å£å¯¹è±¡ã€‚
+   */
+  virtual void Release() = 0;
 
-        /**
-         * ¶©ÔÄĞĞÇé:¸Ã·½·¨·¢³ö¶©ÔÄÄ³¸ö»òÕßÄ³Ğ©ºÏÔ¼ĞĞÇéÇëÇó¡£
-         * @param ppInstrumentID[]:Ö¸ÕëÊı×é£¬Ã¿¸öÖ¸ÕëÖ¸ÏòÒ»¸öºÏÔ¼¡££¨*´ú±í¶©ÔÄËùÓĞºÏÔ¼£¬Ò²¿É¶©ÔÄÄ³½»Ò×ËùËùÓĞºÏÔ¼ÈçDCE£©
-         * @param nCount:ºÏÔ¼¸öÊı
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü¡£
-         */
-        virtual int SubscribeMarketData(char * ppInstrumentID[], int nCount, int nRequestID) = 0;
+  /**
+   * è®¢é˜…è¡Œæƒ…:è¯¥æ–¹æ³•å‘å‡ºè®¢é˜…æŸä¸ªæˆ–è€…æŸäº›åˆçº¦è¡Œæƒ…è¯·æ±‚ã€‚
+   * @param
+   * ppInstrumentID[]:æŒ‡é’ˆæ•°ç»„ï¼Œæ¯ä¸ªæŒ‡é’ˆæŒ‡å‘ä¸€ä¸ªåˆçº¦ã€‚ï¼ˆ*ä»£è¡¨è®¢é˜…æ‰€æœ‰åˆçº¦ï¼Œä¹Ÿå¯è®¢é˜…æŸäº¤æ˜“æ‰€æ‰€æœ‰åˆçº¦å¦‚DCEï¼‰
+   * @param nCount:åˆçº¦ä¸ªæ•°
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥ã€‚
+   */
+  virtual int SubscribeMarketData(char *ppInstrumentID[], int nCount,
+                                  int nRequestID) = 0;
 
-        /**
-         * ÍË¶©ĞĞÇé:¸Ã·½·¨·¢³öÍË¶©Ä³¸ö/Ä³Ğ©ºÏÔ¼ĞĞÇéÇëÇó¡£
-         * @param ppInstrumentID[]:Ö¸ÕëÊı×é£¬Ã¿¸öÖ¸ÕëÖ¸ÏòÒ»¸öºÏÔ¼¡££¨*´ú±í¶©ÔÄÍË¶©ËùÓĞºÏÔ¼£¬Ò²¿ÉÍË¶©Ä³½»Ò×ËùËùÓĞºÏÔ¼ÈçDCE£©
-         * @param nCount:ºÏÔ¼¸öÊı
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü
-         */
-        virtual int UnSubscribeMarketData(char * ppInstrumentID[], int nCount, int nRequestID) = 0;
+  /**
+   * é€€è®¢è¡Œæƒ…:è¯¥æ–¹æ³•å‘å‡ºé€€è®¢æŸä¸ª/æŸäº›åˆçº¦è¡Œæƒ…è¯·æ±‚ã€‚
+   * @param
+   * ppInstrumentID[]:æŒ‡é’ˆæ•°ç»„ï¼Œæ¯ä¸ªæŒ‡é’ˆæŒ‡å‘ä¸€ä¸ªåˆçº¦ã€‚ï¼ˆ*ä»£è¡¨è®¢é˜…é€€è®¢æ‰€æœ‰åˆçº¦ï¼Œä¹Ÿå¯é€€è®¢æŸäº¤æ˜“æ‰€æ‰€æœ‰åˆçº¦å¦‚DCEï¼‰
+   * @param nCount:åˆçº¦ä¸ªæ•°
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥
+   */
+  virtual int UnSubscribeMarketData(char *ppInstrumentID[], int nCount,
+                                    int nRequestID) = 0;
 
-        /**
-         * ¶©ÔÄÑ¯¼Û
-         * @param ppInstrumentID[]:Ö¸ÕëÊı×é£¬Ã¿¸öÖ¸ÕëÖ¸ÏòÒ»¸öºÏÔ¼¡££¨*´ú±í¶©ÔÄËùÓĞÑ¯¼Û£¬Ò²¿É¶©ÔÄÄ³½»Ò×ËùËùÓĞÑ¯¼ÛÈçDCE£©
-         * @param nCount:ºÏÔ¼¸öÊı
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü
-         */
-        virtual int SubscribeForQuoteRsp(char * ppInstrumentID[], int nCount, int nRequestID) = 0;
+  /**
+   * è®¢é˜…è¯¢ä»·
+   * @param
+   * ppInstrumentID[]:æŒ‡é’ˆæ•°ç»„ï¼Œæ¯ä¸ªæŒ‡é’ˆæŒ‡å‘ä¸€ä¸ªåˆçº¦ã€‚ï¼ˆ*ä»£è¡¨è®¢é˜…æ‰€æœ‰è¯¢ä»·ï¼Œä¹Ÿå¯è®¢é˜…æŸäº¤æ˜“æ‰€æ‰€æœ‰è¯¢ä»·å¦‚DCEï¼‰
+   * @param nCount:åˆçº¦ä¸ªæ•°
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥
+   */
+  virtual int SubscribeForQuoteRsp(char *ppInstrumentID[], int nCount,
+                                   int nRequestID) = 0;
 
-       /**
-         * ÍË¶©Ñ¯¼Û
-         * @param ppInstrumentID[]:Ö¸ÕëÊı×é£¬Ã¿¸öÖ¸ÕëÖ¸ÏòÒ»¸öºÏÔ¼¡££¨*´ú±í¶©ÔÄÍË¶©ËùÓĞÑ¯¼Û£¬Ò²¿ÉÍË¶©Ä³½»Ò×ËùËùÓĞÑ¯¼ÛÈçDCE£©
-         * @param nCount:ºÏÔ¼¸öÊı
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü
-         */
-        virtual int UnSubscribeForQuoteRsp(char * ppInstrumentID[], int nCount, int nRequestID) = 0;
+  /**
+   * é€€è®¢è¯¢ä»·
+   * @param
+   * ppInstrumentID[]:æŒ‡é’ˆæ•°ç»„ï¼Œæ¯ä¸ªæŒ‡é’ˆæŒ‡å‘ä¸€ä¸ªåˆçº¦ã€‚ï¼ˆ*ä»£è¡¨è®¢é˜…é€€è®¢æ‰€æœ‰è¯¢ä»·ï¼Œä¹Ÿå¯é€€è®¢æŸäº¤æ˜“æ‰€æ‰€æœ‰è¯¢ä»·å¦‚DCEï¼‰
+   * @param nCount:åˆçº¦ä¸ªæ•°
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥
+   */
+  virtual int UnSubscribeForQuoteRsp(char *ppInstrumentID[], int nCount,
+                                     int nRequestID) = 0;
 
-        /**
-         * ÓÃ»§·¢³öµÇÂ½ÇëÇó
-         * @param pReqUserLoginField:Ö¸ÏòÓÃ»§µÇÂ¼ÇëÇó½á¹¹µÄµØÖ·¡£
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü; -2 - ¼ì²âÒì³£¡£
-         */ 
-        virtual int ReqUserLogin(struct DFITCUserLoginField * pReqUserLoginField) = 0;
+  /**
+   * ç”¨æˆ·å‘å‡ºç™»é™†è¯·æ±‚
+   * @param pReqUserLoginField:æŒ‡å‘ç”¨æˆ·ç™»å½•è¯·æ±‚ç»“æ„çš„åœ°å€ã€‚
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥; -2 - æ£€æµ‹å¼‚å¸¸ã€‚
+   */
+  virtual int ReqUserLogin(struct DFITCUserLoginField *pReqUserLoginField) = 0;
 
-        /**
-         * ÓÃ»§·¢³öµÇ³öÇëÇó
-         * @param pReqUserLogoutField:Ö¸ÏòÓÃ»§µÇÂ¼Çë³ö½á¹¹µÄµØÖ·¡£
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü; -2 - ¼ì²âÒì³£¡£
-         */ 
-        virtual int ReqUserLogout(struct DFITCUserLogoutField * pReqUserLogoutField) = 0;
+  /**
+   * ç”¨æˆ·å‘å‡ºç™»å‡ºè¯·æ±‚
+   * @param pReqUserLogoutField:æŒ‡å‘ç”¨æˆ·ç™»å½•è¯·å‡ºç»“æ„çš„åœ°å€ã€‚
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥; -2 - æ£€æµ‹å¼‚å¸¸ã€‚
+   */
+  virtual int
+  ReqUserLogout(struct DFITCUserLogoutField *pReqUserLogoutField) = 0;
 
-        /**
-         * ½»Ò×ÈÕ²éÑ¯ÇëÇó
-         * @return 0 - ÇëÇó·¢ËÍ³É¹¦; -1 - ÇëÇó·¢ËÍÊ§°Ü¡£
-         */
-        virtual int ReqTradingDay(struct DFITCTradingDayField * pTradingDay) = 0;
+  /**
+   * äº¤æ˜“æ—¥æŸ¥è¯¢è¯·æ±‚
+   * @return 0 - è¯·æ±‚å‘é€æˆåŠŸ; -1 - è¯·æ±‚å‘é€å¤±è´¥ã€‚
+   */
+  virtual int ReqTradingDay(struct DFITCTradingDayField *pTradingDay) = 0;
 
-    protected:
-        virtual ~DFITCMdApi() = 0;
+protected:
+  virtual ~DFITCMdApi() = 0;
 
-    };//end of MDAPI_API
-} //end of namespace
+}; // end of MDAPI_API
+} // namespace DFITCXSPEEDMDAPI
 
-#endif//DLMDAPI_H_
+#endif // DLMDAPI_H_

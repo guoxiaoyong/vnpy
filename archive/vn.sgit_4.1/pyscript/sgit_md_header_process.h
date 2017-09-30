@@ -7,4 +7,3 @@ void processRspUserLogin(Task task);
 void processRspUserLogout(Task task);
 
 void processRtnDepthMarketData(Task task);
-

@@ -1,362 +1,312 @@
-// vnctpmd.cpp : ¶¨Òå DLL Ó¦ÓÃ³ÌĞòµÄµ¼³öº¯Êı¡£
+// vnctpmd.cpp : å®šä¹‰ DLL åº”ç”¨ç¨‹åºçš„å¯¼å‡ºå‡½æ•°ã€‚
 //
 
-#include "stdafx.h"
 #include "vnshzd.h"
+#include "stdafx.h"
 
 ///-------------------------------------------------------------------------------------
-///C++µÄ»Øµ÷º¯Êı½«Êı¾İ±£´æµ½¶ÓÁĞÖĞ
+/// C++çš„å›è°ƒå‡½æ•°å°†æ•°æ®ä¿å­˜åˆ°é˜Ÿåˆ—ä¸­
 ///-------------------------------------------------------------------------------------
 
-int ShzdApi::OnReceiveTradeInfo(const CShZdMessage * re)
-{
-	if (re)
-	{
-		CShZdMessage *msg = new CShZdMessage();
-		*msg = *re;
+int ShzdApi::OnReceiveTradeInfo(const CShZdMessage *re) {
+  if (re) {
+    CShZdMessage *msg = new CShZdMessage();
+    *msg = *re;
 
-		Task *task = new Task();
-		task->task_name = ONRECEIVETRADEINFO;
-		task->task_data = msg;
-		this->task_queue.push(task);
-	}
+    Task *task = new Task();
+    task->task_name = ONRECEIVETRADEINFO;
+    task->task_data = msg;
+    this->task_queue.push(task);
+  }
 
-	return 0;
+  return 0;
 };
 
-int ShzdApi::OnReceiveMarketInfo(const CShZdMessage * re)
-{
-	if (re)
-	{
-		CShZdMessage *msg = new CShZdMessage();
-		*msg = *re;
+int ShzdApi::OnReceiveMarketInfo(const CShZdMessage *re) {
+  if (re) {
+    CShZdMessage *msg = new CShZdMessage();
+    *msg = *re;
 
-		Task *task = new Task();
-		task->task_name = ONRECEIVEMARKETINFO;
-		task->task_data = msg;
-		this->task_queue.push(task);
-	}
+    Task *task = new Task();
+    task->task_name = ONRECEIVEMARKETINFO;
+    task->task_data = msg;
+    this->task_queue.push(task);
+  }
 
-	return 0;
+  return 0;
 };
 
-int ShzdApi::OnReceiveErrorInfo(int errorCode, const char* re)
-{
-	Task *task = new Task();
-	task->task_name = ONRECEIVEERRORINFO;
-	task->task_errcode = errorCode;
-	task->task_errmsg = string(re);
-	this->task_queue.push(task);
+int ShzdApi::OnReceiveErrorInfo(int errorCode, const char *re) {
+  Task *task = new Task();
+  task->task_name = ONRECEIVEERRORINFO;
+  task->task_errcode = errorCode;
+  task->task_errmsg = string(re);
+  this->task_queue.push(task);
 
-	return 0;
+  return 0;
 };
-
 
 ///-------------------------------------------------------------------------------------
-///¹¤×÷Ïß³Ì´Ó¶ÓÁĞÖĞÈ¡³öÊı¾İ£¬×ª»¯Îªpython¶ÔÏóºó£¬½øĞĞÍÆËÍ
+///å·¥ä½œçº¿ç¨‹ä»é˜Ÿåˆ—ä¸­å–å‡ºæ•°æ®ï¼Œè½¬åŒ–ä¸ºpythonå¯¹è±¡åï¼Œè¿›è¡Œæ¨é€
 ///-------------------------------------------------------------------------------------
 
-void ShzdApi::processTask()
-{
-	while (1)
-	{
-		Task *task = this->task_queue.wait_and_pop();
+void ShzdApi::processTask() {
+  while (1) {
+    Task *task = this->task_queue.wait_and_pop();
 
-		switch (task->task_name)
-		{
-			case ONRECEIVETRADEINFO:
-			{
-				this->processTradeInfo(task);
-				break;
-			}
+    switch (task->task_name) {
+    case ONRECEIVETRADEINFO: {
+      this->processTradeInfo(task);
+      break;
+    }
 
-			case ONRECEIVEMARKETINFO:
-			{
-				this->processMarketInfo(task);
-				break;
-			}
+    case ONRECEIVEMARKETINFO: {
+      this->processMarketInfo(task);
+      break;
+    }
 
-			case ONRECEIVEERRORINFO:
-			{
-				this->processErrorInfo(task);
-				break;
-			}
-		};
-	}
+    case ONRECEIVEERRORINFO: {
+      this->processErrorInfo(task);
+      break;
+    }
+    };
+  }
 };
 
+void ShzdApi::processTradeInfo(Task *task) {
+  PyLock lock;
 
-void ShzdApi::processTradeInfo(Task* task)
-{
-	PyLock lock;
-	
-	dict data;
-	CShZdMessage *tr = (CShZdMessage*)task->task_data;
-	
-	//¶ÁÈ¡ĞÅÏ¢ÀàĞÍ
-	string type = tr->GetMesgType();
-	data["msgtype"] = type;
+  dict data;
+  CShZdMessage *tr = (CShZdMessage *)task->task_data;
 
-	//¶ÁÈ¡¾ßÌåÊı¾İ
-	string allstr = tr->GetAllString();
-	vector<string> strvector;
-	boost::split(strvector, allstr, boost::is_any_of(","));			//Ê×ÏÈ»ùÓÚ","°Ñ×Ö·û´®·Ö½â
+  //è¯»å–ä¿¡æ¯ç±»å‹
+  string type = tr->GetMesgType();
+  data["msgtype"] = type;
 
-	for (int i = 0; i < strvector.size(); i++)						//±éÀúÉÏÒ»²½·Ö½âµÄ¶ÎÂä£¬ÔÙÓÃ"="·Ö½âÃ¿¶Î
-	{
-		string temp = strvector[i];
-		if (temp.find("=") != string::npos)							//ºöÂÔÃ»ÓĞ"="µÄ¶ÎÂä
-		{
-			vector<string> tempvector;
-			boost::split(tempvector, temp, boost::is_any_of("="));
-			data[tempvector[0]] = tempvector[1];
-		}
-	}
+  //è¯»å–å…·ä½“æ•°æ®
+  string allstr = tr->GetAllString();
+  vector<string> strvector;
+  boost::split(strvector, allstr,
+               boost::is_any_of(",")); //é¦–å…ˆåŸºäº","æŠŠå­—ç¬¦ä¸²åˆ†è§£
 
-	this->onReceiveTradeInfo(data);
+  for (int i = 0; i < strvector.size();
+       i++) //éå†ä¸Šä¸€æ­¥åˆ†è§£çš„æ®µè½ï¼Œå†ç”¨"="åˆ†è§£æ¯æ®µ
+  {
+    string temp = strvector[i];
+    if (temp.find("=") != string::npos) //å¿½ç•¥æ²¡æœ‰"="çš„æ®µè½
+    {
+      vector<string> tempvector;
+      boost::split(tempvector, temp, boost::is_any_of("="));
+      data[tempvector[0]] = tempvector[1];
+    }
+  }
 
-	delete task->task_data;
-	delete task;
+  this->onReceiveTradeInfo(data);
+
+  delete task->task_data;
+  delete task;
 };
 
-void ShzdApi::processMarketInfo(Task* task)
-{
-	PyLock lock;
+void ShzdApi::processMarketInfo(Task *task) {
+  PyLock lock;
 
-	dict data;
-	CShZdMessage *tr = (CShZdMessage*)task->task_data;
+  dict data;
+  CShZdMessage *tr = (CShZdMessage *)task->task_data;
 
-	//¶ÁÈ¡ĞÅÏ¢ÀàĞÍ
-	string type = tr->GetMesgType();
-	data["msgtype"] = type;
+  //è¯»å–ä¿¡æ¯ç±»å‹
+  string type = tr->GetMesgType();
+  data["msgtype"] = type;
 
-	//¶ÁÈ¡¾ßÌåÊı¾İ
-	string allstr = tr->GetAllString();
-	vector<string> strvector;
-	boost::split(strvector, allstr, boost::is_any_of(","));			//Ê×ÏÈ»ùÓÚ","°Ñ×Ö·û´®·Ö½â
+  //è¯»å–å…·ä½“æ•°æ®
+  string allstr = tr->GetAllString();
+  vector<string> strvector;
+  boost::split(strvector, allstr,
+               boost::is_any_of(",")); //é¦–å…ˆåŸºäº","æŠŠå­—ç¬¦ä¸²åˆ†è§£
 
-	for (int i = 0; i < strvector.size(); i++)						//±éÀúÉÏÒ»²½·Ö½âµÄ¶ÎÂä£¬ÔÙÓÃ"="·Ö½âÃ¿¶Î
-	{
-		string temp = strvector[i];
-		if (temp.find("=") != string::npos)							//ºöÂÔÃ»ÓĞ"="µÄ¶ÎÂä
-		{
-			vector<string> tempvector;
-			boost::split(tempvector, temp, boost::is_any_of("="));
-			data[tempvector[0]] = tempvector[1];
-		}
-	}
+  for (int i = 0; i < strvector.size();
+       i++) //éå†ä¸Šä¸€æ­¥åˆ†è§£çš„æ®µè½ï¼Œå†ç”¨"="åˆ†è§£æ¯æ®µ
+  {
+    string temp = strvector[i];
+    if (temp.find("=") != string::npos) //å¿½ç•¥æ²¡æœ‰"="çš„æ®µè½
+    {
+      vector<string> tempvector;
+      boost::split(tempvector, temp, boost::is_any_of("="));
+      data[tempvector[0]] = tempvector[1];
+    }
+  }
 
-	this->onReceiveMarketInfo(data);
+  this->onReceiveMarketInfo(data);
 
-	delete task->task_data;
-	delete task;
+  delete task->task_data;
+  delete task;
 };
 
-void ShzdApi::processErrorInfo(Task* task)
-{
-	PyLock lock;
+void ShzdApi::processErrorInfo(Task *task) {
+  PyLock lock;
 
-	this->onReceiveErrorInfo(task->task_errcode, task->task_errmsg);
-	
-	delete task;
+  this->onReceiveErrorInfo(task->task_errcode, task->task_errmsg);
+
+  delete task;
 };
-
-
 
 ///-------------------------------------------------------------------------------------
-///Ö÷¶¯º¯Êı
+///ä¸»åŠ¨å‡½æ•°
 ///-------------------------------------------------------------------------------------
 
-void ShzdApi::release()
-{
-	this->api->Release();
+void ShzdApi::release() { this->api->Release(); };
+
+int ShzdApi::initShZdServer() {
+  this->api = GetShZdTradeLib();
+  int n = this->api->InitShZdServer();
+  this->api->RegisterOutLib(this);
+  return n;
 };
 
-int ShzdApi::initShZdServer()
-{
-	this->api = GetShZdTradeLib();
-	int n = this->api->InitShZdServer();
-	this->api->RegisterOutLib(this);
-	return n;
+int ShzdApi::registerFront(string address, int port) {
+  return this->api->RegisterFront(address.c_str(), port);
 };
 
-
-int ShzdApi::registerFront(string address, int port)
-{
-	return this->api->RegisterFront(address.c_str(), port);
+int ShzdApi::registerMarket(string address, int port) {
+  return this->api->RegisterMarket(address.c_str(), port);
 };
 
+int ShzdApi::shzdSendInfoToTrade(dict data) {
+  CShZdMessage msg = CShZdMessage();
 
-int ShzdApi::registerMarket(string address, int port)
-{
-	return this->api->RegisterMarket(address.c_str(), port);
+  //æ’å…¥ä¿¡æ¯ç±»å‹
+  if (data.has_key("msgtype")) {
+    object msgtype = data["msgtype"];
+    extract<string> x(msgtype);
+    if (x.check()) {
+      string typestr = x();
+      msg.SetMsgType(typestr.c_str());
+    }
+  }
+
+  //æ’å…¥å­—æ®µ
+  boost::python::list keyList = data.keys();
+  boost::python::list valueList = data.values();
+
+  for (int n = 0; n < len(keyList); n++) {
+    //å£°æ˜
+    int keyint = 0;
+    string valuestr = "";
+
+    //è·å–æ•´æ•°å‹çš„key
+    object key = keyList[n];
+    extract<string> x1(key);
+    if (x1.check()) {
+      string keystr = x1();
+      stringstream ss;
+      ss << keystr;
+      ss >> keyint;
+    }
+
+    //è·å–å­—ç¬¦ä¸²çš„value
+    object value = valueList[n];
+    extract<string> x2(value);
+    if (x2.check()) {
+      valuestr = x2();
+    }
+
+    //æ·»åŠ åˆ°msgä¸­
+    msg.SetTag(keyint, valuestr.c_str());
+  }
+
+  return this->api->ShZdSendInfoToTrade(&msg);
 };
 
-int ShzdApi::shzdSendInfoToTrade(dict data)
-{
-	CShZdMessage msg = CShZdMessage();
+int ShzdApi::shzdSendInfoToMarket(dict data) {
+  CShZdMessage msg = CShZdMessage();
 
-	//²åÈëĞÅÏ¢ÀàĞÍ
-	if (data.has_key("msgtype"))
-	{
-		object msgtype = data["msgtype"];
-		extract<string> x(msgtype);
-		if (x.check())
-		{
-			string typestr = x();
-			msg.SetMsgType(typestr.c_str());
-		}
-	}
-	
-	//²åÈë×Ö¶Î
-	boost::python::list keyList = data.keys();
-	boost::python::list valueList = data.values();
+  //æ’å…¥ä¿¡æ¯ç±»å‹
+  if (data.has_key("msgtype")) {
+    object msgtype = data["msgtype"];
+    extract<string> x(msgtype);
+    if (x.check()) {
+      string typestr = x();
+      msg.SetMsgType(typestr.c_str());
+    }
+  }
 
-	for (int n = 0; n < len(keyList); n++)		
-	{
-		//ÉùÃ÷
-		int keyint = 0;
-		string valuestr = "";
-		
-		//»ñÈ¡ÕûÊıĞÍµÄkey
-		object key = keyList[n];
-		extract<string> x1(key);
-		if (x1.check())
-		{
-			string keystr = x1();
-			stringstream ss;
-			ss << keystr;
-			ss >> keyint;
-		}
+  //æ’å…¥å­—æ®µ
+  boost::python::list keyList = data.keys();
+  boost::python::list valueList = data.values();
 
-		//»ñÈ¡×Ö·û´®µÄvalue
-		object value = valueList[n];
-		extract<string> x2(value);
-		if (x2.check())
-		{
-			valuestr = x2();
-		}
+  for (int n = 0; n < len(keyList); n++) {
+    //å£°æ˜
+    int keyint = 0;
+    string valuestr = "";
 
-		//Ìí¼Óµ½msgÖĞ
-		msg.SetTag(keyint, valuestr.c_str());
-	}
+    //è·å–æ•´æ•°å‹çš„key
+    object key = keyList[n];
+    extract<string> x1(key);
+    if (x1.check()) {
+      string keystr = x1();
+      stringstream ss;
+      ss << keystr;
+      ss >> keyint;
+    }
 
-	return this->api->ShZdSendInfoToTrade(&msg);
+    //è·å–å­—ç¬¦ä¸²çš„value
+    object value = valueList[n];
+    extract<string> x2(value);
+    if (x2.check()) {
+      valuestr = x2();
+    }
+
+    //æ·»åŠ åˆ°msgä¸­
+    msg.SetTag(keyint, valuestr.c_str());
+  }
+
+  return this->api->ShZdSendInfoToMarket(&msg);
 };
-
-int ShzdApi::shzdSendInfoToMarket(dict data)
-{
-	CShZdMessage msg = CShZdMessage();
-
-	//²åÈëĞÅÏ¢ÀàĞÍ
-	if (data.has_key("msgtype"))
-	{
-		object msgtype = data["msgtype"];
-		extract<string> x(msgtype);
-		if (x.check())
-		{
-			string typestr = x();
-			msg.SetMsgType(typestr.c_str());
-		}
-	}
-
-	//²åÈë×Ö¶Î
-	boost::python::list keyList = data.keys();
-	boost::python::list valueList = data.values();
-
-	for (int n = 0; n < len(keyList); n++)
-	{
-		//ÉùÃ÷
-		int keyint = 0;
-		string valuestr = "";
-
-		//»ñÈ¡ÕûÊıĞÍµÄkey
-		object key = keyList[n];
-		extract<string> x1(key);
-		if (x1.check())
-		{
-			string keystr = x1();
-			stringstream ss;
-			ss << keystr;
-			ss >> keyint;
-		}
-
-		//»ñÈ¡×Ö·û´®µÄvalue
-		object value = valueList[n];
-		extract<string> x2(value);
-		if (x2.check())
-		{
-			valuestr = x2();
-		}
-
-		//Ìí¼Óµ½msgÖĞ
-		msg.SetTag(keyint, valuestr.c_str());
-	}
-
-	return this->api->ShZdSendInfoToMarket(&msg);
-};
-
-
 
 ///-------------------------------------------------------------------------------------
-///Boost.Python·â×°
+/// Boost.Pythonå°è£…
 ///-------------------------------------------------------------------------------------
 
-struct ShzdApiWrap : ShzdApi, wrapper < ShzdApi >
-{
-	virtual void onReceiveTradeInfo(dict data)
-	{
-		//ÒÔÏÂµÄtry...catch...¿ÉÒÔÊµÏÖ²¶×½python»·¾³ÖĞ´íÎóµÄ¹¦ÄÜ£¬·ÀÖ¹C++Ö±½Ó³öÏÖÔ­ÒòÎ´ÖªµÄ±ÀÀ£
-		try
-		{
-			this->get_override("onReceiveTradeInfo")(data);
-		}
-		catch (error_already_set const &)
-		{
-			PyErr_Print();
-		}
-	};
+struct ShzdApiWrap : ShzdApi, wrapper<ShzdApi> {
+  virtual void onReceiveTradeInfo(dict data) {
+    //ä»¥ä¸‹çš„try...catch...å¯ä»¥å®ç°æ•æ‰pythonç¯å¢ƒä¸­é”™è¯¯çš„åŠŸèƒ½ï¼Œé˜²æ­¢C++ç›´æ¥å‡ºç°åŸå› æœªçŸ¥çš„å´©æºƒ
+    try {
+      this->get_override("onReceiveTradeInfo")(data);
+    } catch (error_already_set const &) {
+      PyErr_Print();
+    }
+  };
 
-	virtual void onReceiveMarketInfo(dict data)
-	{
-		try
-		{
-			this->get_override("onReceiveMarketInfo")(data);
-		}
-		catch (error_already_set const &)
-		{
-			PyErr_Print();
-		}
-	};
+  virtual void onReceiveMarketInfo(dict data) {
+    try {
+      this->get_override("onReceiveMarketInfo")(data);
+    } catch (error_already_set const &) {
+      PyErr_Print();
+    }
+  };
 
-	virtual void onReceiveErrorInfo(int errcode, string errmsg)
-	{
-		try
-		{
-			this->get_override("onReceiveErrorInfo")(errcode, errmsg);
-		}
-		catch (error_already_set const &)
-		{
-			PyErr_Print();
-		}
-	};
+  virtual void onReceiveErrorInfo(int errcode, string errmsg) {
+    try {
+      this->get_override("onReceiveErrorInfo")(errcode, errmsg);
+    } catch (error_already_set const &) {
+      PyErr_Print();
+    }
+  };
 };
 
+BOOST_PYTHON_MODULE(vnshzd) {
+  PyEval_InitThreads(); //å¯¼å…¥æ—¶è¿è¡Œï¼Œä¿è¯å…ˆåˆ›å»ºGIL
 
-BOOST_PYTHON_MODULE(vnshzd)
-{
-	PyEval_InitThreads();	//µ¼ÈëÊ±ÔËĞĞ£¬±£Ö¤ÏÈ´´½¨GIL
+  class_<ShzdApiWrap, boost::noncopyable>("ShzdApi")
+      .def("release", &ShzdApiWrap::release)
+      .def("initShZdServer", &ShzdApiWrap::initShZdServer)
+      .def("registerFront", &ShzdApiWrap::registerFront)
+      .def("registerMarket", &ShzdApiWrap::registerMarket)
+      .def("shzdSendInfoToTrade", &ShzdApiWrap::shzdSendInfoToTrade)
+      .def("shzdSendInfoToMarket", &ShzdApiWrap::shzdSendInfoToMarket)
 
-	class_<ShzdApiWrap, boost::noncopyable>("ShzdApi")
-		.def("release", &ShzdApiWrap::release)
-		.def("initShZdServer", &ShzdApiWrap::initShZdServer)
-		.def("registerFront", &ShzdApiWrap::registerFront)
-		.def("registerMarket", &ShzdApiWrap::registerMarket)
-		.def("shzdSendInfoToTrade", &ShzdApiWrap::shzdSendInfoToTrade)
-		.def("shzdSendInfoToMarket", &ShzdApiWrap::shzdSendInfoToMarket)
-
-		.def("onReceiveTradeInfo", pure_virtual(&ShzdApiWrap::onReceiveTradeInfo))
-		.def("onReceiveMarketInfo", pure_virtual(&ShzdApiWrap::onReceiveMarketInfo))
-		.def("onReceiveErrorInfo", pure_virtual(&ShzdApiWrap::onReceiveErrorInfo))
-		;
+      .def("onReceiveTradeInfo", pure_virtual(&ShzdApiWrap::onReceiveTradeInfo))
+      .def("onReceiveMarketInfo",
+           pure_virtual(&ShzdApiWrap::onReceiveMarketInfo))
+      .def("onReceiveErrorInfo",
+           pure_virtual(&ShzdApiWrap::onReceiveErrorInfo));
 };

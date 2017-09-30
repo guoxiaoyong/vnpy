@@ -91,4 +91,3 @@ void processRspQryExchangeStatus(Task task);
 void processRtnExchangeStatus(Task task);
 
 void processRspQryDepthMarketData(Task task);
-

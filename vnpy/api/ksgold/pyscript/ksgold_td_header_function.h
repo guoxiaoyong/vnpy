@@ -19,4 +19,3 @@ int reqQryTrade(dict req, int nRequestID);
 int reqQryOrder(dict req, int nRequestID);
 
 int reqQryStorage(dict req, int nRequestID);
-

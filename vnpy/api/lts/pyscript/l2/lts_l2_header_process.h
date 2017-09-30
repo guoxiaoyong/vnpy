@@ -31,4 +31,3 @@ void processRtnL2Order(Task task);
 void processRtnL2Trade(Task task);
 
 void processNtfCheckOrderList(Task task);
-

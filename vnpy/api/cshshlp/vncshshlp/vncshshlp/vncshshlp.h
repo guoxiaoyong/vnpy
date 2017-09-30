@@ -1,99 +1,92 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 
-//ÏµÍ³
+//ç³»ç»Ÿ
 #include "stdafx.h"
-#include <string>
 #include <queue>
+#include <string>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>	//python·â×°
-#include <boost/python/def.hpp>		//python·â×°
-#include <boost/python/dict.hpp>	//python·â×°
-#include <boost/python/list.hpp>	//python·â×°
-#include <boost/python/object.hpp>	//python·â×°
-#include <boost/python.hpp>			//python·â×°
-#include <boost/thread.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>			//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
+#include <boost/any.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>          //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>        //pythonå°è£…
+#include <boost/python/def.hpp>    //pythonå°è£…
+#include <boost/python/dict.hpp>   //pythonå°è£…
+#include <boost/python/list.hpp>   //pythonå°è£…
+#include <boost/python/module.hpp> //pythonå°è£…
+#include <boost/python/object.hpp> //pythonå°è£…
+#include <boost/thread.hpp>        //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
+// API
 #include "CITICs_HsT2Hlp.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 
-
 ///-------------------------------------------------------------------------------------
-///·â×°Àà
+///å°è£…ç±»
 ///-------------------------------------------------------------------------------------
 
-class CsHsHlp
-{
+class CsHsHlp {
 private:
-	HSHLPCFGHANDLE cfgHandle;		//ÅäÖÃÖ¸Õë
-	HSHLPHANDLE handle;				//²Ù×÷¶ÔÏóÖ¸Õë
-	thread *task_thread;			//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	bool active;					//¹¤×÷×´Ì¬
+  HSHLPCFGHANDLE cfgHandle; //é…ç½®æŒ‡é’ˆ
+  HSHLPHANDLE handle;       //æ“ä½œå¯¹è±¡æŒ‡é’ˆ
+  thread *task_thread;      //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  bool active;              //å·¥ä½œçŠ¶æ€
 
 public:
-	CsHsHlp()
-	{
-		this->active = false;
-	};
+  CsHsHlp() { this->active = false; };
 
-	~CsHsHlp()
-	{
-		this->active = false;
-	};
+  ~CsHsHlp() { this->active = false; };
 
-	//------------------------------------------------------------------------
-	//Ö÷¶¯º¯Êı²¿·Ö
-	//------------------------------------------------------------------------
+  //------------------------------------------------------------------------
+  //ä¸»åŠ¨å‡½æ•°éƒ¨åˆ†
+  //------------------------------------------------------------------------
 
-	//¶ÁÈ¡ÅäÖÃÎÄ¼ş
-	int loadConfig(string fileName);
+  //è¯»å–é…ç½®æ–‡ä»¶
+  int loadConfig(string fileName);
 
-	//³õÊ¼»¯
-	int init();
+  //åˆå§‹åŒ–
+  int init();
 
-	//Á¬½Ó·şÎñÆ÷
-	int connectServer();
+  //è¿æ¥æœåŠ¡å™¨
+  int connectServer();
 
-	//»ñÈ¡´íÎóĞÅÏ¢
-	string getErrorMsg();
+  //è·å–é”™è¯¯ä¿¡æ¯
+  string getErrorMsg();
 
-	//³õÊ¼»¯·¢°üÇëÇó
-	int beginParam();
+  //åˆå§‹åŒ–å‘åŒ…è¯·æ±‚
+  int beginParam();
 
-	//ÉèÖÃ·¢°üµÄ²ÎÊı×Ö¶ÎÃû³ÆºÍÖµ
-	int setValue(string key, string value);
+  //è®¾ç½®å‘åŒ…çš„å‚æ•°å­—æ®µåç§°å’Œå€¼
+  int setValue(string key, string value);
 
-	//·¢°ü
-	int bizCallAndCommit(int iFuncID);
+  //å‘åŒ…
+  int bizCallAndCommit(int iFuncID);
 
-	//¶©ÔÄ
-	boost::python::list subscribeData(int iFuncID);
+  //è®¢é˜…
+  boost::python::list subscribeData(int iFuncID);
 
-	//¶Ï¿ª·şÎñÆ÷
-	int disconnect();
+  //æ–­å¼€æœåŠ¡å™¨
+  int disconnect();
 
-	//ÍË³ö
-	int exit();
+  //é€€å‡º
+  int exit();
 
-	//------------------------------------------------------------------------
-	//Òì²½ÏûÏ¢´¦ÀíÏß³Ì
-	//------------------------------------------------------------------------
+  //------------------------------------------------------------------------
+  //å¼‚æ­¥æ¶ˆæ¯å¤„ç†çº¿ç¨‹
+  //------------------------------------------------------------------------
 
-	//Á¬ĞøÔËĞĞµÄÏûÏ¢´¦Àíº¯Êı
-	void processMsg();
+  //è¿ç»­è¿è¡Œçš„æ¶ˆæ¯å¤„ç†å‡½æ•°
+  void processMsg();
 
-	//------------------------------------------------------------------------
-	//PythonÖĞ¼Ì³ĞµÄ»Øµ÷º¯Êı
-	//------------------------------------------------------------------------
-	
-	//ÏòPythonÖĞÍÆËÍÏûÏ¢µÄº¯Êı
-	virtual void onMsg(int type, boost::python::list data, int reqNo, int errorNo, string errorInfo) {};
+  //------------------------------------------------------------------------
+  // Pythonä¸­ç»§æ‰¿çš„å›è°ƒå‡½æ•°
+  //------------------------------------------------------------------------
+
+  //å‘Pythonä¸­æ¨é€æ¶ˆæ¯çš„å‡½æ•°
+  virtual void onMsg(int type, boost::python::list data, int reqNo, int errorNo,
+                     string errorInfo){};
 };

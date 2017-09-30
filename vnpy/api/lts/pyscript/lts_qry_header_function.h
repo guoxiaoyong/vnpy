@@ -57,4 +57,3 @@ int reqQryInvestorPosition(dict req, int nRequestID);
 int reqQryFundTransferSerial(dict req, int nRequestID);
 
 int reqQryFundInterTransferSerial(dict req, int nRequestID);
-

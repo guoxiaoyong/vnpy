@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 ///@company shanghai liber information Technology Co.,Ltd
 ///@file SecurityFtdcL2MDUserApi.h
-///@brief ¶¨Òå¿Í»§¶Ë½Ó¿Ú
+///@brief å®šä¹‰å®¢æˆ·ç«¯æŽ¥å£
 /////////////////////////////////////////////////////////////////////////
 
 #if !defined(SECURITY_L2MD_FTDCUSERAPI_H)
@@ -21,130 +21,158 @@ _LTS_NS_BEGIN_
 #define L2MD_USER_API_EXPORT __declspec(dllimport)
 #endif
 #else
-#define L2MD_USER_API_EXPORT 
+#define L2MD_USER_API_EXPORT
 #endif
 
-class CSecurityFtdcL2MDUserSpi
-{
+class CSecurityFtdcL2MDUserSpi {
 public:
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆðÍ¨ÐÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected(){};
-	
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ÐÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØÐÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçÐ´Ê§°Ü
-	///        0x2001 ½ÓÊÕÐÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍÐÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
-	virtual void OnFrontDisconnected(int nReason){};
-		
-	///ÐÄÌø³¬Ê±¾¯¸æ
-	virtual void OnHeartBeatWarning(int nTimeLapse){};
+  ///å½“å®¢æˆ·ç«¯ä¸Žäº¤æ˜“åŽå°å»ºç«‹èµ·é€šä¿¡è¿žæŽ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected(){};
 
-	///´íÎóÓ¦´ð
-	virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸Žäº¤æ˜“åŽå°é€šä¿¡è¿žæŽ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåŽï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿žæŽ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param nReason é”™è¯¯åŽŸå› 
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
+  ///        0x2001 æŽ¥æ”¶å¿ƒè·³è¶…æ—¶
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+  virtual void OnFrontDisconnected(int nReason){};
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CSecurityFtdcUserLoginField *pUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å¿ƒè·³è¶…æ—¶è­¦å‘Š
+  virtual void OnHeartBeatWarning(int nTimeLapse){};
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///é”™è¯¯åº”ç­”
+  virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast){};
 
-	///¶©ÔÄLevel2ÐÐÇéÓ¦´ð
-	virtual void OnRspSubL2MarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CSecurityFtdcUserLoginField *pUserLogin,
+                              CSecurityFtdcRspInfoField *pRspInfo,
+                              int nRequestID, bool bIsLast){};
 
-	///È¡Ïû¶©ÔÄLevel2ÐÐÇéÓ¦´ð
-	virtual void OnRspUnSubL2MarketData(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,
+                               CSecurityFtdcRspInfoField *pRspInfo,
+                               int nRequestID, bool bIsLast){};
 
-	///¶©ÔÄLevel2Ö¸ÊýÐÐÇéÓ¦´ð
-	virtual void OnRspSubL2Index(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///è®¢é˜…Level2è¡Œæƒ…åº”ç­”
+  virtual void OnRspSubL2MarketData(
+      CSecurityFtdcSpecificInstrumentField *pSpecificInstrument,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
 
-	///È¡Ïû¶©ÔÄLevel2Ö¸ÊýÐÐÇéÓ¦´ð
-	virtual void OnRspUnSubL2Index(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å–æ¶ˆè®¢é˜…Level2è¡Œæƒ…åº”ç­”
+  virtual void OnRspUnSubL2MarketData(
+      CSecurityFtdcSpecificInstrumentField *pSpecificInstrument,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
 
-	///Level2ÐÐÇéÍ¨Öª
-	virtual void OnRtnL2MarketData(CSecurityFtdcL2MarketDataField *pL2MarketData) {};
+  ///è®¢é˜…Level2æŒ‡æ•°è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspSubL2Index(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument,
+                  CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                  bool bIsLast){};
 
-	///Level2Ö¸ÊýÐÐÇéÍ¨Öª
-	virtual void OnRtnL2Index(CSecurityFtdcL2IndexField *pL2Index) {};
+  ///å–æ¶ˆè®¢é˜…Level2æŒ‡æ•°è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspUnSubL2Index(CSecurityFtdcSpecificInstrumentField *pSpecificInstrument,
+                    CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                    bool bIsLast){};
 
-	///¶©ÔÄÖð±ÊÎ¯ÍÐ¼°³É½»Ó¦´ð
-	virtual void OnRspSubL2OrderAndTrade(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  /// Level2è¡Œæƒ…é€šçŸ¥
+  virtual void
+  OnRtnL2MarketData(CSecurityFtdcL2MarketDataField *pL2MarketData){};
 
-	///È¡Ïû¶©ÔÄÖð±ÊÎ¯ÍÐ¼°³É½»Ó¦´ð
-	virtual void OnRspUnSubL2OrderAndTrade(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  /// Level2æŒ‡æ•°è¡Œæƒ…é€šçŸ¥
+  virtual void OnRtnL2Index(CSecurityFtdcL2IndexField *pL2Index){};
 
-	///Level2Î¯ÍÐÍ¨Öª
-	virtual void OnRtnL2Order(CSecurityFtdcL2OrderField *pL2Order) {};
+  ///è®¢é˜…é€ç¬”å§”æ‰˜åŠæˆäº¤åº”ç­”
+  virtual void OnRspSubL2OrderAndTrade(CSecurityFtdcRspInfoField *pRspInfo,
+                                       int nRequestID, bool bIsLast){};
 
-	///Level2³É½»Í¨Öª
-	virtual void OnRtnL2Trade(CSecurityFtdcL2TradeField *pL2Trade) {};
+  ///å–æ¶ˆè®¢é˜…é€ç¬”å§”æ‰˜åŠæˆäº¤åº”ç­”
+  virtual void OnRspUnSubL2OrderAndTrade(CSecurityFtdcRspInfoField *pRspInfo,
+                                         int nRequestID, bool bIsLast){};
 
-	///Í¨ÖªÇåÀíSSEÂòÂôÒ»¶ÓÁÐÖÐÊýÁ¿Îª0µÄ±¨µ¥
-	virtual void OnNtfCheckOrderList(TSecurityFtdcInstrumentIDType InstrumentID, TSecurityFtdcFunctionCodeType FunctionCode) {};
+  /// Level2å§”æ‰˜é€šçŸ¥
+  virtual void OnRtnL2Order(CSecurityFtdcL2OrderField *pL2Order){};
+
+  /// Level2æˆäº¤é€šçŸ¥
+  virtual void OnRtnL2Trade(CSecurityFtdcL2TradeField *pL2Trade){};
+
+  ///é€šçŸ¥æ¸…ç†SSEä¹°å–ä¸€é˜Ÿåˆ—ä¸­æ•°é‡ä¸º0çš„æŠ¥å•
+  virtual void
+  OnNtfCheckOrderList(TSecurityFtdcInstrumentIDType InstrumentID,
+                      TSecurityFtdcFunctionCodeType FunctionCode){};
 };
 
 #ifndef WINDOWS
-	#if __GNUC__ >= 4
-		#pragma GCC visibility push(default)
-	#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
 #endif
-class L2MD_USER_API_EXPORT CSecurityFtdcL2MDUserApi
-{
+#endif
+class L2MD_USER_API_EXPORT CSecurityFtdcL2MDUserApi {
 public:
-	///´´½¨UserApi
-	static CSecurityFtdcL2MDUserApi *CreateFtdcL2MDUserApi(const bool bIsMulticast=false);
-	
-	///É¾³ý½Ó¿Ú¶ÔÏó±¾Éí
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊýÉ¾³ý½Ó¿Ú¶ÔÏó
-	virtual void Release() = 0;
-	
-	///³õÊ¼»¯
-	///@remark ³õÊ¼»¯ÔËÐÐ»·¾³,Ö»ÓÐµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
-	virtual void Init() = 0;
-	
-	///µÈ´ý½Ó¿ÚÏß³Ì½áÊøÔËÐÐ
-	virtual int Join() = 0;
-	
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
-	///@remark Ö»ÓÐµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕýÈ·µÄ½»Ò×ÈÕ
-	virtual const char *GetTradingDay() = 0;
-	
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
-	///@remark ¡°tcp¡±´ú±í´«ÊäÐ­Òé£¬¡°127.0.0.1¡±´ú±í·þÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·þÎñÆ÷¶Ë¿ÚºÅ¡£
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
-	
-	///×¢²á»Øµ÷½Ó¿Ú
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀý
-	virtual void RegisterSpi(CSecurityFtdcL2MDUserSpi *pSpi) = 0;
-	
-	virtual int SubscribeL2MarketData(char *ppInstrumentID[], int nCount, char* pExchageID) = 0;
+  ///åˆ›å»ºUserApi
+  static CSecurityFtdcL2MDUserApi *
+  CreateFtdcL2MDUserApi(const bool bIsMulticast = false);
 
-	virtual int UnSubscribeL2MarketData(char *ppInstrumentID[], int nCount, char* pExchageID) = 0;
-	
-	virtual int SubscribeL2Index(char *ppInstrumentID[], int nCount, char* pExchageID) = 0;
+  ///åˆ é™¤æŽ¥å£å¯¹è±¡æœ¬èº«
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æŽ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æŽ¥å£å¯¹è±¡
+  virtual void Release() = 0;
 
-	virtual int UnSubscribeL2Index(char *ppInstrumentID[], int nCount, char* pExchageID) = 0;	
-	
-	virtual int SubscribeL2OrderAndTrade() = 0;
-	
-	virtual int UnSubscribeL2OrderAndTrade() = 0;
+  ///åˆå§‹åŒ–
+  ///@remark åˆå§‹åŒ–è¿è¡ŒçŽ¯å¢ƒ,åªæœ‰è°ƒç”¨åŽ,æŽ¥å£æ‰å¼€å§‹å·¥ä½œ
+  virtual void Init() = 0;
 
-	///µÇÂ¼ÇëÇó
-	virtual int ReqUserLogin(CSecurityFtdcUserLoginField *pUserLogin, int nRequestID) = 0;
+  ///ç­‰å¾…æŽ¥å£çº¿ç¨‹ç»“æŸè¿è¡Œ
+  virtual int Join() = 0;
 
-	///µÇ³öÇëÇó
-	virtual int ReqUserLogout(CSecurityFtdcUserLogoutField *pUserLogout, int nRequestID) = 0;
+  ///èŽ·å–å½“å‰äº¤æ˜“æ—¥
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸåŽ,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
+  virtual const char *GetTradingDay() = 0;
+
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
+
+  ///æ³¨å†Œå›žè°ƒæŽ¥å£
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›žè°ƒæŽ¥å£ç±»çš„å®žä¾‹
+  virtual void RegisterSpi(CSecurityFtdcL2MDUserSpi *pSpi) = 0;
+
+  virtual int SubscribeL2MarketData(char *ppInstrumentID[], int nCount,
+                                    char *pExchageID) = 0;
+
+  virtual int UnSubscribeL2MarketData(char *ppInstrumentID[], int nCount,
+                                      char *pExchageID) = 0;
+
+  virtual int SubscribeL2Index(char *ppInstrumentID[], int nCount,
+                               char *pExchageID) = 0;
+
+  virtual int UnSubscribeL2Index(char *ppInstrumentID[], int nCount,
+                                 char *pExchageID) = 0;
+
+  virtual int SubscribeL2OrderAndTrade() = 0;
+
+  virtual int UnSubscribeL2OrderAndTrade() = 0;
+
+  ///ç™»å½•è¯·æ±‚
+  virtual int ReqUserLogin(CSecurityFtdcUserLoginField *pUserLogin,
+                           int nRequestID) = 0;
+
+  ///ç™»å‡ºè¯·æ±‚
+  virtual int ReqUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
+
 protected:
-	~CSecurityFtdcL2MDUserApi(){};
+  ~CSecurityFtdcL2MDUserApi(){};
 };
 #ifndef WINDOWS
-	#if __GNUC__ >= 4
-		#pragma GCC visibility pop
-	#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
+#endif
 #endif
 _LTS_NS_END_
 #endif

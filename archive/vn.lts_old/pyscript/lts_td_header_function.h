@@ -49,4 +49,3 @@ int reqQryFundTransferSerial(dict req, int nRequestID);
 int reqFundInterTransfer(dict req, int nRequestID);
 
 int reqQryFundInterTransferSerial(dict req, int nRequestID);
-

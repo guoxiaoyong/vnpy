@@ -1,59 +1,57 @@
-﻿/* Copyright (C) 2013 Interactive Brokers LLC. All rights reserved. This code is subject to the terms
- * and conditions of the IB API Non-Commercial License or the IB API Commercial License, as applicable. */
+﻿/* Copyright (C) 2013 Interactive Brokers LLC. All rights reserved. This code is
+ * subject to the terms and conditions of the IB API Non-Commercial License or
+ * the IB API Commercial License, as applicable. */
 
-#include "StdAfx.h"
 #include "EMutex.h"
+#include "StdAfx.h"
 
-EMutex::EMutex()
-{
+EMutex::EMutex() {
 #if defined(IB_POSIX)
-    pthread_mutex_init(&cs, NULL);
+  pthread_mutex_init(&cs, NULL);
 #elif defined(IB_WIN32)
-	InitializeCriticalSection(&cs);
+  InitializeCriticalSection(&cs);
 #else
-#   error "Not implemented on this platform"
+#error "Not implemented on this platform"
 #endif
 }
 
-EMutex::~EMutex(void)
-{
-	Leave();
+EMutex::~EMutex(void) {
+  Leave();
 #if defined(IB_POSIX)
-    pthread_mutex_destroy(&cs);
+  pthread_mutex_destroy(&cs);
 #elif defined(IB_WIN32)
-	DeleteCriticalSection(&cs);
+  DeleteCriticalSection(&cs);
 #else
-#   error "Not implemented on this platform"
+#error "Not implemented on this platform"
 #endif
 }
 
-bool EMutex::TryEnter()
-{
+bool EMutex::TryEnter() {
 #if defined(IB_POSIX)
-    return pthread_mutex_trylock(&cs) == 0;
+  return pthread_mutex_trylock(&cs) == 0;
 #elif defined(IB_WIN32)
-	return TryEnterCriticalSection(&cs);
+  return TryEnterCriticalSection(&cs);
 #else
-#   error "Not implemented on this platform"
+#error "Not implemented on this platform"
 #endif
 }
 
 void EMutex::Enter() {
 #if defined(IB_POSIX)
-    pthread_mutex_lock(&cs);
+  pthread_mutex_lock(&cs);
 #elif defined(IB_WIN32)
-	EnterCriticalSection(&cs);
+  EnterCriticalSection(&cs);
 #else
-#   error "Not implemented on this platform"
+#error "Not implemented on this platform"
 #endif
 }
 
 void EMutex::Leave() {
 #if defined(IB_POSIX)
-    pthread_mutex_unlock(&cs);
+  pthread_mutex_unlock(&cs);
 #elif defined(IB_WIN32)
-	LeaveCriticalSection(&cs);
+  LeaveCriticalSection(&cs);
 #else
-#   error "Not implemented on this platform"
+#error "Not implemented on this platform"
 #endif
 }

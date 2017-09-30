@@ -1,11 +1,11 @@
-//================================================================================== 
-//ÏÂÁĞ ifdef ¿éÊÇ´´½¨Ê¹´Ó DLL µ¼³ö¸ü¼òµ¥µÄ
-// ºêµÄ±ê×¼·½·¨¡£´Ë DLL ÖĞµÄËùÓĞÎÄ¼ş¶¼ÊÇÓÃÃüÁîĞĞÉÏ¶¨ÒåµÄ SHZDTRADELIB_EXPORTS
-// ·ûºÅ±àÒëµÄ¡£ÔÚÊ¹ÓÃ´Ë DLL µÄ
-// ÈÎºÎÆäËûÏîÄ¿ÉÏ²»Ó¦¶¨Òå´Ë·ûºÅ¡£ÕâÑù£¬Ô´ÎÄ¼şÖĞ°üº¬´ËÎÄ¼şµÄÈÎºÎÆäËûÏîÄ¿¶¼»á½«
-// SHZDTRADELIB_API º¯ÊıÊÓÎªÊÇ´Ó DLL µ¼ÈëµÄ£¬¶ø´Ë DLL Ôò½«ÓÃ´Ëºê¶¨ÒåµÄ
-// ·ûºÅÊÓÎªÊÇ±»µ¼³öµÄ¡£
-// ÏòÉÙÖĞ 2013-03-22
+//==================================================================================
+//ä¸‹åˆ— ifdef å—æ˜¯åˆ›å»ºä½¿ä» DLL å¯¼å‡ºæ›´ç®€å•çš„
+// å®çš„æ ‡å‡†æ–¹æ³•ã€‚æ­¤ DLL ä¸­çš„æ‰€æœ‰æ–‡ä»¶éƒ½æ˜¯ç”¨å‘½ä»¤è¡Œä¸Šå®šä¹‰çš„ SHZDTRADELIB_EXPORTS
+// ç¬¦å·ç¼–è¯‘çš„ã€‚åœ¨ä½¿ç”¨æ­¤ DLL çš„
+// ä»»ä½•å…¶ä»–é¡¹ç›®ä¸Šä¸åº”å®šä¹‰æ­¤ç¬¦å·ã€‚è¿™æ ·ï¼Œæºæ–‡ä»¶ä¸­åŒ…å«æ­¤æ–‡ä»¶çš„ä»»ä½•å…¶ä»–é¡¹ç›®éƒ½ä¼šå°†
+// SHZDTRADELIB_API å‡½æ•°è§†ä¸ºæ˜¯ä» DLL å¯¼å…¥çš„ï¼Œè€Œæ­¤ DLL åˆ™å°†ç”¨æ­¤å®å®šä¹‰çš„
+// ç¬¦å·è§†ä¸ºæ˜¯è¢«å¯¼å‡ºçš„ã€‚
+// å‘å°‘ä¸­ 2013-03-22
 //===================================================================================
 #pragma once
 #include "ShZdMessage.h"
@@ -17,44 +17,46 @@
 
 #ifdef __cplusplus
 //===================================================================================
-// ¶ÔÍâµ¼³öµÄ½Ó¿Ú
+// å¯¹å¤–å¯¼å‡ºçš„æ¥å£
 //===================================================================================
-//½ÓÊÕĞÅÏ¢µÄĞéÀà
-class SHZDTRADELIB_API IShZdTradeOutLib
-{
-	public:
-		virtual int OnReceiveTradeInfo(const CShZdMessage * re)=0;
-		virtual int OnReceiveMarketInfo(const CShZdMessage * re)=0;
-		virtual int OnReceiveErrorInfo(int errorCode,const char* re)=0;
+//æ¥æ”¶ä¿¡æ¯çš„è™šç±»
+class SHZDTRADELIB_API IShZdTradeOutLib {
+public:
+  virtual int OnReceiveTradeInfo(const CShZdMessage *re) = 0;
+  virtual int OnReceiveMarketInfo(const CShZdMessage *re) = 0;
+  virtual int OnReceiveErrorInfo(int errorCode, const char *re) = 0;
 };
 
-typedef IShZdTradeOutLib* IShZdTradeOutLibHandler;
-//·¢ËÍĞÅÏ¢µÄĞéÀà
-class  SHZDTRADELIB_API IShZdTradeInLib
-{
-	public:
-		virtual void Release() = 0;	
-		virtual int InitShZdServer()=0;//³õÊ¼»¯·şÎñÆ÷
-		virtual int RegisterFront(const char *pszFrontAddress,int portNum)=0; //Á¬½ÓÇ°ÖÃ·şÎñÆ÷ 
-		virtual int RegisterMarket(const char *pszMarketAddress,int portNum)=0;//Á¬½ÓĞĞÇé·şÎñÆ÷
-		virtual int ShZdSendInfoToTrade(const CShZdMessage *send)=0; //ÏòÇ°ÖÃ·şÎñÆ÷·¢ËÍ½»Ò×ÇëÇó	
-		virtual int ShZdSendInfoToMarket(const CShZdMessage *send)=0;//ÏòĞĞÇé·şÎñÆ÷·¢ËÍĞĞÇéÇëÇó
-		virtual int RegisterOutLib(IShZdTradeOutLibHandler handler)=0;
+typedef IShZdTradeOutLib *IShZdTradeOutLibHandler;
+//å‘é€ä¿¡æ¯çš„è™šç±»
+class SHZDTRADELIB_API IShZdTradeInLib {
+public:
+  virtual void Release() = 0;
+  virtual int InitShZdServer() = 0; //åˆå§‹åŒ–æœåŠ¡å™¨
+  virtual int RegisterFront(const char *pszFrontAddress,
+                            int portNum) = 0; //è¿æ¥å‰ç½®æœåŠ¡å™¨
+  virtual int RegisterMarket(const char *pszMarketAddress,
+                             int portNum) = 0; //è¿æ¥è¡Œæƒ…æœåŠ¡å™¨
+  virtual int
+  ShZdSendInfoToTrade(const CShZdMessage *send) = 0; //å‘å‰ç½®æœåŠ¡å™¨å‘é€äº¤æ˜“è¯·æ±‚
+  virtual int
+  ShZdSendInfoToMarket(const CShZdMessage *send) = 0; //å‘è¡Œæƒ…æœåŠ¡å™¨å‘é€è¡Œæƒ…è¯·æ±‚
+  virtual int RegisterOutLib(IShZdTradeOutLibHandler handler) = 0;
 };
 
-typedef IShZdTradeInLib* ShZdTradeInLibHandle;
-// ´ËÀàÊÇ´Ó ShZdTradeLib.dll µ¼³öµÄ
+typedef IShZdTradeInLib *ShZdTradeInLibHandle;
+// æ­¤ç±»æ˜¯ä» ShZdTradeLib.dll å¯¼å‡ºçš„
 class SHZDTRADELIB_API CShZdTradeLib {
-	public:			
+public:
 };
-#else  
+#else
 
 #endif
 
 #ifdef __cplusplus
-#   define EXTERN_C     extern "C"
+#define EXTERN_C extern "C"
 #else
-#   define EXTERN_C
+#define EXTERN_C
 #endif
 
 EXTERN_C SHZDTRADELIB_API ShZdTradeInLibHandle GetShZdTradeLib(void);

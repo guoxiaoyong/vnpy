@@ -2,22 +2,22 @@
 #include "OperatorCondition.h"
 
 class TWSAPIDLLEXP MarginCondition : public OperatorCondition {
-	friend OrderCondition;
+  friend OrderCondition;
 
-	int m_percent;
+  int m_percent;
 
 public:
-	static const OrderConditionType conditionType = OrderConditionType::Margin;
+  static const OrderConditionType conditionType = OrderConditionType::Margin;
 
 protected:
-	MarginCondition() { }
+  MarginCondition() {}
 
-	virtual std::string valueToString() const;
-	virtual void valueFromString(const std::string &v);
+  virtual std::string valueToString() const;
+  virtual void valueFromString(const std::string &v);
 
 public:
-	virtual std::string toString();
+  virtual std::string toString();
 
-	int percent();
-	void percent(int percent);
+  int percent();
+  void percent(int percent);
 };

@@ -137,4 +137,3 @@ int reqFromBankToFutureByFuture(dict req, int nRequestID);
 int reqFromFutureToBankByFuture(dict req, int nRequestID);
 
 int reqQueryBankAccountMoneyByFuture(dict req, int nRequestID);
-

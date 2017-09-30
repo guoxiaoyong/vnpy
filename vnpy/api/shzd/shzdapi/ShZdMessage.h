@@ -6,22 +6,22 @@ using namespace std;
 #define ShZdMessage_H
 
 #ifdef DLL_FILE
- class _declspec(dllexport) CShZdMessage  //µ¼³öÀàCShZdMessage
+class _declspec(dllexport) CShZdMessage //å¯¼å‡ºç±»CShZdMessage
 #else
- class _declspec(dllimport) CShZdMessage  //µ¼ÈëÀàCShZdMessage
+class _declspec(dllimport) CShZdMessage //å¯¼å…¥ç±»CShZdMessage
 #endif
 {
 public:
-	CShZdMessage(void);
-	~CShZdMessage(void);
-	bool SetTag(const int tag,const char* value);	
-	char* GetString(int tag);
-	bool SetAllRead(int read);//ÉèÖÃËùÓĞĞÅÏ¢½á¹¹ÌåÎªÒÑ¶Á»òÎ´¶Á
-	const char* GetMesgType();
-	bool SetMsgType(const char *msgType);
-	string GetAllString();//·µ»ØËùÓĞµÄ×Ö·û´®
-private:	
-	map<int,string> MsgBody;//ĞÅÏ¢Ìå
+  CShZdMessage(void);
+  ~CShZdMessage(void);
+  bool SetTag(const int tag, const char *value);
+  char *GetString(int tag);
+  bool SetAllRead(int read); //è®¾ç½®æ‰€æœ‰ä¿¡æ¯ç»“æ„ä½“ä¸ºå·²è¯»æˆ–æœªè¯»
+  const char *GetMesgType();
+  bool SetMsgType(const char *msgType);
+  string GetAllString(); //è¿”å›æ‰€æœ‰çš„å­—ç¬¦ä¸²
+private:
+  map<int, string> MsgBody; //ä¿¡æ¯ä½“
 };
 
-#endif 
+#endif

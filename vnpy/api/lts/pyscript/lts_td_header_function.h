@@ -15,4 +15,3 @@ int reqTradingAccountPasswordUpdate(dict req, int nRequestID);
 int reqFundOutByLiber(dict req, int nRequestID);
 
 int reqFundInterTransfer(dict req, int nRequestID);
-

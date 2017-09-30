@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////////////////
 ///@company shanghai liber information Technology Co.,Ltd
 ///@file SecurityFtdcTraderApi.h
-///@brief ¶¨Òå¿Í»§¶Ë½Ó¿Ú
+///@brief å®šä¹‰å®¢æˆ·ç«¯æŽ¥å£
 /////////////////////////////////////////////////////////////////////////
 
 #if !defined(SECURITY_FTDCTRADERAPI_H)
@@ -20,178 +20,227 @@
 #define TRADER_API_EXPORT __declspec(dllimport)
 #endif
 #else
-#define TRADER_API_EXPORT 
+#define TRADER_API_EXPORT
 #endif
 
-class CSecurityFtdcTraderSpi
-{
+class CSecurityFtdcTraderSpi {
 public:
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆðÍ¨ÐÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected(){};
-	
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ÐÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØÐÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçÐ´Ê§°Ü
-	///        0x2001 ½ÓÊÕÐÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍÐÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
-	virtual void OnFrontDisconnected(int nReason){};
-		
-	///ÐÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
-	virtual void OnHeartBeatWarning(int nTimeLapse){};	
+  ///å½“å®¢æˆ·ç«¯ä¸Žäº¤æ˜“åŽå°å»ºç«‹èµ·é€šä¿¡è¿žæŽ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected(){};
 
-	///´íÎóÓ¦´ð
-	virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸Žäº¤æ˜“åŽå°é€šä¿¡è¿žæŽ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåŽï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿žæŽ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
+  ///@param nReason é”™è¯¯åŽŸå› 
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
+  ///        0x2001 æŽ¥æ”¶å¿ƒè·³è¶…æ—¶
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+  virtual void OnFrontDisconnected(int nReason){};
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  ///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æŽ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
+  virtual void OnHeartBeatWarning(int nTimeLapse){};
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///é”™è¯¯åº”ç­”
+  virtual void OnRspError(CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast){};
 
-	///»ñÈ¡ÈÏÖ¤Ëæ»úÂëÇëÇóÏìÓ¦
-	virtual void OnRspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CSecurityFtdcRspUserLoginField *pRspUserLogin,
+                              CSecurityFtdcRspInfoField *pRspInfo,
+                              int nRequestID, bool bIsLast){};
 
-	///±¨µ¥Â¼ÈëÇëÇóÏìÓ¦
-	virtual void OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,
+                               CSecurityFtdcRspInfoField *pRspInfo,
+                               int nRequestID, bool bIsLast){};
 
-	///±¨µ¥²Ù×÷ÇëÇóÏìÓ¦
-	virtual void OnRspOrderAction(CSecurityFtdcInputOrderActionField *pInputOrderAction, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///èŽ·å–è®¤è¯éšæœºç è¯·æ±‚å“åº”
+  virtual void
+  OnRspFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,
+                         CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast){};
 
-	///ÓÃ»§¿ÚÁî¸üÐÂÇëÇóÏìÓ¦
-	virtual void OnRspUserPasswordUpdate(CSecurityFtdcUserPasswordUpdateField *pUserPasswordUpdate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æŠ¥å•å½•å…¥è¯·æ±‚å“åº”
+  virtual void OnRspOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,
+                                CSecurityFtdcRspInfoField *pRspInfo,
+                                int nRequestID, bool bIsLast){};
 
-	///×Ê½ðÕË»§¿ÚÁî¸üÐÂÇëÇóÏìÓ¦
-	virtual void OnRspTradingAccountPasswordUpdate(CSecurityFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æŠ¥å•æ“ä½œè¯·æ±‚å“åº”
+  virtual void
+  OnRspOrderAction(CSecurityFtdcInputOrderActionField *pInputOrderAction,
+                   CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                   bool bIsLast){};
 
-	///±¨µ¥Í¨Öª
-	virtual void OnRtnOrder(CSecurityFtdcOrderField *pOrder) {};
+  ///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
+  virtual void OnRspUserPasswordUpdate(
+      CSecurityFtdcUserPasswordUpdateField *pUserPasswordUpdate,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
 
-	///³É½»Í¨Öª
-	virtual void OnRtnTrade(CSecurityFtdcTradeField *pTrade) {};
+  ///èµ„é‡‘è´¦æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
+  virtual void OnRspTradingAccountPasswordUpdate(
+      CSecurityFtdcTradingAccountPasswordUpdateField
+          *pTradingAccountPasswordUpdate,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
 
-	///±¨µ¥Â¼Èë´íÎó»Ø±¨
-	virtual void OnErrRtnOrderInsert(CSecurityFtdcInputOrderField *pInputOrder, CSecurityFtdcRspInfoField *pRspInfo) {};
+  ///æŠ¥å•é€šçŸ¥
+  virtual void OnRtnOrder(CSecurityFtdcOrderField *pOrder){};
 
-	///±¨µ¥²Ù×÷´íÎó»Ø±¨
-	virtual void OnErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction, CSecurityFtdcRspInfoField *pRspInfo) {};
+  ///æˆäº¤é€šçŸ¥
+  virtual void OnRtnTrade(CSecurityFtdcTradeField *pTrade){};
 
-	///Liber·¢Æð³ö½ðÓ¦´ð
-	virtual void OnRspFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///æŠ¥å•å½•å…¥é”™è¯¯å›žæŠ¥
+  virtual void OnErrRtnOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,
+                                   CSecurityFtdcRspInfoField *pRspInfo){};
 
-	///Liber·¢Æð³ö½ðÍ¨Öª
-	virtual void OnRtnFundOutByLiber(CSecurityFtdcFundTransferField *pFundTransfer) {};
+  ///æŠ¥å•æ“ä½œé”™è¯¯å›žæŠ¥
+  virtual void OnErrRtnOrderAction(CSecurityFtdcOrderActionField *pOrderAction,
+                                   CSecurityFtdcRspInfoField *pRspInfo){};
 
-	///Liber·¢Æð³ö½ð´íÎó»Ø±¨
-	virtual void OnErrRtnFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, CSecurityFtdcRspInfoField *pRspInfo) {};
+  /// Liberå‘èµ·å‡ºé‡‘åº”ç­”
+  virtual void
+  OnRspFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,
+                      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID,
+                      bool bIsLast){};
 
-	///ÒøÐÐ·¢ÆðÈë½ðÍ¨Öª
-	virtual void OnRtnFundInByBank(CSecurityFtdcFundTransferField *pFundTransfer) {};
+  /// Liberå‘èµ·å‡ºé‡‘é€šçŸ¥
+  virtual void
+  OnRtnFundOutByLiber(CSecurityFtdcFundTransferField *pFundTransfer){};
 
-	///×Ê½ðÄÚ×ªÓ¦´ð
-	virtual void OnRspFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer, CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  /// Liberå‘èµ·å‡ºé‡‘é”™è¯¯å›žæŠ¥
+  virtual void OnErrRtnFundOutByLiber(
+      CSecurityFtdcInputFundTransferField *pInputFundTransfer,
+      CSecurityFtdcRspInfoField *pRspInfo){};
 
-	///×Ê½ðÄÚ×ªÁ÷Ë®Í¨Öª
-	virtual void OnRtnFundInterTransferSerial(CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial) {};
+  ///é“¶è¡Œå‘èµ·å…¥é‡‘é€šçŸ¥
+  virtual void
+  OnRtnFundInByBank(CSecurityFtdcFundTransferField *pFundTransfer){};
 
-	///×Ê½ðÄÚ×ª´íÎó»Ø±¨
-	virtual void OnErrRtnFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer, CSecurityFtdcRspInfoField *pRspInfo) {};
+  ///èµ„é‡‘å†…è½¬åº”ç­”
+  virtual void OnRspFundInterTransfer(
+      CSecurityFtdcFundInterTransferField *pFundInterTransfer,
+      CSecurityFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast){};
+
+  ///èµ„é‡‘å†…è½¬æµæ°´é€šçŸ¥
+  virtual void OnRtnFundInterTransferSerial(
+      CSecurityFtdcFundInterTransferSerialField *pFundInterTransferSerial){};
+
+  ///èµ„é‡‘å†…è½¬é”™è¯¯å›žæŠ¥
+  virtual void OnErrRtnFundInterTransfer(
+      CSecurityFtdcFundInterTransferField *pFundInterTransfer,
+      CSecurityFtdcRspInfoField *pRspInfo){};
 };
 
 #ifndef WINDOWS
-	#if __GNUC__ >= 4
-		#pragma GCC visibility push(default)
-	#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility push(default)
+#endif
 #endif
 
-class TRADER_API_EXPORT CSecurityFtdcTraderApi
-{
+class TRADER_API_EXPORT CSecurityFtdcTraderApi {
 public:
-	///´´½¨TraderApi
-	///@param pszFlowPath ´æÖü¶©ÔÄÐÅÏ¢ÎÄ¼þµÄÄ¿Â¼£¬Ä¬ÈÏÎªµ±Ç°Ä¿Â¼
-	///@return ´´½¨³öµÄUserApi
-	static CSecurityFtdcTraderApi *CreateFtdcTraderApi(const char *pszFlowPath = "");
-	
-	///É¾³ý½Ó¿Ú¶ÔÏó±¾Éí
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊýÉ¾³ý½Ó¿Ú¶ÔÏó
-	virtual void Release() = 0;
-	
-	///³õÊ¼»¯
-	///@remark ³õÊ¼»¯ÔËÐÐ»·¾³,Ö»ÓÐµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
-	virtual void Init() = 0;
-	
-	///µÈ´ý½Ó¿ÚÏß³Ì½áÊøÔËÐÐ
-	///@return Ïß³ÌÍË³ö´úÂë
-	virtual int Join() = 0;
-	
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
-	///@retrun »ñÈ¡µ½µÄ½»Ò×ÈÕ
-	///@remark Ö»ÓÐµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕýÈ·µÄ½»Ò×ÈÕ
-	virtual const char *GetTradingDay() = 0;
-	
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
-	///@remark ¡°tcp¡±´ú±í´«ÊäÐ­Òé£¬¡°127.0.0.1¡±´ú±í·þÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·þÎñÆ÷¶Ë¿ÚºÅ¡£
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
-	
-	///×¢²á»Øµ÷½Ó¿Ú
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀý
-	virtual void RegisterSpi(CSecurityFtdcTraderSpi *pSpi) = 0;
-	
-	///¶©ÔÄË½ÓÐÁ÷¡£
-	///@param nResumeType Ë½ÓÐÁ÷ÖØ´«·½Ê½  
-	///        SECURITY_TERT_RESTART:´Ó±¾½»Ò×ÈÕ¿ªÊ¼ÖØ´«
-	///        SECURITY_TERT_RESUME:´ÓÉÏ´ÎÊÕµ½µÄÐø´«
-	///        SECURITY_TERT_QUICK:Ö»´«ËÍµÇÂ¼ºóË½ÓÐÁ÷µÄÄÚÈÝ
-	///@remark ¸Ã·½·¨ÒªÔÚInit·½·¨Ç°µ÷ÓÃ¡£Èô²»µ÷ÓÃÔò²»»áÊÕµ½Ë½ÓÐÁ÷µÄÊý¾Ý¡£
-	virtual void SubscribePrivateTopic(SECURITY_TE_RESUME_TYPE nResumeType) = 0;
-	
-	///¶©ÔÄ¹«¹²Á÷¡£
-	///@param nResumeType ¹«¹²Á÷ÖØ´«·½Ê½  
-	///        SECURITY_TERT_RESTART:´Ó±¾½»Ò×ÈÕ¿ªÊ¼ÖØ´«
-	///        SECURITY_TERT_RESUME:´ÓÉÏ´ÎÊÕµ½µÄÐø´«
-	///        SECURITY_TERT_QUICK:Ö»´«ËÍµÇÂ¼ºó¹«¹²Á÷µÄÄÚÈÝ
-	///@remark ¸Ã·½·¨ÒªÔÚInit·½·¨Ç°µ÷ÓÃ¡£Èô²»µ÷ÓÃÔò²»»áÊÕµ½¹«¹²Á÷µÄÊý¾Ý¡£
-	virtual void SubscribePublicTopic(SECURITY_TE_RESUME_TYPE nResumeType) = 0;
+  ///åˆ›å»ºTraderApi
+  ///@param pszFlowPath å­˜è´®è®¢é˜…ä¿¡æ¯æ–‡ä»¶çš„ç›®å½•ï¼Œé»˜è®¤ä¸ºå½“å‰ç›®å½•
+  ///@return åˆ›å»ºå‡ºçš„UserApi
+  static CSecurityFtdcTraderApi *
+  CreateFtdcTraderApi(const char *pszFlowPath = "");
 
-	///ÓÃ»§µÇÂ¼ÇëÇó
-	virtual int ReqUserLogin(CSecurityFtdcReqUserLoginField *pReqUserLoginField, int nRequestID) = 0;
-	
+  ///åˆ é™¤æŽ¥å£å¯¹è±¡æœ¬èº«
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æŽ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æŽ¥å£å¯¹è±¡
+  virtual void Release() = 0;
 
-	///µÇ³öÇëÇó
-	virtual int ReqUserLogout(CSecurityFtdcUserLogoutField *pUserLogout, int nRequestID) = 0;
+  ///åˆå§‹åŒ–
+  ///@remark åˆå§‹åŒ–è¿è¡ŒçŽ¯å¢ƒ,åªæœ‰è°ƒç”¨åŽ,æŽ¥å£æ‰å¼€å§‹å·¥ä½œ
+  virtual void Init() = 0;
 
-	///»ñÈ¡ÈÏÖ¤Ëæ»úÂëÇëÇó
-	virtual int ReqFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode, int nRequestID) = 0;
+  ///ç­‰å¾…æŽ¥å£çº¿ç¨‹ç»“æŸè¿è¡Œ
+  ///@return çº¿ç¨‹é€€å‡ºä»£ç 
+  virtual int Join() = 0;
 
-	///±¨µ¥Â¼ÈëÇëÇó
-	virtual int ReqOrderInsert(CSecurityFtdcInputOrderField *pInputOrder, int nRequestID) = 0;
+  ///èŽ·å–å½“å‰äº¤æ˜“æ—¥
+  ///@retrun èŽ·å–åˆ°çš„äº¤æ˜“æ—¥
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸåŽ,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
+  virtual const char *GetTradingDay() = 0;
 
-	///±¨µ¥²Ù×÷ÇëÇó
-	virtual int ReqOrderAction(CSecurityFtdcInputOrderActionField *pInputOrderAction, int nRequestID) = 0;
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
 
-	///ÓÃ»§¿ÚÁî¸üÐÂÇëÇó
-	virtual int ReqUserPasswordUpdate(CSecurityFtdcUserPasswordUpdateField *pUserPasswordUpdate, int nRequestID) = 0;
+  ///æ³¨å†Œå›žè°ƒæŽ¥å£
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›žè°ƒæŽ¥å£ç±»çš„å®žä¾‹
+  virtual void RegisterSpi(CSecurityFtdcTraderSpi *pSpi) = 0;
 
-	///×Ê½ðÕË»§¿ÚÁî¸üÐÂÇëÇó
-	virtual int ReqTradingAccountPasswordUpdate(CSecurityFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, int nRequestID) = 0;
+  ///è®¢é˜…ç§æœ‰æµã€‚
+  ///@param nResumeType ç§æœ‰æµé‡ä¼ æ–¹å¼
+  ///        SECURITY_TERT_RESTART:ä»Žæœ¬äº¤æ˜“æ—¥å¼€å§‹é‡ä¼ 
+  ///        SECURITY_TERT_RESUME:ä»Žä¸Šæ¬¡æ”¶åˆ°çš„ç»­ä¼ 
+  ///        SECURITY_TERT_QUICK:åªä¼ é€ç™»å½•åŽç§æœ‰æµçš„å†…å®¹
+  ///@remark è¯¥æ–¹æ³•è¦åœ¨Initæ–¹æ³•å‰è°ƒç”¨ã€‚è‹¥ä¸è°ƒç”¨åˆ™ä¸ä¼šæ”¶åˆ°ç§æœ‰æµçš„æ•°æ®ã€‚
+  virtual void SubscribePrivateTopic(SECURITY_TE_RESUME_TYPE nResumeType) = 0;
 
-	///Liber·¢Æð³ö½ðÇëÇó
-	virtual int ReqFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer, int nRequestID) = 0;
+  ///è®¢é˜…å…¬å…±æµã€‚
+  ///@param nResumeType å…¬å…±æµé‡ä¼ æ–¹å¼
+  ///        SECURITY_TERT_RESTART:ä»Žæœ¬äº¤æ˜“æ—¥å¼€å§‹é‡ä¼ 
+  ///        SECURITY_TERT_RESUME:ä»Žä¸Šæ¬¡æ”¶åˆ°çš„ç»­ä¼ 
+  ///        SECURITY_TERT_QUICK:åªä¼ é€ç™»å½•åŽå…¬å…±æµçš„å†…å®¹
+  ///@remark è¯¥æ–¹æ³•è¦åœ¨Initæ–¹æ³•å‰è°ƒç”¨ã€‚è‹¥ä¸è°ƒç”¨åˆ™ä¸ä¼šæ”¶åˆ°å…¬å…±æµçš„æ•°æ®ã€‚
+  virtual void SubscribePublicTopic(SECURITY_TE_RESUME_TYPE nResumeType) = 0;
 
-	///×Ê½ðÄÚ×ªÇëÇó
-	virtual int ReqFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer, int nRequestID) = 0;
+  ///ç”¨æˆ·ç™»å½•è¯·æ±‚
+  virtual int ReqUserLogin(CSecurityFtdcReqUserLoginField *pReqUserLoginField,
+                           int nRequestID) = 0;
+
+  ///ç™»å‡ºè¯·æ±‚
+  virtual int ReqUserLogout(CSecurityFtdcUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
+
+  ///èŽ·å–è®¤è¯éšæœºç è¯·æ±‚
+  virtual int
+  ReqFetchAuthRandCode(CSecurityFtdcAuthRandCodeField *pAuthRandCode,
+                       int nRequestID) = 0;
+
+  ///æŠ¥å•å½•å…¥è¯·æ±‚
+  virtual int ReqOrderInsert(CSecurityFtdcInputOrderField *pInputOrder,
+                             int nRequestID) = 0;
+
+  ///æŠ¥å•æ“ä½œè¯·æ±‚
+  virtual int
+  ReqOrderAction(CSecurityFtdcInputOrderActionField *pInputOrderAction,
+                 int nRequestID) = 0;
+
+  ///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚
+  virtual int ReqUserPasswordUpdate(
+      CSecurityFtdcUserPasswordUpdateField *pUserPasswordUpdate,
+      int nRequestID) = 0;
+
+  ///èµ„é‡‘è´¦æˆ·å£ä»¤æ›´æ–°è¯·æ±‚
+  virtual int
+  ReqTradingAccountPasswordUpdate(CSecurityFtdcTradingAccountPasswordUpdateField
+                                      *pTradingAccountPasswordUpdate,
+                                  int nRequestID) = 0;
+
+  /// Liberå‘èµ·å‡ºé‡‘è¯·æ±‚
+  virtual int
+  ReqFundOutByLiber(CSecurityFtdcInputFundTransferField *pInputFundTransfer,
+                    int nRequestID) = 0;
+
+  ///èµ„é‡‘å†…è½¬è¯·æ±‚
+  virtual int
+  ReqFundInterTransfer(CSecurityFtdcFundInterTransferField *pFundInterTransfer,
+                       int nRequestID) = 0;
+
 protected:
-	~CSecurityFtdcTraderApi(){};
+  ~CSecurityFtdcTraderApi(){};
 };
-  
+
 #ifndef WINDOWS
-	#if __GNUC__ >= 4
-		#pragma GCC visibility pop
-	#endif
+#if __GNUC__ >= 4
+#pragma GCC visibility pop
+#endif
 #endif
 
 #endif

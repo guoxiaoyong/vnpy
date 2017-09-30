@@ -1,37 +1,36 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 /*
-ÓÉÓÚCTP APIÖĞºÍ×Ê½ğ×ªÕËÏà¹ØµÄº¯ÊıÌ«¶à£¬
-Í¬Ê±Ò²ÒÑ¾­ÓĞ´óÁ¿µÄ¿Í»§¶ËÖ§³ÖÕâĞ©¹¦ÄÜ£¬
-Òò´ËÔÚÕâ¸öPython·â×°ÖĞÔİÊ±Ñ¡ÔñÖ»Ö§³Ö½»Ò×¹¦ÄÜ
+ç”±äºCTP APIä¸­å’Œèµ„é‡‘è½¬è´¦ç›¸å…³çš„å‡½æ•°å¤ªå¤šï¼Œ
+åŒæ—¶ä¹Ÿå·²ç»æœ‰å¤§é‡çš„å®¢æˆ·ç«¯æ”¯æŒè¿™äº›åŠŸèƒ½ï¼Œ
+å› æ­¤åœ¨è¿™ä¸ªPythonå°è£…ä¸­æš‚æ—¶é€‰æ‹©åªæ”¯æŒäº¤æ˜“åŠŸèƒ½
 */
 
-
-//ÏµÍ³
+//ç³»ç»Ÿ
 #include "stdafx.h"
-#include <string>
 #include <queue>
+#include <string>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>	//python·â×°
-#include <boost/python/def.hpp>		//python·â×°
-#include <boost/python/dict.hpp>	//python·â×°
-#include <boost/python/object.hpp>	//python·â×° 
-#include <boost/python.hpp>			//python·â×°
-#include <boost/thread.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>			//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
+#include <boost/any.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>          //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>        //pythonå°è£…
+#include <boost/python/def.hpp>    //pythonå°è£…
+#include <boost/python/dict.hpp>   //pythonå°è£…
+#include <boost/python/module.hpp> //pythonå°è£…
+#include <boost/python/object.hpp> //pythonå°è£…
+#include <boost/thread.hpp>        //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
-#include "GoldTradeApi.h"
+// API
 #include "Constant.h"
+#include "GoldTradeApi.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 
-//³£Á¿
+//å¸¸é‡
 #define ONFRONTCONNECTED 1
 #define ONFRONTDISCONNECTED 2
 #define ONRSPUSERLOGIN 3
@@ -53,327 +52,332 @@ using namespace boost;
 #define ONRSPQRYCLIENTSTORAGE 19
 #define ONRSPSUBMARKETDATA 20
 
-
 ///-------------------------------------------------------------------------------------
-///APIÖĞµÄ²¿·Ö×é¼ş
+/// APIä¸­çš„éƒ¨åˆ†ç»„ä»¶
 ///-------------------------------------------------------------------------------------
 
-//GILÈ«¾ÖËø¼ò»¯»ñÈ¡ÓÃ£¬
-//ÓÃÓÚ°ïÖúC++Ïß³Ì»ñµÃGILËø£¬´Ó¶ø·ÀÖ¹python±ÀÀ£
-class PyLock
-{
+// GILå…¨å±€é”ç®€åŒ–è·å–ç”¨ï¼Œ
+//ç”¨äºå¸®åŠ©C++çº¿ç¨‹è·å¾—GILé”ï¼Œä»è€Œé˜²æ­¢pythonå´©æºƒ
+class PyLock {
 private:
-	PyGILState_STATE gil_state;
+  PyGILState_STATE gil_state;
 
 public:
-	//ÔÚÄ³¸öº¯Êı·½·¨ÖĞ´´½¨¸Ã¶ÔÏóÊ±£¬»ñµÃGILËø
-	PyLock()
-	{
-		gil_state = PyGILState_Ensure();
-	}
+  //åœ¨æŸä¸ªå‡½æ•°æ–¹æ³•ä¸­åˆ›å»ºè¯¥å¯¹è±¡æ—¶ï¼Œè·å¾—GILé”
+  PyLock() { gil_state = PyGILState_Ensure(); }
 
-	//ÔÚÄ³¸öº¯ÊıÍê³ÉºóÏú»Ù¸Ã¶ÔÏóÊ±£¬½â·ÅGILËø
-	~PyLock()
-	{
-		PyGILState_Release(gil_state);
-	}
+  //åœ¨æŸä¸ªå‡½æ•°å®Œæˆåé”€æ¯è¯¥å¯¹è±¡æ—¶ï¼Œè§£æ”¾GILé”
+  ~PyLock() { PyGILState_Release(gil_state); }
 };
 
-
-//ÈÎÎñ½á¹¹Ìå
-struct Task
-{
-	int task_name;		//»Øµ÷º¯ÊıÃû³Æ¶ÔÓ¦µÄ³£Á¿
-	any task_data;		//Êı¾İ½á¹¹Ìå
-	any task_error;		//´íÎó½á¹¹Ìå
-	int task_id;		//ÇëÇóid
-	bool task_last;		//ÊÇ·ñÎª×îºó·µ»Ø
+//ä»»åŠ¡ç»“æ„ä½“
+struct Task {
+  int task_name;  //å›è°ƒå‡½æ•°åç§°å¯¹åº”çš„å¸¸é‡
+  any task_data;  //æ•°æ®ç»“æ„ä½“
+  any task_error; //é”™è¯¯ç»“æ„ä½“
+  int task_id;    //è¯·æ±‚id
+  bool task_last; //æ˜¯å¦ä¸ºæœ€åè¿”å›
 };
 
+///çº¿ç¨‹å®‰å…¨çš„é˜Ÿåˆ—
+template <typename Data>
 
-///Ïß³Ì°²È«µÄ¶ÓÁĞ
-template<typename Data>
-
-class ConcurrentQueue
-{
+class ConcurrentQueue {
 private:
-	queue<Data> the_queue;								//±ê×¼¿â¶ÓÁĞ
-	mutable mutex the_mutex;							//boost»¥³âËø
-	condition_variable the_condition_variable;			//boostÌõ¼ş±äÁ¿
+  queue<Data> the_queue;                     //æ ‡å‡†åº“é˜Ÿåˆ—
+  mutable mutex the_mutex;                   // boostäº’æ–¥é”
+  condition_variable the_condition_variable; // boostæ¡ä»¶å˜é‡
 
 public:
+  //å­˜å…¥æ–°çš„ä»»åŠ¡
+  void push(Data const &data) {
+    mutex::scoped_lock lock(the_mutex);  //è·å–äº’æ–¥é”
+    the_queue.push(data);                //å‘é˜Ÿåˆ—ä¸­å­˜å…¥æ•°æ®
+    lock.unlock();                       //é‡Šæ”¾é”
+    the_condition_variable.notify_one(); //é€šçŸ¥æ­£åœ¨é˜»å¡ç­‰å¾…çš„çº¿ç¨‹
+  }
 
-	//´æÈëĞÂµÄÈÎÎñ
-	void push(Data const& data)
-	{
-		mutex::scoped_lock lock(the_mutex);				//»ñÈ¡»¥³âËø
-		the_queue.push(data);							//Ïò¶ÓÁĞÖĞ´æÈëÊı¾İ
-		lock.unlock();									//ÊÍ·ÅËø
-		the_condition_variable.notify_one();			//Í¨ÖªÕıÔÚ×èÈûµÈ´ıµÄÏß³Ì
-	}
+  //æ£€æŸ¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+  bool empty() const {
+    mutex::scoped_lock lock(the_mutex);
+    return the_queue.empty();
+  }
 
-	//¼ì²é¶ÓÁĞÊÇ·ñÎª¿Õ
-	bool empty() const
-	{
-		mutex::scoped_lock lock(the_mutex);
-		return the_queue.empty();
-	}
+  //å–å‡º
+  Data wait_and_pop() {
+    mutex::scoped_lock lock(the_mutex);
 
-	//È¡³ö
-	Data wait_and_pop()
-	{
-		mutex::scoped_lock lock(the_mutex);
+    while (the_queue.empty()) //å½“é˜Ÿåˆ—ä¸ºç©ºæ—¶
+    {
+      the_condition_variable.wait(lock); //ç­‰å¾…æ¡ä»¶å˜é‡é€šçŸ¥
+    }
 
-		while (the_queue.empty())						//µ±¶ÓÁĞÎª¿ÕÊ±
-		{
-			the_condition_variable.wait(lock);			//µÈ´ıÌõ¼ş±äÁ¿Í¨Öª
-		}
-
-		Data popped_value = the_queue.front();			//»ñÈ¡¶ÓÁĞÖĞµÄ×îºóÒ»¸öÈÎÎñ
-		the_queue.pop();								//É¾³ı¸ÃÈÎÎñ
-		return popped_value;							//·µ»Ø¸ÃÈÎÎñ
-	}
-
+    Data popped_value = the_queue.front(); //è·å–é˜Ÿåˆ—ä¸­çš„æœ€åä¸€ä¸ªä»»åŠ¡
+    the_queue.pop();                       //åˆ é™¤è¯¥ä»»åŠ¡
+    return popped_value;                   //è¿”å›è¯¥ä»»åŠ¡
+  }
 };
 
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æ•´æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getInt(dict d, string key, int *value);
 
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄÕûÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getInt(dict d, string key, int* value);
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æµ®ç‚¹æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getDouble(dict d, string key, double *value);
 
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ¸¡µãÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getDouble(dict d, string key, double* value);
-
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ×Ö·û´®£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getChar(dict d, string key, char* value);
-
-
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getChar(dict d, string key, char *value);
 
 ///-------------------------------------------------------------------------------------
-///C++ SPIµÄ»Øµ÷º¯Êı·½·¨ÊµÏÖ
+/// C++ SPIçš„å›è°ƒå‡½æ•°æ–¹æ³•å®ç°
 ///-------------------------------------------------------------------------------------
 
-//APIµÄ¼Ì³ĞÊµÏÖ
-class TdApi : public CGoldTradeSpi
-{
+// APIçš„ç»§æ‰¿å®ç°
+class TdApi : public CGoldTradeSpi {
 private:
-	CGoldTradeApi* api;			//API¶ÔÏó
-	thread *task_thread;				//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	ConcurrentQueue<Task> task_queue;	//ÈÎÎñ¶ÓÁĞ
+  CGoldTradeApi *api;  // APIå¯¹è±¡
+  thread *task_thread; //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  ConcurrentQueue<Task> task_queue; //ä»»åŠ¡é˜Ÿåˆ—
 
 public:
-	TdApi()
-	{
-		function0<void> f = boost::bind(&TdApi::processTask, this);
-		thread t(f);
-		this->task_thread = &t;
-	};
+  TdApi() {
+    function0<void> f = boost::bind(&TdApi::processTask, this);
+    thread t(f);
+    this->task_thread = &t;
+  };
+
+  ~TdApi(){};
+
+  //-------------------------------------------------------------------------------------
+  // APIå›è°ƒå‡½æ•°
+  //-------------------------------------------------------------------------------------
+
+  //è¿æ¥å»ºç«‹é€šçŸ¥
+  virtual void OnFrontConnected();
+
+  //è¿æ¥æ–­å¼€
+  virtual void OnFrontDisconnected(int nReason);
+
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
+                              CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast);
 
-	~TdApi()
-	{
-	};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout,
+                               CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast);
 
-	//-------------------------------------------------------------------------------------
-	//API»Øµ÷º¯Êı
-	//-------------------------------------------------------------------------------------
+  //å¸‚åœºçŠ¶æ€é€šçŸ¥
+  virtual void OnNtyMktStatus(const CThostFtdcMarketStatusField *pfldMktStatus);
 
-	//Á¬½Ó½¨Á¢Í¨Öª
-	virtual void OnFrontConnected();
+  ///è¯·æ±‚æŸ¥è¯¢åˆçº¦å“åº”
+  virtual void OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument,
+                                  CThostFtdcRspInfoField *pRspInfo,
+                                  int nRequestID, bool bIsLast);
 
-	//Á¬½Ó¶Ï¿ª
-	virtual void OnFrontDisconnected(int nReason);
+  ///æ·±åº¦è¡Œæƒ…é€šçŸ¥
+  virtual void
+  OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///æŠ¥å•å½•å…¥è¯·æ±‚å“åº”(äºŒçº§ç³»ç»Ÿæ£€æŸ¥é”™è¯¯ï¼‰
+  virtual void OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder,
+                                CThostFtdcRspInfoField *pRspInfo,
+                                int nRequestID, bool bIsLast);
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///æŠ¥å•å½•å…¥é”™è¯¯å›æŠ¥(äº¤æ˜“æ‰€ï¼‰
+  virtual void OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder,
+                                   CThostFtdcRspInfoField *pRspInfo);
 
-	//ÊĞ³¡×´Ì¬Í¨Öª
-	virtual void OnNtyMktStatus(const CThostFtdcMarketStatusField *pfldMktStatus);
+  ///æŠ¥å•é€šçŸ¥
+  // virtual void OnRtnOrder(CThostFtdcOrderField *pOrder); //é”™è¯¯
+  virtual void OnRtnOrder(CThostFtdcOrderRtnField *pOrder);
 
-	///ÇëÇó²éÑ¯ºÏÔ¼ÏìÓ¦
-	virtual void OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  //å¼ºé€€é€šçŸ¥
+  virtual void OnForceLogout(CThostFtdcUserLogoutField *pLogout);
 
-	///Éî¶ÈĞĞÇéÍ¨Öª
-	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
+  //æ’¤å•åº”ç­”
+  ///æŠ¥å•æ“ä½œè¯·æ±‚å“åº”(äºŒçº§ç³»ç»Ÿè¿”å›åŒ…å«äº†é”™è¯¯ç¼–ç å’Œé”™è¯¯æ¶ˆæ¯)
+  virtual void
+  OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction,
+                   CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                   bool bIsLast);
 
-	///±¨µ¥Â¼ÈëÇëÇóÏìÓ¦(¶ş¼¶ÏµÍ³¼ì²é´íÎó£©
-	virtual void OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///æŠ¥å•æ“ä½œé”™è¯¯å›æŠ¥(äº¤æ˜“æ‰€è¿”å›)
+  virtual void OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction,
+                                   CThostFtdcRspInfoField *pRspInfo);
 
-	///±¨µ¥Â¼Èë´íÎó»Ø±¨(½»Ò×Ëù£©
-	virtual void OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo);
+  ///æˆäº¤é€šçŸ¥
+  virtual void OnRtnTrade(CThostFtdcTradeField *pTrade);
 
-	///±¨µ¥Í¨Öª
-	//virtual void OnRtnOrder(CThostFtdcOrderField *pOrder); //´íÎó
-	virtual void OnRtnOrder(CThostFtdcOrderRtnField *pOrder);
+  ///è¯·æ±‚æŸ¥è¯¢èµ„é‡‘è´¦æˆ·å“åº”
+  virtual void
+  OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount,
+                         CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                         bool bIsLast);
 
-	//Ç¿ÍËÍ¨Öª
-	virtual void OnForceLogout(CThostFtdcUserLogoutField *pLogout);
+  ///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
+  virtual void OnRspQryOrder(CThostFtdcOrderField *pOrder,
+                             CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                             bool bIsLast);
 
-	//³·µ¥Ó¦´ğ
-	///±¨µ¥²Ù×÷ÇëÇóÏìÓ¦(¶ş¼¶ÏµÍ³·µ»Ø°üº¬ÁË´íÎó±àÂëºÍ´íÎóÏûÏ¢)
-	virtual void OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è¯·æ±‚æŸ¥è¯¢æˆäº¤å“åº”
+  virtual void OnRspQryTrade(CThostFtdcTradeField *pTrade,
+                             CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                             bool bIsLast);
 
-	///±¨µ¥²Ù×÷´íÎó»Ø±¨(½»Ò×Ëù·µ»Ø)
-	virtual void OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo);
+  ///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…æŒä»“å“åº”
+  virtual void
+  OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition,
+                           CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                           bool bIsLast);
 
-	///³É½»Í¨Öª
-	virtual void OnRtnTrade(CThostFtdcTradeField *pTrade);
+  //æŸ¥è¯¢å®¢æˆ·åº“å­˜åº”ç­”
+  virtual void OnRspQryClientStorage(CThostFtdcStorageField *pStorage,
+                                     CThostFtdcRspInfoField *pRspInfo,
+                                     int nRequestID, bool bIsLast);
 
-	///ÇëÇó²éÑ¯×Ê½ğÕË»§ÏìÓ¦
-	virtual void OnRspQryTradingAccount(CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  ///è®¢é˜…è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument,
+                     CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                     bool bIsLast);
 
-	///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
-	virtual void OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  //-------------------------------------------------------------------------------------
+  // taskï¼šä»»åŠ¡
+  //-------------------------------------------------------------------------------------
 
-	///ÇëÇó²éÑ¯³É½»ÏìÓ¦
-	virtual void OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processTask();
 
-	///ÇëÇó²éÑ¯Í¶×ÊÕß³Ö²ÖÏìÓ¦
-	virtual void OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processFrontConnected(Task task);
 
-	//²éÑ¯¿Í»§¿â´æÓ¦´ğ
-	virtual void OnRspQryClientStorage(CThostFtdcStorageField *pStorage, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processFrontDisconnected(Task task);
 
-	///¶©ÔÄĞĞÇéÓ¦´ğ
-	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+  void processRspUserLogin(Task task);
 
-	//-------------------------------------------------------------------------------------
-	//task£ºÈÎÎñ
-	//-------------------------------------------------------------------------------------
+  void processRspUserLogout(Task task);
 
-	void processTask();
+  void processNtyMktStatus(Task task);
 
-	void processFrontConnected(Task task);
+  void processRspQryInstrument(Task task);
 
-	void processFrontDisconnected(Task task);
+  void processRtnDepthMarketData(Task task);
 
-	void processRspUserLogin(Task task);
+  void processRspOrderInsert(Task task);
 
-	void processRspUserLogout(Task task);
+  void processErrRtnOrderInsert(Task task);
 
-	void processNtyMktStatus(Task task);
+  void processRtnOrder(Task task);
 
-	void processRspQryInstrument(Task task);
+  void processForceLogout(Task task);
 
-	void processRtnDepthMarketData(Task task);
+  void processRspOrderAction(Task task);
 
-	void processRspOrderInsert(Task task);
+  void processErrRtnOrderAction(Task task);
 
-	void processErrRtnOrderInsert(Task task);
+  void processRtnTrade(Task task);
 
-	void processRtnOrder(Task task);
+  void processRspQryTradingAccount(Task task);
 
-	void processForceLogout(Task task);
+  void processRspQryOrder(Task task);
 
-	void processRspOrderAction(Task task);
+  void processRspQryTrade(Task task);
 
-	void processErrRtnOrderAction(Task task);
+  void processRspQryInvestorPosition(Task task);
 
-	void processRtnTrade(Task task);
+  void processRspQryClientStorage(Task task);
 
-	void processRspQryTradingAccount(Task task);
+  void processRspSubMarketData(Task task);
 
-	void processRspQryOrder(Task task);
+  //-------------------------------------------------------------------------------------
+  // dataï¼šå›è°ƒå‡½æ•°çš„æ•°æ®å­—å…¸
+  // errorï¼šå›è°ƒå‡½æ•°çš„é”™è¯¯å­—å…¸
+  // idï¼šè¯·æ±‚id
+  // lastï¼šæ˜¯å¦ä¸ºæœ€åè¿”å›
+  // iï¼šæ•´æ•°
+  //-------------------------------------------------------------------------------------
 
-	void processRspQryTrade(Task task);
+  virtual void onFrontConnected(){};
 
-	void processRspQryInvestorPosition(Task task);
+  virtual void onFrontDisconnected(int i){};
 
-	void processRspQryClientStorage(Task task);
+  virtual void onRspUserLogin(dict data, dict error, int id, bool last){};
 
-	void processRspSubMarketData(Task task);
+  virtual void onRspUserLogout(dict data, dict error, int id, bool last){};
 
-	//-------------------------------------------------------------------------------------
-	//data£º»Øµ÷º¯ÊıµÄÊı¾İ×Öµä
-	//error£º»Øµ÷º¯ÊıµÄ´íÎó×Öµä
-	//id£ºÇëÇóid
-	//last£ºÊÇ·ñÎª×îºó·µ»Ø
-	//i£ºÕûÊı
-	//-------------------------------------------------------------------------------------
+  virtual void onNtyMktStatus(dict data){};
 
-	virtual void onFrontConnected(){};
+  virtual void onRspQryInstrument(dict data, dict error, int id, bool last){};
 
-	virtual void onFrontDisconnected(int i){};
+  virtual void onRtnDepthMarketData(dict data){};
 
-	virtual void onRspUserLogin(dict data, dict error, int id, bool last) {};
+  virtual void onForceLogout(dict data){};
 
-	virtual void onRspUserLogout(dict data, dict error, int id, bool last) {};
+  virtual void onRspOrderInsert(dict data, dict error, int id, bool last){};
 
-	virtual void onNtyMktStatus(dict data) {};
+  virtual void onErrRtnOrderInsert(dict data, dict error){};
 
-	virtual void onRspQryInstrument(dict data, dict error, int id, bool last) {};
+  virtual void onRtnOrder(dict data){};
 
-	virtual void onRtnDepthMarketData(dict data) {};
+  virtual void onRspOrderAction(dict data, dict error, int id, bool last){};
 
-	virtual void onForceLogout(dict data) {};
+  virtual void onErrRtnOrderAction(dict data, dict error){};
 
-	virtual void onRspOrderInsert(dict data, dict error, int id, bool last) {};
+  virtual void onRtnTrade(dict data){};
 
-	virtual void onErrRtnOrderInsert(dict data, dict error) {};
+  virtual void onRspQryTradingAccount(dict data, dict error, int id,
+                                      bool last){};
 
-	virtual void onRtnOrder(dict data) {};
+  virtual void onRspQryOrder(dict data, dict error, int id, bool last){};
 
-	virtual void onRspOrderAction(dict data, dict error, int id, bool last) {};
+  virtual void onRspQryTrade(dict data, dict error, int id, bool last){};
 
-	virtual void onErrRtnOrderAction(dict data, dict error) {};
+  virtual void onRspQryInvestorPosition(dict data, dict error, int id,
+                                        bool last){};
 
-	virtual void onRtnTrade(dict data) {};
+  virtual void onRspQryClientStorage(dict data, dict error, int id,
+                                     bool last){};
 
-	virtual void onRspQryTradingAccount(dict data, dict error, int id, bool last) {};
+  virtual void onRspSubMarketData(dict data, dict error, int id, bool last){};
 
-	virtual void onRspQryOrder(dict data, dict error, int id, bool last) {};
+  //-------------------------------------------------------------------------------------
+  // req:ä¸»åŠ¨å‡½æ•°çš„è¯·æ±‚å­—å…¸
+  //-------------------------------------------------------------------------------------
 
-	virtual void onRspQryTrade(dict data, dict error, int id, bool last) {};
+  void createGoldTraderApi();
 
-	virtual void onRspQryInvestorPosition(dict data, dict error, int id, bool last) {};
+  void release();
 
-	virtual void onRspQryClientStorage(dict data, dict error, int id, bool last) {};
+  int init(bool flag);
 
-	virtual void onRspSubMarketData(dict data, dict error, int id, bool last) {};
+  void join();
 
-	//-------------------------------------------------------------------------------------
-	//req:Ö÷¶¯º¯ÊıµÄÇëÇó×Öµä
-	//-------------------------------------------------------------------------------------
+  int exit();
 
-	void createGoldTraderApi();
+  void registerFront(string pszFrontAddress);
 
-	void release();
+  int reqUserLogin(dict req, int nRequestID);
 
-	int init(bool flag);
+  int reqUserLogout(dict req, int nRequestID);
 
-	void join();
+  int reqUserReLogin();
 
-	int exit();
+  int subscribeMarketData(string instrumentID);
 
-	void registerFront(string pszFrontAddress);
+  int unSubscribeMarketData(string instrumentID);
 
-	int reqUserLogin(dict req, int nRequestID);
+  int reqQryInstrument(dict req, int nRequestID);
 
-	int reqUserLogout(dict req, int nRequestID);
+  int reqOrderInsert(dict req, int nRequestID);
 
-	int reqUserReLogin();
+  int reqOrderAction(dict req, int nRequestID);
 
-	int subscribeMarketData(string instrumentID);
+  int reqQryInvestorPosition(dict req, int nRequestID);
 
-	int unSubscribeMarketData(string instrumentID);
+  int reqQryTradingAccount(dict req, int nRequestID);
 
-	int reqQryInstrument(dict req, int nRequestID);
+  int reqQryTrade(dict req, int nRequestID);
 
-	int reqOrderInsert(dict req, int nRequestID);
+  int reqQryOrder(dict req, int nRequestID);
 
-	int reqOrderAction(dict req, int nRequestID);
-
-	int reqQryInvestorPosition(dict req, int nRequestID);
-
-	int reqQryTradingAccount(dict req, int nRequestID);
-
-	int reqQryTrade(dict req, int nRequestID);
-
-	int reqQryOrder(dict req, int nRequestID);
-
-	int reqQryStorage(dict req, int nRequestID);
+  int reqQryStorage(dict req, int nRequestID);
 };
-

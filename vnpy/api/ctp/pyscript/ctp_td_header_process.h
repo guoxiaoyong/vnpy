@@ -223,4 +223,3 @@ void processRtnOpenAccountByBank(Task task);
 void processRtnCancelAccountByBank(Task task);
 
 void processRtnChangeAccountByBank(Task task);
-

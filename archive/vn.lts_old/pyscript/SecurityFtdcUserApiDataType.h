@@ -1,2078 +1,2077 @@
 /////////////////////////////////////////////////////////////////////////
 ///@company shanghai liber information Technology Co.,Ltd
 ///@file SecurityFtdcUserApiDataType.h
-///@brief ¶¨ÒåÒµÎñÊı¾İÀàĞÍ
+///@brief å®šä¹‰ä¸šåŠ¡æ•°æ®ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 
 #ifndef SECURITY_FTDCDATATYPE_H
 #define SECURITY_FTDCDATATYPE_H
 
-enum SECURITY_TE_RESUME_TYPE
-{
-	SECURITY_TERT_RESTART = 0,
-	SECURITY_TERT_RESUME,
-	SECURITY_TERT_QUICK
+enum SECURITY_TE_RESUME_TYPE {
+  SECURITY_TERT_RESTART = 0,
+  SECURITY_TERT_RESUME,
+  SECURITY_TERT_QUICK
 };
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcErrorIDTypeÊÇÒ»¸ö´íÎó´úÂëÀàĞÍ
+/// TFtdcErrorIDTypeæ˜¯ä¸€ä¸ªé”™è¯¯ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcErrorIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcErrorMsgTypeÊÇÒ»¸ö´íÎóĞÅÏ¢ÀàĞÍ
+/// TFtdcErrorMsgTypeæ˜¯ä¸€ä¸ªé”™è¯¯ä¿¡æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcErrorMsgType[81];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcExchangeIDTypeÊÇÒ»¸ö½»Ò×Ëù´úÂëÀàĞÍ
+/// TFtdcExchangeIDTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcExchangeIDType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcExchangeNameTypeÊÇÒ»¸ö½»Ò×ËùÃû³ÆÀàĞÍ
+/// TFtdcExchangeNameTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcExchangeNameType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcExchangePropertyTypeÊÇÒ»¸ö½»Ò×ËùÊôĞÔÀàĞÍ
+/// TFtdcExchangePropertyTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€å±æ€§ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Õı³£
+///æ­£å¸¸
 #define SECURITY_FTDC_EXP_Normal '0'
-///¸ù¾İ³É½»Éú³É±¨µ¥
+///æ ¹æ®æˆäº¤ç”ŸæˆæŠ¥å•
 #define SECURITY_FTDC_EXP_GenOrderByTrade '1'
 
 typedef char TSecurityFtdcExchangePropertyType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcExchangeConnectStatusTypeÊÇÒ»¸ö½»Ò×ËùÁ¬½Ó×´Ì¬ÀàĞÍ
+/// TFtdcExchangeConnectStatusTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€è¿æ¥çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ã»ÓĞÈÎºÎÁ¬½Ó
+///æ²¡æœ‰ä»»ä½•è¿æ¥
 #define SECURITY_FTDC_ECS_NoConnection '1'
-///ÒÑ¾­·¢³öºÏÔ¼²éÑ¯ÇëÇó
+///å·²ç»å‘å‡ºåˆçº¦æŸ¥è¯¢è¯·æ±‚
 #define SECURITY_FTDC_ECS_QryInstrumentSent '2'
-///ÒÑ¾­»ñÈ¡ĞÅÏ¢
+///å·²ç»è·å–ä¿¡æ¯
 #define SECURITY_FTDC_ECS_GotInformation '9'
 
 typedef char TSecurityFtdcExchangeConnectStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDateTypeÊÇÒ»¸öÈÕÆÚÀàĞÍ
+/// TFtdcDateTypeæ˜¯ä¸€ä¸ªæ—¥æœŸç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcDateType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTimeTypeÊÇÒ»¸öÊ±¼äÀàĞÍ
+/// TFtdcTimeTypeæ˜¯ä¸€ä¸ªæ—¶é—´ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTimeType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstrumentIDTypeÊÇÒ»¸öºÏÔ¼´úÂëÀàĞÍ
+/// TFtdcInstrumentIDTypeæ˜¯ä¸€ä¸ªåˆçº¦ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcInstrumentIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcProductNameTypeÊÇÒ»¸ö²úÆ·Ãû³ÆÀàĞÍ
+/// TFtdcProductNameTypeæ˜¯ä¸€ä¸ªäº§å“åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcProductNameType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcProductClassTypeÊÇÒ»¸ö²úÆ·ÀàĞÍÀàĞÍ
+/// TFtdcProductClassTypeæ˜¯ä¸€ä¸ªäº§å“ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÚ»õ
+///æœŸè´§
 #define SECURITY_FTDC_PC_Futures '1'
-///ÆÚÈ¨
+///æœŸæƒ
 #define SECURITY_FTDC_PC_Options '2'
-///×éºÏ
+///ç»„åˆ
 #define SECURITY_FTDC_PC_Combination '3'
-///¼´ÆÚ
+///å³æœŸ
 #define SECURITY_FTDC_PC_Spot '4'
-///ÆÚ×ªÏÖ
+///æœŸè½¬ç°
 #define SECURITY_FTDC_PC_EFP '5'
-///Ö¤È¯A¹É
+///è¯åˆ¸Aè‚¡
 #define SECURITY_FTDC_PC_StockA '6'
-///Ö¤È¯B¹É
+///è¯åˆ¸Bè‚¡
 #define SECURITY_FTDC_PC_StockB '7'
-///ETF
+/// ETF
 #define SECURITY_FTDC_PC_ETF '8'
-///ETFÉêÊê
+/// ETFç”³èµ
 #define SECURITY_FTDC_PC_ETFPurRed '9'
 
 typedef char TSecurityFtdcProductClassType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVolumeMultipleTypeÊÇÒ»¸öºÏÔ¼ÊıÁ¿³ËÊıÀàĞÍ
+/// TFtdcVolumeMultipleTypeæ˜¯ä¸€ä¸ªåˆçº¦æ•°é‡ä¹˜æ•°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcVolumeMultipleType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPriceTypeÊÇÒ»¸ö¼Û¸ñÀàĞÍ
+/// TFtdcPriceTypeæ˜¯ä¸€ä¸ªä»·æ ¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcPriceType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVolumeTypeÊÇÒ»¸öÊıÁ¿ÀàĞÍ
+/// TFtdcVolumeTypeæ˜¯ä¸€ä¸ªæ•°é‡ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcVolumeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPositionTypeTypeÊÇÒ»¸ö³Ö²ÖÀàĞÍÀàĞÍ
+/// TFtdcPositionTypeTypeæ˜¯ä¸€ä¸ªæŒä»“ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¾»³Ö²Ö
+///å‡€æŒä»“
 #define SECURITY_FTDC_PT_Net '1'
-///×ÛºÏ³Ö²Ö
+///ç»¼åˆæŒä»“
 #define SECURITY_FTDC_PT_Gross '2'
 
 typedef char TSecurityFtdcPositionTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPositionDateTypeTypeÊÇÒ»¸ö³Ö²ÖÈÕÆÚÀàĞÍÀàĞÍ
+/// TFtdcPositionDateTypeTypeæ˜¯ä¸€ä¸ªæŒä»“æ—¥æœŸç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ê¹ÓÃÀúÊ·³Ö²Ö
+///ä½¿ç”¨å†å²æŒä»“
 #define SECURITY_FTDC_PDT_UseHistory '1'
-///²»Ê¹ÓÃÀúÊ·³Ö²Ö
+///ä¸ä½¿ç”¨å†å²æŒä»“
 #define SECURITY_FTDC_PDT_NoUseHistory '2'
 
 typedef char TSecurityFtdcPositionDateTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcExchangeInstIDTypeÊÇÒ»¸öºÏÔ¼ÔÚ½»Ò×ËùµÄ´úÂëÀàĞÍ
+/// TFtdcExchangeInstIDTypeæ˜¯ä¸€ä¸ªåˆçº¦åœ¨äº¤æ˜“æ‰€çš„ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcExchangeInstIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcYearTypeÊÇÒ»¸öÄê·İÀàĞÍ
+/// TFtdcYearTypeæ˜¯ä¸€ä¸ªå¹´ä»½ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcYearType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMonthTypeÊÇÒ»¸öÔÂ·İÀàĞÍ
+/// TFtdcMonthTypeæ˜¯ä¸€ä¸ªæœˆä»½ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcMonthType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstLifePhaseTypeÊÇÒ»¸öºÏÔ¼ÉúÃüÖÜÆÚ×´Ì¬ÀàĞÍ
+/// TFtdcInstLifePhaseTypeæ˜¯ä¸€ä¸ªåˆçº¦ç”Ÿå‘½å‘¨æœŸçŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Î´ÉÏÊĞ
+///æœªä¸Šå¸‚
 #define SECURITY_FTDC_IP_NotStart '0'
-///ÉÏÊĞ
+///ä¸Šå¸‚
 #define SECURITY_FTDC_IP_Started '1'
-///Í£ÅÆ
+///åœç‰Œ
 #define SECURITY_FTDC_IP_Pause '2'
-///µ½ÆÚ
+///åˆ°æœŸ
 #define SECURITY_FTDC_IP_Expired '3'
 
 typedef char TSecurityFtdcInstLifePhaseType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBoolTypeÊÇÒ»¸ö²¼¶ûĞÍÀàĞÍ
+/// TFtdcBoolTypeæ˜¯ä¸€ä¸ªå¸ƒå°”å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcBoolType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRightModelIDTypeÊÇÒ»¸ö¹ÉÆ±È¨ÏŞÄ£°æ´úÂëÀàĞÍ
+/// TFtdcRightModelIDTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨æƒé™æ¨¡ç‰ˆä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcRightModelIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRightModelNameTypeÊÇÒ»¸ö¹ÉÆ±È¨ÏŞÄ£°æÃû³ÆÀàĞÍ
+/// TFtdcRightModelNameTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨æƒé™æ¨¡ç‰ˆåç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcRightModelNameType[161];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPosTradeTypeTypeÊÇÒ»¸ö³Ö²Ö½»Ò×ÀàĞÍÀàĞÍ
+/// TFtdcPosTradeTypeTypeæ˜¯ä¸€ä¸ªæŒä»“äº¤æ˜“ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///½ñÈÕĞÂÔö³Ö²ÖÄÜÂô³ö
+///ä»Šæ—¥æ–°å¢æŒä»“èƒ½å–å‡º
 #define SECURITY_FTDC_PTT_CanSelTodayPos '1'
-///½ñÈÕĞÂÔö³Ö²Ö²»ÄÜÂô³ö
+///ä»Šæ—¥æ–°å¢æŒä»“ä¸èƒ½å–å‡º
 #define SECURITY_FTDC_PTT_CannotSellTodayPos '2'
 
 typedef char TSecurityFtdcPosTradeTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTraderIDTypeÊÇÒ»¸ö½»Ò×Ëù½»Ò×Ô±´úÂëÀàĞÍ
+/// TFtdcTraderIDTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€äº¤æ˜“å‘˜ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTraderIDType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcParticipantIDTypeÊÇÒ»¸ö»áÔ±´úÂëÀàĞÍ
+/// TFtdcParticipantIDTypeæ˜¯ä¸€ä¸ªä¼šå‘˜ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcParticipantIDType[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPasswordTypeÊÇÒ»¸öÃÜÂëÀàĞÍ
+/// TFtdcPasswordTypeæ˜¯ä¸€ä¸ªå¯†ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcPasswordType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerIDTypeÊÇÒ»¸ö¾­¼Í¹«Ë¾´úÂëÀàĞÍ
+/// TFtdcBrokerIDTypeæ˜¯ä¸€ä¸ªç»çºªå…¬å¸ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBrokerIDType[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderLocalIDTypeÊÇÒ»¸ö±¾µØ±¨µ¥±àºÅÀàĞÍ
+/// TFtdcOrderLocalIDTypeæ˜¯ä¸€ä¸ªæœ¬åœ°æŠ¥å•ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOrderLocalIDType[13];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerAbbrTypeÊÇÒ»¸ö¾­¼Í¹«Ë¾¼ò³ÆÀàĞÍ
+/// TFtdcBrokerAbbrTypeæ˜¯ä¸€ä¸ªç»çºªå…¬å¸ç®€ç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBrokerAbbrType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerNameTypeÊÇÒ»¸ö¾­¼Í¹«Ë¾Ãû³ÆÀàĞÍ
+/// TFtdcBrokerNameTypeæ˜¯ä¸€ä¸ªç»çºªå…¬å¸åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBrokerNameType[81];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInvestorIDTypeÊÇÒ»¸öÍ¶×ÊÕß´úÂëÀàĞÍ
+/// TFtdcInvestorIDTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcInvestorIDType[15];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPartyNameTypeÊÇÒ»¸ö²ÎÓëÈËÃû³ÆÀàĞÍ
+/// TFtdcPartyNameTypeæ˜¯ä¸€ä¸ªå‚ä¸äººåç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcPartyNameType[81];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIdCardTypeTypeÊÇÒ»¸öÖ¤¼şÀàĞÍÀàĞÍ
+/// TFtdcIdCardTypeTypeæ˜¯ä¸€ä¸ªè¯ä»¶ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///×éÖ¯»ú¹¹´úÂë
+///ç»„ç»‡æœºæ„ä»£ç 
 #define SECURITY_FTDC_ICT_EID '0'
-///Éí·İÖ¤
+///èº«ä»½è¯
 #define SECURITY_FTDC_ICT_IDCard '1'
-///¾ü¹ÙÖ¤
+///å†›å®˜è¯
 #define SECURITY_FTDC_ICT_OfficerIDCard '2'
-///¾¯¹ÙÖ¤
+///è­¦å®˜è¯
 #define SECURITY_FTDC_ICT_PoliceIDCard '3'
-///Ê¿±øÖ¤
+///å£«å…µè¯
 #define SECURITY_FTDC_ICT_SoldierIDCard '4'
-///»§¿Ú²¾
-#define SECURITY_FTDC_ICT_HouseholdRegister  '5'
-///»¤ÕÕ
+///æˆ·å£ç°¿
+#define SECURITY_FTDC_ICT_HouseholdRegister '5'
+///æŠ¤ç…§
 #define SECURITY_FTDC_ICT_Passport '6'
-///Ì¨°ûÖ¤
-#define SECURITY_FTDC_ICT_TaiwanCompatriotIDCard  '7'
-///»ØÏçÖ¤
+///å°èƒè¯
+#define SECURITY_FTDC_ICT_TaiwanCompatriotIDCard '7'
+///å›ä¹¡è¯
 #define SECURITY_FTDC_ICT_HomeComingCard '8'
-///ÓªÒµÖ´ÕÕºÅ
+///è¥ä¸šæ‰§ç…§å·
 #define SECURITY_FTDC_ICT_LicenseNo '9'
-///Ë°ÎñµÇ¼ÇºÅ
+///ç¨åŠ¡ç™»è®°å·
 #define SECURITY_FTDC_ICT_TaxNo 'A'
-///ÆäËûÖ¤¼ş
+///å…¶ä»–è¯ä»¶
 #define SECURITY_FTDC_ICT_OtherCard 'x'
 
 typedef char TSecurityFtdcIdCardTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIdentifiedCardNoTypeÊÇÒ»¸öÖ¤¼şºÅÂëÀàĞÍ
+/// TFtdcIdentifiedCardNoTypeæ˜¯ä¸€ä¸ªè¯ä»¶å·ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcIdentifiedCardNoType[51];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcClientIDTypeÊÇÒ»¸ö½»Ò×±àÂëÀàĞÍ
+/// TFtdcClientIDTypeæ˜¯ä¸€ä¸ªäº¤æ˜“ç¼–ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcClientIDType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAccountIDTypeÊÇÒ»¸öÍ¶×ÊÕßÕÊºÅÀàĞÍ
+/// TFtdcAccountIDTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…å¸å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcAccountIDType[15];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcClientTypeTypeÊÇÒ»¸ö½»Ò×±àÂëÀàĞÍÀàĞÍ
+/// TFtdcClientTypeTypeæ˜¯ä¸€ä¸ªäº¤æ˜“ç¼–ç ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÕÍ¨
+///æ™®é€š
 #define SECURITY_FTDC_CLT_Normal '1'
-///ĞÅÓÃ½»Ò×
+///ä¿¡ç”¨äº¤æ˜“
 #define SECURITY_FTDC_CLT_Credit '2'
-///ÑÜÉúÆ·ÕË»§
+///è¡ç”Ÿå“è´¦æˆ·
 #define SECURITY_FTDC_CLT_Derive '3'
-///ÆäËûÀàĞÍ
+///å…¶ä»–ç±»å‹
 #define SECURITY_FTDC_CLT_Other '4'
 
 typedef char TSecurityFtdcClientTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInvestorGroupNameTypeÊÇÒ»¸öÍ¶×ÊÕß·Ö×éÃû³ÆÀàĞÍ
+/// TFtdcInvestorGroupNameTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…åˆ†ç»„åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcInvestorGroupNameType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserIDTypeÊÇÒ»¸öÓÃ»§´úÂëÀàĞÍ
+/// TFtdcUserIDTypeæ˜¯ä¸€ä¸ªç”¨æˆ·ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcUserIDType[16];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserNameTypeÊÇÒ»¸öÓÃ»§Ãû³ÆÀàĞÍ
+/// TFtdcUserNameTypeæ˜¯ä¸€ä¸ªç”¨æˆ·åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcUserNameType[81];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFunctionCodeTypeÊÇÒ»¸ö¹¦ÄÜ´úÂëÀàĞÍ
+/// TFtdcFunctionCodeTypeæ˜¯ä¸€ä¸ªåŠŸèƒ½ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ç¿ÖÆÓÃ»§µÇ³ö
+///å¼ºåˆ¶ç”¨æˆ·ç™»å‡º
 #define SECURITY_FTDC_FC_ForceUserLogout '2'
-///±ä¸ü¹ÜÀíÓÃ»§¿ÚÁî
+///å˜æ›´ç®¡ç†ç”¨æˆ·å£ä»¤
 #define SECURITY_FTDC_FC_UserPasswordUpdate '3'
-///±ä¸ü¾­¼Í¹«Ë¾¿ÚÁî
+///å˜æ›´ç»çºªå…¬å¸å£ä»¤
 #define SECURITY_FTDC_FC_BrokerPasswordUpdate '4'
-///±ä¸üÍ¶×ÊÕß¿ÚÁî
+///å˜æ›´æŠ•èµ„è€…å£ä»¤
 #define SECURITY_FTDC_FC_InvestorPasswordUpdate '5'
-///±¨µ¥²åÈë
+///æŠ¥å•æ’å…¥
 #define SECURITY_FTDC_FC_OrderInsert '6'
-///±¨µ¥²Ù×÷
+///æŠ¥å•æ“ä½œ
 #define SECURITY_FTDC_FC_OrderAction '7'
-///Í¬²½ÏµÍ³Êı¾İ
+///åŒæ­¥ç³»ç»Ÿæ•°æ®
 #define SECURITY_FTDC_FC_SyncSystemData '8'
-///Í¬²½¾­¼Í¹«Ë¾Êı¾İ
+///åŒæ­¥ç»çºªå…¬å¸æ•°æ®
 #define SECURITY_FTDC_FC_SyncBrokerData '9'
-///³¬¼¶²éÑ¯
+///è¶…çº§æŸ¥è¯¢
 #define SECURITY_FTDC_FC_SuperQuery 'B'
-///±¨µ¥²åÈë
+///æŠ¥å•æ’å…¥
 #define SECURITY_FTDC_FC_ParkedOrderInsert 'C'
-///±¨µ¥²Ù×÷
+///æŠ¥å•æ“ä½œ
 #define SECURITY_FTDC_FC_ParkedOrderAction 'D'
-///Í¬²½¶¯Ì¬ÁîÅÆ
+///åŒæ­¥åŠ¨æ€ä»¤ç‰Œ
 #define SECURITY_FTDC_FC_SyncOTP 'E'
-///Î´Öªµ¥²Ù×÷
+///æœªçŸ¥å•æ“ä½œ
 #define SECURITY_FTDC_FC_UnkownOrderAction 'F'
-///×ªÍĞ¹Ü
+///è½¬æ‰˜ç®¡
 #define SECURITY_FTDC_FC_DepositoryTransfer 'G'
-///ÓàÈ¯»®×ª
+///ä½™åˆ¸åˆ’è½¬
 #define SECURITY_FTDC_FC_ExcessStockTransfer 'H'
 
 typedef char TSecurityFtdcFunctionCodeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserTypeTypeÊÇÒ»¸öÓÃ»§ÀàĞÍÀàĞÍ
+/// TFtdcUserTypeTypeæ˜¯ä¸€ä¸ªç”¨æˆ·ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Í¶×ÊÕß
+///æŠ•èµ„è€…
 #define SECURITY_FTDC_UT_Investor '0'
-///²Ù×÷Ô±
+///æ“ä½œå‘˜
 #define SECURITY_FTDC_UT_Operator '1'
-///¹ÜÀíÔ±
+///ç®¡ç†å‘˜
 #define SECURITY_FTDC_UT_SuperUser '2'
 
 typedef char TSecurityFtdcUserTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerFunctionCodeTypeÊÇÒ»¸ö¾­¼Í¹«Ë¾¹¦ÄÜ´úÂëÀàĞÍ
+/// TFtdcBrokerFunctionCodeTypeæ˜¯ä¸€ä¸ªç»çºªå…¬å¸åŠŸèƒ½ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ç¿ÖÆÓÃ»§µÇ³ö
+///å¼ºåˆ¶ç”¨æˆ·ç™»å‡º
 #define SECURITY_FTDC_BFC_ForceUserLogout '1'
-///±ä¸üÓÃ»§¿ÚÁî
+///å˜æ›´ç”¨æˆ·å£ä»¤
 #define SECURITY_FTDC_BFC_UserPasswordUpdate '2'
-///Í¬²½¾­¼Í¹«Ë¾Êı¾İ
+///åŒæ­¥ç»çºªå…¬å¸æ•°æ®
 #define SECURITY_FTDC_BFC_SyncBrokerData '3'
-///±¨µ¥²åÈë
+///æŠ¥å•æ’å…¥
 #define SECURITY_FTDC_BFC_OrderInsert '5'
-///±¨µ¥²Ù×÷
+///æŠ¥å•æ“ä½œ
 #define SECURITY_FTDC_BFC_OrderAction '6'
-///È«²¿²éÑ¯
+///å…¨éƒ¨æŸ¥è¯¢
 #define SECURITY_FTDC_BFC_AllQuery '7'
-///Î´Öªµ¥²Ù×÷
+///æœªçŸ¥å•æ“ä½œ
 #define SECURITY_FTDC_BFC_UnkownOrderAction '8'
-///×ªÍĞ¹Ü
+///è½¬æ‰˜ç®¡
 #define SECURITY_FTDC_BFC_DepositoryTransfer '9'
-///ÓàÈ¯»®×ª
+///ä½™åˆ¸åˆ’è½¬
 #define SECURITY_FTDC_BFC_ExcessStockTransfer 'A'
-///×Ê½ğÄÚ×ª
+///èµ„é‡‘å†…è½¬
 #define SECURITY_FTDC_BFC_FundInterTransfer 'B'
-///ÏµÍ³¹¦ÄÜ£ºµÇÈë/µÇ³ö/ĞŞ¸ÄÃÜÂëµÈ
+///ç³»ç»ŸåŠŸèƒ½ï¼šç™»å…¥/ç™»å‡º/ä¿®æ”¹å¯†ç ç­‰
 #define SECURITY_FTDC_BFC_log 'a'
-///»ù±¾²éÑ¯£º²éÑ¯»ù´¡Êı¾İ£¬ÈçºÏÔ¼£¬½»Ò×ËùµÈ³£Á¿
+///åŸºæœ¬æŸ¥è¯¢ï¼šæŸ¥è¯¢åŸºç¡€æ•°æ®ï¼Œå¦‚åˆçº¦ï¼Œäº¤æ˜“æ‰€ç­‰å¸¸é‡
 #define SECURITY_FTDC_BFC_BaseQry 'b'
-///½»Ò×²éÑ¯£ºÈç²é³É½»£¬Î¯ÍĞ
+///äº¤æ˜“æŸ¥è¯¢ï¼šå¦‚æŸ¥æˆäº¤ï¼Œå§”æ‰˜
 #define SECURITY_FTDC_BFC_TradeQry 'c'
-///½»Ò×¹¦ÄÜ£º±¨µ¥£¬³·µ¥
+///äº¤æ˜“åŠŸèƒ½ï¼šæŠ¥å•ï¼Œæ’¤å•
 #define SECURITY_FTDC_BFC_Trade 'd'
-///×ªÕË
+///è½¬è´¦
 #define SECURITY_FTDC_BFC_Virement 'e'
-///²éÑ¯/¹ÜÀí£º²éÑ¯»á»°£¬ÌßÈËµÈ
+///æŸ¥è¯¢/ç®¡ç†ï¼šæŸ¥è¯¢ä¼šè¯ï¼Œè¸¢äººç­‰
 #define SECURITY_FTDC_BFC_Session 'g'
-///Í¬²½¶¯Ì¬ÁîÅÆ
+///åŒæ­¥åŠ¨æ€ä»¤ç‰Œ
 #define SECURITY_FTDC_BFC_SyncOTP 'E'
 
 typedef char TSecurityFtdcBrokerFunctionCodeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCurrencyCodeTypeÊÇÒ»¸ö±ÒÖÖÀàĞÍ
+/// TFtdcCurrencyCodeTypeæ˜¯ä¸€ä¸ªå¸ç§ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCurrencyCodeType[4];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMoneyTypeÊÇÒ»¸ö×Ê½ğÀàĞÍ
+/// TFtdcMoneyTypeæ˜¯ä¸€ä¸ªèµ„é‡‘ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcMoneyType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRatioTypeÊÇÒ»¸ö±ÈÂÊÀàĞÍ
+/// TFtdcRatioTypeæ˜¯ä¸€ä¸ªæ¯”ç‡ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcRatioType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAccountTypeTypeÊÇÒ»¸öÕË»§ÀàĞÍÀàĞÍ
+/// TFtdcAccountTypeTypeæ˜¯ä¸€ä¸ªè´¦æˆ·ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÕÍ¨ÕË»§
+///æ™®é€šè´¦æˆ·
 #define SECURITY_FTDC_AcT_Normal '1'
-///ĞÅÓÃÕË»§
+///ä¿¡ç”¨è´¦æˆ·
 #define SECURITY_FTDC_AcT_Credit '2'
-///ÑÜÉúÆ·ÕË»§
+///è¡ç”Ÿå“è´¦æˆ·
 #define SECURITY_FTDC_AcT_Derive '3'
-///ÆäËûÀàĞÍ
+///å…¶ä»–ç±»å‹
 #define SECURITY_FTDC_AcT_Other '4'
 
 typedef char TSecurityFtdcAccountTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDepartmentRangeTypeÊÇÒ»¸öÍ¶×ÊÕß·¶Î§ÀàĞÍ
+/// TFtdcDepartmentRangeTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…èŒƒå›´ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ËùÓĞ
+///æ‰€æœ‰
 #define SECURITY_FTDC_DR_All '1'
-///×éÖ¯¼Ü¹¹
+///ç»„ç»‡æ¶æ„
 #define SECURITY_FTDC_DR_Group '2'
-///µ¥Ò»Í¶×ÊÕß
+///å•ä¸€æŠ•èµ„è€…
 #define SECURITY_FTDC_DR_Single '3'
 
 typedef char TSecurityFtdcDepartmentRangeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserRightTypeTypeÊÇÒ»¸ö¿Í»§È¨ÏŞÀàĞÍÀàĞÍ
+/// TFtdcUserRightTypeTypeæ˜¯ä¸€ä¸ªå®¢æˆ·æƒé™ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///µÇÂ¼
+///ç™»å½•
 #define SECURITY_FTDC_URT_Logon '1'
-///ÒøÆÚ×ªÕÊ
+///é“¶æœŸè½¬å¸
 #define SECURITY_FTDC_URT_Transfer '2'
-///ÓÊ¼Ä½áËãµ¥
+///é‚®å¯„ç»“ç®—å•
 #define SECURITY_FTDC_URT_EMail '3'
-///´«Õæ½áËãµ¥
+///ä¼ çœŸç»“ç®—å•
 #define SECURITY_FTDC_URT_Fax '4'
-///Ìõ¼şµ¥
+///æ¡ä»¶å•
 #define SECURITY_FTDC_URT_ConditionOrder '5'
 
 typedef char TSecurityFtdcUserRightTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcProductInfoTypeÊÇÒ»¸ö²úÆ·ĞÅÏ¢ÀàĞÍ
+/// TFtdcProductInfoTypeæ˜¯ä¸€ä¸ªäº§å“ä¿¡æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcProductInfoType[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAuthCodeTypeÊÇÒ»¸ö¿Í»§¶ËÈÏÖ¤ÂëÀàĞÍ
+/// TFtdcAuthCodeTypeæ˜¯ä¸€ä¸ªå®¢æˆ·ç«¯è®¤è¯ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcAuthCodeType[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLargeVolumeTypeÊÇÒ»¸ö´ó¶îÊıÁ¿ÀàĞÍ
+/// TFtdcLargeVolumeTypeæ˜¯ä¸€ä¸ªå¤§é¢æ•°é‡ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcLargeVolumeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMillisecTypeÊÇÒ»¸öÊ±¼ä£¨ºÁÃë£©ÀàĞÍ
+/// TFtdcMillisecTypeæ˜¯ä¸€ä¸ªæ—¶é—´ï¼ˆæ¯«ç§’ï¼‰ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcMillisecType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcHedgeFlagTypeÊÇÒ»¸öÍ¶»úÌ×±£±êÖ¾ÀàĞÍ
+/// TFtdcHedgeFlagTypeæ˜¯ä¸€ä¸ªæŠ•æœºå¥—ä¿æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Í¶»ú
+///æŠ•æœº
 #define SECURITY_FTDC_HF_Speculation '1'
-///Ì×±£
+///å¥—ä¿
 #define SECURITY_FTDC_HF_Hedge '3'
 
 typedef char TSecurityFtdcHedgeFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDirectionTypeÊÇÒ»¸öÂòÂô·½ÏòÀàĞÍ
+/// TFtdcDirectionTypeæ˜¯ä¸€ä¸ªä¹°å–æ–¹å‘ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Âò
+///ä¹°
 #define SECURITY_FTDC_D_Buy '0'
-///Âô
+///å–
 #define SECURITY_FTDC_D_Sell '1'
-///ETFÉê¹º
+/// ETFç”³è´­
 #define SECURITY_FTDC_D_ETFPur '2'
-///ETFÊê»Ø
+/// ETFèµå›
 #define SECURITY_FTDC_D_ETFRed '3'
-///ÏÖ½ğÌæ´ú£¬Ö»ÓÃ×÷»Ø±¨
+///ç°é‡‘æ›¿ä»£ï¼Œåªç”¨ä½œå›æŠ¥
 #define SECURITY_FTDC_D_CashIn '4'
-///Õ®È¯Èë¿â
+///å€ºåˆ¸å…¥åº“
 #define SECURITY_FTDC_D_PledgeBondIn '5'
-///Õ®È¯³ö¿â
+///å€ºåˆ¸å‡ºåº“
 #define SECURITY_FTDC_D_PledgeBondOut '6'
-///Åä¹É
+///é…è‚¡
 #define SECURITY_FTDC_D_Rationed '7'
-///×ªÍĞ¹Ü
+///è½¬æ‰˜ç®¡
 #define SECURITY_FTDC_D_DepositoryTransfer '8'
-///ĞÅÓÃÕË»§Åä¹É
+///ä¿¡ç”¨è´¦æˆ·é…è‚¡
 #define SECURITY_FTDC_D_CreditRationed '9'
-///µ£±£Æ·ÂòÈë
+///æ‹…ä¿å“ä¹°å…¥
 #define SECURITY_FTDC_D_BuyCollateral 'A'
-///µ£±£Æ·Âô³ö
+///æ‹…ä¿å“å–å‡º
 #define SECURITY_FTDC_D_SellCollateral 'B'
-///µ£±£Æ·×ªÈë
+///æ‹…ä¿å“è½¬å…¥
 #define SECURITY_FTDC_D_CollateralTransferIn 'C'
-///µ£±£Æ·×ª³ö
+///æ‹…ä¿å“è½¬å‡º
 #define SECURITY_FTDC_D_CollateralTransferOut 'D'
-///ÈÚ×ÊÂòÈë
+///èèµ„ä¹°å…¥
 #define SECURITY_FTDC_D_MarginTrade 'E'
-///ÈÚÈ¯Âô³ö
+///èåˆ¸å–å‡º
 #define SECURITY_FTDC_D_ShortSell 'F'
-///ÂôÈ¯»¹¿î
+///å–åˆ¸è¿˜æ¬¾
 #define SECURITY_FTDC_D_RepayMargin 'G'
-///ÂòÈ¯»¹È¯
+///ä¹°åˆ¸è¿˜åˆ¸
 #define SECURITY_FTDC_D_RepayStock 'H'
-///Ö±½Ó»¹¿î
+///ç›´æ¥è¿˜æ¬¾
 #define SECURITY_FTDC_D_DirectRepayMargin 'I'
-///Ö±½Ó»¹È¯
+///ç›´æ¥è¿˜åˆ¸
 #define SECURITY_FTDC_D_DirectRepayStock 'J'
-///ÓàÈ¯»®×ª
+///ä½™åˆ¸åˆ’è½¬
 #define SECURITY_FTDC_D_ExcessStockTransfer 'K'
-///OFÉê¹º
+/// OFç”³è´­
 #define SECURITY_FTDC_D_OFPur 'L'
-///OFÊê»Ø
+/// OFèµå›
 #define SECURITY_FTDC_D_OFRed 'M'
-///SF²ğ·Ö
+/// SFæ‹†åˆ†
 #define SECURITY_FTDC_D_SFSplit 'N'
-///SFºÏ²¢
+/// SFåˆå¹¶
 #define SECURITY_FTDC_D_SFMerge 'O'
-///±¸¶Ò
+///å¤‡å…‘
 #define SECURITY_FTDC_D_Covered 'P'
-///Ö¤È¯¶³½á(¿ª)/½â¶³(Æ½)
+///è¯åˆ¸å†»ç»“(å¼€)/è§£å†»(å¹³)
 #define SECURITY_FTDC_D_Freeze 'Q'
-///ĞĞÈ¨
+///è¡Œæƒ
 #define SECURITY_FTDC_D_Execute 'R'
 
 typedef char TSecurityFtdcDirectionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeIDTypeÊÇÒ»¸ö³É½»±àºÅÀàĞÍ
+/// TFtdcTradeIDTypeæ˜¯ä¸€ä¸ªæˆäº¤ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTradeIDType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeTypeTypeÊÇÒ»¸ö³É½»ÀàĞÍÀàĞÍ
+/// TFtdcTradeTypeTypeæ˜¯ä¸€ä¸ªæˆäº¤ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÕÍ¨³É½»
+///æ™®é€šæˆäº¤
 #define SECURITY_FTDC_TRDT_Common '0'
-///ÆÚÈ¨Ö´ĞĞ
+///æœŸæƒæ‰§è¡Œ
 #define SECURITY_FTDC_TRDT_OptionsExecution '1'
-///OTC³É½»
+/// OTCæˆäº¤
 #define SECURITY_FTDC_TRDT_OTC '2'
-///ÆÚ×ªÏÖÑÜÉú³É½»
+///æœŸè½¬ç°è¡ç”Ÿæˆäº¤
 #define SECURITY_FTDC_TRDT_EFPDerived '3'
-///×éºÏÑÜÉú³É½»
+///ç»„åˆè¡ç”Ÿæˆäº¤
 #define SECURITY_FTDC_TRDT_CombinationDerived '4'
-///ETFÉê¹º
+/// ETFç”³è´­
 #define SECURITY_FTDC_TRDT_EFTPurchase '5'
-///ETFÊê»Ø
+/// ETFèµå›
 #define SECURITY_FTDC_TRDT_EFTRedem '6'
 
 typedef char TSecurityFtdcTradeTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCreationredemptionStatusTypeÊÇÒ»¸ö»ù½ğµ±ÌìÉê¹ºÊê»Ø×´Ì¬ÀàĞÍ
+/// TFtdcCreationredemptionStatusTypeæ˜¯ä¸€ä¸ªåŸºé‡‘å½“å¤©ç”³è´­èµå›çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///²»ÔÊĞíÉê¹ºÊê»Ø
+///ä¸å…è®¸ç”³è´­èµå›
 #define SECURITY_FTDC_CDS_Forbidden '0'
-///±íÊ¾ÔÊĞíÉê¹ººÍÊê»Ø
+///è¡¨ç¤ºå…è®¸ç”³è´­å’Œèµå›
 #define SECURITY_FTDC_CDS_Allow '1'
-///ÔÊĞíÉê¹º¡¢²»ÔÊĞíÊê»Ø
+///å…è®¸ç”³è´­ã€ä¸å…è®¸èµå›
 #define SECURITY_FTDC_CDS_OnlyPurchase '2'
-///²»ÔÊĞíÉê¹º¡¢ÔÊĞíÊê»Ø
+///ä¸å…è®¸ç”³è´­ã€å…è®¸èµå›
 #define SECURITY_FTDC_CDS_OnlyRedeem '3'
 
 typedef char TSecurityFtdcCreationredemptionStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcETFCurrenceReplaceStatusTypeÊÇÒ»¸öETFÏÖ½ğÌæ´ú±êÖ¾ÀàĞÍ
+/// TFtdcETFCurrenceReplaceStatusTypeæ˜¯ä¸€ä¸ªETFç°é‡‘æ›¿ä»£æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///½ûÖ¹ÏÖ½ğÌæ´ú
+///ç¦æ­¢ç°é‡‘æ›¿ä»£
 #define SECURITY_FTDC_ETFCRS_Forbidden '0'
-///¿ÉÒÔÏÖ½ğÌæ´ú
+///å¯ä»¥ç°é‡‘æ›¿ä»£
 #define SECURITY_FTDC_ETFCRS_Allow '1'
-///±ØĞëÏÖ½ğÌæ´ú
+///å¿…é¡»ç°é‡‘æ›¿ä»£
 #define SECURITY_FTDC_ETFCRS_Force '2'
 
 typedef char TSecurityFtdcETFCurrenceReplaceStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInterestTypeÊÇÒ»¸öÀûÏ¢ÀàĞÍ
+/// TFtdcInterestTypeæ˜¯ä¸€ä¸ªåˆ©æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcInterestType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRepurchaseMaxTimesTypeÊÇÒ»¸öÕı»Ø¹º·Å´ó±¶ÊıÀàĞÍ
+/// TFtdcRepurchaseMaxTimesTypeæ˜¯ä¸€ä¸ªæ­£å›è´­æ”¾å¤§å€æ•°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcRepurchaseMaxTimesType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCapitalStockTypeTypeÊÇÒ»¸ö¹É±¾ÀàĞÍÀàĞÍ
+/// TFtdcCapitalStockTypeTypeæ˜¯ä¸€ä¸ªè‚¡æœ¬ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///×ÜÍ¨¹É±¾
+///æ€»é€šè‚¡æœ¬
 #define SECURITY_FTDC_CPTSTOCK_TOTALSTOCK '1'
-///Á÷Í¨¹É±¾
+///æµé€šè‚¡æœ¬
 #define SECURITY_FTDC_CPTSTOCK_CIRCULATION '2'
 
 typedef char TSecurityFtdcCapitalStockTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMarginPriceTypeTypeÊÇÒ»¸ö±£Ö¤½ğ¼Û¸ñÀàĞÍÀàĞÍ
+/// TFtdcMarginPriceTypeTypeæ˜¯ä¸€ä¸ªä¿è¯é‡‘ä»·æ ¼ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///×ò½áËã¼Û
+///æ˜¨ç»“ç®—ä»·
 #define SECURITY_FTDC_MPT_PreSettlementPrice '1'
-///×îĞÂ¼Û
+///æœ€æ–°ä»·
 #define SECURITY_FTDC_MPT_SettlementPrice '2'
-///³É½»¾ù¼Û
+///æˆäº¤å‡ä»·
 #define SECURITY_FTDC_MPT_AveragePrice '3'
-///¿ª²Ö¼Û
+///å¼€ä»“ä»·
 #define SECURITY_FTDC_MPT_OpenPrice '4'
 
 typedef char TSecurityFtdcMarginPriceTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAlgorithmTypeÊÇÒ»¸öÓ¯¿÷Ëã·¨ÀàĞÍ
+/// TFtdcAlgorithmTypeæ˜¯ä¸€ä¸ªç›ˆäºç®—æ³•ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¸¡Ó¯¸¡¿÷¶¼¼ÆËã
+///æµ®ç›ˆæµ®äºéƒ½è®¡ç®—
 #define SECURITY_FTDC_AG_All '1'
-///¸¡Ó¯²»¼Æ£¬¸¡¿÷¼Æ
+///æµ®ç›ˆä¸è®¡ï¼Œæµ®äºè®¡
 #define SECURITY_FTDC_AG_OnlyLost '2'
-///¸¡Ó¯¼Æ£¬¸¡¿÷²»¼Æ
+///æµ®ç›ˆè®¡ï¼Œæµ®äºä¸è®¡
 #define SECURITY_FTDC_AG_OnlyGain '3'
-///¸¡Ó¯¸¡¿÷¶¼²»¼ÆËã
+///æµ®ç›ˆæµ®äºéƒ½ä¸è®¡ç®—
 #define SECURITY_FTDC_AG_None '4'
 
 typedef char TSecurityFtdcAlgorithmType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIncludeCloseProfitTypeÊÇÒ»¸öÊÇ·ñ°üº¬Æ½²ÖÓ¯ÀûÀàĞÍ
+/// TFtdcIncludeCloseProfitTypeæ˜¯ä¸€ä¸ªæ˜¯å¦åŒ…å«å¹³ä»“ç›ˆåˆ©ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///°üº¬Æ½²ÖÓ¯Àû
+///åŒ…å«å¹³ä»“ç›ˆåˆ©
 #define SECURITY_FTDC_ICP_Include '0'
-///²»°üº¬Æ½²ÖÓ¯Àû
+///ä¸åŒ…å«å¹³ä»“ç›ˆåˆ©
 #define SECURITY_FTDC_ICP_NotInclude '2'
 
 typedef char TSecurityFtdcIncludeCloseProfitType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAllWithoutTradeTypeÊÇÒ»¸öÊÇ·ñÊÜ¿ÉÌá±ÈÀıÏŞÖÆÀàĞÍ
+/// TFtdcAllWithoutTradeTypeæ˜¯ä¸€ä¸ªæ˜¯å¦å—å¯ææ¯”ä¾‹é™åˆ¶ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///²»ÊÜ¿ÉÌá±ÈÀıÏŞÖÆ
+///ä¸å—å¯ææ¯”ä¾‹é™åˆ¶
 #define SECURITY_FTDC_AWT_Enable '0'
-///ÊÜ¿ÉÌá±ÈÀıÏŞÖÆ
+///å—å¯ææ¯”ä¾‹é™åˆ¶
 #define SECURITY_FTDC_AWT_Disable '2'
-///ÎŞ²Ö²»ÊÜ¿ÉÌá±ÈÀıÏŞÖÆ
+///æ— ä»“ä¸å—å¯ææ¯”ä¾‹é™åˆ¶
 #define SECURITY_FTDC_AWT_NoHoldEnable '3'
 
 typedef char TSecurityFtdcAllWithoutTradeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcHandlePositionAlgoIDTypeÊÇÒ»¸ö³Ö²Ö´¦ÀíËã·¨±àºÅÀàĞÍ
+/// TFtdcHandlePositionAlgoIDTypeæ˜¯ä¸€ä¸ªæŒä»“å¤„ç†ç®—æ³•ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///»ù±¾
+///åŸºæœ¬
 #define SECURITY_FTDC_HPA_Base '1'
-///·Ç½»Ò×
+///éäº¤æ˜“
 #define SECURITY_FTDC_HPA_NoneTrade '4'
-///Ö¤È¯
+///è¯åˆ¸
 #define SECURITY_FTDC_HPA_Stock '5'
 
 typedef char TSecurityFtdcHandlePositionAlgoIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeParamIDTypeÊÇÒ»¸ö½»Ò×ÏµÍ³²ÎÊı´úÂëÀàĞÍ
+/// TFtdcTradeParamIDTypeæ˜¯ä¸€ä¸ªäº¤æ˜“ç³»ç»Ÿå‚æ•°ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÏµÍ³¼ÓÃÜËã·¨
+///ç³»ç»ŸåŠ å¯†ç®—æ³•
 #define SECURITY_FTDC_TPID_EncryptionStandard 'E'
-///ÓÃ»§×î´ó»á»°Êı
+///ç”¨æˆ·æœ€å¤§ä¼šè¯æ•°
 #define SECURITY_FTDC_TPID_SingleUserSessionMaxNum 'S'
-///×î´óÁ¬ĞøµÇÂ¼Ê§°ÜÊı
+///æœ€å¤§è¿ç»­ç™»å½•å¤±è´¥æ•°
 #define SECURITY_FTDC_TPID_LoginFailMaxNum 'L'
-///ÊÇ·ñÇ¿ÖÆÈÏÖ¤
+///æ˜¯å¦å¼ºåˆ¶è®¤è¯
 #define SECURITY_FTDC_TPID_IsAuthForce 'A'
-///ÊÇ·ñÉú³ÉÓÃ»§ÊÂ¼ş
+///æ˜¯å¦ç”Ÿæˆç”¨æˆ·äº‹ä»¶
 #define SECURITY_FTDC_TPID_GenUserEvent 'G'
-///ÆğÊ¼±¨µ¥±¾µØ±àºÅ
+///èµ·å§‹æŠ¥å•æœ¬åœ°ç¼–å·
 #define SECURITY_FTDC_TPID_StartOrderLocalID 'O'
-///ÈÚ×ÊÈÚÈ¯ÂòÈ¯»¹È¯Ëã·¨
+///èèµ„èåˆ¸ä¹°åˆ¸è¿˜åˆ¸ç®—æ³•
 #define SECURITY_FTDC_TPID_RepayStockAlgo 'R'
-///ÑÜÉúÆ·ÕË»§×Ê½ğÌáÈ¡Ïß
+///è¡ç”Ÿå“è´¦æˆ·èµ„é‡‘æå–çº¿
 #define SECURITY_FTDC_TPID_DeriveWithdrawRatio 'D'
 
 typedef char TSecurityFtdcTradeParamIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSettlementParamValueTypeÊÇÒ»¸ö²ÎÊı´úÂëÖµÀàĞÍ
+/// TFtdcSettlementParamValueTypeæ˜¯ä¸€ä¸ªå‚æ•°ä»£ç å€¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcSettlementParamValueType[256];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMemoTypeÊÇÒ»¸ö±¸×¢ÀàĞÍ
+/// TFtdcMemoTypeæ˜¯ä¸€ä¸ªå¤‡æ³¨ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcMemoType[161];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPriorityTypeÊÇÒ»¸öÓÅÏÈ¼¶ÀàĞÍ
+/// TFtdcPriorityTypeæ˜¯ä¸€ä¸ªä¼˜å…ˆçº§ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcPriorityType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderRefTypeÊÇÒ»¸ö±¨µ¥ÒıÓÃÀàĞÍ
+/// TFtdcOrderRefTypeæ˜¯ä¸€ä¸ªæŠ¥å•å¼•ç”¨ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOrderRefType[13];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMarketIDTypeÊÇÒ»¸öÊĞ³¡´úÂëÀàĞÍ
+/// TFtdcMarketIDTypeæ˜¯ä¸€ä¸ªå¸‚åœºä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcMarketIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcMacAddressTypeÊÇÒ»¸öMacµØÖ·ÀàĞÍ
+/// TFtdcMacAddressTypeæ˜¯ä¸€ä¸ªMacåœ°å€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcMacAddressType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstrumentNameTypeÊÇÒ»¸öºÏÔ¼Ãû³ÆÀàĞÍ
+/// TFtdcInstrumentNameTypeæ˜¯ä¸€ä¸ªåˆçº¦åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcInstrumentNameType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderSysIDTypeÊÇÒ»¸ö±¨µ¥±àºÅÀàĞÍ
+/// TFtdcOrderSysIDTypeæ˜¯ä¸€ä¸ªæŠ¥å•ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOrderSysIDType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIPAddressTypeÊÇÒ»¸öIPµØÖ·ÀàĞÍ
+/// TFtdcIPAddressTypeæ˜¯ä¸€ä¸ªIPåœ°å€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcIPAddressType[16];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIPPortTypeÊÇÒ»¸öIP¶Ë¿ÚÀàĞÍ
+/// TFtdcIPPortTypeæ˜¯ä¸€ä¸ªIPç«¯å£ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcIPPortType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcProtocolInfoTypeÊÇÒ»¸öĞ­ÒéĞÅÏ¢ÀàĞÍ
+/// TFtdcProtocolInfoTypeæ˜¯ä¸€ä¸ªåè®®ä¿¡æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcProtocolInfoType[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDepositSeqNoTypeÊÇÒ»¸ö³öÈë½ğÁ÷Ë®ºÅÀàĞÍ
+/// TFtdcDepositSeqNoTypeæ˜¯ä¸€ä¸ªå‡ºå…¥é‡‘æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcDepositSeqNoType[15];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSystemNameTypeÊÇÒ»¸öÏµÍ³Ãû³ÆÀàĞÍ
+/// TFtdcSystemNameTypeæ˜¯ä¸€ä¸ªç³»ç»Ÿåç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcSystemNameType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInvestorRangeTypeÊÇÒ»¸öÍ¶×ÊÕß·¶Î§ÀàĞÍ
+/// TFtdcInvestorRangeTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…èŒƒå›´ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ËùÓĞ
+///æ‰€æœ‰
 #define SECURITY_FTDC_IR_All '1'
-///Í¶×ÊÕß×é
+///æŠ•èµ„è€…ç»„
 #define SECURITY_FTDC_IR_Group '2'
-///µ¥Ò»Í¶×ÊÕß
+///å•ä¸€æŠ•èµ„è€…
 #define SECURITY_FTDC_IR_Single '3'
 
 typedef char TSecurityFtdcInvestorRangeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDataSyncStatusTypeÊÇÒ»¸öÊı¾İÍ¬²½×´Ì¬ÀàĞÍ
+/// TFtdcDataSyncStatusTypeæ˜¯ä¸€ä¸ªæ•°æ®åŒæ­¥çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Î´Í¬²½
+///æœªåŒæ­¥
 #define SECURITY_FTDC_DS_Asynchronous '1'
-///Í¬²½ÖĞ
+///åŒæ­¥ä¸­
 #define SECURITY_FTDC_DS_Synchronizing '2'
-///ÒÑÍ¬²½
+///å·²åŒæ­¥
 #define SECURITY_FTDC_DS_Synchronized '3'
 
 typedef char TSecurityFtdcDataSyncStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTraderConnectStatusTypeÊÇÒ»¸ö½»Ò×Ëù½»Ò×Ô±Á¬½Ó×´Ì¬ÀàĞÍ
+/// TFtdcTraderConnectStatusTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ‰€äº¤æ˜“å‘˜è¿æ¥çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ã»ÓĞÈÎºÎÁ¬½Ó
+///æ²¡æœ‰ä»»ä½•è¿æ¥
 #define SECURITY_FTDC_TCS_NotConnected '1'
-///ÒÑ¾­Á¬½Ó
+///å·²ç»è¿æ¥
 #define SECURITY_FTDC_TCS_Connected '2'
-///ÒÑ¾­·¢³öºÏÔ¼²éÑ¯ÇëÇó
+///å·²ç»å‘å‡ºåˆçº¦æŸ¥è¯¢è¯·æ±‚
 #define SECURITY_FTDC_TCS_QryInstrumentSent '3'
-///¶©ÔÄË½ÓĞÁ÷
+///è®¢é˜…ç§æœ‰æµ
 #define SECURITY_FTDC_TCS_SubPrivateFlow '4'
 
 typedef char TSecurityFtdcTraderConnectStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderActionStatusTypeÊÇÒ»¸ö±¨µ¥²Ù×÷×´Ì¬ÀàĞÍ
+/// TFtdcOrderActionStatusTypeæ˜¯ä¸€ä¸ªæŠ¥å•æ“ä½œçŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒÑ¾­Ìá½»
+///å·²ç»æäº¤
 #define SECURITY_FTDC_OAS_Submitted 'a'
-///ÒÑ¾­½ÓÊÜ
+///å·²ç»æ¥å—
 #define SECURITY_FTDC_OAS_Accepted 'b'
-///ÒÑ¾­±»¾Ü¾ø
+///å·²ç»è¢«æ‹’ç»
 #define SECURITY_FTDC_OAS_Rejected 'c'
 
 typedef char TSecurityFtdcOrderActionStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderStatusTypeÊÇÒ»¸ö±¨µ¥×´Ì¬ÀàĞÍ
+/// TFtdcOrderStatusTypeæ˜¯ä¸€ä¸ªæŠ¥å•çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///È«²¿³É½»
+///å…¨éƒ¨æˆäº¤
 #define SECURITY_FTDC_OST_AllTraded '0'
-///²¿·Ö³É½»»¹ÔÚ¶ÓÁĞÖĞ
+///éƒ¨åˆ†æˆäº¤è¿˜åœ¨é˜Ÿåˆ—ä¸­
 #define SECURITY_FTDC_OST_PartTradedQueueing '1'
-///²¿·Ö³É½»²»ÔÚ¶ÓÁĞÖĞ
+///éƒ¨åˆ†æˆäº¤ä¸åœ¨é˜Ÿåˆ—ä¸­
 #define SECURITY_FTDC_OST_PartTradedNotQueueing '2'
-///Î´³É½»»¹ÔÚ¶ÓÁĞÖĞ
+///æœªæˆäº¤è¿˜åœ¨é˜Ÿåˆ—ä¸­
 #define SECURITY_FTDC_OST_NoTradeQueueing '3'
-///Î´³É½»²»ÔÚ¶ÓÁĞÖĞ
+///æœªæˆäº¤ä¸åœ¨é˜Ÿåˆ—ä¸­
 #define SECURITY_FTDC_OST_NoTradeNotQueueing '4'
-///³·µ¥
+///æ’¤å•
 #define SECURITY_FTDC_OST_Canceled '5'
-///Î´Öª
+///æœªçŸ¥
 #define SECURITY_FTDC_OST_Unknown 'a'
-///ÉĞÎ´´¥·¢
+///å°šæœªè§¦å‘
 #define SECURITY_FTDC_OST_NotTouched 'b'
-///ÒÑ´¥·¢
+///å·²è§¦å‘
 #define SECURITY_FTDC_OST_Touched 'c'
 
 typedef char TSecurityFtdcOrderStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderSubmitStatusTypeÊÇÒ»¸ö±¨µ¥Ìá½»×´Ì¬ÀàĞÍ
+/// TFtdcOrderSubmitStatusTypeæ˜¯ä¸€ä¸ªæŠ¥å•æäº¤çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒÑ¾­Ìá½»
+///å·²ç»æäº¤
 #define SECURITY_FTDC_OSS_InsertSubmitted '0'
-///³·µ¥ÒÑ¾­Ìá½»
+///æ’¤å•å·²ç»æäº¤
 #define SECURITY_FTDC_OSS_CancelSubmitted '1'
-///ĞŞ¸ÄÒÑ¾­Ìá½»
+///ä¿®æ”¹å·²ç»æäº¤
 #define SECURITY_FTDC_OSS_ModifySubmitted '2'
-///ÒÑ¾­½ÓÊÜ
+///å·²ç»æ¥å—
 #define SECURITY_FTDC_OSS_Accepted '3'
-///±¨µ¥ÒÑ¾­±»¾Ü¾ø
+///æŠ¥å•å·²ç»è¢«æ‹’ç»
 #define SECURITY_FTDC_OSS_InsertRejected '4'
-///³·µ¥ÒÑ¾­±»¾Ü¾ø
+///æ’¤å•å·²ç»è¢«æ‹’ç»
 #define SECURITY_FTDC_OSS_CancelRejected '5'
-///¸Äµ¥ÒÑ¾­±»¾Ü¾ø
+///æ”¹å•å·²ç»è¢«æ‹’ç»
 #define SECURITY_FTDC_OSS_ModifyRejected '6'
 
 typedef char TSecurityFtdcOrderSubmitStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPositionDateTypeÊÇÒ»¸ö³Ö²ÖÈÕÆÚÀàĞÍ
+/// TFtdcPositionDateTypeæ˜¯ä¸€ä¸ªæŒä»“æ—¥æœŸç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///½ñÈÕ³Ö²Ö
+///ä»Šæ—¥æŒä»“
 #define SECURITY_FTDC_PSD_Today '1'
-///ÀúÊ·³Ö²Ö
+///å†å²æŒä»“
 #define SECURITY_FTDC_PSD_History '2'
 
 typedef char TSecurityFtdcPositionDateType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradingRoleTypeÊÇÒ»¸ö½»Ò×½ÇÉ«ÀàĞÍ
+/// TFtdcTradingRoleTypeæ˜¯ä¸€ä¸ªäº¤æ˜“è§’è‰²ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///´úÀí
+///ä»£ç†
 #define SECURITY_FTDC_ER_Broker '1'
-///×ÔÓª
+///è‡ªè¥
 #define SECURITY_FTDC_ER_Host '2'
-///×öÊĞÉÌ
+///åšå¸‚å•†
 #define SECURITY_FTDC_ER_Maker '3'
 
 typedef char TSecurityFtdcTradingRoleType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPosiDirectionTypeÊÇÒ»¸ö³Ö²Ö¶à¿Õ·½ÏòÀàĞÍ
+/// TFtdcPosiDirectionTypeæ˜¯ä¸€ä¸ªæŒä»“å¤šç©ºæ–¹å‘ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¾»
+///å‡€
 #define SECURITY_FTDC_PD_Net '1'
-///¶àÍ·
+///å¤šå¤´
 #define SECURITY_FTDC_PD_Long '2'
-///¿ÕÍ·
+///ç©ºå¤´
 #define SECURITY_FTDC_PD_Short '3'
-///±¸¶Ò
+///å¤‡å…‘
 #define SECURITY_FTDC_PD_Covered '4'
 
 typedef char TSecurityFtdcPosiDirectionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderPriceTypeTypeÊÇÒ»¸ö±¨µ¥¼Û¸ñÌõ¼şÀàĞÍ
+/// TFtdcOrderPriceTypeTypeæ˜¯ä¸€ä¸ªæŠ¥å•ä»·æ ¼æ¡ä»¶ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¼´Ê±³É½»Ê£Óà³·ÏúÊĞ¼Ûµ¥
+///å³æ—¶æˆäº¤å‰©ä½™æ’¤é”€å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_AnyPrice '1'
-///ÏŞ¼Û
+///é™ä»·
 #define SECURITY_FTDC_OPT_LimitPrice '2'
-///×îÓÅÎåµµ¼´Ê±³É½»Ê£Óà³·ÏúÊĞ¼Ûµ¥
+///æœ€ä¼˜äº”æ¡£å³æ—¶æˆäº¤å‰©ä½™æ’¤é”€å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_BestPrice '3'
-///×îÓÅÎåµµ¼´Ê±³É½»Ê£Óà×ªÏŞ¼ÛÊĞ¼Ûµ¥
+///æœ€ä¼˜äº”æ¡£å³æ—¶æˆäº¤å‰©ä½™è½¬é™ä»·å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_BestLimitPrice '4'
-///È«²¿³É½»»ò³·ÏúÊĞ¼Ûµ¥
+///å…¨éƒ¨æˆäº¤æˆ–æ’¤é”€å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_AllPrice '5'
-///±¾·½×îÓÅ¼Û¸ñÊĞ¼Ûµ¥
+///æœ¬æ–¹æœ€ä¼˜ä»·æ ¼å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_ForwardBestPrice '6'
-///¶Ô·½×îÓÅ¼Û¸ñÊĞ¼Ûµ¥
+///å¯¹æ–¹æœ€ä¼˜ä»·æ ¼å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_ReverseBestPrice '7'
-///¼´Ê±³É½»Ê£Óà×ªÏŞ¼ÛÊĞ¼Ûµ¥
+///å³æ—¶æˆäº¤å‰©ä½™è½¬é™ä»·å¸‚ä»·å•
 #define SECURITY_FTDC_OPT_Any2LimitPrice '8'
-///È«²¿³É½»»ò³·ÏúÏŞ¼Ûµ¥
+///å…¨éƒ¨æˆäº¤æˆ–æ’¤é”€é™ä»·å•
 #define SECURITY_FTDC_OPT_AllLimitPrice '9'
-///¼¤»îA¹ÉÍøÂçÃÜÂë·şÎñ´úÂë
+///æ¿€æ´»Aè‚¡ç½‘ç»œå¯†ç æœåŠ¡ä»£ç 
 #define SECURITY_FTDC_OPT_ActiveANetPassSvrCode 'G'
-///×¢ÏúA¹ÉÍøÂçÃÜÂë·şÎñ´úÂë
+///æ³¨é”€Aè‚¡ç½‘ç»œå¯†ç æœåŠ¡ä»£ç 
 #define SECURITY_FTDC_OPT_InactiveANetPassSvrCode 'H'
-///¼¤»îB¹ÉÍøÂçÃÜÂë·şÎñ´úÂë
+///æ¿€æ´»Bè‚¡ç½‘ç»œå¯†ç æœåŠ¡ä»£ç 
 #define SECURITY_FTDC_OPT_ActiveBNetPassSvrCode 'I'
-///×¢ÏúB¹ÉÍøÂçÃÜÂë·şÎñ´úÂë
+///æ³¨é”€Bè‚¡ç½‘ç»œå¯†ç æœåŠ¡ä»£ç 
 #define SECURITY_FTDC_OPT_InactiveBNetPassSvrCode 'J'
-///»Ø¹º×¢Ïú
+///å›è´­æ³¨é”€
 #define SECURITY_FTDC_OPT_Repurchase 'K'
-///Ö¸¶¨³·Ïú
+///æŒ‡å®šæ’¤é”€
 #define SECURITY_FTDC_OPT_DesignatedCancel 'L'
-///Ö¸¶¨µÇ¼Ç
+///æŒ‡å®šç™»è®°
 #define SECURITY_FTDC_OPT_Designated 'M'
-///Ö¤È¯²ÎÓëÉê¹º
+///è¯åˆ¸å‚ä¸ç”³è´­
 #define SECURITY_FTDC_OPT_SubscribingShares 'N'
-///Ö¤È¯²ÎÓëÅä¹É
+///è¯åˆ¸å‚ä¸é…è‚¡
 #define SECURITY_FTDC_OPT_Split 'O'
-///ÒªÔ¼ÊÕ¹ºµÇ¼Ç
+///è¦çº¦æ”¶è´­ç™»è®°
 #define SECURITY_FTDC_OPT_TenderOffer 'P'
-///ÒªÔ¼ÊÕ¹º³·Ïú
+///è¦çº¦æ”¶è´­æ’¤é”€
 #define SECURITY_FTDC_OPT_TenderOfferCancel 'Q'
-///Ö¤È¯Í¶Æ±
+///è¯åˆ¸æŠ•ç¥¨
 #define SECURITY_FTDC_OPT_Ballot 'R'
-///¿É×ªÕ®×ª»»µÇ¼Ç
+///å¯è½¬å€ºè½¬æ¢ç™»è®°
 #define SECURITY_FTDC_OPT_ConvertibleBondsConvet 'S'
-///¿É×ªÕ®»ØÊÛµÇ¼Ç
+///å¯è½¬å€ºå›å”®ç™»è®°
 #define SECURITY_FTDC_OPT_ConvertibleBondsRepurchase 'T'
-///È¨Ö¤ĞĞÈ¨
+///æƒè¯è¡Œæƒ
 #define SECURITY_FTDC_OPT_Exercise 'U'
-///¿ª·ÅÊ½»ù½ğÉê¹º
+///å¼€æ”¾å¼åŸºé‡‘ç”³è´­
 #define SECURITY_FTDC_OPT_PurchasingFunds 'V'
-///¿ª·ÅÊ½»ù½ğÊê»Ø
+///å¼€æ”¾å¼åŸºé‡‘èµå›
 #define SECURITY_FTDC_OPT_RedemingFunds 'W'
-///¿ª·ÅÊ½»ù½ğÈÏ¹º
+///å¼€æ”¾å¼åŸºé‡‘è®¤è´­
 #define SECURITY_FTDC_OPT_SubscribingFunds 'X'
-///¿ª·ÅÊ½»ù½ğ×ªÍĞ¹Ü×ª³ö
+///å¼€æ”¾å¼åŸºé‡‘è½¬æ‰˜ç®¡è½¬å‡º
 #define SECURITY_FTDC_OPT_LOFIssue 'Y'
-///¿ª·ÅÊ½»ù½ğÉèÖÃ·Öºì·½Ê½
+///å¼€æ”¾å¼åŸºé‡‘è®¾ç½®åˆ†çº¢æ–¹å¼
 #define SECURITY_FTDC_OPT_LOFSetBonusType 'Z'
-///¿ª·ÅÊ½»ù½ğ×ª»»ÎªÆäËû»ù½ğ
+///å¼€æ”¾å¼åŸºé‡‘è½¬æ¢ä¸ºå…¶ä»–åŸºé‡‘
 #define SECURITY_FTDC_OPT_LOFConvert 'a'
-///Õ®È¯Èë¿â
+///å€ºåˆ¸å…¥åº“
 #define SECURITY_FTDC_OPT_DebentureStockIn 'b'
-///Õ®È¯³ö¿â
+///å€ºåˆ¸å‡ºåº“
 #define SECURITY_FTDC_OPT_DebentureStockOut 'c'
-///ETFÉê¹º
-#define SECURITY_FTDC_OPT_PurchasesETF  'd'
-///ETFÊê»Ø
+/// ETFç”³è´­
+#define SECURITY_FTDC_OPT_PurchasesETF 'd'
+/// ETFèµå›
 #define SECURITY_FTDC_OPT_RedeemETF 'e'
 
 typedef char TSecurityFtdcOrderPriceTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOffsetFlagTypeÊÇÒ»¸ö¿ªÆ½±êÖ¾ÀàĞÍ
+/// TFtdcOffsetFlagTypeæ˜¯ä¸€ä¸ªå¼€å¹³æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¿ª²Ö
+///å¼€ä»“
 #define SECURITY_FTDC_OF_Open '0'
-///Æ½²Ö
+///å¹³ä»“
 #define SECURITY_FTDC_OF_Close '1'
-///Ç¿Æ½
+///å¼ºå¹³
 #define SECURITY_FTDC_OF_ForceClose '2'
-///Æ½½ñ
+///å¹³ä»Š
 #define SECURITY_FTDC_OF_CloseToday '3'
-///Æ½×ò
+///å¹³æ˜¨
 #define SECURITY_FTDC_OF_CloseYesterday '4'
-///Ç¿¼õ
+///å¼ºå‡
 #define SECURITY_FTDC_OF_ForceOff '5'
-///±¾µØÇ¿Æ½
+///æœ¬åœ°å¼ºå¹³
 #define SECURITY_FTDC_OF_LocalForceClose '6'
 
 typedef char TSecurityFtdcOffsetFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcForceCloseReasonTypeÊÇÒ»¸öÇ¿Æ½Ô­ÒòÀàĞÍ
+/// TFtdcForceCloseReasonTypeæ˜¯ä¸€ä¸ªå¼ºå¹³åŸå› ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///·ÇÇ¿Æ½
+///éå¼ºå¹³
 #define SECURITY_FTDC_FCC_NotForceClose '0'
-///×Ê½ğ²»×ã
+///èµ„é‡‘ä¸è¶³
 #define SECURITY_FTDC_FCC_LackDeposit '1'
-///¿Í»§³¬²Ö
+///å®¢æˆ·è¶…ä»“
 #define SECURITY_FTDC_FCC_ClientOverPositionLimit '2'
-///»áÔ±³¬²Ö
+///ä¼šå‘˜è¶…ä»“
 #define SECURITY_FTDC_FCC_MemberOverPositionLimit '3'
-///³Ö²Ö·ÇÕûÊı±¶
+///æŒä»“éæ•´æ•°å€
 #define SECURITY_FTDC_FCC_NotMultiple '4'
-///Î¥¹æ
+///è¿è§„
 #define SECURITY_FTDC_FCC_Violation '5'
-///ÆäËü
+///å…¶å®ƒ
 #define SECURITY_FTDC_FCC_Other '6'
-///×ÔÈ»ÈËÁÙ½ü½»¸î
+///è‡ªç„¶äººä¸´è¿‘äº¤å‰²
 #define SECURITY_FTDC_FCC_PersonDeliv '7'
 
 typedef char TSecurityFtdcForceCloseReasonType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderTypeTypeÊÇÒ»¸ö±¨µ¥ÀàĞÍÀàĞÍ
+/// TFtdcOrderTypeTypeæ˜¯ä¸€ä¸ªæŠ¥å•ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Õı³£
+///æ­£å¸¸
 #define SECURITY_FTDC_ORDT_Normal '0'
-///±¨¼ÛÑÜÉú
+///æŠ¥ä»·è¡ç”Ÿ
 #define SECURITY_FTDC_ORDT_DeriveFromQuote '1'
-///×éºÏÑÜÉú
+///ç»„åˆè¡ç”Ÿ
 #define SECURITY_FTDC_ORDT_DeriveFromCombination '2'
-///×éºÏ±¨µ¥
+///ç»„åˆæŠ¥å•
 #define SECURITY_FTDC_ORDT_Combination '3'
-///Ìõ¼şµ¥
+///æ¡ä»¶å•
 #define SECURITY_FTDC_ORDT_ConditionalOrder '4'
-///»¥»»µ¥
+///äº’æ¢å•
 #define SECURITY_FTDC_ORDT_Swap '5'
 
 typedef char TSecurityFtdcOrderTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTimeConditionTypeÊÇÒ»¸öÓĞĞ§ÆÚÀàĞÍÀàĞÍ
+/// TFtdcTimeConditionTypeæ˜¯ä¸€ä¸ªæœ‰æ•ˆæœŸç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Á¢¼´Íê³É£¬·ñÔò³·Ïú
+///ç«‹å³å®Œæˆï¼Œå¦åˆ™æ’¤é”€
 #define SECURITY_FTDC_TC_IOC '1'
-///±¾½ÚÓĞĞ§
+///æœ¬èŠ‚æœ‰æ•ˆ
 #define SECURITY_FTDC_TC_GFS '2'
-///µ±ÈÕÓĞĞ§
+///å½“æ—¥æœ‰æ•ˆ
 #define SECURITY_FTDC_TC_GFD '3'
-///Ö¸¶¨ÈÕÆÚÇ°ÓĞĞ§
+///æŒ‡å®šæ—¥æœŸå‰æœ‰æ•ˆ
 #define SECURITY_FTDC_TC_GTD '4'
-///³·ÏúÇ°ÓĞĞ§
+///æ’¤é”€å‰æœ‰æ•ˆ
 #define SECURITY_FTDC_TC_GTC '5'
-///¼¯ºÏ¾º¼ÛÓĞĞ§
+///é›†åˆç«ä»·æœ‰æ•ˆ
 #define SECURITY_FTDC_TC_GFA '6'
 
 typedef char TSecurityFtdcTimeConditionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVolumeConditionTypeÊÇÒ»¸ö³É½»Á¿ÀàĞÍÀàĞÍ
+/// TFtdcVolumeConditionTypeæ˜¯ä¸€ä¸ªæˆäº¤é‡ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÈÎºÎÊıÁ¿
+///ä»»ä½•æ•°é‡
 #define SECURITY_FTDC_VC_AV '1'
-///×îĞ¡ÊıÁ¿
+///æœ€å°æ•°é‡
 #define SECURITY_FTDC_VC_MV '2'
-///È«²¿ÊıÁ¿
+///å…¨éƒ¨æ•°é‡
 #define SECURITY_FTDC_VC_CV '3'
 
 typedef char TSecurityFtdcVolumeConditionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcContingentConditionTypeÊÇÒ»¸ö´¥·¢Ìõ¼şÀàĞÍ
+/// TFtdcContingentConditionTypeæ˜¯ä¸€ä¸ªè§¦å‘æ¡ä»¶ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Á¢¼´
+///ç«‹å³
 #define SECURITY_FTDC_CC_Immediately '1'
-///Ö¹Ëğ
+///æ­¢æŸ
 #define SECURITY_FTDC_CC_Touch '2'
-///Ö¹Ó®
+///æ­¢èµ¢
 #define SECURITY_FTDC_CC_TouchProfit '3'
-///Ô¤Âñµ¥
+///é¢„åŸ‹å•
 #define SECURITY_FTDC_CC_ParkedOrder '4'
-///×îĞÂ¼Û´óÓÚÌõ¼ş¼Û
+///æœ€æ–°ä»·å¤§äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_LastPriceGreaterThanStopPrice '5'
-///×îĞÂ¼Û´óÓÚµÈÓÚÌõ¼ş¼Û
+///æœ€æ–°ä»·å¤§äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_LastPriceGreaterEqualStopPrice '6'
-///×îĞÂ¼ÛĞ¡ÓÚÌõ¼ş¼Û
+///æœ€æ–°ä»·å°äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_LastPriceLesserThanStopPrice '7'
-///×îĞÂ¼ÛĞ¡ÓÚµÈÓÚÌõ¼ş¼Û
+///æœ€æ–°ä»·å°äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_LastPriceLesserEqualStopPrice '8'
-///ÂôÒ»¼Û´óÓÚÌõ¼ş¼Û
+///å–ä¸€ä»·å¤§äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_AskPriceGreaterThanStopPrice '9'
-///ÂôÒ»¼Û´óÓÚµÈÓÚÌõ¼ş¼Û
+///å–ä¸€ä»·å¤§äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_AskPriceGreaterEqualStopPrice 'A'
-///ÂôÒ»¼ÛĞ¡ÓÚÌõ¼ş¼Û
+///å–ä¸€ä»·å°äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_AskPriceLesserThanStopPrice 'B'
-///ÂôÒ»¼ÛĞ¡ÓÚµÈÓÚÌõ¼ş¼Û
+///å–ä¸€ä»·å°äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_AskPriceLesserEqualStopPrice 'C'
-///ÂòÒ»¼Û´óÓÚÌõ¼ş¼Û
+///ä¹°ä¸€ä»·å¤§äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_BidPriceGreaterThanStopPrice 'D'
-///ÂòÒ»¼Û´óÓÚµÈÓÚÌõ¼ş¼Û
+///ä¹°ä¸€ä»·å¤§äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_BidPriceGreaterEqualStopPrice 'E'
-///ÂòÒ»¼ÛĞ¡ÓÚÌõ¼ş¼Û
+///ä¹°ä¸€ä»·å°äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_BidPriceLesserThanStopPrice 'F'
-///ÂòÒ»¼ÛĞ¡ÓÚµÈÓÚÌõ¼ş¼Û
+///ä¹°ä¸€ä»·å°äºç­‰äºæ¡ä»¶ä»·
 #define SECURITY_FTDC_CC_BidPriceLesserEqualStopPrice 'H'
 
 typedef char TSecurityFtdcContingentConditionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcActionFlagTypeÊÇÒ»¸ö²Ù×÷±êÖ¾ÀàĞÍ
+/// TFtdcActionFlagTypeæ˜¯ä¸€ä¸ªæ“ä½œæ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///É¾³ı
+///åˆ é™¤
 #define SECURITY_FTDC_AF_Delete '0'
-///ĞŞ¸Ä
+///ä¿®æ”¹
 #define SECURITY_FTDC_AF_Modify '3'
 
 typedef char TSecurityFtdcActionFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradingRightTypeÊÇÒ»¸ö½»Ò×È¨ÏŞÀàĞÍ
+/// TFtdcTradingRightTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æƒé™ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¿ÉÒÔ½»Ò×
+///å¯ä»¥äº¤æ˜“
 #define SECURITY_FTDC_TR_Allow '0'
-///²»ÄÜ½»Ò×
+///ä¸èƒ½äº¤æ˜“
 #define SECURITY_FTDC_TR_Forbidden '2'
 
 typedef char TSecurityFtdcTradingRightType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderSourceTypeÊÇÒ»¸ö±¨µ¥À´Ô´ÀàĞÍ
+/// TFtdcOrderSourceTypeæ˜¯ä¸€ä¸ªæŠ¥å•æ¥æºç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///À´×Ô²ÎÓëÕß
+///æ¥è‡ªå‚ä¸è€…
 #define SECURITY_FTDC_OSRC_Participant '0'
-///À´×Ô¹ÜÀíÔ±
+///æ¥è‡ªç®¡ç†å‘˜
 #define SECURITY_FTDC_OSRC_Administrator '1'
 
 typedef char TSecurityFtdcOrderSourceType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPriceSourceTypeÊÇÒ»¸ö³É½»¼ÛÀ´Ô´ÀàĞÍ
+/// TFtdcPriceSourceTypeæ˜¯ä¸€ä¸ªæˆäº¤ä»·æ¥æºç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ç°³É½»¼Û
+///å‰æˆäº¤ä»·
 #define SECURITY_FTDC_PSRC_LastPrice '0'
-///ÂòÎ¯ÍĞ¼Û
+///ä¹°å§”æ‰˜ä»·
 #define SECURITY_FTDC_PSRC_Buy '1'
-///ÂôÎ¯ÍĞ¼Û
+///å–å§”æ‰˜ä»·
 #define SECURITY_FTDC_PSRC_Sell '2'
 
 typedef char TSecurityFtdcPriceSourceType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOrderActionRefTypeÊÇÒ»¸ö±¨µ¥²Ù×÷ÒıÓÃÀàĞÍ
+/// TFtdcOrderActionRefTypeæ˜¯ä¸€ä¸ªæŠ¥å•æ“ä½œå¼•ç”¨ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcOrderActionRefType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFrontIDTypeÊÇÒ»¸öÇ°ÖÃ±àºÅÀàĞÍ
+/// TFtdcFrontIDTypeæ˜¯ä¸€ä¸ªå‰ç½®ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcFrontIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSessionIDTypeÊÇÒ»¸ö»á»°±àºÅÀàĞÍ
+/// TFtdcSessionIDTypeæ˜¯ä¸€ä¸ªä¼šè¯ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcSessionIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstallIDTypeÊÇÒ»¸ö°²×°±àºÅÀàĞÍ
+/// TFtdcInstallIDTypeæ˜¯ä¸€ä¸ªå®‰è£…ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcInstallIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSequenceNoTypeÊÇÒ»¸öĞòºÅÀàĞÍ
+/// TFtdcSequenceNoTypeæ˜¯ä¸€ä¸ªåºå·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcSequenceNoType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRequestIDTypeÊÇÒ»¸öÇëÇó±àºÅÀàĞÍ
+/// TFtdcRequestIDTypeæ˜¯ä¸€ä¸ªè¯·æ±‚ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcRequestIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCombOffsetFlagTypeÊÇÒ»¸ö×éºÏ¿ªÆ½±êÖ¾ÀàĞÍ
+/// TFtdcCombOffsetFlagTypeæ˜¯ä¸€ä¸ªç»„åˆå¼€å¹³æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCombOffsetFlagType[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCombHedgeFlagTypeÊÇÒ»¸ö×éºÏÍ¶»úÌ×±£±êÖ¾ÀàĞÍ
+/// TFtdcCombHedgeFlagTypeæ˜¯ä¸€ä¸ªç»„åˆæŠ•æœºå¥—ä¿æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCombHedgeFlagType[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSequenceSeriesTypeÊÇÒ»¸öĞòÁĞÏµÁĞºÅÀàĞÍ
+/// TFtdcSequenceSeriesTypeæ˜¯ä¸€ä¸ªåºåˆ—ç³»åˆ—å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef short TSecurityFtdcSequenceSeriesType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCommPhaseNoTypeÊÇÒ»¸öÍ¨Ñ¶Ê±¶Î±àºÅÀàĞÍ
+/// TFtdcCommPhaseNoTypeæ˜¯ä¸€ä¸ªé€šè®¯æ—¶æ®µç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef short TSecurityFtdcCommPhaseNoType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserEventTypeTypeÊÇÒ»¸öÓÃ»§ÊÂ¼şÀàĞÍÀàĞÍ
+/// TFtdcUserEventTypeTypeæ˜¯ä¸€ä¸ªç”¨æˆ·äº‹ä»¶ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///µÇÂ¼
+///ç™»å½•
 #define SECURITY_FTDC_UET_Login '1'
-///µÇ³ö
+///ç™»å‡º
 #define SECURITY_FTDC_UET_Logout '2'
-///½»Ò×³É¹¦
+///äº¤æ˜“æˆåŠŸ
 #define SECURITY_FTDC_UET_Trading '3'
-///½»Ò×Ê§°Ü
+///äº¤æ˜“å¤±è´¥
 #define SECURITY_FTDC_UET_TradingError '4'
-///ĞŞ¸ÄÃÜÂë
+///ä¿®æ”¹å¯†ç 
 #define SECURITY_FTDC_UET_UpdatePassword '5'
-///¿Í»§¶ËÈÏÖ¤
+///å®¢æˆ·ç«¯è®¤è¯
 #define SECURITY_FTDC_UET_Authenticate '6'
-///ÆäËû
+///å…¶ä»–
 #define SECURITY_FTDC_UET_Other '9'
 
 typedef char TSecurityFtdcUserEventTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserEventInfoTypeÊÇÒ»¸öÓÃ»§ÊÂ¼şĞÅÏ¢ÀàĞÍ
+/// TFtdcUserEventInfoTypeæ˜¯ä¸€ä¸ªç”¨æˆ·äº‹ä»¶ä¿¡æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcUserEventInfoType[1025];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOTPTypeTypeÊÇÒ»¸ö¶¯Ì¬ÁîÅÆÀàĞÍÀàĞÍ
+/// TFtdcOTPTypeTypeæ˜¯ä¸€ä¸ªåŠ¨æ€ä»¤ç‰Œç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÎŞ¶¯Ì¬ÁîÅÆ
+///æ— åŠ¨æ€ä»¤ç‰Œ
 #define SECURITY_FTDC_OTP_NONE '0'
-///Ê±¼äÁîÅÆ
+///æ—¶é—´ä»¤ç‰Œ
 #define SECURITY_FTDC_OTP_TOTP '1'
 
 typedef char TSecurityFtdcOTPTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeSourceTypeÊÇÒ»¸ö³É½»À´Ô´ÀàĞÍ
+/// TFtdcTradeSourceTypeæ˜¯ä¸€ä¸ªæˆäº¤æ¥æºç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///À´×Ô½»Ò×ËùÆÕÍ¨»Ø±¨
+///æ¥è‡ªäº¤æ˜“æ‰€æ™®é€šå›æŠ¥
 #define SECURITY_FTDC_TSRC_NORMAL '0'
-///À´×Ô²éÑ¯
+///æ¥è‡ªæŸ¥è¯¢
 #define SECURITY_FTDC_TSRC_QUERY '1'
 
 typedef char TSecurityFtdcTradeSourceType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBranchIDTypeÊÇÒ»¸öÓªÒµ²¿±àºÅÀàĞÍ
+/// TFtdcBranchIDTypeæ˜¯ä¸€ä¸ªè¥ä¸šéƒ¨ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBranchIDType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcStockPriceTypeÊÇÒ»¸öÖ¤È¯½»Ò×¼Û¸ñÀàĞÍ
+/// TFtdcStockPriceTypeæ˜¯ä¸€ä¸ªè¯åˆ¸äº¤æ˜“ä»·æ ¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcStockPriceType[16];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRightModelIDTypeÊÇÒ»¸ö¹ÉÆ±È¨ÏŞÄ£°æ´úÂëÀàĞÍ
+/// TFtdcRightModelIDTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨æƒé™æ¨¡ç‰ˆä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcRightModelIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSerialNumberTypeÊÇÒ»¸öĞòÁĞºÅÀàĞÍ
+/// TFtdcSerialNumberTypeæ˜¯ä¸€ä¸ªåºåˆ—å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcSerialNumberType[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstrumentRangeTypeÊÇÒ»¸ö¹ÉÆ±È¨ÏŞ·ÖÀàÀàĞÍ
+/// TFtdcInstrumentRangeTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨æƒé™åˆ†ç±»ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ËùÓĞ
+///æ‰€æœ‰
 #define SECURITY_FTDC_INR_All '1'
-///²úÆ·
+///äº§å“
 #define SECURITY_FTDC_INR_Product '2'
-///¹ÉÆ±È¨ÏŞÄ£°æ
+///è‚¡ç¥¨æƒé™æ¨¡ç‰ˆ
 #define SECURITY_FTDC_INR_Model '3'
-///¹ÉÆ±
+///è‚¡ç¥¨
 #define SECURITY_FTDC_INR_Stock '4'
-///ÊĞ³¡
+///å¸‚åœº
 #define SECURITY_FTDC_INR_Market '5'
 
 typedef char TSecurityFtdcInstrumentRangeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBusinessUnitTypeÊÇÒ»¸öÒµÎñµ¥ÔªÀàĞÍ
+/// TFtdcBusinessUnitTypeæ˜¯ä¸€ä¸ªä¸šåŠ¡å•å…ƒç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBusinessUnitType[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOTPVendorsIDTypeÊÇÒ»¸ö¶¯Ì¬ÁîÅÆÌá¹©ÉÌÀàĞÍ
+/// TFtdcOTPVendorsIDTypeæ˜¯ä¸€ä¸ªåŠ¨æ€ä»¤ç‰Œæä¾›å•†ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOTPVendorsIDType[2];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLastDriftTypeÊÇÒ»¸öÉÏ´ÎOTPÆ¯ÒÆÖµÀàĞÍ
+/// TFtdcLastDriftTypeæ˜¯ä¸€ä¸ªä¸Šæ¬¡OTPæ¼‚ç§»å€¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcLastDriftType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLastSuccessTypeÊÇÒ»¸öÉÏ´ÎOTP³É¹¦ÖµÀàĞÍ
+/// TFtdcLastSuccessTypeæ˜¯ä¸€ä¸ªä¸Šæ¬¡OTPæˆåŠŸå€¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcLastSuccessType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAuthKeyTypeÊÇÒ»¸öÁîÅÆÃÜÔ¿ÀàĞÍ
+/// TFtdcAuthKeyTypeæ˜¯ä¸€ä¸ªä»¤ç‰Œå¯†é’¥ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcAuthKeyType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcUserSessionHashTypeÊÇÒ»¸öÓÃ»§»á»°HashÖµÀàĞÍ
+/// TFtdcUserSessionHashTypeæ˜¯ä¸€ä¸ªç”¨æˆ·ä¼šè¯Hashå€¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcUserSessionHashType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcStockTradeTypeTypeÊÇÒ»¸öÖ¤È¯½»Ò×ÀàĞÍÀàĞÍ
+/// TFtdcStockTradeTypeTypeæ˜¯ä¸€ä¸ªè¯åˆ¸äº¤æ˜“ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¿É½»Ò×Ö¤È¯
+///å¯äº¤æ˜“è¯åˆ¸
 #define SECURITY_FTDC_STT_Stock '0'
-///ÂòÈëÍøÂçÃÜÂë·şÎñ
+///ä¹°å…¥ç½‘ç»œå¯†ç æœåŠ¡
 #define SECURITY_FTDC_STT_BuyNetService '1'
-///»Ø¹º×¢Ïú
+///å›è´­æ³¨é”€
 #define SECURITY_FTDC_STT_CancelRepurchase '2'
-///Ö¸¶¨³·Ïú
+///æŒ‡å®šæ’¤é”€
 #define SECURITY_FTDC_STT_CancelRegister '3'
-///Ö¸¶¨µÇ¼Ç
+///æŒ‡å®šç™»è®°
 #define SECURITY_FTDC_STT_Register '4'
-///ÂòÈë·¢ĞĞÉê¹º
+///ä¹°å…¥å‘è¡Œç”³è´­
 #define SECURITY_FTDC_STT_PurchaseIssue '5'
-///Âô³öÅä¹É
+///å–å‡ºé…è‚¡
 #define SECURITY_FTDC_STT_Allotment '6'
-///Âô³öÒªÔ¼ÊÕ¹º
+///å–å‡ºè¦çº¦æ”¶è´­
 #define SECURITY_FTDC_STT_SellTender '7'
-///ÂòÈëÒªÔ¼ÊÕ¹º
+///ä¹°å…¥è¦çº¦æ”¶è´­
 #define SECURITY_FTDC_STT_BuyTender '8'
-///ÍøÉÏÍ¶Æ±
+///ç½‘ä¸ŠæŠ•ç¥¨
 #define SECURITY_FTDC_STT_NetVote '9'
-///Âô³ö¿É×ªÕ®»ØÊÛ
+///å–å‡ºå¯è½¬å€ºå›å”®
 #define SECURITY_FTDC_STT_SellConvertibleBonds 'a'
-///È¨Ö¤ĞĞÈ¨´úÂë
+///æƒè¯è¡Œæƒä»£ç 
 #define SECURITY_FTDC_STT_OptionExecute 'b'
-///¿ª·ÅÊ½»ù½ğÉê¹º
+///å¼€æ”¾å¼åŸºé‡‘ç”³è´­
 #define SECURITY_FTDC_STT_PurchaseOF 'c'
-///¿ª·ÅÊ½»ù½ğÊê»Ø
+///å¼€æ”¾å¼åŸºé‡‘èµå›
 #define SECURITY_FTDC_STT_RedeemOF 'd'
-///¿ª·ÅÊ½»ù½ğÈÏ¹º
+///å¼€æ”¾å¼åŸºé‡‘è®¤è´­
 #define SECURITY_FTDC_STT_SubscribeOF 'e'
-///¿ª·ÅÊ½»ù½ğ×ªÍĞ¹Ü×ª³ö
+///å¼€æ”¾å¼åŸºé‡‘è½¬æ‰˜ç®¡è½¬å‡º
 #define SECURITY_FTDC_STT_OFCustodianTranfer 'f'
-///¿ª·ÅÊ½»ù½ğ·ÖºìÉèÖÃ
-#define SECURITY_FTDC_STT_OFDividendConfig  'g'
-///¿ª·ÅÊ½»ù½ğ×ª³ÉÆäËû»ù½ğ
+///å¼€æ”¾å¼åŸºé‡‘åˆ†çº¢è®¾ç½®
+#define SECURITY_FTDC_STT_OFDividendConfig 'g'
+///å¼€æ”¾å¼åŸºé‡‘è½¬æˆå…¶ä»–åŸºé‡‘
 #define SECURITY_FTDC_STT_OFTransfer 'h'
-///Õ®È¯Èë¿â
+///å€ºåˆ¸å…¥åº“
 #define SECURITY_FTDC_STT_BondsIn 'i'
-///Õ®È¯³ö¿â
+///å€ºåˆ¸å‡ºåº“
 #define SECURITY_FTDC_STT_BondsOut 'j'
-///EFTÉê¹º
+/// EFTç”³è´­
 #define SECURITY_FTDC_STT_PurchaseETF 'k'
-///EFTÊê»Ø
+/// EFTèµå›
 #define SECURITY_FTDC_STT_RedeemETF 'l'
-///¿É×ªÕ®»ØÊÛµÇ¼Ç
+///å¯è½¬å€ºå›å”®ç™»è®°
 #define SECURITY_FTDC_STT_ConvertibleRegister 'm'
 
 typedef char TSecurityFtdcStockTradeTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcHandleTradingAccountAlgoIDTypeÊÇÒ»¸ö×Ê½ğ´¦ÀíËã·¨±àºÅÀàĞÍ
+/// TFtdcHandleTradingAccountAlgoIDTypeæ˜¯ä¸€ä¸ªèµ„é‡‘å¤„ç†ç®—æ³•ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///»ù±¾
+///åŸºæœ¬
 #define SECURITY_FTDC_HTAA_Base '1'
 
 typedef char TSecurityFtdcHandleTradingAccountAlgoIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcStockWthTypeÊÇÒ»¸ö¹ÉÆ±Ê¹ÓÃÁ÷Ë®ºÅÀàĞÍ
+/// TFtdcStockWthTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨ä½¿ç”¨æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcStockWthType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcStockSeqTypeÊÇÒ»¸ö¹ÉÆ±Ê¹ÓÃÁ÷Ë®ºÅÀàĞÍ
+/// TFtdcStockSeqTypeæ˜¯ä¸€ä¸ªè‚¡ç¥¨ä½¿ç”¨æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcStockSeqType[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcWTFSTypeÊÇÒ»¸öÎ¯ÍĞ·½Ê½ÀàĞÍ
+/// TFtdcWTFSTypeæ˜¯ä¸€ä¸ªå§”æ‰˜æ–¹å¼ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcWTFSType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcWTLBTypeÊÇÒ»¸öÎ¯ÍĞÀà±ğÀàĞÍ
+/// TFtdcWTLBTypeæ˜¯ä¸€ä¸ªå§”æ‰˜ç±»åˆ«ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcWTLBType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcWTRQTypeÊÇÒ»¸öÎ¯ÍĞÈÕÆÚÀàĞÍ
+/// TFtdcWTRQTypeæ˜¯ä¸€ä¸ªå§”æ‰˜æ—¥æœŸç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcWTRQType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcINTEGERTypeÊÇÒ»¸öÒ»°ãÕûĞÍÀàĞÍ
+/// TFtdcINTEGERTypeæ˜¯ä¸€ä¸ªä¸€èˆ¬æ•´å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcINTEGERType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcINT3TypeÊÇÒ»¸öÈıÎ»ÊıÕûĞÍÀàĞÍ
+/// TFtdcINT3Typeæ˜¯ä¸€ä¸ªä¸‰ä½æ•°æ•´å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcINT3Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcINT6TypeÊÇÒ»¸öÁùÎ»ÊıÕûĞÍÀàĞÍ
+/// TFtdcINT6Typeæ˜¯ä¸€ä¸ªå…­ä½æ•°æ•´å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcINT6Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcINT12TypeÊÇÒ»¸öÊ®¶şÎ»ÊıÕûĞÍÀàĞÍ
+/// TFtdcINT12Typeæ˜¯ä¸€ä¸ªåäºŒä½æ•°æ•´å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcINT12Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR1TypeÊÇÒ»¸öÒ»×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR1Typeæ˜¯ä¸€ä¸ªä¸€å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR1Type[2];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR2TypeÊÇÒ»¸ö¶ş×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR2Typeæ˜¯ä¸€ä¸ªäºŒå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR2Type[3];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR3TypeÊÇÒ»¸öÈı×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR3Typeæ˜¯ä¸€ä¸ªä¸‰å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR3Type[4];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR4TypeÊÇÒ»¸öËÄ×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR4Typeæ˜¯ä¸€ä¸ªå››å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR4Type[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR5TypeÊÇÒ»¸öÎå×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR5Typeæ˜¯ä¸€ä¸ªäº”å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR5Type[6];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR6TypeÊÇÒ»¸öÁù×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR6Typeæ˜¯ä¸€ä¸ªå…­å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR6Type[7];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR8TypeÊÇÒ»¸ö°Ë×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR8Typeæ˜¯ä¸€ä¸ªå…«å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR8Type[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR10TypeÊÇÒ»¸öÊ®×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR10Typeæ˜¯ä¸€ä¸ªåå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR10Type[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR11TypeÊÇÒ»¸öÊ®Ò»×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR11Typeæ˜¯ä¸€ä¸ªåä¸€å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR11Type[12];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR12TypeÊÇÒ»¸öÊ®¶ş×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR12Typeæ˜¯ä¸€ä¸ªåäºŒå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR12Type[13];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR13TypeÊÇÒ»¸öÊ®Èı×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR13Typeæ˜¯ä¸€ä¸ªåä¸‰å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR13Type[14];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR14TypeÊÇÒ»¸öÊ®ËÄ×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR14Typeæ˜¯ä¸€ä¸ªåå››å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR14Type[15];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR16TypeÊÇÒ»¸öÊ®Áù×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR16Typeæ˜¯ä¸€ä¸ªåå…­å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR16Type[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR19TypeÊÇÒ»¸öÊ®¾Å×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR19Typeæ˜¯ä¸€ä¸ªåä¹å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR19Type[20];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR20TypeÊÇÒ»¸ö¶şÊ®×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR20Typeæ˜¯ä¸€ä¸ªäºŒåå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR20Type[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR21TypeÊÇÒ»¸ö¶şÊ®Ò»×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR21Typeæ˜¯ä¸€ä¸ªäºŒåä¸€å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR21Type[22];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR23TypeÊÇÒ»¸ö¶şÊ®Èı×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR23Typeæ˜¯ä¸€ä¸ªäºŒåä¸‰å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR23Type[24];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR30TypeÊÇÒ»¸öÈıÊ®×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR30Typeæ˜¯ä¸€ä¸ªä¸‰åå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR30Type[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR32TypeÊÇÒ»¸öÈıÊ®¶ş×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR32Typeæ˜¯ä¸€ä¸ªä¸‰åäºŒå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR32Type[33];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR50TypeÊÇÒ»¸öÎåÊ®×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR50Typeæ˜¯ä¸€ä¸ªäº”åå­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR50Type[51];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR64TypeÊÇÒ»¸öÁùÊ®ËÄ×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR64Typeæ˜¯ä¸€ä¸ªå…­åå››å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR64Type[65];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCHAR65TypeÊÇÒ»¸öÁùÊ®Îå×Ö½ÚCHARÀàĞÍ
+/// TFtdcCHAR65Typeæ˜¯ä¸€ä¸ªå…­åäº”å­—èŠ‚CHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCHAR65Type[66];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR4TypeÊÇÒ»¸öËÄ×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR4Typeæ˜¯ä¸€ä¸ªå››å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR4Type[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR6TypeÊÇÒ»¸öÁù×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR6Typeæ˜¯ä¸€ä¸ªå…­å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR6Type[7];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR8TypeÊÇÒ»¸ö°Ë×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR8Typeæ˜¯ä¸€ä¸ªå…«å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR8Type[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR10TypeÊÇÒ»¸öÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR10Typeæ˜¯ä¸€ä¸ªåå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR10Type[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR12TypeÊÇÒ»¸öÊ®¶ş×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR12Typeæ˜¯ä¸€ä¸ªåäºŒå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR12Type[13];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR16TypeÊÇÒ»¸öÊ®Áù×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR16Typeæ˜¯ä¸€ä¸ªåå…­å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR16Type[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR20TypeÊÇÒ»¸ö¶şÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR20Typeæ˜¯ä¸€ä¸ªäºŒåå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR20Type[21];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR30TypeÊÇÒ»¸öÈıÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR30Typeæ˜¯ä¸€ä¸ªä¸‰åå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR30Type[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR50TypeÊÇÒ»¸öÎåÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR50Typeæ˜¯ä¸€ä¸ªäº”åå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR50Type[51];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR60TypeÊÇÒ»¸öÁùÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR60Typeæ˜¯ä¸€ä¸ªå…­åå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR60Type[61];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR65TypeÊÇÒ»¸öÁùÊ®Îå×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR65Typeæ˜¯ä¸€ä¸ªå…­åäº”å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR65Type[66];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR80TypeÊÇÒ»¸ö°ËÊ®×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR80Typeæ˜¯ä¸€ä¸ªå…«åå­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR80Type[81];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR84TypeÊÇÒ»¸ö°ËÊ®ËÄ×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR84Typeæ˜¯ä¸€ä¸ªå…«åå››å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR84Type[85];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR255TypeÊÇÒ»¸ö¶şÎåÎå×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR255Typeæ˜¯ä¸€ä¸ªäºŒäº”äº”å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR255Type[256];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcVCHAR1024TypeÊÇÒ»¸öÒ»Áã¶şËÄ×Ö½ÚVCHARÀàĞÍ
+/// TFtdcVCHAR1024Typeæ˜¯ä¸€ä¸ªä¸€é›¶äºŒå››å­—èŠ‚VCHARç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcVCHAR1024Type[1025];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL8P3TypeÊÇÒ»¸ö°ËµãÈıÊµĞÍÀàĞÍ
+/// TFtdcREAL8P3Typeæ˜¯ä¸€ä¸ªå…«ç‚¹ä¸‰å®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL8P3Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL9P3TypeÊÇÒ»¸ö¾ÅµãÈıÊµĞÍÀàĞÍ
+/// TFtdcREAL9P3Typeæ˜¯ä¸€ä¸ªä¹ç‚¹ä¸‰å®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL9P3Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL9P6TypeÊÇÒ»¸ö¾ÅµãÁùÊµĞÍÀàĞÍ
+/// TFtdcREAL9P6Typeæ˜¯ä¸€ä¸ªä¹ç‚¹å…­å®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL9P6Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL10P4TypeÊÇÒ»¸öÊ®µãËÄÊµĞÍÀàĞÍ
+/// TFtdcREAL10P4Typeæ˜¯ä¸€ä¸ªåç‚¹å››å®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL10P4Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL16P2TypeÊÇÒ»¸öÊ®Áùµã¶şÊµĞÍÀàĞÍ
+/// TFtdcREAL16P2Typeæ˜¯ä¸€ä¸ªåå…­ç‚¹äºŒå®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL16P2Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL16P8TypeÊÇÒ»¸öÊ®Áùµã°ËÊµĞÍÀàĞÍ
+/// TFtdcREAL16P8Typeæ˜¯ä¸€ä¸ªåå…­ç‚¹å…«å®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL16P8Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcREAL22P2TypeÊÇÒ»¸ö¶şÊ®¶şµã¶şÊµĞÍÀàĞÍ
+/// TFtdcREAL22P2Typeæ˜¯ä¸€ä¸ªäºŒåäºŒç‚¹äºŒå®å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcREAL22P2Type;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCommandNoTypeÊÇÒ»¸öDBÃüÁîĞòºÅÀàĞÍ
+/// TFtdcCommandNoTypeæ˜¯ä¸€ä¸ªDBå‘½ä»¤åºå·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcCommandNoType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCommandTypeTypeÊÇÒ»¸öDBÃüÁîÀàĞÍÀàĞÍ
+/// TFtdcCommandTypeTypeæ˜¯ä¸€ä¸ªDBå‘½ä»¤ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCommandTypeType[65];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSettlementGroupIDTypeÊÇÒ»¸ö½áËã×é´úÂëÀàĞÍ
+/// TFtdcSettlementGroupIDTypeæ˜¯ä¸€ä¸ªç»“ç®—ç»„ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcSettlementGroupIDType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFieldNameTypeÊÇÒ»¸ö×Ö¶ÎÃûÀàĞÍ
+/// TFtdcFieldNameTypeæ˜¯ä¸€ä¸ªå­—æ®µåç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcFieldNameType[2049];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFieldContentTypeÊÇÒ»¸ö×Ö¶ÎÄÚÈİÀàĞÍ
+/// TFtdcFieldContentTypeæ˜¯ä¸€ä¸ªå­—æ®µå†…å®¹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcFieldContentType[2049];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankIDTypeÊÇÒ»¸öÒøĞĞ´úÂëÀàĞÍ
+/// TFtdcBankIDTypeæ˜¯ä¸€ä¸ªé“¶è¡Œä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankIDType[4];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankNameTypeÊÇÒ»¸öÒøĞĞÃû³ÆÀàĞÍ
+/// TFtdcBankNameTypeæ˜¯ä¸€ä¸ªé“¶è¡Œåç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankNameType[101];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankBrchIDTypeÊÇÒ»¸öÒøĞĞ·ÖÖĞĞÄ´úÂëÀàĞÍ
+/// TFtdcBankBrchIDTypeæ˜¯ä¸€ä¸ªé“¶è¡Œåˆ†ä¸­å¿ƒä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankBrchIDType[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLiberSerialTypeÊÇÒ»¸öLiberÏµÍ³Á÷Ë®ºÅÀàĞÍ
+/// TFtdcLiberSerialTypeæ˜¯ä¸€ä¸ªLiberç³»ç»Ÿæµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcLiberSerialType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRoleIDTypeÊÇÒ»¸ö½ÇÉ«±àºÅÀàĞÍ
+/// TFtdcRoleIDTypeæ˜¯ä¸€ä¸ªè§’è‰²ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcRoleIDType[11];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRoleNameTypeÊÇÒ»¸ö½ÇÉ«Ãû³ÆÀàĞÍ
+/// TFtdcRoleNameTypeæ˜¯ä¸€ä¸ªè§’è‰²åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcRoleNameType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDescriptionTypeÊÇÒ»¸öÃèÊöÀàĞÍ
+/// TFtdcDescriptionTypeæ˜¯ä¸€ä¸ªæè¿°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcDescriptionType[401];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFunctionIDTypeÊÇÒ»¸ö¹¦ÄÜ´úÂëÀàĞÍ
+/// TFtdcFunctionIDTypeæ˜¯ä¸€ä¸ªåŠŸèƒ½ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcFunctionIDType[25];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBillNoTypeÊÇÒ»¸öÆ±¾İºÅÀàĞÍ
+/// TFtdcBillNoTypeæ˜¯ä¸€ä¸ªç¥¨æ®å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBillNoType[15];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundIOTypeTypeÊÇÒ»¸ö³öÈë½ğÀàĞÍÀàĞÍ
+/// TFtdcFundIOTypeTypeæ˜¯ä¸€ä¸ªå‡ºå…¥é‡‘ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///³öÈë½ğ
+///å‡ºå…¥é‡‘
 #define SECURITY_FTDC_FIOT_FundIO '1'
-///ÒøÆÚ×ªÕÊ
+///é“¶æœŸè½¬å¸
 #define SECURITY_FTDC_FIOT_Transfer '2'
 
 typedef char TSecurityFtdcFundIOTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundTypeTypeÊÇÒ»¸ö×Ê½ğÀàĞÍÀàĞÍ
+/// TFtdcFundTypeTypeæ˜¯ä¸€ä¸ªèµ„é‡‘ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒøĞĞ´æ¿î
+///é“¶è¡Œå­˜æ¬¾
 #define SECURITY_FTDC_FT_Deposite '1'
-///·ÖÏî×Ê½ğ
+///åˆ†é¡¹èµ„é‡‘
 #define SECURITY_FTDC_FT_ItemFund '2'
-///¹«Ë¾µ÷Õû
+///å…¬å¸è°ƒæ•´
 #define SECURITY_FTDC_FT_Company '3'
 
 typedef char TSecurityFtdcFundTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundDirectionTypeÊÇÒ»¸ö³öÈë½ğ·½ÏòÀàĞÍ
+/// TFtdcFundDirectionTypeæ˜¯ä¸€ä¸ªå‡ºå…¥é‡‘æ–¹å‘ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Èë½ğ
+///å…¥é‡‘
 #define SECURITY_FTDC_FD_In '1'
-///³ö½ğ
+///å‡ºé‡‘
 #define SECURITY_FTDC_FD_Out '2'
 
 typedef char TSecurityFtdcFundDirectionType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankFlagTypeÊÇÒ»¸öÒøĞĞÍ³Ò»±êÊ¶ÀàĞÍÀàĞÍ
+/// TFtdcBankFlagTypeæ˜¯ä¸€ä¸ªé“¶è¡Œç»Ÿä¸€æ ‡è¯†ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¹¤ÉÌÒøĞĞ
+///å·¥å•†é“¶è¡Œ
 #define SECURITY_FTDC_BF_ICBC '1'
-///Å©ÒµÒøĞĞ
+///å†œä¸šé“¶è¡Œ
 #define SECURITY_FTDC_BF_ABC '2'
-///ÖĞ¹úÒøĞĞ
+///ä¸­å›½é“¶è¡Œ
 #define SECURITY_FTDC_BF_BC '3'
-///½¨ÉèÒøĞĞ
+///å»ºè®¾é“¶è¡Œ
 #define SECURITY_FTDC_BF_CBC '4'
-///½»Í¨ÒøĞĞ
+///äº¤é€šé“¶è¡Œ
 #define SECURITY_FTDC_BF_BOC '5'
-///ÆäËûÒøĞĞ
+///å…¶ä»–é“¶è¡Œ
 #define SECURITY_FTDC_BF_Other 'Z'
 
 typedef char TSecurityFtdcBankFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOperationMemoTypeÊÇÒ»¸ö²Ù×÷ÕªÒªÀàĞÍ
+/// TFtdcOperationMemoTypeæ˜¯ä¸€ä¸ªæ“ä½œæ‘˜è¦ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOperationMemoType[1025];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundStatusTypeÊÇÒ»¸ö×Ê½ğ×´Ì¬ÀàĞÍ
+/// TFtdcFundStatusTypeæ˜¯ä¸€ä¸ªèµ„é‡‘çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒÑÂ¼Èë
+///å·²å½•å…¥
 #define SECURITY_FTDC_FS_Record '1'
-///ÒÑ¸´ºË
+///å·²å¤æ ¸
 #define SECURITY_FTDC_FS_Check '2'
-///ÒÑ³åÏú
+///å·²å†²é”€
 #define SECURITY_FTDC_FS_Charge '3'
 
 typedef char TSecurityFtdcFundStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundProjectIDTypeÊÇÒ»¸ö×Ê½ğÏîÄ¿±àºÅÀàĞÍ
+/// TFtdcFundProjectIDTypeæ˜¯ä¸€ä¸ªèµ„é‡‘é¡¹ç›®ç¼–å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcFundProjectIDType[5];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOperatorIDTypeÊÇÒ»¸ö²Ù×÷Ô±´úÂëÀàĞÍ
+/// TFtdcOperatorIDTypeæ˜¯ä¸€ä¸ªæ“ä½œå‘˜ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOperatorIDType[65];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCounterIDTypeÊÇÒ»¸ö¼ÆÊıÆ÷´úÂëÀàĞÍ
+/// TFtdcCounterIDTypeæ˜¯ä¸€ä¸ªè®¡æ•°å™¨ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcCounterIDType[33];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFunctionNameTypeÊÇÒ»¸ö¹¦ÄÜÃû³ÆÀàĞÍ
+/// TFtdcFunctionNameTypeæ˜¯ä¸€ä¸ªåŠŸèƒ½åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcFunctionNameType[65];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeCodeTypeÊÇÒ»¸ö½»Ò×´úÂëÀàĞÍ
+/// TFtdcTradeCodeTypeæ˜¯ä¸€ä¸ªäº¤æ˜“ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTradeCodeType[7];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerBranchIDTypeÊÇÒ»¸ö¾­¼Í¹«Ë¾·ÖÖ§»ú¹¹´úÂëÀàĞÍ
+/// TFtdcBrokerBranchIDTypeæ˜¯ä¸€ä¸ªç»çºªå…¬å¸åˆ†æ”¯æœºæ„ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBrokerBranchIDType[31];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeDateTypeÊÇÒ»¸ö½»Ò×ÈÕÆÚÀàĞÍ
+/// TFtdcTradeDateTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ—¥æœŸç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTradeDateType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeTimeTypeÊÇÒ»¸ö½»Ò×Ê±¼äÀàĞÍ
+/// TFtdcTradeTimeTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ—¶é—´ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTradeTimeType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankSerialTypeÊÇÒ»¸öÒøĞĞÁ÷Ë®ºÅÀàĞÍ
+/// TFtdcBankSerialTypeæ˜¯ä¸€ä¸ªé“¶è¡Œæµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankSerialType[13];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSerialTypeÊÇÒ»¸öÁ÷Ë®ºÅÀàĞÍ
+/// TFtdcSerialTypeæ˜¯ä¸€ä¸ªæµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcSerialType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLastFragmentTypeÊÇÒ»¸ö×îºó·ÖÆ¬±êÖ¾ÀàĞÍ
+/// TFtdcLastFragmentTypeæ˜¯ä¸€ä¸ªæœ€ååˆ†ç‰‡æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÊÇ×îºó·ÖÆ¬
+///æ˜¯æœ€ååˆ†ç‰‡
 #define SECURITY_FTDC_LF_Yes '0'
-///²»ÊÇ×îºó·ÖÆ¬
+///ä¸æ˜¯æœ€ååˆ†ç‰‡
 #define SECURITY_FTDC_LF_No '1'
 
 typedef char TSecurityFtdcLastFragmentType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcIndividualNameTypeÊÇÒ»¸ö¸öÈËĞÕÃûÀàĞÍ
+/// TFtdcIndividualNameTypeæ˜¯ä¸€ä¸ªä¸ªäººå§“åç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcIndividualNameType[51];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCustTypeTypeÊÇÒ»¸ö¿Í»§ÀàĞÍÀàĞÍ
+/// TFtdcCustTypeTypeæ˜¯ä¸€ä¸ªå®¢æˆ·ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///×ÔÈ»ÈË
+///è‡ªç„¶äºº
 #define SECURITY_FTDC_CUSTT_Person '0'
-///»ú¹¹»§
+///æœºæ„æˆ·
 #define SECURITY_FTDC_CUSTT_Institution '1'
 
 typedef char TSecurityFtdcCustTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankAccountTypeÊÇÒ»¸öÒøĞĞÕË»§ÀàĞÍ
+/// TFtdcBankAccountTypeæ˜¯ä¸€ä¸ªé“¶è¡Œè´¦æˆ·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankAccountType[41];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcYesNoIndicatorTypeÊÇÒ»¸öÊÇ»ò·ñ±êÊ¶ÀàĞÍ
+/// TFtdcYesNoIndicatorTypeæ˜¯ä¸€ä¸ªæ˜¯æˆ–å¦æ ‡è¯†ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÊÇ
+///æ˜¯
 #define SECURITY_FTDC_YNI_Yes '0'
-///·ñ
+///å¦
 #define SECURITY_FTDC_YNI_No '1'
 
 typedef char TSecurityFtdcYesNoIndicatorType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeAmountTypeÊÇÒ»¸ö½»Ò×½ğ¶î£¨Ôª£©ÀàĞÍ
+/// TFtdcTradeAmountTypeæ˜¯ä¸€ä¸ªäº¤æ˜“é‡‘é¢ï¼ˆå…ƒï¼‰ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcTradeAmountType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCustFeeTypeÊÇÒ»¸öÓ¦ÊÕ¿Í»§·ÑÓÃ£¨Ôª£©ÀàĞÍ
+/// TFtdcCustFeeTypeæ˜¯ä¸€ä¸ªåº”æ”¶å®¢æˆ·è´¹ç”¨ï¼ˆå…ƒï¼‰ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcCustFeeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBrokerFeeTypeÊÇÒ»¸öÓ¦ÊÕ¾­¼Í¹«Ë¾·ÑÓÃ£¨Ôª£©ÀàĞÍ
+/// TFtdcBrokerFeeTypeæ˜¯ä¸€ä¸ªåº”æ”¶ç»çºªå…¬å¸è´¹ç”¨ï¼ˆå…ƒï¼‰ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef double TSecurityFtdcBrokerFeeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFeePayFlagTypeÊÇÒ»¸ö·ÑÓÃÖ§¸¶±êÖ¾ÀàĞÍ
+/// TFtdcFeePayFlagTypeæ˜¯ä¸€ä¸ªè´¹ç”¨æ”¯ä»˜æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÓÉÊÜÒæ·½Ö§¸¶·ÑÓÃ
+///ç”±å—ç›Šæ–¹æ”¯ä»˜è´¹ç”¨
 #define SECURITY_FTDC_FPF_BEN '0'
-///ÓÉ·¢ËÍ·½Ö§¸¶·ÑÓÃ
+///ç”±å‘é€æ–¹æ”¯ä»˜è´¹ç”¨
 #define SECURITY_FTDC_FPF_OUR '1'
-///ÓÉ·¢ËÍ·½Ö§¸¶·¢ÆğµÄ·ÑÓÃ£¬ÊÜÒæ·½Ö§¸¶½ÓÊÜµÄ·ÑÓÃ
+///ç”±å‘é€æ–¹æ”¯ä»˜å‘èµ·çš„è´¹ç”¨ï¼Œå—ç›Šæ–¹æ”¯ä»˜æ¥å—çš„è´¹ç”¨
 #define SECURITY_FTDC_FPF_SHA '2'
 
 typedef char TSecurityFtdcFeePayFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAddInfoTypeÊÇÒ»¸ö¸½¼ÓĞÅÏ¢ÀàĞÍ
+/// TFtdcAddInfoTypeæ˜¯ä¸€ä¸ªé™„åŠ ä¿¡æ¯ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcAddInfoType[129];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDigestTypeÊÇÒ»¸öÕªÒªÀàĞÍ
+/// TFtdcDigestTypeæ˜¯ä¸€ä¸ªæ‘˜è¦ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcDigestType[36];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankAccTypeTypeÊÇÒ»¸öÒøĞĞÕÊºÅÀàĞÍÀàĞÍ
+/// TFtdcBankAccTypeTypeæ˜¯ä¸€ä¸ªé“¶è¡Œå¸å·ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÒøĞĞ´æÕÛ
+///é“¶è¡Œå­˜æŠ˜
 #define SECURITY_FTDC_BAT_BankBook '1'
-///´¢Ğî¿¨
+///å‚¨è“„å¡
 #define SECURITY_FTDC_BAT_SavingCard '2'
-///ĞÅÓÃ¿¨
+///ä¿¡ç”¨å¡
 #define SECURITY_FTDC_BAT_CreditCard '3'
 
 typedef char TSecurityFtdcBankAccTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcDeviceIDTypeÊÇÒ»¸öÇşµÀ±êÖ¾ÀàĞÍ
+/// TFtdcDeviceIDTypeæ˜¯ä¸€ä¸ªæ¸ é“æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcDeviceIDType[3];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPwdFlagTypeÊÇÒ»¸öÃÜÂëºË¶Ô±êÖ¾ÀàĞÍ
+/// TFtdcPwdFlagTypeæ˜¯ä¸€ä¸ªå¯†ç æ ¸å¯¹æ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///²»ºË¶Ô
+///ä¸æ ¸å¯¹
 #define SECURITY_FTDC_BPWDF_NoCheck '0'
-///Ã÷ÎÄºË¶Ô
+///æ˜æ–‡æ ¸å¯¹
 #define SECURITY_FTDC_BPWDF_BlankCheck '1'
-///ÃÜÎÄºË¶Ô
+///å¯†æ–‡æ ¸å¯¹
 #define SECURITY_FTDC_BPWDF_EncryptCheck '2'
 
 typedef char TSecurityFtdcPwdFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcBankCodingForBrokerTypeÊÇÒ»¸öÒøĞĞ¶Ô¾­¼Í¹«Ë¾µÄ±àÂëÀàĞÍ
+/// TFtdcBankCodingForBrokerTypeæ˜¯ä¸€ä¸ªé“¶è¡Œå¯¹ç»çºªå…¬å¸çš„ç¼–ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcBankCodingForBrokerType[33];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOperNoTypeÊÇÒ»¸ö½»Ò×¹ñÔ±ÀàĞÍ
+/// TFtdcOperNoTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æŸœå‘˜ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOperNoType[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTIDTypeÊÇÒ»¸ö½»Ò×IDÀàĞÍ
+/// TFtdcTIDTypeæ˜¯ä¸€ä¸ªäº¤æ˜“IDç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcTIDType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTransferStatusTypeÊÇÒ»¸ö×ªÕË½»Ò××´Ì¬ÀàĞÍ
+/// TFtdcTransferStatusTypeæ˜¯ä¸€ä¸ªè½¬è´¦äº¤æ˜“çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Õı³£
+///æ­£å¸¸
 #define SECURITY_FTDC_TRFS_Normal '0'
-///±»³åÕı
+///è¢«å†²æ­£
 #define SECURITY_FTDC_TRFS_Repealed '1'
 
 typedef char TSecurityFtdcTransferStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcPlateSerialTypeÊÇÒ»¸öÆ½Ì¨Á÷Ë®ºÅÀàĞÍ
+/// TFtdcPlateSerialTypeæ˜¯ä¸€ä¸ªå¹³å°æµæ°´å·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcPlateSerialType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcAvailabilityFlagTypeÊÇÒ»¸öÓĞĞ§±êÖ¾ÀàĞÍ
+/// TFtdcAvailabilityFlagTypeæ˜¯ä¸€ä¸ªæœ‰æ•ˆæ ‡å¿—ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Î´È·ÈÏ
+///æœªç¡®è®¤
 #define SECURITY_FTDC_AVAF_Invalid '0'
-///ÓĞĞ§
+///æœ‰æ•ˆ
 #define SECURITY_FTDC_AVAF_Valid '1'
-///³åÕı
+///å†²æ­£
 #define SECURITY_FTDC_AVAF_Repeal '2'
 
 typedef char TSecurityFtdcAvailabilityFlagType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcOperatorCodeTypeÊÇÒ»¸ö²Ù×÷Ô±ÀàĞÍ
+/// TFtdcOperatorCodeTypeæ˜¯ä¸€ä¸ªæ“ä½œå‘˜ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcOperatorCodeType[17];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcRepayStockAlgoTypeÊÇÒ»¸öÂòÈ¯»¹È¯Ëã·¨ÀàĞÍ
+/// TFtdcRepayStockAlgoTypeæ˜¯ä¸€ä¸ªä¹°åˆ¸è¿˜åˆ¸ç®—æ³•ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ä¬ÈÏËã·¨
+///é»˜è®¤ç®—æ³•
 #define SECURITY_FTDC_RSA_Original '0'
-///°´»¹È¯±ÈÀı¼ÆËã
+///æŒ‰è¿˜åˆ¸æ¯”ä¾‹è®¡ç®—
 #define SECURITY_FTDC_RSA_Ratio '1'
-///Min[1,2]
+/// Min[1,2]
 #define SECURITY_FTDC_RSA_Min '2'
 
 typedef char TSecurityFtdcRepayStockAlgoType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeSpanTypeÊÇÒ»¸ö½»Ò×Ê±¼ä¶ÎÀàĞÍÀàĞÍ
+/// TFtdcTradeSpanTypeæ˜¯ä¸€ä¸ªäº¤æ˜“æ—¶é—´æ®µç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÕÍ¨ÒµÎñ
+///æ™®é€šä¸šåŠ¡
 #define SECURITY_FTDC_TS_Common '1'
-///¸ö¹ÉÆÚÈ¨
+///ä¸ªè‚¡æœŸæƒ
 #define SECURITY_FTDC_TS_Options '2'
 
 typedef char TSecurityFtdcTradeSpanType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSettleSystemTypeTypeÊÇÒ»¸öËùÊô½áËãÏµÍ³ÀàĞÍÀàĞÍ
+/// TFtdcSettleSystemTypeTypeæ˜¯ä¸€ä¸ªæ‰€å±ç»“ç®—ç³»ç»Ÿç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///¶¥µãÏµÍ³
+///é¡¶ç‚¹ç³»ç»Ÿ
 #define SECURITY_FTDC_SST_Aboss '1'
-///ºãÉúÏµÍ³
+///æ’ç”Ÿç³»ç»Ÿ
 #define SECURITY_FTDC_SST_HS '2'
 
 typedef char TSecurityFtdcSettleSystemTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcLogLevelTypeÊÇÒ»¸öÈÕÖ¾¼¶±ğÀàĞÍ
+/// TFtdcLogLevelTypeæ˜¯ä¸€ä¸ªæ—¥å¿—çº§åˆ«ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcLogLevelType[33];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcProcessNameTypeÊÇÒ»¸ö´æ´¢¹ı³ÌÃû³ÆÀàĞÍ
+/// TFtdcProcessNameTypeæ˜¯ä¸€ä¸ªå­˜å‚¨è¿‡ç¨‹åç§°ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcProcessNameType[257];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTemplateIDTypeÊÇÒ»¸öÄ£°å´úÂëÀàĞÍ
+/// TFtdcTemplateIDTypeæ˜¯ä¸€ä¸ªæ¨¡æ¿ä»£ç ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef char TSecurityFtdcTemplateIDType[9];
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcTradeIndexTypeÊÇÒ»¸ö³É½»ĞòºÅÀàĞÍ
+/// TFtdcTradeIndexTypeæ˜¯ä¸€ä¸ªæˆäº¤åºå·ç±»å‹
 /////////////////////////////////////////////////////////////////////////
 typedef int TSecurityFtdcTradeIndexType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcSplitMergeStatusTypeÊÇÒ»¸ö»ù½ğµ±Ìì²ğ·ÖºÏ²¢×´Ì¬ÀàĞÍ
+/// TFtdcSplitMergeStatusTypeæ˜¯ä¸€ä¸ªåŸºé‡‘å½“å¤©æ‹†åˆ†åˆå¹¶çŠ¶æ€ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///±íÊ¾ÔÊĞí²ğ·ÖºÍºÏ²¢
+///è¡¨ç¤ºå…è®¸æ‹†åˆ†å’Œåˆå¹¶
 #define SECURITY_FTDC_SMS_Allow '0'
-///ÔÊĞí²ğ·Ö¡¢²»ÔÊĞíºÏ²¢
+///å…è®¸æ‹†åˆ†ã€ä¸å…è®¸åˆå¹¶
 #define SECURITY_FTDC_SMS_OnlySplit '1'
-///²»ÔÊĞí²ğ·Ö¡¢ÔÊĞíºÏ²¢
+///ä¸å…è®¸æ‹†åˆ†ã€å…è®¸åˆå¹¶
 #define SECURITY_FTDC_SMS_OnlyMerge '2'
-///²»ÔÊĞí²ğ·ÖºÍºÏ²¢
+///ä¸å…è®¸æ‹†åˆ†å’Œåˆå¹¶
 #define SECURITY_FTDC_SMS_Forbidden '3'
 
 typedef char TSecurityFtdcSplitMergeStatusType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcFundInterTransferTypeTypeÊÇÒ»¸ö×Ê½ğÄÚ×ªÀàĞÍÀàĞÍ
+/// TFtdcFundInterTransferTypeTypeæ˜¯ä¸€ä¸ªèµ„é‡‘å†…è½¬ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///×ªÈë
+///è½¬å…¥
 #define SECURITY_FTDC_FITT_TransferIn '0'
-///×ª³ö
+///è½¬å‡º
 #define SECURITY_FTDC_FITT_TransferOut '1'
 
 typedef char TSecurityFtdcFundInterTransferTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInstrumentTypeTypeÊÇÒ»¸öºÏÔ¼ÀàĞÍÀàĞÍ
+/// TFtdcInstrumentTypeTypeæ˜¯ä¸€ä¸ªåˆçº¦ç±»å‹ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÆÕÍ¨
+///æ™®é€š
 #define SECURITY_FTDC_IT_Normal '0'
-///¿´ÕÇÆÚÈ¨
+///çœ‹æ¶¨æœŸæƒ
 #define SECURITY_FTDC_IT_CallOptions '1'
-///¿´µøÆÚÈ¨
+///çœ‹è·ŒæœŸæƒ
 #define SECURITY_FTDC_IT_PutOptions '2'
 
 typedef char TSecurityFtdcInstrumentTypeType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcInvestorLevelTypeÊÇÒ»¸öÍ¶×ÊÕßÆÚÈ¨½»Ò×µÈ¼¶ÀàĞÍ
+/// TFtdcInvestorLevelTypeæ˜¯ä¸€ä¸ªæŠ•èµ„è€…æœŸæƒäº¤æ˜“ç­‰çº§ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///Ò»¼¶
+///ä¸€çº§
 #define SECURITY_FTDC_IL_Level_1 '0'
-///¶ş¼¶
+///äºŒçº§
 #define SECURITY_FTDC_IL_Level_2 '1'
-///Èı¼¶
+///ä¸‰çº§
 #define SECURITY_FTDC_IL_Level_3 '2'
 
 typedef char TSecurityFtdcInvestorLevelType;
 
 /////////////////////////////////////////////////////////////////////////
-///TFtdcCloseDirectionTypeÊÇÒ»¸öÆ½²Ö·½ÏòÀàĞÍ
+/// TFtdcCloseDirectionTypeæ˜¯ä¸€ä¸ªå¹³ä»“æ–¹å‘ç±»å‹
 /////////////////////////////////////////////////////////////////////////
-///ÂòÆ½²Ö
+///ä¹°å¹³ä»“
 #define SECURITY_FTDC_CD_CloseBuy '!'
-///ÂôÆ½²Ö
+///å–å¹³ä»“
 #define SECURITY_FTDC_CD_CloseSell '@'
-///±¸¶ÒÆ½²Ö
+///å¤‡å…‘å¹³ä»“
 #define SECURITY_FTDC_CD_CloseCover '#'
 
 typedef char TSecurityFtdcCloseDirectionType;

@@ -1,26 +1,22 @@
 /////////////////////////////////////////////////////////////////////////
 
-///@system 
+///@system
 
 ///@company
 
 ///@file ThostFtdcMdApi.h
 
-///@brief ¶¨ÒåÁË¿Í»§¶Ë½Ó¿Ú
+///@brief å®šä¹‰äº†å®¢æˆ·ç«¯æ¥å£
 
-///@history 
+///@history
 
-///20060106	
+/// 20060106
 
 /////////////////////////////////////////////////////////////////////////
-
-
 
 #if !defined(THOST_FTDCMDAPI_H)
 
 #define THOST_FTDCMDAPI_H
-
-
 
 #if _MSC_VER > 1000
 
@@ -28,11 +24,7 @@
 
 #endif // _MSC_VER > 1000
 
-
-
 #include "SgitFtdcUserApiStruct.h"
-
-
 
 #if defined(ISLIB) && defined(WIN32)
 
@@ -48,287 +40,244 @@
 
 #else
 
-#define FS_MD_API_EXPORT 
+#define FS_MD_API_EXPORT
 
 #endif
 
-namespace fstech{
+namespace fstech {
 
 class CThostFtdcMdSpi
 
 {
 
 public:
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+  virtual void OnFrontConnected(){};
 
-	virtual void OnFrontConnected(){};
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼ŒAPIä¼šè‡ªåŠ¨é‡æ–°è¿æ¥ï¼Œå®¢æˆ·ç«¯å¯ä¸åšå¤„ç†ã€‚
 
-	
+  ///@param nReason é”™è¯¯åŸå› 
 
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØĞÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
 
-	///@param nReason ´íÎóÔ­Òò
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
 
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
+  ///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
 
-	///        0x1002 ÍøÂçĞ´Ê§°Ü
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
 
-	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
 
-	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
+  virtual void OnFrontDisconnected(int nReason){};
 
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
+  ///å¿ƒè·³è¶…æ—¶è­¦å‘Šã€‚å½“é•¿æ—¶é—´æœªæ”¶åˆ°æŠ¥æ–‡æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
 
-	virtual void OnFrontDisconnected(int nReason){};
+  ///@param nTimeLapse è·ç¦»ä¸Šæ¬¡æ¥æ”¶æŠ¥æ–‡çš„æ—¶é—´
 
-		
+  virtual void OnHeartBeatWarning(int nTimeLapse){};
 
-	///ĞÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+  ///ç™»å½•è¯·æ±‚å“åº”
 
-	///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
+  virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
+                              CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast){};
 
-	virtual void OnHeartBeatWarning(int nTimeLapse){};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
 
-	
+  virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout,
+                               CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast){};
 
+  ///é”™è¯¯åº”ç­”
 
+  virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast){};
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
+  ///è®¢é˜…è¡Œæƒ…åº”ç­”
 
-	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  virtual void
+  OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument,
+                     CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                     bool bIsLast){};
 
+  ///å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”
 
+  virtual void
+  OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument,
+                       CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast){};
 
-	///µÇ³öÇëÇóÏìÓ¦
+  ///è®¢é˜…è¯¢ä»·åº”ç­”
 
-	virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  virtual void
+  OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument,
+                      CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                      bool bIsLast){};
 
+  ///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
 
+  virtual void
+  OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument,
+                        CThostFtdcRspInfoField *pRspInfo, int nRequestID,
+                        bool bIsLast){};
 
-	///´íÎóÓ¦´ğ
+  ///æ·±åº¦è¡Œæƒ…é€šçŸ¥
 
-	virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  virtual void
+  OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData){};
 
+  ///è¯¢ä»·é€šçŸ¥
 
+  virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp){};
 
-	///¶©ÔÄĞĞÇéÓ¦´ğ
+  ///é€’å»¶äº¤å‰²è¡Œæƒ…
 
-	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
-
-
-
-	///È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ
-
-	virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
-
-
-
-	///¶©ÔÄÑ¯¼ÛÓ¦´ğ
-
-	virtual void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
-
-
-
-	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
-
-	virtual void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
-
-
-
-	///Éî¶ÈĞĞÇéÍ¨Öª
-
-	virtual void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {};
-
-
-
-	///Ñ¯¼ÛÍ¨Öª
-
-	virtual void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) {};
-
-
-
-	///µİÑÓ½»¸îĞĞÇé
-
-	virtual void OnRtnDeferDeliveryQuot(CThostDeferDeliveryQuot *pQuot){};
-
-
-
+  virtual void OnRtnDeferDeliveryQuot(CThostDeferDeliveryQuot *pQuot){};
 };
-
-
 
 class FS_MD_API_EXPORT CThostFtdcMdApi
 
 {
 
 public:
+  ///åˆ›å»ºMdApi
 
-	///´´½¨MdApi
+  ///@param pszFlowPath å­˜è´®è®¢é˜…ä¿¡æ¯æ–‡ä»¶çš„ç›®å½•ï¼Œé»˜è®¤ä¸ºå½“å‰ç›®å½•
 
-	///@param pszFlowPath ´æÖü¶©ÔÄĞÅÏ¢ÎÄ¼şµÄÄ¿Â¼£¬Ä¬ÈÏÎªµ±Ç°Ä¿Â¼
+  ///@return åˆ›å»ºå‡ºçš„UserApi
 
-	///@return ´´½¨³öµÄUserApi
+  /// modify for udp marketdata
 
-	///modify for udp marketdata
+  static CThostFtdcMdApi *CreateFtdcMdApi(const char *pszFlowPath = "",
+                                          const bool bIsUsingUdp = false,
+                                          const bool bIsMulticast = false);
 
-	static CThostFtdcMdApi *CreateFtdcMdApi(const char *pszFlowPath = "", const bool bIsUsingUdp=false, const bool bIsMulticast=false);
+  ///è·å–APIçš„ç‰ˆæœ¬ä¿¡æ¯
 
-	
+  ///@retrun è·å–åˆ°çš„ç‰ˆæœ¬å·
 
-	///»ñÈ¡APIµÄ°æ±¾ĞÅÏ¢
+  static const char *GetApiVersion();
 
-	///@retrun »ñÈ¡µ½µÄ°æ±¾ºÅ
+  ///åˆ é™¤æ¥å£å¯¹è±¡æœ¬èº«
 
-	static const char *GetApiVersion();
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æ¥å£å¯¹è±¡
 
-	
+  virtual void Release() = 0;
 
-	///É¾³ı½Ó¿Ú¶ÔÏó±¾Éí
+  ///åˆå§‹åŒ–
 
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊıÉ¾³ı½Ó¿Ú¶ÔÏó
+  ///@remark åˆå§‹åŒ–è¿è¡Œç¯å¢ƒ,åªæœ‰è°ƒç”¨å,æ¥å£æ‰å¼€å§‹å·¥ä½œ
 
-	virtual void Release() = 0;
+  virtual void Init() = 0;
 
-	
+  ///ç­‰å¾…æ¥å£çº¿ç¨‹ç»“æŸè¿è¡Œ
 
-	///³õÊ¼»¯
+  ///@return çº¿ç¨‹é€€å‡ºä»£ç 
 
-	///@remark ³õÊ¼»¯ÔËĞĞ»·¾³,Ö»ÓĞµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
+  virtual int Join() = 0;
 
-	virtual void Init() = 0;
+  ///è·å–å½“å‰äº¤æ˜“æ—¥
 
-	
+  ///@retrun è·å–åˆ°çš„äº¤æ˜“æ—¥
 
-	///µÈ´ı½Ó¿ÚÏß³Ì½áÊøÔËĞĞ
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸå,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
 
-	///@return Ïß³ÌÍË³ö´úÂë
+  virtual const char *GetTradingDay() = 0;
 
-	virtual int Join() = 0;
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
 
-	
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
 
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
 
-	///@retrun »ñÈ¡µ½µÄ½»Ò×ÈÕ
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
 
-	///@remark Ö»ÓĞµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕıÈ·µÄ½»Ò×ÈÕ
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
 
-	virtual const char *GetTradingDay() = 0;
+  ///æ³¨å†Œåå­—æœåŠ¡å™¨ç½‘ç»œåœ°å€
 
-	
+  ///@param pszNsAddressï¼šåå­—æœåŠ¡å™¨ç½‘ç»œåœ°å€ã€‚
 
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:12001â€ã€‚
 
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€12001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
 
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
+  ///@remark RegisterNameServerä¼˜å…ˆäºRegisterFront
 
-	///@remark ¡°tcp¡±´ú±í´«ÊäĞ­Òé£¬¡°127.0.0.1¡±´ú±í·şÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·şÎñÆ÷¶Ë¿ÚºÅ¡£
+  virtual void RegisterNameServer(char *pszNsAddress) = 0;
 
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
+  ///æ³¨å†Œåå­—æœåŠ¡å™¨ç”¨æˆ·ä¿¡æ¯
 
-	
+  ///@param pFensUserInfoï¼šç”¨æˆ·ä¿¡æ¯ã€‚
 
-	///×¢²áÃû×Ö·şÎñÆ÷ÍøÂçµØÖ·
+  virtual void
+  RegisterFensUserInfo(CThostFtdcFensUserInfoField *pFensUserInfo) = 0;
 
-	///@param pszNsAddress£ºÃû×Ö·şÎñÆ÷ÍøÂçµØÖ·¡£
+  ///æ³¨å†Œå›è°ƒæ¥å£
 
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:12001¡±¡£ 
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›è°ƒæ¥å£ç±»çš„å®ä¾‹
 
-	///@remark ¡°tcp¡±´ú±í´«ÊäĞ­Òé£¬¡°127.0.0.1¡±´ú±í·şÎñÆ÷µØÖ·¡£¡±12001¡±´ú±í·şÎñÆ÷¶Ë¿ÚºÅ¡£
+  virtual void RegisterSpi(CThostFtdcMdSpi *pSpi) = 0;
 
-	///@remark RegisterNameServerÓÅÏÈÓÚRegisterFront
+  ///è®¢é˜…è¡Œæƒ…ã€‚
 
-	virtual void RegisterNameServer(char *pszNsAddress) = 0;
+  ///@param ppInstrumentID åˆçº¦ID
 
-	
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
 
-	///×¢²áÃû×Ö·şÎñÆ÷ÓÃ»§ĞÅÏ¢
+  ///@remark
 
-	///@param pFensUserInfo£ºÓÃ»§ĞÅÏ¢¡£
+  virtual int SubscribeMarketData(char *ppInstrumentID[], int nCount) = 0;
 
-	virtual void RegisterFensUserInfo(CThostFtdcFensUserInfoField * pFensUserInfo) = 0;
+  ///é€€è®¢è¡Œæƒ…ã€‚
 
-	
+  ///@param ppInstrumentID åˆçº¦ID
 
-	///×¢²á»Øµ÷½Ó¿Ú
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
 
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀı
+  ///@remark
 
-	virtual void RegisterSpi(CThostFtdcMdSpi *pSpi) = 0;
+  virtual int UnSubscribeMarketData(char *ppInstrumentID[], int nCount) = 0;
 
-	
+  ///è®¢é˜…è¯¢ä»·ã€‚
 
-	///¶©ÔÄĞĞÇé¡£
+  ///@param ppInstrumentID åˆçº¦ID
 
-	///@param ppInstrumentID ºÏÔ¼ID  
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
 
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
+  ///@remark
 
-	///@remark 
+  virtual int SubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
 
-	virtual int SubscribeMarketData(char *ppInstrumentID[], int nCount) = 0;
+  ///é€€è®¢è¯¢ä»·ã€‚
 
+  ///@param ppInstrumentID åˆçº¦ID
 
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
 
-	///ÍË¶©ĞĞÇé¡£
+  ///@remark
 
-	///@param ppInstrumentID ºÏÔ¼ID  
+  virtual int UnSubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
 
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
+  ///ç”¨æˆ·ç™»å½•è¯·æ±‚
 
-	///@remark 
+  virtual int ReqUserLogin(CThostFtdcReqUserLoginField *pReqUserLoginField,
+                           int nRequestID) = 0;
 
-	virtual int UnSubscribeMarketData(char *ppInstrumentID[], int nCount) = 0;
+  ///ç™»å‡ºè¯·æ±‚
 
-	
-
-	///¶©ÔÄÑ¯¼Û¡£
-
-	///@param ppInstrumentID ºÏÔ¼ID  
-
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-
-	///@remark 
-
-	virtual int SubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
-
-
-
-	///ÍË¶©Ñ¯¼Û¡£
-
-	///@param ppInstrumentID ºÏÔ¼ID  
-
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-
-	///@remark 
-
-	virtual int UnSubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
-
-
-
-	///ÓÃ»§µÇÂ¼ÇëÇó
-
-	virtual int ReqUserLogin(CThostFtdcReqUserLoginField *pReqUserLoginField, int nRequestID) = 0;
-
-	
-
-
-
-	///µÇ³öÇëÇó
-
-	virtual int ReqUserLogout(CThostFtdcUserLogoutField *pUserLogout, int nRequestID) = 0;
+  virtual int ReqUserLogout(CThostFtdcUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
 
 protected:
-
-	~CThostFtdcMdApi(){};
-
+  ~CThostFtdcMdApi(){};
 };
 
-
-
-}
+} // namespace fstech
 
 #endif
-

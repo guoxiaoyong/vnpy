@@ -1,31 +1,31 @@
-//ËµÃ÷²¿·Ö
+//è¯´æ˜éƒ¨åˆ†
 
-//ÏµÍ³
+//ç³»ç»Ÿ
 #include "stdafx.h"
-#include <string>
 #include <queue>
+#include <string>
 
-//Boost
+// Boost
 #define BOOST_PYTHON_STATIC_LIB
-#include <boost/python/module.hpp>	//python·â×°
-#include <boost/python/def.hpp>		//python·â×°
-#include <boost/python/dict.hpp>	//python·â×°
-#include <boost/python/object.hpp>	//python·â×°
-#include <boost/python.hpp>			//python·â×°
-#include <boost/thread.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/bind.hpp>			//ÈÎÎñ¶ÓÁĞµÄÏß³Ì¹¦ÄÜ
-#include <boost/any.hpp>			//ÈÎÎñ¶ÓÁĞµÄÈÎÎñÊµÏÖ
+#include <boost/any.hpp>           //ä»»åŠ¡é˜Ÿåˆ—çš„ä»»åŠ¡å®ç°
+#include <boost/bind.hpp>          //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
+#include <boost/python.hpp>        //pythonå°è£…
+#include <boost/python/def.hpp>    //pythonå°è£…
+#include <boost/python/dict.hpp>   //pythonå°è£…
+#include <boost/python/module.hpp> //pythonå°è£…
+#include <boost/python/object.hpp> //pythonå°è£…
+#include <boost/thread.hpp>        //ä»»åŠ¡é˜Ÿåˆ—çš„çº¿ç¨‹åŠŸèƒ½
 
-//API
+// API
 #include "DFITCMdApi.h"
 
-//ÃüÃû¿Õ¼ä
+//å‘½åç©ºé—´
 using namespace std;
 using namespace boost::python;
 using namespace boost;
 using namespace DFITCXSPEEDMDAPI;
 
-//³£Á¿
+//å¸¸é‡
 #define ONFRONTCONNECTED 1
 #define ONFRONTDISCONNECTED 2
 #define ONRSPUSERLOGIN 3
@@ -41,306 +41,295 @@ using namespace DFITCXSPEEDMDAPI;
 #define ONRSPTRADINGDAY 13
 #define EXIT 0
 
-
 ///-------------------------------------------------------------------------------------
-///APIÖĞµÄ²¿·Ö×é¼ş
+/// APIä¸­çš„éƒ¨åˆ†ç»„ä»¶
 ///-------------------------------------------------------------------------------------
 
-//GILÈ«¾ÖËø¼ò»¯»ñÈ¡ÓÃ£¬
-//ÓÃÓÚ°ïÖúC++Ïß³Ì»ñµÃGILËø£¬´Ó¶ø·ÀÖ¹python±ÀÀ£
-class PyLock
-{
+// GILå…¨å±€é”ç®€åŒ–è·å–ç”¨ï¼Œ
+//ç”¨äºå¸®åŠ©C++çº¿ç¨‹è·å¾—GILé”ï¼Œä»è€Œé˜²æ­¢pythonå´©æºƒ
+class PyLock {
 private:
-	PyGILState_STATE gil_state;
+  PyGILState_STATE gil_state;
 
 public:
-	//ÔÚÄ³¸öº¯Êı·½·¨ÖĞ´´½¨¸Ã¶ÔÏóÊ±£¬»ñµÃGILËø
-	PyLock()
-	{
-		gil_state = PyGILState_Ensure();
-	}
+  //åœ¨æŸä¸ªå‡½æ•°æ–¹æ³•ä¸­åˆ›å»ºè¯¥å¯¹è±¡æ—¶ï¼Œè·å¾—GILé”
+  PyLock() { gil_state = PyGILState_Ensure(); }
 
-	//ÔÚÄ³¸öº¯ÊıÍê³ÉºóÏú»Ù¸Ã¶ÔÏóÊ±£¬½â·ÅGILËø
-	~PyLock()
-	{
-		PyGILState_Release(gil_state);
-	}
+  //åœ¨æŸä¸ªå‡½æ•°å®Œæˆåé”€æ¯è¯¥å¯¹è±¡æ—¶ï¼Œè§£æ”¾GILé”
+  ~PyLock() { PyGILState_Release(gil_state); }
 };
 
-
-//ÈÎÎñ½á¹¹Ìå
-struct Task
-{
-	int task_name;		//»Øµ÷º¯ÊıÃû³Æ¶ÔÓ¦µÄ³£Á¿
-	any task_data;		//Êı¾İ½á¹¹Ìå
-	any task_error;		//´íÎó½á¹¹Ìå
-	int task_id;		//ÇëÇóid
-	bool task_last;		//ÊÇ·ñÎª×îºó·µ»Ø
+//ä»»åŠ¡ç»“æ„ä½“
+struct Task {
+  int task_name;  //å›è°ƒå‡½æ•°åç§°å¯¹åº”çš„å¸¸é‡
+  any task_data;  //æ•°æ®ç»“æ„ä½“
+  any task_error; //é”™è¯¯ç»“æ„ä½“
+  int task_id;    //è¯·æ±‚id
+  bool task_last; //æ˜¯å¦ä¸ºæœ€åè¿”å›
 };
 
+///çº¿ç¨‹å®‰å…¨çš„é˜Ÿåˆ—
+template <typename Data>
 
-///Ïß³Ì°²È«µÄ¶ÓÁĞ
-template<typename Data>
-
-class ConcurrentQueue
-{
+class ConcurrentQueue {
 private:
-	queue<Data> the_queue;								//±ê×¼¿â¶ÓÁĞ
-	mutable mutex the_mutex;							//boost»¥³âËø
-	condition_variable the_condition_variable;			//boostÌõ¼ş±äÁ¿
+  queue<Data> the_queue;                     //æ ‡å‡†åº“é˜Ÿåˆ—
+  mutable mutex the_mutex;                   // boostäº’æ–¥é”
+  condition_variable the_condition_variable; // boostæ¡ä»¶å˜é‡
 
 public:
+  //å­˜å…¥æ–°çš„ä»»åŠ¡
+  void push(Data const &data) {
+    mutex::scoped_lock lock(the_mutex);  //è·å–äº’æ–¥é”
+    the_queue.push(data);                //å‘é˜Ÿåˆ—ä¸­å­˜å…¥æ•°æ®
+    lock.unlock();                       //é‡Šæ”¾é”
+    the_condition_variable.notify_one(); //é€šçŸ¥æ­£åœ¨é˜»å¡ç­‰å¾…çš„çº¿ç¨‹
+  }
 
-	//´æÈëĞÂµÄÈÎÎñ
-	void push(Data const& data)
-	{
-		mutex::scoped_lock lock(the_mutex);				//»ñÈ¡»¥³âËø
-		the_queue.push(data);							//Ïò¶ÓÁĞÖĞ´æÈëÊı¾İ
-		lock.unlock();									//ÊÍ·ÅËø
-		the_condition_variable.notify_one();			//Í¨ÖªÕıÔÚ×èÈûµÈ´ıµÄÏß³Ì
-	}
+  //æ£€æŸ¥é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+  bool empty() const {
+    mutex::scoped_lock lock(the_mutex);
+    return the_queue.empty();
+  }
 
-	//¼ì²é¶ÓÁĞÊÇ·ñÎª¿Õ
-	bool empty() const
-	{
-		mutex::scoped_lock lock(the_mutex);
-		return the_queue.empty();
-	}
+  //å–å‡º
+  Data wait_and_pop() {
+    mutex::scoped_lock lock(the_mutex);
 
-	//È¡³ö
-	Data wait_and_pop()
-	{
-		mutex::scoped_lock lock(the_mutex);
+    while (the_queue.empty()) //å½“é˜Ÿåˆ—ä¸ºç©ºæ—¶
+    {
+      the_condition_variable.wait(lock); //ç­‰å¾…æ¡ä»¶å˜é‡é€šçŸ¥
+    }
 
-		while (the_queue.empty())						//µ±¶ÓÁĞÎª¿ÕÊ±
-		{
-			the_condition_variable.wait(lock);			//µÈ´ıÌõ¼ş±äÁ¿Í¨Öª
-		}
-
-		Data popped_value = the_queue.front();			//»ñÈ¡¶ÓÁĞÖĞµÄ×îºóÒ»¸öÈÎÎñ
-		the_queue.pop();								//É¾³ı¸ÃÈÎÎñ
-		return popped_value;							//·µ»Ø¸ÃÈÎÎñ
-	}
-
+    Data popped_value = the_queue.front(); //è·å–é˜Ÿåˆ—ä¸­çš„æœ€åä¸€ä¸ªä»»åŠ¡
+    the_queue.pop();                       //åˆ é™¤è¯¥ä»»åŠ¡
+    return popped_value;                   //è¿”å›è¯¥ä»»åŠ¡
+  }
 };
 
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æ•´æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getInt(dict d, string key, int *value);
 
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄÕûÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getInt(dict d, string key, int* value);
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„æµ®ç‚¹æ•°ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getDouble(dict d, string key, double *value);
 
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„å•å­—ç¬¦ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getChar(dict d, string key, char *value);
 
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ¸¡µãÊı£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getDouble(dict d, string key, double* value);
-
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄµ¥×Ö·û£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getChar(dict d, string key, char* value);
-
-
-//´Ó×ÖµäÖĞ»ñÈ¡Ä³¸ö½¨Öµ¶ÔÓ¦µÄ×Ö·û´®£¬²¢¸³Öµµ½ÇëÇó½á¹¹Ìå¶ÔÏóµÄÖµÉÏ
-void getString(dict d, string key, char* value);
-
+//ä»å­—å…¸ä¸­è·å–æŸä¸ªå»ºå€¼å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œå¹¶èµ‹å€¼åˆ°è¯·æ±‚ç»“æ„ä½“å¯¹è±¡çš„å€¼ä¸Š
+void getString(dict d, string key, char *value);
 
 ///-------------------------------------------------------------------------------------
-///C++ SPIµÄ»Øµ÷º¯Êı·½·¨ÊµÏÖ
+/// C++ SPIçš„å›è°ƒå‡½æ•°æ–¹æ³•å®ç°
 ///-------------------------------------------------------------------------------------
 
-//APIµÄ¼Ì³ĞÊµÏÖ
-class MdApi : public DFITCMdSpi
-{
+// APIçš„ç»§æ‰¿å®ç°
+class MdApi : public DFITCMdSpi {
 private:
-	DFITCMdApi* api;			//API¶ÔÏó
-	thread *task_thread;				//¹¤×÷Ïß³ÌÖ¸Õë£¨ÏòpythonÖĞÍÆËÍÊı¾İ£©
-	ConcurrentQueue<Task> task_queue;	//ÈÎÎñ¶ÓÁĞ
+  DFITCMdApi *api;     // APIå¯¹è±¡
+  thread *task_thread; //å·¥ä½œçº¿ç¨‹æŒ‡é’ˆï¼ˆå‘pythonä¸­æ¨é€æ•°æ®ï¼‰
+  ConcurrentQueue<Task> task_queue; //ä»»åŠ¡é˜Ÿåˆ—
 
 public:
-	MdApi()
-	{
-		function0<void> f = boost::bind(&MdApi::processTask, this);
-		thread t(f);
-		this->task_thread = &t;
-	};
+  MdApi() {
+    function0<void> f = boost::bind(&MdApi::processTask, this);
+    thread t(f);
+    this->task_thread = &t;
+  };
 
-	~MdApi()
-	{
-	};
+  ~MdApi(){};
 
-	//-------------------------------------------------------------------------------------
-	//API»Øµ÷º¯Êı
-	//-------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
+  // APIå›è°ƒå‡½æ•°
+  //-------------------------------------------------------------------------------------
 
-		/**
-		* ÍøÂçÁ¬½ÓÕı³£ÏìÓ¦
-		*/
-		virtual void OnFrontConnected();
+  /**
+   * ç½‘ç»œè¿æ¥æ­£å¸¸å“åº”
+   */
+  virtual void OnFrontConnected();
 
-		/**
-		* ÍøÂçÁ¬½Ó²»Õı³£ÏìÓ¦
-		*/
-		virtual void OnFrontDisconnected(int nReason);
+  /**
+   * ç½‘ç»œè¿æ¥ä¸æ­£å¸¸å“åº”
+   */
+  virtual void OnFrontDisconnected(int nReason);
 
-		/**
-		* µÇÂ½ÇëÇóÏìÓ¦:µ±ÓÃ»§·¢³öµÇÂ¼ÇëÇóºó£¬Ç°ÖÃ»ú·µ»ØÏìÓ¦Ê±´Ë·½·¨»á±»µ÷ÓÃ£¬Í¨ÖªÓÃ»§µÇÂ¼ÊÇ·ñ³É¹¦¡£
-		* @param pRspUserLogin:ÓÃ»§µÇÂ¼ĞÅÏ¢½á¹¹µØÖ·¡£
-		* @param pRspInfo:ÈôÇëÇóÊ§°Ü£¬·µ»Ø´íÎóĞÅÏ¢µØÖ·£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-		*/
-		virtual void OnRspUserLogin(struct DFITCUserLoginInfoRtnField * pRspUserLogin, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * ç™»é™†è¯·æ±‚å“åº”:å½“ç”¨æˆ·å‘å‡ºç™»å½•è¯·æ±‚åï¼Œå‰ç½®æœºè¿”å›å“åº”æ—¶æ­¤æ–¹æ³•ä¼šè¢«è°ƒç”¨ï¼Œé€šçŸ¥ç”¨æˆ·ç™»å½•æ˜¯å¦æˆåŠŸã€‚
+   * @param pRspUserLogin:ç”¨æˆ·ç™»å½•ä¿¡æ¯ç»“æ„åœ°å€ã€‚
+   * @param pRspInfo:è‹¥è¯·æ±‚å¤±è´¥ï¼Œè¿”å›é”™è¯¯ä¿¡æ¯åœ°å€ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void OnRspUserLogin(struct DFITCUserLoginInfoRtnField *pRspUserLogin,
+                              struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* µÇ³öÇëÇóÏìÓ¦:µ±ÓÃ»§·¢³öÍË³öÇëÇóºó£¬Ç°ÖÃ»ú·µ»ØÏìÓ¦´Ë·½·¨»á±»µ÷ÓÃ£¬Í¨ÖªÓÃ»§ÍË³ö×´Ì¬¡£
-		* @param pRspUsrLogout:·µ»ØÓÃ»§ÍË³öĞÅÏ¢½á¹¹µØÖ·¡£
-		* @param pRspInfo:ÈôÇëÇóÊ§°Ü£¬·µ»Ø´íÎóĞÅÏ¢µØÖ·¡£
-		*/
-		virtual void OnRspUserLogout(struct DFITCUserLogoutInfoRtnField * pRspUsrLogout, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * ç™»å‡ºè¯·æ±‚å“åº”:å½“ç”¨æˆ·å‘å‡ºé€€å‡ºè¯·æ±‚åï¼Œå‰ç½®æœºè¿”å›å“åº”æ­¤æ–¹æ³•ä¼šè¢«è°ƒç”¨ï¼Œé€šçŸ¥ç”¨æˆ·é€€å‡ºçŠ¶æ€ã€‚
+   * @param pRspUsrLogout:è¿”å›ç”¨æˆ·é€€å‡ºä¿¡æ¯ç»“æ„åœ°å€ã€‚
+   * @param pRspInfo:è‹¥è¯·æ±‚å¤±è´¥ï¼Œè¿”å›é”™è¯¯ä¿¡æ¯åœ°å€ã€‚
+   */
+  virtual void
+  OnRspUserLogout(struct DFITCUserLogoutInfoRtnField *pRspUsrLogout,
+                  struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* ´íÎóÓ¦´ğ
-		* @param pRspInfo:´íÎóĞÅÏ¢µØÖ·¡£
-		*/
-		virtual void OnRspError(struct DFITCErrorRtnField *pRspInfo);
+  /**
+   * é”™è¯¯åº”ç­”
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯åœ°å€ã€‚
+   */
+  virtual void OnRspError(struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* ĞĞÇé¶©ÔÄÓ¦´ğ:µ±ÓÃ»§·¢³öĞĞÇé¶©ÔÄ¸Ã·½·¨»á±»µ÷ÓÃ¡£
-		* @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-		* @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-		*/
-		virtual void OnRspSubMarketData(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * è¡Œæƒ…è®¢é˜…åº”ç­”:å½“ç”¨æˆ·å‘å‡ºè¡Œæƒ…è®¢é˜…è¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspSubMarketData(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                     struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ:µ±ÓÃ»§·¢³öÍË¶©ÇëÇóºó¸Ã·½·¨»á±»µ÷ÓÃ¡£
-		* @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-		* @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-		*/
-		virtual void OnRspUnSubMarketData(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”:å½“ç”¨æˆ·å‘å‡ºé€€è®¢è¯·æ±‚åè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspUnSubMarketData(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                       struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* ¶©ÔÄÑ¯¼ÛÓ¦´ğ
-		* @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-		* @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-		*/
-		virtual void OnRspSubForQuoteRsp(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * è®¢é˜…è¯¢ä»·åº”ç­”
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRspSubForQuoteRsp(struct DFITCSpecificInstrumentField *pSpecificInstrument,
+                      struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
-		* @param pSpecificInstrument:Ö¸ÏòºÏÔ¼ÏìÓ¦½á¹¹£¬¸Ã½á¹¹°üº¬ºÏÔ¼µÄÏà¹ØĞÅÏ¢¡£
-		* @param pRspInfo:´íÎóĞÅÏ¢£¬Èç¹û·¢Éú´íÎó£¬¸Ã½á¹¹º¬ÓĞ´íÎóĞÅÏ¢¡£
-		*/
-		virtual void OnRspUnSubForQuoteRsp(struct DFITCSpecificInstrumentField * pSpecificInstrument, struct DFITCErrorRtnField * pRspInfo);
+  /**
+   * å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
+   * @param pSpecificInstrument:æŒ‡å‘åˆçº¦å“åº”ç»“æ„ï¼Œè¯¥ç»“æ„åŒ…å«åˆçº¦çš„ç›¸å…³ä¿¡æ¯ã€‚
+   * @param pRspInfo:é”™è¯¯ä¿¡æ¯ï¼Œå¦‚æœå‘ç”Ÿé”™è¯¯ï¼Œè¯¥ç»“æ„å«æœ‰é”™è¯¯ä¿¡æ¯ã€‚
+   */
+  virtual void OnRspUnSubForQuoteRsp(
+      struct DFITCSpecificInstrumentField *pSpecificInstrument,
+      struct DFITCErrorRtnField *pRspInfo);
 
-		/**
-		* ĞĞÇéÏûÏ¢Ó¦´ğ:Èç¹û¶©ÔÄĞĞÇé³É¹¦ÇÒÓĞĞĞÇé·µ»ØÊ±£¬¸Ã·½·¨»á±»µ÷ÓÃ¡£
-		* @param pMarketDataField:Ö¸ÏòĞĞÇéĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄĞĞÇéĞÅÏ¢¡£
-		*/
-		virtual void OnMarketData(struct DFITCDepthMarketDataField * pMarketDataField);
+  /**
+   * è¡Œæƒ…æ¶ˆæ¯åº”ç­”:å¦‚æœè®¢é˜…è¡Œæƒ…æˆåŠŸä¸”æœ‰è¡Œæƒ…è¿”å›æ—¶ï¼Œè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param
+   * pMarketDataField:æŒ‡å‘è¡Œæƒ…ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¡Œæƒ…ä¿¡æ¯ã€‚
+   */
+  virtual void OnMarketData(struct DFITCDepthMarketDataField *pMarketDataField);
 
-		/**
-		* ×Ô¶¨Òå×éºÏĞĞÇéÏûÏ¢Ó¦´ğ:Èç¹û¶©ÔÄĞĞÇé³É¹¦ÇÒÓĞĞĞÇé·µ»ØÊ±£¬¸Ã·½·¨»á±»µ÷ÓÃ¡£
-		* @param pMarketDataField:Ö¸ÏòĞĞÇéĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄĞĞÇéĞÅÏ¢¡£
-		*/
-		virtual void OnCustomMarketData(struct DFITCCustomMarketDataField * pMarketDataField);
+  /**
+   * è‡ªå®šä¹‰ç»„åˆè¡Œæƒ…æ¶ˆæ¯åº”ç­”:å¦‚æœè®¢é˜…è¡Œæƒ…æˆåŠŸä¸”æœ‰è¡Œæƒ…è¿”å›æ—¶ï¼Œè¯¥æ–¹æ³•ä¼šè¢«è°ƒç”¨ã€‚
+   * @param
+   * pMarketDataField:æŒ‡å‘è¡Œæƒ…ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¡Œæƒ…ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnCustomMarketData(struct DFITCCustomMarketDataField *pMarketDataField);
 
-		/**
-		* Ñ¯¼ÛÍ¨Öª
-		* @param pForQuoteField:Ö¸ÏòÑ¯¼ÛĞÅÏ¢½á¹¹µÄÖ¸Õë£¬½á¹¹ÌåÖĞ°üº¬¾ßÌåµÄÑ¯¼ÛĞÅÏ¢¡£
-		*/
-		virtual void OnRtnForQuoteRsp(struct DFITCQuoteSubscribeRtnField * pForQuoteField);
+  /**
+   * è¯¢ä»·é€šçŸ¥
+   * @param pForQuoteField:æŒ‡å‘è¯¢ä»·ä¿¡æ¯ç»“æ„çš„æŒ‡é’ˆï¼Œç»“æ„ä½“ä¸­åŒ…å«å…·ä½“çš„è¯¢ä»·ä¿¡æ¯ã€‚
+   */
+  virtual void
+  OnRtnForQuoteRsp(struct DFITCQuoteSubscribeRtnField *pForQuoteField);
 
-		/**
-		* ½»Ò×ÈÕÈ·ÈÏÏìÓ¦:ÓÃÓÚ½ÓÊÕ½»Ò×ÈÕĞÅÏ¢¡£
-		* @param pTradingDayRtnData: ·µ»Ø½»Ò×ÈÕÇëÇóÈ·ÈÏÏìÓ¦½á¹¹µÄµØÖ·¡£
-		*/
-		virtual void OnRspTradingDay(struct DFITCTradingDayRtnField * pTradingDayRtnData);
+  /**
+   * äº¤æ˜“æ—¥ç¡®è®¤å“åº”:ç”¨äºæ¥æ”¶äº¤æ˜“æ—¥ä¿¡æ¯ã€‚
+   * @param pTradingDayRtnData: è¿”å›äº¤æ˜“æ—¥è¯·æ±‚ç¡®è®¤å“åº”ç»“æ„çš„åœ°å€ã€‚
+   */
+  virtual void
+  OnRspTradingDay(struct DFITCTradingDayRtnField *pTradingDayRtnData);
 
+  //-------------------------------------------------------------------------------------
+  // taskï¼šä»»åŠ¡
+  //-------------------------------------------------------------------------------------
 
-	//-------------------------------------------------------------------------------------
-	//task£ºÈÎÎñ
-	//-------------------------------------------------------------------------------------
+  void processTask();
 
-	void processTask();
+  void processFrontConnected(Task task);
 
-	void processFrontConnected(Task task);
+  void processFrontDisconnected(Task task);
 
-	void processFrontDisconnected(Task task);
+  void processRspUserLogin(Task task);
 
-	void processRspUserLogin(Task task);
+  void processRspUserLogout(Task task);
 
-	void processRspUserLogout(Task task);
+  void processRspError(Task task);
 
-	void processRspError(Task task);
+  void processRspSubMarketData(Task task);
 
-	void processRspSubMarketData(Task task);
+  void processRspUnSubMarketData(Task task);
 
-	void processRspUnSubMarketData(Task task);
+  void processRspSubForQuoteRsp(Task task);
 
-	void processRspSubForQuoteRsp(Task task);
+  void processRspUnSubForQuoteRsp(Task task);
 
-	void processRspUnSubForQuoteRsp(Task task);
+  void processMarketData(Task task);
 
-	void processMarketData(Task task);
+  void processCustomMarketData(Task task);
 
-	void processCustomMarketData(Task task);
+  void processRtnForQuoteRsp(Task task);
 
-	void processRtnForQuoteRsp(Task task);
+  void processRspTradingDay(Task task);
 
-	void processRspTradingDay(Task task);
+  //-------------------------------------------------------------------------------------
+  // dataï¼šå›è°ƒå‡½æ•°çš„æ•°æ®å­—å…¸
+  // errorï¼šå›è°ƒå‡½æ•°çš„é”™è¯¯å­—å…¸
+  // idï¼šè¯·æ±‚id
+  // lastï¼šæ˜¯å¦ä¸ºæœ€åè¿”å›
+  // iï¼šæ•´æ•°
+  //-------------------------------------------------------------------------------------
 
-	//-------------------------------------------------------------------------------------
-	//data£º»Øµ÷º¯ÊıµÄÊı¾İ×Öµä
-	//error£º»Øµ÷º¯ÊıµÄ´íÎó×Öµä
-	//id£ºÇëÇóid
-	//last£ºÊÇ·ñÎª×îºó·µ»Ø
-	//i£ºÕûÊı
-	//-------------------------------------------------------------------------------------
+  virtual void onFrontConnected(){};
 
-	virtual void onFrontConnected(){};
+  virtual void onFrontDisconnected(int i){};
 
-	virtual void onFrontDisconnected(int i){};
+  virtual void onRspUserLogin(dict data, dict error){};
 
-	virtual void onRspUserLogin(dict data, dict error) {};
+  virtual void onRspUserLogout(dict data, dict error){};
 
-	virtual void onRspUserLogout(dict data, dict error) {};
+  virtual void onRspError(dict error){};
 
-	virtual void onRspError(dict error) {};
+  virtual void onRspSubMarketData(dict data, dict error){};
 
-	virtual void onRspSubMarketData(dict data, dict error) {};
+  virtual void onRspUnSubMarketData(dict data, dict error){};
 
-	virtual void onRspUnSubMarketData(dict data, dict error) {};
+  virtual void onRspSubForQuoteRsp(dict data, dict error){};
 
-	virtual void onRspSubForQuoteRsp(dict data, dict error) {};
+  virtual void onRspUnSubForQuoteRsp(dict data, dict error){};
 
-	virtual void onRspUnSubForQuoteRsp(dict data, dict error) {};
+  virtual void onMarketData(dict data){};
 
-	virtual void onMarketData(dict data) {};
+  virtual void onCustomMarketData(dict data){};
 
-	virtual void onCustomMarketData(dict data) {};
+  virtual void onRtnForQuoteRsp(dict data){};
 
-	virtual void onRtnForQuoteRsp(dict data) {};
+  virtual void onRspTradingDay(dict data){};
 
-	virtual void onRspTradingDay(dict data) {};
+  //-------------------------------------------------------------------------------------
+  // req:ä¸»åŠ¨å‡½æ•°çš„è¯·æ±‚å­—å…¸
+  //-------------------------------------------------------------------------------------
 
-	//-------------------------------------------------------------------------------------
-	//req:Ö÷¶¯º¯ÊıµÄÇëÇó×Öµä
-	//-------------------------------------------------------------------------------------
+  void createDFITCMdApi();
 
-	void createDFITCMdApi();
+  void release();
 
-	void release();
+  void init(string pszSvrAddr);
 
-	void init(string pszSvrAddr);
+  int exit();
 
-	int exit();
-	
-	int subscribeMarketData(string instrumentID, int nRequestID);
+  int subscribeMarketData(string instrumentID, int nRequestID);
 
-	int unSubscribeMarketData(string instrumentID, int nRequestID);
+  int unSubscribeMarketData(string instrumentID, int nRequestID);
 
-	int subscribeForQuoteRsp(string instrumentID, int nRequestID);
+  int subscribeForQuoteRsp(string instrumentID, int nRequestID);
 
-	int unSubscribeForQuoteRsp(string instrumentID, int nRequestID);
+  int unSubscribeForQuoteRsp(string instrumentID, int nRequestID);
 
-	int reqUserLogin(dict req);
+  int reqUserLogin(dict req);
 
-	int reqUserLogout(dict req);
+  int reqUserLogout(dict req);
 
-	int reqTradingDay(dict req);
+  int reqTradingDay(dict req);
 };

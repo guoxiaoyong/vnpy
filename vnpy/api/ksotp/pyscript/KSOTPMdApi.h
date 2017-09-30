@@ -14,124 +14,150 @@
 #define OTP_MD_API_EXPORT __declspec(dllimport)
 #endif
 #else
-#ifdef  WIN32
-#define OTP_MD_API_EXPORT 
+#ifdef WIN32
+#define OTP_MD_API_EXPORT
 #else
 #define OTP_MD_API_EXPORT __attribute__((visibility("default")))
 #endif
 #endif
 
-namespace KingstarAPI
-{
+namespace KingstarAPI {
 
-class CKSOTPMdSpi
-{
+class CKSOTPMdSpi {
 public:
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆğÍ¨ĞÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-	virtual void OnFrontConnected(){};
-	
-	///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ĞÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬¿Í»§¶ËĞèÒª×öÖØÁ¬´¦Àí¡£
-	///@param nReason ´íÎóÔ­Òò
-	///        0x1001 ÍøÂç¶ÁÊ§°Ü
-	///        0x1002 ÍøÂçĞ´Ê§°Ü
-	///        0x2001 ½ÓÊÕĞÄÌø³¬Ê±
-	///        0x2002 ·¢ËÍĞÄÌøÊ§°Ü
-	///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
-	virtual void OnFrontDisconnected(int nReason){};	
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°å»ºç«‹èµ·é€šä¿¡è¿æ¥æ—¶ï¼ˆè¿˜æœªç™»å½•å‰ï¼‰ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚
+  virtual void OnFrontConnected(){};
 
-	///µÇÂ¼ÇëÇóÏìÓ¦
-	virtual void OnRspUserLogin(CKSOTPRspUserLoginField *pRspUserLogin, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å½“å®¢æˆ·ç«¯ä¸äº¤æ˜“åå°é€šä¿¡è¿æ¥æ–­å¼€æ—¶ï¼Œè¯¥æ–¹æ³•è¢«è°ƒç”¨ã€‚å½“å‘ç”Ÿè¿™ä¸ªæƒ…å†µåï¼Œå®¢æˆ·ç«¯éœ€è¦åšé‡è¿å¤„ç†ã€‚
+  ///@param nReason é”™è¯¯åŸå› 
+  ///        0x1001 ç½‘ç»œè¯»å¤±è´¥
+  ///        0x1002 ç½‘ç»œå†™å¤±è´¥
+  ///        0x2001 æ¥æ”¶å¿ƒè·³è¶…æ—¶
+  ///        0x2002 å‘é€å¿ƒè·³å¤±è´¥
+  ///        0x2003 æ”¶åˆ°é”™è¯¯æŠ¥æ–‡
+  virtual void OnFrontDisconnected(int nReason){};
 
-	///µÇ³öÇëÇóÏìÓ¦
-	virtual void OnRspUserLogout(CKSOTPUserLogoutField *pUserLogout, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å½•è¯·æ±‚å“åº”
+  virtual void OnRspUserLogin(CKSOTPRspUserLoginField *pRspUserLogin,
+                              CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                              bool bIsLast){};
 
-	///´íÎóÓ¦´ğ
-	virtual void OnRspError(CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///ç™»å‡ºè¯·æ±‚å“åº”
+  virtual void OnRspUserLogout(CKSOTPUserLogoutField *pUserLogout,
+                               CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                               bool bIsLast){};
 
-	///¶©ÔÄĞĞÇéÓ¦´ğ
-	virtual void OnRspSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///é”™è¯¯åº”ç­”
+  virtual void OnRspError(CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                          bool bIsLast){};
 
-	///È¡Ïû¶©ÔÄĞĞÇéÓ¦´ğ
-	virtual void OnRspUnSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///è®¢é˜…è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                     CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                     bool bIsLast){};
 
-	///¶©ÔÄÑ¯¼ÛÓ¦´ğ
-	virtual void OnRspSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///å–æ¶ˆè®¢é˜…è¡Œæƒ…åº”ç­”
+  virtual void
+  OnRspUnSubMarketData(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                       CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                       bool bIsLast){};
 
-	///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ğ
-	virtual void OnRspUnSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument, CKSOTPRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+  ///è®¢é˜…è¯¢ä»·åº”ç­”
+  virtual void
+  OnRspSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                      CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                      bool bIsLast){};
 
-	///Éî¶ÈĞĞÇéÍ¨Öª
-	virtual void OnRtnDepthMarketData(CKSOTPDepthMarketDataField *pDepthMarketData) {};
+  ///å–æ¶ˆè®¢é˜…è¯¢ä»·åº”ç­”
+  virtual void
+  OnRspUnSubForQuoteRsp(CKSOTPSpecificInstrumentField *pSpecificInstrument,
+                        CKSOTPRspInfoField *pRspInfo, int nRequestID,
+                        bool bIsLast){};
 
-	///Ñ¯¼ÛÍ¨Öª
-	virtual void OnRtnForQuoteRsp(CKSOTPForQuoteRspField *pForQuoteRsp) {};
+  ///æ·±åº¦è¡Œæƒ…é€šçŸ¥
+  virtual void
+  OnRtnDepthMarketData(CKSOTPDepthMarketDataField *pDepthMarketData){};
+
+  ///è¯¢ä»·é€šçŸ¥
+  virtual void OnRtnForQuoteRsp(CKSOTPForQuoteRspField *pForQuoteRsp){};
 };
 
-class OTP_MD_API_EXPORT CKSOTPMdApi
-{
+class OTP_MD_API_EXPORT CKSOTPMdApi {
 public:
-	///´´½¨MdApi
-	///@param pszFlowPath ´æÖü¶©ÔÄĞÅÏ¢ÎÄ¼şµÄÄ¿Â¼£¬Ä¬ÈÏÎªµ±Ç°Ä¿Â¼
-	///@return ´´½¨³öµÄUserApi
-	///modify for udp marketdata
-	static CKSOTPMdApi *CreateOTPMdApi(const char *pszFlowPath = "", const bool bIsUsingUdp=false, const bool bIsMulticast=false);
-	
-	///É¾³ı½Ó¿Ú¶ÔÏó±¾Éí
-	///@remark ²»ÔÙÊ¹ÓÃ±¾½Ó¿Ú¶ÔÏóÊ±,µ÷ÓÃ¸Ãº¯ÊıÉ¾³ı½Ó¿Ú¶ÔÏó
-	virtual void Release() = 0;
-	
-	///³õÊ¼»¯
-	///@remark ³õÊ¼»¯ÔËĞĞ»·¾³,Ö»ÓĞµ÷ÓÃºó,½Ó¿Ú²Å¿ªÊ¼¹¤×÷
-	virtual void Init() = 0;
-	
-	///»ñÈ¡µ±Ç°½»Ò×ÈÕ
-	///@retrun »ñÈ¡µ½µÄ½»Ò×ÈÕ
-	///@remark Ö»ÓĞµÇÂ¼³É¹¦ºó,²ÅÄÜµÃµ½ÕıÈ·µÄ½»Ò×ÈÕ
-	virtual const char *GetTradingDay() = 0;
-	
-	///×¢²áÇ°ÖÃ»úÍøÂçµØÖ·
-	///@param pszFrontAddress£ºÇ°ÖÃ»úÍøÂçµØÖ·¡£
-	///@remark ÍøÂçµØÖ·µÄ¸ñÊ½Îª£º¡°protocol://ipaddress:port¡±£¬Èç£º¡±tcp://127.0.0.1:17001¡±¡£ 
-	///@remark ¡°tcp¡±´ú±í´«ÊäĞ­Òé£¬¡°127.0.0.1¡±´ú±í·şÎñÆ÷µØÖ·¡£¡±17001¡±´ú±í·şÎñÆ÷¶Ë¿ÚºÅ¡£
-	virtual void RegisterFront(char *pszFrontAddress) = 0;
+  ///åˆ›å»ºMdApi
+  ///@param pszFlowPath å­˜è´®è®¢é˜…ä¿¡æ¯æ–‡ä»¶çš„ç›®å½•ï¼Œé»˜è®¤ä¸ºå½“å‰ç›®å½•
+  ///@return åˆ›å»ºå‡ºçš„UserApi
+  /// modify for udp marketdata
+  static CKSOTPMdApi *CreateOTPMdApi(const char *pszFlowPath = "",
+                                     const bool bIsUsingUdp = false,
+                                     const bool bIsMulticast = false);
 
-	///×¢²á»Øµ÷½Ó¿Ú
-	///@param pSpi ÅÉÉú×Ô»Øµ÷½Ó¿ÚÀàµÄÊµÀı
-	virtual void RegisterSpi(CKSOTPMdSpi *pSpi) = 0;
-	
-	///¶©ÔÄĞĞÇé¡£
-	///@param ppInstrumentID ºÏÔ¼ID  
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-	///@remark 
-	virtual int SubscribeMarketData(CKSOTPSpecificInstrumentField *ppInstrumentID[], int nCount) = 0;
+  ///åˆ é™¤æ¥å£å¯¹è±¡æœ¬èº«
+  ///@remark ä¸å†ä½¿ç”¨æœ¬æ¥å£å¯¹è±¡æ—¶,è°ƒç”¨è¯¥å‡½æ•°åˆ é™¤æ¥å£å¯¹è±¡
+  virtual void Release() = 0;
 
-	///ÍË¶©ĞĞÇé¡£
-	///@param ppInstrumentID ºÏÔ¼ID  
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-	///@remark 
-	virtual int UnSubscribeMarketData(CKSOTPSpecificInstrumentField *ppInstrumentID[], int nCount) = 0;
-	
-	///¶©ÔÄÑ¯¼Û¡£
-	///@param ppInstrumentID ºÏÔ¼ID  
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-	///@remark 
-	virtual int SubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
+  ///åˆå§‹åŒ–
+  ///@remark åˆå§‹åŒ–è¿è¡Œç¯å¢ƒ,åªæœ‰è°ƒç”¨å,æ¥å£æ‰å¼€å§‹å·¥ä½œ
+  virtual void Init() = 0;
 
-	///ÍË¶©Ñ¯¼Û¡£
-	///@param ppInstrumentID ºÏÔ¼ID  
-	///@param nCount Òª¶©ÔÄ/ÍË¶©ĞĞÇéµÄºÏÔ¼¸öÊı
-	///@remark 
-	virtual int UnSubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
+  ///è·å–å½“å‰äº¤æ˜“æ—¥
+  ///@retrun è·å–åˆ°çš„äº¤æ˜“æ—¥
+  ///@remark åªæœ‰ç™»å½•æˆåŠŸå,æ‰èƒ½å¾—åˆ°æ­£ç¡®çš„äº¤æ˜“æ—¥
+  virtual const char *GetTradingDay() = 0;
 
-	///ÓÃ»§µÇÂ¼ÇëÇó
-	virtual int ReqUserLogin(CKSOTPReqUserLoginField *pReqUserLoginField, int nRequestID) = 0;
-	
-	///µÇ³öÇëÇó
-	virtual int ReqUserLogout(CKSOTPUserLogoutField *pUserLogout, int nRequestID) = 0;
+  ///æ³¨å†Œå‰ç½®æœºç½‘ç»œåœ°å€
+  ///@param pszFrontAddressï¼šå‰ç½®æœºç½‘ç»œåœ°å€ã€‚
+  ///@remark
+  ///ç½‘ç»œåœ°å€çš„æ ¼å¼ä¸ºï¼šâ€œprotocol://ipaddress:portâ€ï¼Œå¦‚ï¼šâ€tcp://127.0.0.1:17001â€ã€‚
+  ///@remark
+  ///â€œtcpâ€ä»£è¡¨ä¼ è¾“åè®®ï¼Œâ€œ127.0.0.1â€ä»£è¡¨æœåŠ¡å™¨åœ°å€ã€‚â€17001â€ä»£è¡¨æœåŠ¡å™¨ç«¯å£å·ã€‚
+  virtual void RegisterFront(char *pszFrontAddress) = 0;
+
+  ///æ³¨å†Œå›è°ƒæ¥å£
+  ///@param pSpi æ´¾ç”Ÿè‡ªå›è°ƒæ¥å£ç±»çš„å®ä¾‹
+  virtual void RegisterSpi(CKSOTPMdSpi *pSpi) = 0;
+
+  ///è®¢é˜…è¡Œæƒ…ã€‚
+  ///@param ppInstrumentID åˆçº¦ID
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
+  ///@remark
+  virtual int
+  SubscribeMarketData(CKSOTPSpecificInstrumentField *ppInstrumentID[],
+                      int nCount) = 0;
+
+  ///é€€è®¢è¡Œæƒ…ã€‚
+  ///@param ppInstrumentID åˆçº¦ID
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
+  ///@remark
+  virtual int
+  UnSubscribeMarketData(CKSOTPSpecificInstrumentField *ppInstrumentID[],
+                        int nCount) = 0;
+
+  ///è®¢é˜…è¯¢ä»·ã€‚
+  ///@param ppInstrumentID åˆçº¦ID
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
+  ///@remark
+  virtual int SubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
+
+  ///é€€è®¢è¯¢ä»·ã€‚
+  ///@param ppInstrumentID åˆçº¦ID
+  ///@param nCount è¦è®¢é˜…/é€€è®¢è¡Œæƒ…çš„åˆçº¦ä¸ªæ•°
+  ///@remark
+  virtual int UnSubscribeForQuoteRsp(char *ppInstrumentID[], int nCount) = 0;
+
+  ///ç”¨æˆ·ç™»å½•è¯·æ±‚
+  virtual int ReqUserLogin(CKSOTPReqUserLoginField *pReqUserLoginField,
+                           int nRequestID) = 0;
+
+  ///ç™»å‡ºè¯·æ±‚
+  virtual int ReqUserLogout(CKSOTPUserLogoutField *pUserLogout,
+                            int nRequestID) = 0;
+
 protected:
-	~CKSOTPMdApi(){};
+  ~CKSOTPMdApi(){};
 };
 
-}	// end of namespace KingstarAPI
+} // end of namespace KingstarAPI
 
 #endif
